@@ -1,0 +1,62 @@
+Uci\Bundle\DataBaseBundle\Entity\Cuestionario:
+    type: entity
+    table: cuestionario
+    indexes:
+        fk_cuestionario_asistente_academica1_idx:
+            columns:
+                - asistente_academica_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fecha:
+            type: date
+            nullable: false
+            comment: ''
+        pruebaId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: prueba_id
+    manyToOne:
+        asistenteAcademica:
+            targetEntity: AsistenteAcademica
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                asistente_academica_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        pregunta:
+            targetEntity: Pregunta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: cuestionario
+            joinTable:
+                name: cuestionario_tiene_preguntas
+                joinColumns:
+                    -
+                        name: cuestionario_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: pregunta_id
+                        referencedColumnName: id
+            orderBy: null
+        curso:
+            targetEntity: Curso
+            cascade: {  }
+            mappedBy: cuestionario
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

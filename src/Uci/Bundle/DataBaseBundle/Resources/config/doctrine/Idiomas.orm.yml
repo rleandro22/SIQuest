@@ -1,0 +1,32 @@
+Uci\Bundle\DataBaseBundle\Entity\Idiomas:
+    type: entity
+    table: idiomas
+    uniqueConstraints:
+        codigo_lenguaje_UNIQUE:
+            columns:
+                - codigo_lenguaje
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        codigoLenguaje:
+            type: string
+            nullable: false
+            length: 2
+            fixed: false
+            comment: ''
+            column: codigo_lenguaje
+        nombreLenguaje:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: nombre_lenguaje
+    lifecycleCallbacks: {  }

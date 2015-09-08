@@ -1,0 +1,30 @@
+rol:
+    path:     /
+    defaults: { _controller: "UciDataBaseBundle:Rol:index" }
+
+rol_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciDataBaseBundle:Rol:show" }
+
+rol_new:
+    path:     /new
+    defaults: { _controller: "UciDataBaseBundle:Rol:new" }
+
+rol_create:
+    path:     /create
+    defaults: { _controller: "UciDataBaseBundle:Rol:create" }
+    methods:  POST
+
+rol_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciDataBaseBundle:Rol:edit" }
+
+rol_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciDataBaseBundle:Rol:update" }
+    methods:  [POST, PUT]
+
+rol_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciDataBaseBundle:Rol:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,44 @@
+Uci\Bundle\DataBaseBundle\Entity\Profesor:
+    type: entity
+    table: profesor
+    indexes:
+        fk_profesor_usuario1_idx:
+            columns:
+                - usuario_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        curso:
+            targetEntity: Curso
+            cascade: {  }
+            mappedBy: null
+            inversedBy: profesor
+            joinTable:
+                name: profesor_imparte_curso
+                joinColumns:
+                    -
+                        name: profesor_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: Curso_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

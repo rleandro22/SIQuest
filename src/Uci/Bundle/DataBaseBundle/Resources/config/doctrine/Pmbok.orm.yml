@@ -1,0 +1,55 @@
+Uci\Bundle\DataBaseBundle\Entity\Pmbok:
+    type: entity
+    table: pmbok
+    indexes:
+        fk_pmbok_libro1_idx:
+            columns:
+                - libro_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+    fields:
+        edicion:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    oneToOne:
+        libro:
+            targetEntity: Libro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                libro_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        areaConocimiento:
+            targetEntity: AreaConocimiento
+            cascade: {  }
+            mappedBy: pmbok
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        grupoProcesos:
+            targetEntity: GrupoProcesos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: pmbok
+            joinTable:
+                name: pmbok_tiene_grupos_procesos
+                joinColumns:
+                    -
+                        name: pmbok_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: grupo_procesos_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }
