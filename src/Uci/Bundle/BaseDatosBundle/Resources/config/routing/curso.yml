@@ -1,0 +1,30 @@
+curso:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:Curso:index" }
+
+curso_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:Curso:show" }
+
+curso_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:Curso:new" }
+
+curso_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:Curso:create" }
+    methods:  POST
+
+curso_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:Curso:edit" }
+
+curso_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:Curso:update" }
+    methods:  [POST, PUT]
+
+curso_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:Curso:delete" }
+    methods:  [POST, DELETE]

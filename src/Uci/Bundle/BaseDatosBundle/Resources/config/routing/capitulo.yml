@@ -1,0 +1,30 @@
+capitulo:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:Capitulo:index" }
+
+capitulo_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:Capitulo:show" }
+
+capitulo_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:Capitulo:new" }
+
+capitulo_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:Capitulo:create" }
+    methods:  POST
+
+capitulo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:Capitulo:edit" }
+
+capitulo_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:Capitulo:update" }
+    methods:  [POST, PUT]
+
+capitulo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:Capitulo:delete" }
+    methods:  [POST, DELETE]

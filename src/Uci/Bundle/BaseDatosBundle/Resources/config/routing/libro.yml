@@ -1,0 +1,30 @@
+libro:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:Libro:index" }
+
+libro_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:Libro:show" }
+
+libro_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:Libro:new" }
+
+libro_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:Libro:create" }
+    methods:  POST
+
+libro_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:Libro:edit" }
+
+libro_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:Libro:update" }
+    methods:  [POST, PUT]
+
+libro_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:Libro:delete" }
+    methods:  [POST, DELETE]

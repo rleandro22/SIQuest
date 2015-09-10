@@ -1,0 +1,30 @@
+asistenteacademica:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:AsistenteAcademica:index" }
+
+asistenteacademica_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:AsistenteAcademica:show" }
+
+asistenteacademica_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:AsistenteAcademica:new" }
+
+asistenteacademica_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:AsistenteAcademica:create" }
+    methods:  POST
+
+asistenteacademica_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:AsistenteAcademica:edit" }
+
+asistenteacademica_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:AsistenteAcademica:update" }
+    methods:  [POST, PUT]
+
+asistenteacademica_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:AsistenteAcademica:delete" }
+    methods:  [POST, DELETE]

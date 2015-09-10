@@ -1,3 +1,67 @@
+uci_base_datos_tipoprueba:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tipoprueba.yml"
+    prefix:   /tipoprueba
+
+uci_base_datos_tipopregunta:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tipopregunta.yml"
+    prefix:   /tipopregunta
+
+uci_base_datos_solicitud:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/solicitud.yml"
+    prefix:   /solicitud
+
+uci_base_datos_respuesta:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/respuesta.yml"
+    prefix:   /respuesta
+
+uci_base_datos_profesor:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/profesor.yml"
+    prefix:   /profesor
+
+uci_base_datos_pregunta:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/pregunta.yml"
+    prefix:   /pregunta
+
+uci_base_datos_pmbok:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/pmbok.yml"
+    prefix:   /pmbok
+
+uci_base_datos_libro:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/libro.yml"
+    prefix:   /libro
+
+uci_base_datos_idiomas:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/idiomas.yml"
+    prefix:   /idiomas
+
+uci_base_datos_grupoprocesos:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/grupoprocesos.yml"
+    prefix:   /grupoprocesos
+
+uci_base_datos_decano:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/decano.yml"
+    prefix:   /decano
+
+uci_base_datos_curso:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/curso.yml"
+    prefix:   /curso
+
+uci_base_datos_cuestionario:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/cuestionario.yml"
+    prefix:   /cuestionario
+
+uci_base_datos_capitulo:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/capitulo.yml"
+    prefix:   /capitulo
+
+uci_base_datos_asistenteacademica:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/asistenteacademica.yml"
+    prefix:   /asistenteacademica
+
+uci_base_datos_areaconocimiento:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/areaconocimiento.yml"
+    prefix:   /areaconocimiento
+
 uci_base_datos_usuario:
     resource: "@UciBaseDatosBundle/Resources/config/routing/usuario.yml"
     prefix:   /usuario

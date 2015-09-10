@@ -1,0 +1,30 @@
+tipopregunta:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:TipoPregunta:index" }
+
+tipopregunta_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:TipoPregunta:show" }
+
+tipopregunta_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:TipoPregunta:new" }
+
+tipopregunta_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:TipoPregunta:create" }
+    methods:  POST
+
+tipopregunta_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:TipoPregunta:edit" }
+
+tipopregunta_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:TipoPregunta:update" }
+    methods:  [POST, PUT]
+
+tipopregunta_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:TipoPregunta:delete" }
+    methods:  [POST, DELETE]

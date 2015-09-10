@@ -1,0 +1,30 @@
+areaconocimiento:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:AreaConocimiento:index" }
+
+areaconocimiento_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:AreaConocimiento:show" }
+
+areaconocimiento_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:AreaConocimiento:new" }
+
+areaconocimiento_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:AreaConocimiento:create" }
+    methods:  POST
+
+areaconocimiento_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:AreaConocimiento:edit" }
+
+areaconocimiento_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:AreaConocimiento:update" }
+    methods:  [POST, PUT]
+
+areaconocimiento_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:AreaConocimiento:delete" }
+    methods:  [POST, DELETE]
