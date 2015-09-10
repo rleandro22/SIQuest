@@ -1,0 +1,11 @@
+uci_base_datos_usuario:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuario
+
+uci_base_datos_rol:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/rol.yml"
+    prefix:   /rol
+
+uci_base_datos_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UciBaseDatosBundle:Default:index }

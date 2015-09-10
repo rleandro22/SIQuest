@@ -1,0 +1,46 @@
+Uci\Bundle\BaseDatosBundle\Entity\Libro:
+    type: entity
+    table: libro
+    indexes:
+        fk_libro_idiomas1_idx:
+            columns:
+                - idiomas_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        titulo:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+        anio:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        esPmbok:
+            type: blob
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+            column: es_pmbok
+    manyToOne:
+        idiomas:
+            targetEntity: Idiomas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idiomas_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

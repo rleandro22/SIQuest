@@ -1,0 +1,4 @@
+services:
+#    uci_base_datos.example:
+#        class: Uci\Bundle\BaseDatosBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

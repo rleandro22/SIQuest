@@ -1,7 +1,0 @@
-uci_data_base_rol:
-    resource: "@UciDataBaseBundle/Resources/config/routing/rol.yml"
-    prefix:   /rol
-
-uci_data_base_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: UciDataBaseBundle:Default:index }

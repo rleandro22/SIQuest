@@ -1,0 +1,49 @@
+Uci\Bundle\BaseDatosBundle\Entity\Curso:
+    type: entity
+    table: curso
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        generacion:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        nombrecurso:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: nombreCurso
+    manyToMany:
+        asistenteAcademica:
+            targetEntity: AsistenteAcademica
+            cascade: {  }
+            mappedBy: curso
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        solicitud:
+            targetEntity: Solicitud
+            cascade: {  }
+            mappedBy: curso
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        profesor:
+            targetEntity: Profesor
+            cascade: {  }
+            mappedBy: curso
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,44 @@
+Uci\Bundle\BaseDatosBundle\Entity\Decano:
+    type: entity
+    table: decano
+    indexes:
+        fk_decano_usuario1_idx:
+            columns:
+                - usuario_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        solicitud:
+            targetEntity: Solicitud
+            cascade: {  }
+            mappedBy: null
+            inversedBy: decano
+            joinTable:
+                name: decano_realiza_solicitud
+                joinColumns:
+                    -
+                        name: decano_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: solicitud_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

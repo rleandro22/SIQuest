@@ -1,0 +1,79 @@
+Uci\Bundle\BaseDatosBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    indexes:
+        fk_usuario_roles1_idx:
+            columns:
+                - rol_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuario:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        clave:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        email:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+    manyToOne:
+        rol:
+            targetEntity: Rol
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rol_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        cuestionario:
+            targetEntity: Cuestionario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: usuario
+            joinTable:
+                name: cuestionario_asignado_usuario
+                joinColumns:
+                    -
+                        name: usuario_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: cuestionario_id
+                        referencedColumnName: id
+            orderBy: null
+        pregunta:
+            targetEntity: Pregunta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: usuario
+            joinTable:
+                name: usuario_corrige_pregunta
+                joinColumns:
+                    -
+                        name: usuario_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: pregunta_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

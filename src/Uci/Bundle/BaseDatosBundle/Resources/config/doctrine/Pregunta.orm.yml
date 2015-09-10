@@ -1,0 +1,101 @@
+Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
+    type: entity
+    table: pregunta
+    indexes:
+        fk_pregunta_capitulo1_idx:
+            columns:
+                - capitulo_id
+        fk_pregunta_grupo_procesos1_idx:
+            columns:
+                - grupo_procesos_id
+        fk_pregunta_area_conocimiento1_idx:
+            columns:
+                - area_conocimiento_id
+        fk_pregunta_tipo_pregunta1_idx:
+            columns:
+                - tipo_pregunta_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        capitulo:
+            targetEntity: Capitulo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                capitulo_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        grupoProcesos:
+            targetEntity: GrupoProcesos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                grupo_procesos_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        areaConocimiento:
+            targetEntity: AreaConocimiento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                area_conocimiento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoPregunta:
+            targetEntity: TipoPregunta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_pregunta_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        cuestionario:
+            targetEntity: Cuestionario
+            cascade: {  }
+            mappedBy: pregunta
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        respuesta:
+            targetEntity: Respuesta
+            cascade: {  }
+            mappedBy: pregunta
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        tipoPrueba:
+            targetEntity: TipoPrueba
+            cascade: {  }
+            mappedBy: null
+            inversedBy: pregunta
+            joinTable:
+                name: pregunta_tiene_tipos_prueba
+                joinColumns:
+                    -
+                        name: pregunta_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: tipo_prueba_id
+                        referencedColumnName: id
+            orderBy: null
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: pregunta
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

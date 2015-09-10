@@ -1,5 +1,5 @@
-uci_data_base:
-    resource: "@UciDataBaseBundle/Resources/config/routing.yml"
+uci_base_datos:
+    resource: "@UciBaseDatosBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

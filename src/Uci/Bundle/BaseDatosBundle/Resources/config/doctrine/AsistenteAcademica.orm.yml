@@ -1,0 +1,44 @@
+Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica:
+    type: entity
+    table: asistente_academica
+    indexes:
+        fk_asistente_academica_usuario1_idx:
+            columns:
+                - usuario_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        curso:
+            targetEntity: Curso
+            cascade: {  }
+            mappedBy: null
+            inversedBy: asistenteAcademica
+            joinTable:
+                name: curso_tiene_asistente
+                joinColumns:
+                    -
+                        name: asistente_academica_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: curso_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }
