@@ -31,9 +31,16 @@ class Cuestionario
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_aplica_cuestionario", type="date", nullable=false)
+     * @ORM\Column(name="fecha", type="date", nullable=false)
      */
-    private $fechaAplicaCuestionario;
+    private $fecha;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="revision_id", type="integer", nullable=false)
+     */
+    private $revisionId;
 
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Curso
@@ -111,26 +118,49 @@ class Cuestionario
     }
 
     /**
-     * Set fechaAplicaCuestionario
+     * Set fecha
      *
-     * @param \DateTime $fechaAplicaCuestionario
+     * @param \DateTime $fecha
      * @return Cuestionario
      */
-    public function setFechaAplicaCuestionario($fechaAplicaCuestionario)
+    public function setFecha($fecha)
     {
-        $this->fechaAplicaCuestionario = $fechaAplicaCuestionario;
+        $this->fecha = $fecha;
 
         return $this;
     }
 
     /**
-     * Get fechaAplicaCuestionario
+     * Get fecha
      *
      * @return \DateTime 
      */
-    public function getFechaAplicaCuestionario()
+    public function getFecha()
     {
-        return $this->fechaAplicaCuestionario;
+        return $this->fecha;
+    }
+
+    /**
+     * Set revisionId
+     *
+     * @param integer $revisionId
+     * @return Cuestionario
+     */
+    public function setRevisionId($revisionId)
+    {
+        $this->revisionId = $revisionId;
+
+        return $this;
+    }
+
+    /**
+     * Get revisionId
+     *
+     * @return integer 
+     */
+    public function getRevisionId()
+    {
+        return $this->revisionId;
     }
 
     /**

@@ -21,11 +21,16 @@ Uci\Bundle\BaseDatosBundle\Entity\Cuestionario:
             unsigned: false
             comment: ''
             column: prueba_numero
-        fechaAplicaCuestionario:
+        fecha:
             type: date
             nullable: false
             comment: ''
-            column: fecha_aplica_cuestionario
+        revisionId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: revision_id
     manyToOne:
         curso:
             targetEntity: Curso

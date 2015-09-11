@@ -21,20 +21,20 @@ class __TwigTemplate_6475205300f940b850f40644b2b59fa5041aef69153108d467c21393052
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_452fa97064a582fa8b5f0c156557a4737a672e1b42386acef8f3d95c418c6e82 = $this->env->getExtension("native_profiler");
-        $__internal_452fa97064a582fa8b5f0c156557a4737a672e1b42386acef8f3d95c418c6e82->enter($__internal_452fa97064a582fa8b5f0c156557a4737a672e1b42386acef8f3d95c418c6e82_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciBaseDatosBundle:Cuestionario:index.html.twig"));
+        $__internal_844f521a2a4dfcb868ff02c1d8d76565c36021587c313a8b62b5fd546452c07f = $this->env->getExtension("native_profiler");
+        $__internal_844f521a2a4dfcb868ff02c1d8d76565c36021587c313a8b62b5fd546452c07f->enter($__internal_844f521a2a4dfcb868ff02c1d8d76565c36021587c313a8b62b5fd546452c07f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciBaseDatosBundle:Cuestionario:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_452fa97064a582fa8b5f0c156557a4737a672e1b42386acef8f3d95c418c6e82->leave($__internal_452fa97064a582fa8b5f0c156557a4737a672e1b42386acef8f3d95c418c6e82_prof);
+        $__internal_844f521a2a4dfcb868ff02c1d8d76565c36021587c313a8b62b5fd546452c07f->leave($__internal_844f521a2a4dfcb868ff02c1d8d76565c36021587c313a8b62b5fd546452c07f_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_36b48aec96e3623b96050da75cec8b3fb08e970c54f0e99a979137edd76ecd20 = $this->env->getExtension("native_profiler");
-        $__internal_36b48aec96e3623b96050da75cec8b3fb08e970c54f0e99a979137edd76ecd20->enter($__internal_36b48aec96e3623b96050da75cec8b3fb08e970c54f0e99a979137edd76ecd20_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4438c24febdeb50ecb23fdcb098167b6c04933a205b52bccc8b1c0ea5f966784 = $this->env->getExtension("native_profiler");
+        $__internal_4438c24febdeb50ecb23fdcb098167b6c04933a205b52bccc8b1c0ea5f966784->enter($__internal_4438c24febdeb50ecb23fdcb098167b6c04933a205b52bccc8b1c0ea5f966784_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "<h1>Cuestionario list</h1>
@@ -44,45 +44,50 @@ class __TwigTemplate_6475205300f940b850f40644b2b59fa5041aef69153108d467c21393052
             <tr>
                 <th>Id</th>
                 <th>Pruebanumero</th>
-                <th>Fechaaplicacuestionario</th>
+                <th>Fecha</th>
+                <th>Revisionid</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         ";
-        // line 16
+        // line 17
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 17
+            // line 18
             echo "            <tr>
                 <td><a href=\"";
-            // line 18
+            // line 19
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cuestionario_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "id", array()), "html", null, true);
             echo "</a></td>
                 <td>";
-            // line 19
+            // line 20
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "pruebaNumero", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 20
-            if ($this->getAttribute($context["entity"], "fechaAplicaCuestionario", array())) {
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "fechaAplicaCuestionario", array()), "Y-m-d H:i:s"), "html", null, true);
+            // line 21
+            if ($this->getAttribute($context["entity"], "fecha", array())) {
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "fecha", array()), "Y-m-d H:i:s"), "html", null, true);
             }
+            echo "</td>
+                <td>";
+            // line 22
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "revisionId", array()), "html", null, true);
             echo "</td>
                 <td>
                 <ul>
                     <li>
                         <a href=\"";
-            // line 24
+            // line 26
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cuestionario_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">show</a>
                     </li>
                     <li>
                         <a href=\"";
-            // line 27
+            // line 29
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cuestionario_edit", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">edit</a>
                     </li>
@@ -94,14 +99,14 @@ class __TwigTemplate_6475205300f940b850f40644b2b59fa5041aef69153108d467c21393052
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
+        // line 35
         echo "        </tbody>
     </table>
 
         <ul>
         <li>
             <a href=\"";
-        // line 38
+        // line 40
         echo $this->env->getExtension('routing')->getPath("cuestionario_new");
         echo "\">
                 Create a new entry
@@ -110,7 +115,7 @@ class __TwigTemplate_6475205300f940b850f40644b2b59fa5041aef69153108d467c21393052
     </ul>
     ";
         
-        $__internal_36b48aec96e3623b96050da75cec8b3fb08e970c54f0e99a979137edd76ecd20->leave($__internal_36b48aec96e3623b96050da75cec8b3fb08e970c54f0e99a979137edd76ecd20_prof);
+        $__internal_4438c24febdeb50ecb23fdcb098167b6c04933a205b52bccc8b1c0ea5f966784->leave($__internal_4438c24febdeb50ecb23fdcb098167b6c04933a205b52bccc8b1c0ea5f966784_prof);
 
     }
 
@@ -126,6 +131,6 @@ class __TwigTemplate_6475205300f940b850f40644b2b59fa5041aef69153108d467c21393052
 
     public function getDebugInfo()
     {
-        return array (  105 => 38,  98 => 33,  86 => 27,  80 => 24,  71 => 20,  67 => 19,  61 => 18,  58 => 17,  54 => 16,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  110 => 40,  103 => 35,  91 => 29,  85 => 26,  78 => 22,  72 => 21,  68 => 20,  62 => 19,  59 => 18,  55 => 17,  40 => 4,  34 => 3,  11 => 1,);
     }
 }

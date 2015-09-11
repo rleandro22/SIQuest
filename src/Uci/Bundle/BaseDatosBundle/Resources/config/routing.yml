@@ -1,3 +1,7 @@
+uci_base_datos_usuario:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuario
+
 uci_base_datos_tipoprueba:
     resource: "@UciBaseDatosBundle/Resources/config/routing/tipoprueba.yml"
     prefix:   /tipoprueba
@@ -61,10 +65,6 @@ uci_base_datos_asistenteacademica:
 uci_base_datos_areaconocimiento:
     resource: "@UciBaseDatosBundle/Resources/config/routing/areaconocimiento.yml"
     prefix:   /areaconocimiento
-
-uci_base_datos_usuario:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/usuario.yml"
-    prefix:   /usuario
 
 uci_base_datos_rol:
     resource: "@UciBaseDatosBundle/Resources/config/routing/rol.yml"
