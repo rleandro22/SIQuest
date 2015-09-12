@@ -1,0 +1,51 @@
+Uci\Bundle\BaseDatosBundle\Entity\UsuarioCorrigePregunta:
+    type: entity
+    table: usuario_corrige_pregunta
+    indexes:
+        fk_usuario_corrige_pregunta_usuario1_idx:
+            columns:
+                - usuario_id
+        fk_usuario_corrige_pregunta_pregunta1_idx:
+            columns:
+                - pregunta_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechaCorreccion:
+            type: date
+            nullable: false
+            comment: ''
+            column: fecha_correccion
+        comentario:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        pregunta:
+            targetEntity: Pregunta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pregunta_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -19,8 +19,6 @@ class UsuarioType extends AbstractType
             ->add('clave')
             ->add('email')
             ->add('rol')
-            ->add('cuestionario')
-            ->add('pregunta')
         ;
     }
     

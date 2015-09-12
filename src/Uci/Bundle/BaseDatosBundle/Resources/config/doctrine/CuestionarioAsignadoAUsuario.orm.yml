@@ -1,0 +1,47 @@
+Uci\Bundle\BaseDatosBundle\Entity\CuestionarioAsignadoAUsuario:
+    type: entity
+    table: cuestionario_asignado_a_usuario
+    indexes:
+        fk_cuestionario_asignado_a_usuario_cuestionario1_idx:
+            columns:
+                - cuestionario_id
+        fk_cuestionario_asignado_a_usuario_usuario1_idx:
+            columns:
+                - usuario_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        aceptadoPorUsuario:
+            type: blob
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+            column: aceptado_por_usuario
+    manyToOne:
+        cuestionario:
+            targetEntity: Cuestionario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cuestionario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

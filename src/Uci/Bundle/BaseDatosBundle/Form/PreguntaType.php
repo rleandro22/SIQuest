@@ -19,10 +19,8 @@ class PreguntaType extends AbstractType
             ->add('grupoProcesos')
             ->add('areaConocimiento')
             ->add('tipoPregunta')
-            ->add('cuestionario')
             ->add('respuesta')
             ->add('tipoPrueba')
-            ->add('usuario')
         ;
     }
     

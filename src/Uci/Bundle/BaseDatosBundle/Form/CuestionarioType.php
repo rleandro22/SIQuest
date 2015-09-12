@@ -17,10 +17,7 @@ class CuestionarioType extends AbstractType
         $builder
             ->add('pruebaNumero')
             ->add('fecha')
-            ->add('revisionId')
             ->add('curso')
-            ->add('usuario')
-            ->add('pregunta')
         ;
     }
     

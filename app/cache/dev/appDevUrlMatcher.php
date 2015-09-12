@@ -128,6 +128,66 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/usuario')) {
+            if (0 === strpos($pathinfo, '/usuariocorrigepregunta')) {
+                // usuariocorrigepregunta
+                if (rtrim($pathinfo, '/') === '/usuariocorrigepregunta') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'usuariocorrigepregunta');
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\UsuarioCorrigePreguntaController::indexAction',  '_route' => 'usuariocorrigepregunta',);
+                }
+
+                // usuariocorrigepregunta_show
+                if (preg_match('#^/usuariocorrigepregunta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'usuariocorrigepregunta_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\UsuarioCorrigePreguntaController::showAction',));
+                }
+
+                // usuariocorrigepregunta_new
+                if ($pathinfo === '/usuariocorrigepregunta/new') {
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\UsuarioCorrigePreguntaController::newAction',  '_route' => 'usuariocorrigepregunta_new',);
+                }
+
+                // usuariocorrigepregunta_create
+                if ($pathinfo === '/usuariocorrigepregunta/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_usuariocorrigepregunta_create;
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\UsuarioCorrigePreguntaController::createAction',  '_route' => 'usuariocorrigepregunta_create',);
+                }
+                not_usuariocorrigepregunta_create:
+
+                // usuariocorrigepregunta_edit
+                if (preg_match('#^/usuariocorrigepregunta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'usuariocorrigepregunta_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\UsuarioCorrigePreguntaController::editAction',));
+                }
+
+                // usuariocorrigepregunta_update
+                if (preg_match('#^/usuariocorrigepregunta/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_usuariocorrigepregunta_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'usuariocorrigepregunta_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\UsuarioCorrigePreguntaController::updateAction',));
+                }
+                not_usuariocorrigepregunta_update:
+
+                // usuariocorrigepregunta_delete
+                if (preg_match('#^/usuariocorrigepregunta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_usuariocorrigepregunta_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'usuariocorrigepregunta_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\UsuarioCorrigePreguntaController::deleteAction',));
+                }
+                not_usuariocorrigepregunta_delete:
+
+            }
+
             // usuario
             if (rtrim($pathinfo, '/') === '/usuario') {
                 if (substr($pathinfo, -1) !== '/') {
@@ -370,63 +430,126 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/respuesta')) {
-            // respuesta
-            if (rtrim($pathinfo, '/') === '/respuesta') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'respuesta');
+        if (0 === strpos($pathinfo, '/r')) {
+            if (0 === strpos($pathinfo, '/rol')) {
+                // rol
+                if (rtrim($pathinfo, '/') === '/rol') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'rol');
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::indexAction',  '_route' => 'rol',);
                 }
 
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::indexAction',  '_route' => 'respuesta',);
-            }
-
-            // respuesta_show
-            if (preg_match('#^/respuesta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::showAction',));
-            }
-
-            // respuesta_new
-            if ($pathinfo === '/respuesta/new') {
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::newAction',  '_route' => 'respuesta_new',);
-            }
-
-            // respuesta_create
-            if ($pathinfo === '/respuesta/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_respuesta_create;
+                // rol_show
+                if (preg_match('#^/rol/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::showAction',));
                 }
 
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::createAction',  '_route' => 'respuesta_create',);
-            }
-            not_respuesta_create:
-
-            // respuesta_edit
-            if (preg_match('#^/respuesta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::editAction',));
-            }
-
-            // respuesta_update
-            if (preg_match('#^/respuesta/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_respuesta_update;
+                // rol_new
+                if ($pathinfo === '/rol/new') {
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::newAction',  '_route' => 'rol_new',);
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::updateAction',));
-            }
-            not_respuesta_update:
+                // rol_create
+                if ($pathinfo === '/rol/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_rol_create;
+                    }
 
-            // respuesta_delete
-            if (preg_match('#^/respuesta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_respuesta_delete;
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::createAction',  '_route' => 'rol_create',);
+                }
+                not_rol_create:
+
+                // rol_edit
+                if (preg_match('#^/rol/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::editAction',));
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::deleteAction',));
+                // rol_update
+                if (preg_match('#^/rol/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_rol_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::updateAction',));
+                }
+                not_rol_update:
+
+                // rol_delete
+                if (preg_match('#^/rol/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_rol_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::deleteAction',));
+                }
+                not_rol_delete:
+
             }
-            not_respuesta_delete:
+
+            if (0 === strpos($pathinfo, '/respuesta')) {
+                // respuesta
+                if (rtrim($pathinfo, '/') === '/respuesta') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'respuesta');
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::indexAction',  '_route' => 'respuesta',);
+                }
+
+                // respuesta_show
+                if (preg_match('#^/respuesta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::showAction',));
+                }
+
+                // respuesta_new
+                if ($pathinfo === '/respuesta/new') {
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::newAction',  '_route' => 'respuesta_new',);
+                }
+
+                // respuesta_create
+                if ($pathinfo === '/respuesta/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_respuesta_create;
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::createAction',  '_route' => 'respuesta_create',);
+                }
+                not_respuesta_create:
+
+                // respuesta_edit
+                if (preg_match('#^/respuesta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::editAction',));
+                }
+
+                // respuesta_update
+                if (preg_match('#^/respuesta/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_respuesta_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::updateAction',));
+                }
+                not_respuesta_update:
+
+                // respuesta_delete
+                if (preg_match('#^/respuesta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_respuesta_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::deleteAction',));
+                }
+                not_respuesta_delete:
+
+            }
 
         }
 
@@ -919,6 +1042,126 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
 
                 if (0 === strpos($pathinfo, '/cuestionario')) {
+                    if (0 === strpos($pathinfo, '/cuestionariotienepreguntas')) {
+                        // cuestionariotienepreguntas
+                        if (rtrim($pathinfo, '/') === '/cuestionariotienepreguntas') {
+                            if (substr($pathinfo, -1) !== '/') {
+                                return $this->redirect($pathinfo.'/', 'cuestionariotienepreguntas');
+                            }
+
+                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::indexAction',  '_route' => 'cuestionariotienepreguntas',);
+                        }
+
+                        // cuestionariotienepreguntas_show
+                        if (preg_match('#^/cuestionariotienepreguntas/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionariotienepreguntas_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::showAction',));
+                        }
+
+                        // cuestionariotienepreguntas_new
+                        if ($pathinfo === '/cuestionariotienepreguntas/new') {
+                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::newAction',  '_route' => 'cuestionariotienepreguntas_new',);
+                        }
+
+                        // cuestionariotienepreguntas_create
+                        if ($pathinfo === '/cuestionariotienepreguntas/create') {
+                            if ($this->context->getMethod() != 'POST') {
+                                $allow[] = 'POST';
+                                goto not_cuestionariotienepreguntas_create;
+                            }
+
+                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::createAction',  '_route' => 'cuestionariotienepreguntas_create',);
+                        }
+                        not_cuestionariotienepreguntas_create:
+
+                        // cuestionariotienepreguntas_edit
+                        if (preg_match('#^/cuestionariotienepreguntas/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionariotienepreguntas_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::editAction',));
+                        }
+
+                        // cuestionariotienepreguntas_update
+                        if (preg_match('#^/cuestionariotienepreguntas/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                                $allow = array_merge($allow, array('POST', 'PUT'));
+                                goto not_cuestionariotienepreguntas_update;
+                            }
+
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionariotienepreguntas_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::updateAction',));
+                        }
+                        not_cuestionariotienepreguntas_update:
+
+                        // cuestionariotienepreguntas_delete
+                        if (preg_match('#^/cuestionariotienepreguntas/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                                $allow = array_merge($allow, array('POST', 'DELETE'));
+                                goto not_cuestionariotienepreguntas_delete;
+                            }
+
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionariotienepreguntas_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::deleteAction',));
+                        }
+                        not_cuestionariotienepreguntas_delete:
+
+                    }
+
+                    if (0 === strpos($pathinfo, '/cuestionarioasignadoausuario')) {
+                        // cuestionarioasignadoausuario
+                        if (rtrim($pathinfo, '/') === '/cuestionarioasignadoausuario') {
+                            if (substr($pathinfo, -1) !== '/') {
+                                return $this->redirect($pathinfo.'/', 'cuestionarioasignadoausuario');
+                            }
+
+                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::indexAction',  '_route' => 'cuestionarioasignadoausuario',);
+                        }
+
+                        // cuestionarioasignadoausuario_show
+                        if (preg_match('#^/cuestionarioasignadoausuario/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionarioasignadoausuario_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::showAction',));
+                        }
+
+                        // cuestionarioasignadoausuario_new
+                        if ($pathinfo === '/cuestionarioasignadoausuario/new') {
+                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::newAction',  '_route' => 'cuestionarioasignadoausuario_new',);
+                        }
+
+                        // cuestionarioasignadoausuario_create
+                        if ($pathinfo === '/cuestionarioasignadoausuario/create') {
+                            if ($this->context->getMethod() != 'POST') {
+                                $allow[] = 'POST';
+                                goto not_cuestionarioasignadoausuario_create;
+                            }
+
+                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::createAction',  '_route' => 'cuestionarioasignadoausuario_create',);
+                        }
+                        not_cuestionarioasignadoausuario_create:
+
+                        // cuestionarioasignadoausuario_edit
+                        if (preg_match('#^/cuestionarioasignadoausuario/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionarioasignadoausuario_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::editAction',));
+                        }
+
+                        // cuestionarioasignadoausuario_update
+                        if (preg_match('#^/cuestionarioasignadoausuario/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                                $allow = array_merge($allow, array('POST', 'PUT'));
+                                goto not_cuestionarioasignadoausuario_update;
+                            }
+
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionarioasignadoausuario_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::updateAction',));
+                        }
+                        not_cuestionarioasignadoausuario_update:
+
+                        // cuestionarioasignadoausuario_delete
+                        if (preg_match('#^/cuestionarioasignadoausuario/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                                $allow = array_merge($allow, array('POST', 'DELETE'));
+                                goto not_cuestionarioasignadoausuario_delete;
+                            }
+
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionarioasignadoausuario_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::deleteAction',));
+                        }
+                        not_cuestionarioasignadoausuario_delete:
+
+                    }
+
                     // cuestionario
                     if (rtrim($pathinfo, '/') === '/cuestionario') {
                         if (substr($pathinfo, -1) !== '/') {
@@ -1162,66 +1405,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_areaconocimiento_delete:
 
             }
-
-        }
-
-        if (0 === strpos($pathinfo, '/rol')) {
-            // rol
-            if (rtrim($pathinfo, '/') === '/rol') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'rol');
-                }
-
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::indexAction',  '_route' => 'rol',);
-            }
-
-            // rol_show
-            if (preg_match('#^/rol/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::showAction',));
-            }
-
-            // rol_new
-            if ($pathinfo === '/rol/new') {
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::newAction',  '_route' => 'rol_new',);
-            }
-
-            // rol_create
-            if ($pathinfo === '/rol/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_rol_create;
-                }
-
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::createAction',  '_route' => 'rol_create',);
-            }
-            not_rol_create:
-
-            // rol_edit
-            if (preg_match('#^/rol/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::editAction',));
-            }
-
-            // rol_update
-            if (preg_match('#^/rol/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_rol_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::updateAction',));
-            }
-            not_rol_update:
-
-            // rol_delete
-            if (preg_match('#^/rol/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_rol_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::deleteAction',));
-            }
-            not_rol_delete:
 
         }
 

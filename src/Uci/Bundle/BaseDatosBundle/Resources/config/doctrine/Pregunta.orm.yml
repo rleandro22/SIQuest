@@ -61,13 +61,6 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:
-        cuestionario:
-            targetEntity: Cuestionario
-            cascade: {  }
-            mappedBy: pregunta
-            inversedBy: null
-            joinTable: null
-            orderBy: null
         respuesta:
             targetEntity: Respuesta
             cascade: {  }
@@ -90,12 +83,5 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
                     -
                         name: tipo_prueba_id
                         referencedColumnName: id
-            orderBy: null
-        usuario:
-            targetEntity: Usuario
-            cascade: {  }
-            mappedBy: pregunta
-            inversedBy: null
-            joinTable: null
             orderBy: null
     lifecycleCallbacks: {  }

@@ -64,13 +64,6 @@ class Pregunta
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Cuestionario", mappedBy="pregunta")
-     */
-    private $cuestionario;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
      * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Respuesta", mappedBy="pregunta")
      */
     private $respuesta;
@@ -91,21 +84,12 @@ class Pregunta
     private $tipoPrueba;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Usuario", mappedBy="pregunta")
-     */
-    private $usuario;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->cuestionario = new \Doctrine\Common\Collections\ArrayCollection();
         $this->respuesta = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tipoPrueba = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -212,39 +196,6 @@ class Pregunta
     }
 
     /**
-     * Add cuestionario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario
-     * @return Pregunta
-     */
-    public function addCuestionario(\Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario)
-    {
-        $this->cuestionario[] = $cuestionario;
-
-        return $this;
-    }
-
-    /**
-     * Remove cuestionario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario
-     */
-    public function removeCuestionario(\Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario)
-    {
-        $this->cuestionario->removeElement($cuestionario);
-    }
-
-    /**
-     * Get cuestionario
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCuestionario()
-    {
-        return $this->cuestionario;
-    }
-
-    /**
      * Add respuesta
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta
@@ -308,38 +259,5 @@ class Pregunta
     public function getTipoPrueba()
     {
         return $this->tipoPrueba;
-    }
-
-    /**
-     * Add usuario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario
-     * @return Pregunta
-     */
-    public function addUsuario(\Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario)
-    {
-        $this->usuario[] = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Remove usuario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario
-     */
-    public function removeUsuario(\Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario)
-    {
-        $this->usuario->removeElement($usuario);
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
     }
 }

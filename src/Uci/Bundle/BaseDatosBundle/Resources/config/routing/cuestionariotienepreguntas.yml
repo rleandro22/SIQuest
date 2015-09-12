@@ -1,0 +1,30 @@
+cuestionariotienepreguntas:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:CuestionarioTienePreguntas:index" }
+
+cuestionariotienepreguntas_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:CuestionarioTienePreguntas:show" }
+
+cuestionariotienepreguntas_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:CuestionarioTienePreguntas:new" }
+
+cuestionariotienepreguntas_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:CuestionarioTienePreguntas:create" }
+    methods:  POST
+
+cuestionariotienepreguntas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:CuestionarioTienePreguntas:edit" }
+
+cuestionariotienepreguntas_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:CuestionarioTienePreguntas:update" }
+    methods:  [POST, PUT]
+
+cuestionariotienepreguntas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:CuestionarioTienePreguntas:delete" }
+    methods:  [POST, DELETE]

@@ -1,3 +1,7 @@
+uci_base_datos_usuariocorrigepregunta:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/usuariocorrigepregunta.yml"
+    prefix:   /usuariocorrigepregunta
+
 uci_base_datos_usuario:
     resource: "@UciBaseDatosBundle/Resources/config/routing/usuario.yml"
     prefix:   /usuario
@@ -13,6 +17,10 @@ uci_base_datos_tipopregunta:
 uci_base_datos_solicitud:
     resource: "@UciBaseDatosBundle/Resources/config/routing/solicitud.yml"
     prefix:   /solicitud
+
+uci_base_datos_rol:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/rol.yml"
+    prefix:   /rol
 
 uci_base_datos_respuesta:
     resource: "@UciBaseDatosBundle/Resources/config/routing/respuesta.yml"
@@ -50,6 +58,14 @@ uci_base_datos_curso:
     resource: "@UciBaseDatosBundle/Resources/config/routing/curso.yml"
     prefix:   /curso
 
+uci_base_datos_cuestionariotienepreguntas:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/cuestionariotienepreguntas.yml"
+    prefix:   /cuestionariotienepreguntas
+
+uci_base_datos_cuestionarioasignadoausuario:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/cuestionarioasignadoausuario.yml"
+    prefix:   /cuestionarioasignadoausuario
+
 uci_base_datos_cuestionario:
     resource: "@UciBaseDatosBundle/Resources/config/routing/cuestionario.yml"
     prefix:   /cuestionario
@@ -65,10 +81,6 @@ uci_base_datos_asistenteacademica:
 uci_base_datos_areaconocimiento:
     resource: "@UciBaseDatosBundle/Resources/config/routing/areaconocimiento.yml"
     prefix:   /areaconocimiento
-
-uci_base_datos_rol:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/rol.yml"
-    prefix:   /rol
 
 uci_base_datos_homepage:
     path:     /hello/{name}

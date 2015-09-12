@@ -36,13 +36,6 @@ class Cuestionario
     private $fecha;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="revision_id", type="integer", nullable=false)
-     */
-    private $revisionId;
-
-    /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Curso
      *
      * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Curso")
@@ -52,36 +45,6 @@ class Cuestionario
      */
     private $curso;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Usuario", mappedBy="cuestionario")
-     */
-    private $usuario;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pregunta", inversedBy="cuestionario")
-     * @ORM\JoinTable(name="cuestionario_tiene_preguntas",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="cuestionario_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $pregunta;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pregunta = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -141,29 +104,6 @@ class Cuestionario
     }
 
     /**
-     * Set revisionId
-     *
-     * @param integer $revisionId
-     * @return Cuestionario
-     */
-    public function setRevisionId($revisionId)
-    {
-        $this->revisionId = $revisionId;
-
-        return $this;
-    }
-
-    /**
-     * Get revisionId
-     *
-     * @return integer 
-     */
-    public function getRevisionId()
-    {
-        return $this->revisionId;
-    }
-
-    /**
      * Set curso
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Curso $curso
@@ -184,71 +124,5 @@ class Cuestionario
     public function getCurso()
     {
         return $this->curso;
-    }
-
-    /**
-     * Add usuario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario
-     * @return Cuestionario
-     */
-    public function addUsuario(\Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario)
-    {
-        $this->usuario[] = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Remove usuario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario
-     */
-    public function removeUsuario(\Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario)
-    {
-        $this->usuario->removeElement($usuario);
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-
-    /**
-     * Add pregunta
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
-     * @return Cuestionario
-     */
-    public function addPreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta)
-    {
-        $this->pregunta[] = $pregunta;
-
-        return $this;
-    }
-
-    /**
-     * Remove pregunta
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
-     */
-    public function removePreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta)
-    {
-        $this->pregunta->removeElement($pregunta);
-    }
-
-    /**
-     * Get pregunta
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPregunta()
-    {
-        return $this->pregunta;
     }
 }

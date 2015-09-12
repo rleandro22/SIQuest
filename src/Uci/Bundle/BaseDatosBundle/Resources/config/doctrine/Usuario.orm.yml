@@ -43,37 +43,4 @@ Uci\Bundle\BaseDatosBundle\Entity\Usuario:
                 rol_id:
                     referencedColumnName: id
             orphanRemoval: false
-    manyToMany:
-        cuestionario:
-            targetEntity: Cuestionario
-            cascade: {  }
-            mappedBy: null
-            inversedBy: usuario
-            joinTable:
-                name: cuestionario_asignado_usuario
-                joinColumns:
-                    -
-                        name: usuario_id
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: cuestionario_id
-                        referencedColumnName: id
-            orderBy: null
-        pregunta:
-            targetEntity: Pregunta
-            cascade: {  }
-            mappedBy: null
-            inversedBy: usuario
-            joinTable:
-                name: usuario_corrige_pregunta
-                joinColumns:
-                    -
-                        name: usuario_id
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: pregunta_id
-                        referencedColumnName: id
-            orderBy: null
     lifecycleCallbacks: {  }

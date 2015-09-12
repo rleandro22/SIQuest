@@ -52,44 +52,6 @@ class Usuario
      */
     private $rol;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Cuestionario", inversedBy="usuario")
-     * @ORM\JoinTable(name="cuestionario_asignado_usuario",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="cuestionario_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $cuestionario;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pregunta", inversedBy="usuario")
-     * @ORM\JoinTable(name="usuario_corrige_pregunta",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $pregunta;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->cuestionario = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pregunta = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -192,71 +154,5 @@ class Usuario
     public function getRol()
     {
         return $this->rol;
-    }
-
-    /**
-     * Add cuestionario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario
-     * @return Usuario
-     */
-    public function addCuestionario(\Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario)
-    {
-        $this->cuestionario[] = $cuestionario;
-
-        return $this;
-    }
-
-    /**
-     * Remove cuestionario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario
-     */
-    public function removeCuestionario(\Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario)
-    {
-        $this->cuestionario->removeElement($cuestionario);
-    }
-
-    /**
-     * Get cuestionario
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCuestionario()
-    {
-        return $this->cuestionario;
-    }
-
-    /**
-     * Add pregunta
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
-     * @return Usuario
-     */
-    public function addPreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta)
-    {
-        $this->pregunta[] = $pregunta;
-
-        return $this;
-    }
-
-    /**
-     * Remove pregunta
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
-     */
-    public function removePreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta)
-    {
-        $this->pregunta->removeElement($pregunta);
-    }
-
-    /**
-     * Get pregunta
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPregunta()
-    {
-        return $this->pregunta;
     }
 }

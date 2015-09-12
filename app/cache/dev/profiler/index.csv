@@ -1,6 +1,7 @@
-503640,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1442011222,,200
-ea97a0,::1,GET,http://localhost/SIQuest/web/app_dev.php/cuestionario/,1442011231,,200
-aeda2e,::1,GET,http://localhost/SIQuest/web/app_dev.php/pregunta/,1442011262,,200
-5e2532,::1,GET,http://localhost/SIQuest/web/app_dev.php/pregunta/new,1442011274,,200
-f871e0,::1,GET,http://localhost/SIQuest/web/app_dev.php/cuestionario/,1442011283,,200
-0c149f,::1,GET,http://localhost/SIQuest/web/app_dev.php/cuestionario/new,1442011285,,200
+e96f10,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1442082251,,200
+14c667,::1,GET,http://localhost/SIQuest/web/app_dev.php/areaconocimiento,1442082259,,301
+ad5148,::1,GET,http://localhost/SIQuest/web/app_dev.php/areaconocimiento/,1442082260,,200
+e8f7a4,::1,GET,http://localhost/SIQuest/web/app_dev.php/areaconocimiento/new,1442082269,,200
+1bfdaf,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1442082701,,200
+f55058,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuariocorrigepregunta,1442082709,,301
+d0bc43,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuariocorrigepregunta/,1442082710,,200
