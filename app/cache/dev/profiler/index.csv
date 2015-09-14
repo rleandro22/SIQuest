@@ -5,3 +5,6 @@ e8f7a4,::1,GET,http://localhost/SIQuest/web/app_dev.php/areaconocimiento/new,144
 1bfdaf,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1442082701,,200
 f55058,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuariocorrigepregunta,1442082709,,301
 d0bc43,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuariocorrigepregunta/,1442082710,,200
+047622,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1442198914,,200
+4720e9,::1,GET,http://localhost/SIQuest/web/app_dev.php/rol,1442198929,,301
+14efc6,::1,GET,http://localhost/SIQuest/web/app_dev.php/rol/,1442198931,,200
