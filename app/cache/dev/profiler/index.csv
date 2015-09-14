@@ -8,3 +8,7 @@ d0bc43,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuariocorrigepregunta/,
 047622,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1442198914,,200
 4720e9,::1,GET,http://localhost/SIQuest/web/app_dev.php/rol,1442198929,,301
 14efc6,::1,GET,http://localhost/SIQuest/web/app_dev.php/rol/,1442198931,,200
+eba7a8,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1442201592,,200
+c1d323,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1442242092,,200
+22d2cd,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuario,1442242099,,301
+caf9df,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuario/,1442242099,,200
