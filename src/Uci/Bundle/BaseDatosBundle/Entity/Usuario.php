@@ -24,6 +24,20 @@ class Usuario
     /**
      * @var string
      *
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
+     */
+    private $nombre;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=200, nullable=false)
+     */
+    private $apellidos;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="usuario", type="string", length=45, nullable=false)
      */
     private $usuario;
@@ -62,6 +76,52 @@ class Usuario
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Usuario
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+    
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     * @return Usuario
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string 
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
     }
 
     /**

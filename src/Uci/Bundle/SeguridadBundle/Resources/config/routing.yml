@@ -1,0 +1,11 @@
+uci_principal_homepage:
+    pattern:  /
+    defaults: { _controller: UciSeguridadBundle:Seguridad:index }
+    requirements:
+        _method:  GET
+
+uci_principal_logueo:
+    pattern: /identificacion
+    defaults: { _controller: UciSeguridadBundle:Seguridad:identificacion }
+    requirements:
+        _method:  GET

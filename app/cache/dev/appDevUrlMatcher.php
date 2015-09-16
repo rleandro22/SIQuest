@@ -128,9 +128,30 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // uci_principal_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_principal_homepage')), array (  '_controller' => 'Uci\\Bundle\\PrincipalBundle\\Controller\\DefaultController::indexAction',));
+        if (rtrim($pathinfo, '/') === '') {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_uci_principal_homepage;
+            }
+
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'uci_principal_homepage');
+            }
+
+            return array (  '_controller' => 'Uci\\Bundle\\SeguridadBundle\\Controller\\SeguridadController::indexAction',  '_route' => 'uci_principal_homepage',);
         }
+        not_uci_principal_homepage:
+
+        // uci_principal_logueo
+        if ($pathinfo === '/identificacion') {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_uci_principal_logueo;
+            }
+
+            return array (  '_controller' => 'Uci\\Bundle\\SeguridadBundle\\Controller\\SeguridadController::identificacionAction',  '_route' => 'uci_principal_logueo',);
+        }
+        not_uci_principal_logueo:
 
         if (0 === strpos($pathinfo, '/usuario')) {
             if (0 === strpos($pathinfo, '/usuariocorrigepregunta')) {

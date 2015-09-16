@@ -1,0 +1,37 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/index.html.twig #}
+{% extends 'UciSeguridadBundle::base.html.twig' %}
+
+{% block body %}
+    <!-- Intro -->
+    <div class="container text-center">
+        <br> <br>
+        <h2 class="thin">Sistema de generación de cuestionarios para la GSPM</h2>
+        <p class="text-muted">
+            Este sistema le ayudará a gestionar la preguntas para la generación de cuestionarios para la GSPM.
+        </p>
+    </div>
+    <!-- /Intro-->
+    <!-- Highlights - jumbotron -->
+    <div class="jumbotron top-space">
+        <div class="container">
+
+            <h2 class="text-center top-space">Temas importantes</h2>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>¿Que me permite hacer SIQuest?</h3>
+                    <p>Permite la generación de cuestionarios para diferentes examenes.</p>
+                    <p class="text-center"><a class="btn btn-primary btn-large">Más información »</a></p>
+                </div>
+                <div class="col-sm-6">
+                    <h3>¿Quienes pueden acceder?</h3>
+                    <p>
+                        Unicamente los usuarios debidamente registrados</p>
+                    <p class="text-center"><a class="btn btn-primary btn-large">Más información »</a></p>
+                </div>
+            </div> <!-- /row -->
+        </div>
+        <!-- /Highlights -->
+    </div>
+{% endblock %}

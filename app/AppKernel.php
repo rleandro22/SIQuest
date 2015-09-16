@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Uci\Bundle\BaseDatosBundle\UciBaseDatosBundle(),
-            new Uci\Bundle\PrincipalBundle\UciPrincipalBundle(),
+            new Uci\Bundle\SeguridadBundle\UciSeguridadBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

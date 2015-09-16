@@ -62,4 +62,8 @@ class Rol
     {
         return $this->nombre;
     }
+    
+    public function __toString() {
+    return $this->nombre;
+}
 }

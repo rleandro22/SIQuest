@@ -1,5 +1,5 @@
 uci_principal:
-    resource: "@UciPrincipalBundle/Resources/config/routing.yml"
+    resource: "@UciSeguridadBundle/Resources/config/routing.yml"
     prefix:   /
 
 uci_base_datos:
@@ -9,3 +9,6 @@ uci_base_datos:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+
+

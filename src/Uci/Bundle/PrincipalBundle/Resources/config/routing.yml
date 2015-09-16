@@ -1,3 +1,0 @@
-uci_principal_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: UciPrincipalBundle:Default:index }

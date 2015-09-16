@@ -21,6 +21,18 @@ Uci\Bundle\BaseDatosBundle\Entity\Usuario:
             length: 45
             fixed: false
             comment: ''
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        apellidos:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
         clave:
             type: string
             nullable: false
