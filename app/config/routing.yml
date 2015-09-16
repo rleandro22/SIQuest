@@ -1,3 +1,7 @@
+uci_principal:
+    resource: "@UciPrincipalBundle/Resources/config/routing.yml"
+    prefix:   /
+
 uci_base_datos:
     resource: "@UciBaseDatosBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,0 +1,6 @@
+table.table_estilo {width: 400px; font-size: 14px; font-family: tahoma, arial, sans-serif;}
+table.table_estilo thead th {background-color: #ccc; padding: 5px 8px;}
+table.table_estilo td {background-color: #ddd; padding: 5px 8px;}
+table.table_estilo.sorting-table {cursor: move;}
+table.table_estilo tr.sorting-row td {background-color: #8b8;}
+table.table_estilo td.sorter {background-color: #f80; width: 10px; cursor: move;}
