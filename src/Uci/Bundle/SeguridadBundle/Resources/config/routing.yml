@@ -4,8 +4,15 @@ uci_principal_homepage:
     requirements:
         _method:  GET
 
-uci_principal_logueo:
-    pattern: /identificacion
-    defaults: { _controller: UciSeguridadBundle:Seguridad:identificacion }
-    requirements:
-        _method:  GET
+#Rutas para la autenticacion 
+
+login:
+    pattern: /login
+    defaults: { _controller: UciSeguridadBundle:Seguridad:login }
+
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern: /logout
+

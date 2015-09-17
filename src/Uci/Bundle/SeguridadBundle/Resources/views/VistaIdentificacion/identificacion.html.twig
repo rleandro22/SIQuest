@@ -1,1 +1,25 @@
-{# empty Twig template #}
+{% extends 'UciSeguridadBundle::base.html.twig' %}
+
+{% block body %}
+    <form class="form-horizontal" action="{{ path('login') }}" method="POST">
+        <fieldset>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+                <input type="text" class="form-control" placeholder="Usuario" name="_username">
+            </div>
+            <div class="clearfix"></div><br>
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+                <input type="password" class="form-control" placeholder="Contraseña" name="_password">
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="clearfix"></div>
+
+            <p class="center col-md-5">
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </p>
+        </fieldset>
+    </form>
+{% endblock %}

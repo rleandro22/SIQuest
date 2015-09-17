@@ -31,7 +31,7 @@
                         <ul class="nav navbar-nav pull-right">
                             <li><a href="{{ path('uci_principal_homepage') }}">Inicio</a></li>
                             <li><a href="about.html">Ayuda</a></li>
-                            <li><a class="btn" href="#">Identificarse</a></li>
+                            <li><a class="btn" href="{{ path('login') }}">Identificarse</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 {% endblock %}  
@@ -101,8 +101,7 @@
                                         <p class="simplenav">
                                             <a href="{{ path('uci_principal_homepage') }}">Inicio</a> | 
                                             <a href="about.html">Ayuda</a> |
-                                            <a href="sidebar-right.html">Identificarse</a> |
-                                            <b><a href="#">Registrarse</a></b>
+                                            <a href="sidebar-right.html">Identificarse</a>
                                         </p>
                                     {% endblock %}
                                 </div>
@@ -111,7 +110,7 @@
                             <div class="col-md-6 widget">
                                 <div class="widget-body">
                                     <p class="text-right">
-                                        Copyright &copy; 2015, Universidad para laCooperación Internacional. 
+                                        Copyright &copy; 2015, Universidad para la Cooperación Internacional. 
                                     </p>
                                 </div>
                             </div>

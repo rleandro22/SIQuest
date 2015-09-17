@@ -142,16 +142,26 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
         not_uci_principal_homepage:
 
-        // uci_principal_logueo
-        if ($pathinfo === '/identificacion') {
-            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'HEAD'));
-                goto not_uci_principal_logueo;
+        if (0 === strpos($pathinfo, '/log')) {
+            if (0 === strpos($pathinfo, '/login')) {
+                // login
+                if ($pathinfo === '/login') {
+                    return array (  '_controller' => 'Uci\\Bundle\\SeguridadBundle\\Controller\\SeguridadController::loginAction',  '_route' => 'login',);
+                }
+
+                // login_check
+                if ($pathinfo === '/login_check') {
+                    return array('_route' => 'login_check');
+                }
+
             }
 
-            return array (  '_controller' => 'Uci\\Bundle\\SeguridadBundle\\Controller\\SeguridadController::identificacionAction',  '_route' => 'uci_principal_logueo',);
+            // logout
+            if ($pathinfo === '/logout') {
+                return array('_route' => 'logout');
+            }
+
         }
-        not_uci_principal_logueo:
 
         if (0 === strpos($pathinfo, '/usuario')) {
             if (0 === strpos($pathinfo, '/usuariocorrigepregunta')) {
