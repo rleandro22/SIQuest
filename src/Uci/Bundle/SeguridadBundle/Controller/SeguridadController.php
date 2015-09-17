@@ -33,7 +33,7 @@ class SeguridadController extends Controller {
 //               if(strcasecmp($user->getNombreUsuario(),"asociacion")==0 && strcasecmp($user->getContrasena(),$contrasena)==0){
 //               return $this->redirect($this->generateUrl('AsInicio'));}
 //                if (strcasecmp($user->getUsuario(), "rleandro") == 0 && strcasecmp($user->getClave(), $clave) == 0) {
-                    return $this->redirect($this->generateUrl('uci_principal_homepage'));
+                    return $this->redirect($this->generateUrl('uci_administrador_homepage'));
 //                }
             }//end if user
             else {

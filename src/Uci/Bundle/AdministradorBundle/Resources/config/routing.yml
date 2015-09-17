@@ -1,3 +1,5 @@
 uci_administrador_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: UciAdministradorBundle:Default:index }
+    pattern:  /admin
+    defaults: { _controller: UciAdministradorBundle:Default:aInicio }
+    requirements:
+        _method:  GET
