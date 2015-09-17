@@ -1,3 +1,19 @@
+uci_asistente_academica:
+    resource: "@UciAsistenteAcademicaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+uci_profesor:
+    resource: "@UciProfesorBundle/Resources/config/routing.yml"
+    prefix:   /
+
+uci_decano:
+    resource: "@UciDecanoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+uci_administrador:
+    resource: "@UciAdministradorBundle/Resources/config/routing.yml"
+    prefix:   /
+
 uci_principal:
     resource: "@UciSeguridadBundle/Resources/config/routing.yml"
     prefix:   /

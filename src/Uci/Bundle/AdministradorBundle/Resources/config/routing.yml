@@ -1,0 +1,3 @@
+uci_administrador_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UciAdministradorBundle:Default:index }

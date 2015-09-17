@@ -19,6 +19,10 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Uci\Bundle\BaseDatosBundle\UciBaseDatosBundle(),
             new Uci\Bundle\SeguridadBundle\UciSeguridadBundle(),
+            new Uci\Bundle\AdministradorBundle\UciAdministradorBundle(),
+            new Uci\Bundle\DecanoBundle\UciDecanoBundle(),
+            new Uci\Bundle\ProfesorBundle\UciProfesorBundle(),
+            new Uci\Bundle\AsistenteAcademicaBundle\UciAsistenteAcademicaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

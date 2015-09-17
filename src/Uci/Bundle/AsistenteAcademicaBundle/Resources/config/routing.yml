@@ -1,0 +1,3 @@
+uci_asistente_academica_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UciAsistenteAcademicaBundle:Default:index }

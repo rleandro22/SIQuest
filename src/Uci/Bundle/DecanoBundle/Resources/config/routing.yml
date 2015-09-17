@@ -1,0 +1,3 @@
+uci_decano_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UciDecanoBundle:Default:index }

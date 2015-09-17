@@ -1,0 +1,4 @@
+services:
+#    uci_asistente_academica.example:
+#        class: Uci\Bundle\AsistenteAcademicaBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

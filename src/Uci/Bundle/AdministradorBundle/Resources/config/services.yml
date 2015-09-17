@@ -1,0 +1,4 @@
+services:
+#    uci_administrador.example:
+#        class: Uci\Bundle\AdministradorBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
