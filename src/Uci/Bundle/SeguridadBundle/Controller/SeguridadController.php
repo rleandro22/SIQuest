@@ -22,6 +22,7 @@ class SeguridadController extends Controller {
                 $session = $request->getSession();
                 $session->set("id", $user->getId());
                 $session->set("usuario", $user->getUsuario());
+                $session->set("rol", $user->getRol()->getNombre());
                 //echo $session->get("nombre");exit;
 //               if(strcasecmp($user->getNombreUsuario(),"administrador")==0 && strcasecmp($user->getContrasena(),$contrasena)==0){
 //               return $this->redirect($this->generateUrl('aInicio'));}
@@ -33,7 +34,7 @@ class SeguridadController extends Controller {
 //               if(strcasecmp($user->getNombreUsuario(),"asociacion")==0 && strcasecmp($user->getContrasena(),$contrasena)==0){
 //               return $this->redirect($this->generateUrl('AsInicio'));}
 //                if (strcasecmp($user->getUsuario(), "rleandro") == 0 && strcasecmp($user->getClave(), $clave) == 0) {
-                    return $this->redirect($this->generateUrl('uci_administrador_homepage'));
+                return $this->redirect($this->generateUrl('uci_administrador_homepage'));
 //                }
             }//end if user
             else {
@@ -43,7 +44,15 @@ class SeguridadController extends Controller {
                 return $this->redirect($this->generateUrl('login'));
             }
         }//endif request
-        return $this->render('UciSeguridadBundle:VistaIdentificacion:identificacion.html.twig');
+        else {
+            $session = $request->getSession();
+            $rol = $session->get('rol');
+            if (strcasecmp($rol, 'Administrador') == 0) {
+                //return $this->render('UciAdministradorBundle:Vista:index.html.twig');
+                return $this->redirect($this->generateUrl('uci_administrador_homepage'));
+            }
+            return $this->render('UciSeguridadBundle:VistaIdentificacion:identificacion.html.twig');
+        }
     }
 
 }
