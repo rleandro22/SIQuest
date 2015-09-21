@@ -1853,23 +1853,32 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_profesor_homepage')), array (  '_controller' => 'Uci\\Bundle\\ProfesorBundle\\Controller\\DefaultController::indexAction',));
             }
 
-            // uci_decano_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_decano_homepage')), array (  '_controller' => 'Uci\\Bundle\\DecanoBundle\\Controller\\DefaultController::indexAction',));
-            }
-
         }
 
-        // uci_administrador_homepage
-        if ($pathinfo === '/admin') {
-            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'HEAD'));
-                goto not_uci_administrador_homepage;
-            }
+        if (0 === strpos($pathinfo, '/admin')) {
+            // uci_administrador_homepage
+            if ($pathinfo === '/admin') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_uci_administrador_homepage;
+                }
 
-            return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aInicioAction',  '_route' => 'uci_administrador_homepage',);
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aInicioAction',  '_route' => 'uci_administrador_homepage',);
+            }
+            not_uci_administrador_homepage:
+
+            // uci_administrador_indiceuser
+            if ($pathinfo === '/admin/registrar_usuario') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_uci_administrador_indiceuser;
+                }
+
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aIndiceUsuarioAction',  '_route' => 'uci_administrador_indiceuser',);
+            }
+            not_uci_administrador_indiceuser:
+
         }
-        not_uci_administrador_homepage:
 
         // uci_principal_homepage
         if (rtrim($pathinfo, '/') === '') {

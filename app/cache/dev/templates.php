@@ -81,7 +81,7 @@
   'UciSeguridadBundle:VistaIdentificacion:identificacion.html.twig' => 'C:\\wamp\\www\\SIQuest\\src\\Uci\\Bundle\\SeguridadBundle/Resources/views/VistaIdentificacion/identificacion.html.twig',
   'UciAdministradorBundle::base.html.twig' => 'C:\\wamp\\www\\SIQuest\\src\\Uci\\Bundle\\AdministradorBundle/Resources/views/base.html.twig',
   'UciAdministradorBundle:Vista:index.html.twig' => 'C:\\wamp\\www\\SIQuest\\src\\Uci\\Bundle\\AdministradorBundle/Resources/views/Vista/index.html.twig',
-  'UciDecanoBundle:Default:index.html.twig' => 'C:\\wamp\\www\\SIQuest\\src\\Uci\\Bundle\\DecanoBundle/Resources/views/Default/index.html.twig',
+  'UciAdministradorBundle:Vista:indiceUsuario.html.twig' => 'C:\\wamp\\www\\SIQuest\\src\\Uci\\Bundle\\AdministradorBundle/Resources/views/Vista/indiceUsuario.html.twig',
   'UciProfesorBundle:Default:index.html.twig' => 'C:\\wamp\\www\\SIQuest\\src\\Uci\\Bundle\\ProfesorBundle/Resources/views/Default/index.html.twig',
   'UciAsistenteAcademicaBundle:Default:index.html.twig' => 'C:\\wamp\\www\\SIQuest\\src\\Uci\\Bundle\\AsistenteAcademicaBundle/Resources/views/Default/index.html.twig',
   'UciBaseDatosBundle:AreaConocimiento:edit.html.twig' => 'C:\\wamp\\www\\SIQuest\\src\\Uci\\Bundle\\BaseDatosBundle/Resources/views/AreaConocimiento/edit.html.twig',

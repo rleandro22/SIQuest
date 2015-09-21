@@ -254,8 +254,6 @@ class Usuario implements UserInterface
     public function getRoles() {
         if ($this->rol->getNombre() == "Administrador") {
             return array('ROLE_ADMINISTRADOR');
-        } elseif ($this->rol->getNombre() == "Decano") {
-            return array('ROLE_DECANO');
         } elseif ($this->rol->getNombre() == "Asistente") {
             return array('ROLE_ASISTENTE');
         } else {

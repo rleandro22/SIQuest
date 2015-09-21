@@ -10,10 +10,6 @@ uci_profesor:
     resource: "@UciProfesorBundle/Resources/config/routing.yml"
     prefix:   /
 
-uci_decano:
-    resource: "@UciDecanoBundle/Resources/config/routing.yml"
-    prefix:   /
-
 uci_administrador:
     resource: "@UciAdministradorBundle/Resources/config/routing.yml"
     prefix:   /
