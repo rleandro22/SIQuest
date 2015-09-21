@@ -1727,7 +1727,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5600373819a1e9.16251154</argument>
+            <argument>5600779faffad9.81112459</argument>
           </service>
         </argument>
       </argument>
@@ -1924,7 +1924,7 @@
                     <argument type="service" id="router" on-invalid="null"/>
                   </service>
                 </argument>
-                <argument>/</argument>
+                <argument>/admin</argument>
               </service>
             </argument>
             <argument type="collection">
@@ -1932,11 +1932,6 @@
               <argument key="intention">logout</argument>
               <argument key="logout_path">/logout</argument>
             </argument>
-            <call method="addHandler">
-              <argument type="service">
-                <service class="Symfony\Component\Security\Http\Logout\SessionLogoutHandler" public="false"/>
-              </argument>
-            </call>
           </service>
         </argument>
         <argument type="service">
@@ -1969,7 +1964,7 @@
                     <argument key="login_path">/login</argument>
                     <argument key="use_referer">false</argument>
                     <argument key="always_use_default_target_path">true</argument>
-                    <argument key="default_target_path">/</argument>
+                    <argument key="default_target_path">/login</argument>
                     <argument key="target_path_parameter">_target_path</argument>
                   </argument>
                 </call>
@@ -2017,7 +2012,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5600373819a1e9.16251154</argument>
+            <argument>5600779faffad9.81112459</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
