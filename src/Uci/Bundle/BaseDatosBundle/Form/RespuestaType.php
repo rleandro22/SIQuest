@@ -16,7 +16,8 @@ class RespuestaType extends AbstractType
     {
         $builder
             ->add('textoRespuesta')
-            ->add('pregunta')
+            ->add('textoRetroalimentacion')
+            ->add('tipoRespuesta')
         ;
     }
     

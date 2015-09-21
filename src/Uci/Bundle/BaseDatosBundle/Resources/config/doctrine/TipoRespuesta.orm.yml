@@ -1,0 +1,20 @@
+Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta:
+    type: entity
+    table: tipo_respuesta
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

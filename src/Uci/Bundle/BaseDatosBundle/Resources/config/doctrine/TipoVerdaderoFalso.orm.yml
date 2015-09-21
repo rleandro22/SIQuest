@@ -1,0 +1,34 @@
+Uci\Bundle\BaseDatosBundle\Entity\TipoVerdaderoFalso:
+    type: entity
+    table: tipo_verdadero_falso
+    uniqueConstraints:
+        respuesta_id_UNIQUE:
+            columns:
+                - respuesta_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        verdadera:
+            type: blob
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+    manyToOne:
+        respuesta:
+            targetEntity: Respuesta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                respuesta_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

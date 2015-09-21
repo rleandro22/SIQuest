@@ -11,9 +11,6 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
         fk_pregunta_area_conocimiento1_idx:
             columns:
                 - area_conocimiento_id
-        fk_pregunta_tipo_pregunta1_idx:
-            columns:
-                - tipo_pregunta_id
     id:
         id:
             type: integer
@@ -23,7 +20,23 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
             id: true
             generator:
                 strategy: IDENTITY
+    fields:
+        titulo:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
     manyToOne:
+        areaConocimiento:
+            targetEntity: AreaConocimiento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                area_conocimiento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
         capitulo:
             targetEntity: Capitulo
             cascade: {  }
@@ -42,32 +55,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
                 grupo_procesos_id:
                     referencedColumnName: id
             orphanRemoval: false
-        areaConocimiento:
-            targetEntity: AreaConocimiento
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                area_conocimiento_id:
-                    referencedColumnName: id
-            orphanRemoval: false
-        tipoPregunta:
-            targetEntity: TipoPregunta
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                tipo_pregunta_id:
-                    referencedColumnName: id
-            orphanRemoval: false
     manyToMany:
-        respuesta:
-            targetEntity: Respuesta
-            cascade: {  }
-            mappedBy: pregunta
-            inversedBy: null
-            joinTable: null
-            orderBy: null
         tipoPrueba:
             targetEntity: TipoPrueba
             cascade: {  }

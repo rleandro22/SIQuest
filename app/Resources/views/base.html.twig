@@ -21,6 +21,7 @@
         <!-- Fixed navbar -->
         <div class="navbar navbar-inverse navbar-fixed-top headroom" >
             <div class="container">
+                <div class="log-text" >{% block mensajeLogueado %} {% endblock %}</div>
                 <div class="navbar-header">
                     <!-- Button for smallest screens -->
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -29,9 +30,8 @@
                 {% block navigation %}
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
-                            <li><a href="{{ path('uci_principal_homepage') }}">Inicio</a></li>
+                            <li><a href="{{ path('login') }}">Inicio</a></li>
                             <li><a href="about.html">Ayuda</a></li>
-                            <li><a class="btn" href="{{ path('login') }}">Identificarse</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 {% endblock %}  

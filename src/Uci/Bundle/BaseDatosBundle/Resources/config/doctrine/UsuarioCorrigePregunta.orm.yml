@@ -30,15 +30,6 @@ Uci\Bundle\BaseDatosBundle\Entity\UsuarioCorrigePregunta:
             fixed: false
             comment: ''
     manyToOne:
-        usuario:
-            targetEntity: Usuario
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                usuario_id:
-                    referencedColumnName: id
-            orphanRemoval: false
         pregunta:
             targetEntity: Pregunta
             cascade: {  }
@@ -46,6 +37,15 @@ Uci\Bundle\BaseDatosBundle\Entity\UsuarioCorrigePregunta:
             inversedBy: null
             joinColumns:
                 pregunta_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

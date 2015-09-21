@@ -9,7 +9,7 @@
     <div class="container">
 
         <ol class="breadcrumb">
-            <li><a href="{{ path('uci_principal_homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('login') }}">Inicio</a></li>
             <li class="active">Identificarse</li>
         </ol>
 
@@ -28,21 +28,20 @@
                             <p class="text-center text-muted">Si no tiene cuenta solicite una a <a href="mailto:webmaster@uci.ac.cr">webmaster@uci.ac.cr</a>. </p>
                             <hr>
 
-                            {% for flashMessage in app.session.flashbag.get('mensaje') %}
-                                <div class="alert alert-info">
+                            {% if error %}
+                                <div style="color:red">{{ error.message | replace({"Bad credentials." : "Usuario o clave incorrecta."}) }}</div>
+                            {% endif %}
 
-                                    <font color="#FF0000">{{ flashMessage }}</font>
-
-                                </div>
-                            {% endfor %}
-
-                            <form action="{{ path('login') }}" method="POST">
+                            <form action="{{ path('login_check') }}" method="POST">
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                       >
                                 <div class="top-margin">
                                     <label>Usuario <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Usuario" name="_username">
-                                </div>
-                                <div class="top-margin">
-                                    <label>Contraseña <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Usuario" name="_username" value="{{ last_username }}">
+                                           </div>
+                                           <div class="top-margin">
+                                           <label>Contraseña <span class="text-danger">*</span></label>
                                     <input type="password" class="form-control" placeholder="Contraseña" name="_password">
                                 </div>
 

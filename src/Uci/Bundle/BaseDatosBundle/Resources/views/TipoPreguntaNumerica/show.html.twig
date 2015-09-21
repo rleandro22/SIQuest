@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>TipoPreguntaNumerica</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Primernumero</th>
+                <td>{{ entity.primerNumero }}</td>
+            </tr>
+            <tr>
+                <th>Segundonumero</th>
+                <td>{{ entity.segundoNumero }}</td>
+            </tr>
+            <tr>
+                <th>Esspan</th>
+                <td>{{ entity.esSpan }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('tipopreguntanumerica') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('tipopreguntanumerica_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

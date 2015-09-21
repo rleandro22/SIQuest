@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Respuesta
  *
- * @ORM\Table(name="respuesta")
+ * @ORM\Table(name="respuesta", indexes={@ORM\Index(name="fk_respuesta_tipo_respuesta1_idx", columns={"tipo_respuesta_id"})})
  * @ORM\Entity
  */
 class Respuesta
@@ -29,27 +29,22 @@ class Respuesta
     private $textoRespuesta;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var string
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pregunta", inversedBy="respuesta")
-     * @ORM\JoinTable(name="pregunta_tiene_respuestas",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="respuesta_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\Column(name="texto_retroalimentacion", type="text", nullable=true)
      */
-    private $pregunta;
+    private $textoRetroalimentacion;
 
     /**
-     * Constructor
+     * @var \Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta
+     *
+     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipo_respuesta_id", referencedColumnName="id")
+     * })
      */
-    public function __construct()
-    {
-        $this->pregunta = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $tipoRespuesta;
+
 
 
     /**
@@ -86,35 +81,48 @@ class Respuesta
     }
 
     /**
-     * Add pregunta
+     * Set textoRetroalimentacion
      *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
+     * @param string $textoRetroalimentacion
      * @return Respuesta
      */
-    public function addPreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta)
+    public function setTextoRetroalimentacion($textoRetroalimentacion)
     {
-        $this->pregunta[] = $pregunta;
+        $this->textoRetroalimentacion = $textoRetroalimentacion;
 
         return $this;
     }
 
     /**
-     * Remove pregunta
+     * Get textoRetroalimentacion
      *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
+     * @return string 
      */
-    public function removePreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta)
+    public function getTextoRetroalimentacion()
     {
-        $this->pregunta->removeElement($pregunta);
+        return $this->textoRetroalimentacion;
     }
 
     /**
-     * Get pregunta
+     * Set tipoRespuesta
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta $tipoRespuesta
+     * @return Respuesta
      */
-    public function getPregunta()
+    public function setTipoRespuesta(\Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta $tipoRespuesta = null)
     {
-        return $this->pregunta;
+        $this->tipoRespuesta = $tipoRespuesta;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoRespuesta
+     *
+     * @return \Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta 
+     */
+    public function getTipoRespuesta()
+    {
+        return $this->tipoRespuesta;
     }
 }

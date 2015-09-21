@@ -1,0 +1,30 @@
+tipopareo:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:TipoPareo:index" }
+
+tipopareo_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:TipoPareo:show" }
+
+tipopareo_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:TipoPareo:new" }
+
+tipopareo_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:TipoPareo:create" }
+    methods:  POST
+
+tipopareo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:TipoPareo:edit" }
+
+tipopareo_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:TipoPareo:update" }
+    methods:  [POST, PUT]
+
+tipopareo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:TipoPareo:delete" }
+    methods:  [POST, DELETE]

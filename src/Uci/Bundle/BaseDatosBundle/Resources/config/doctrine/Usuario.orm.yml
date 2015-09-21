@@ -5,6 +5,10 @@ Uci\Bundle\BaseDatosBundle\Entity\Usuario:
         fk_usuario_roles1_idx:
             columns:
                 - rol_id
+    uniqueConstraints:
+        username_UNIQUE:
+            columns:
+                - username
     id:
         id:
             type: integer
@@ -15,12 +19,6 @@ Uci\Bundle\BaseDatosBundle\Entity\Usuario:
             generator:
                 strategy: IDENTITY
     fields:
-        usuario:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
-            comment: ''
         nombre:
             type: string
             nullable: false
@@ -33,10 +31,22 @@ Uci\Bundle\BaseDatosBundle\Entity\Usuario:
             length: 200
             fixed: false
             comment: ''
-        clave:
+        username:
             type: string
             nullable: false
             length: 45
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        salt:
+            type: string
+            nullable: false
+            length: 255
             fixed: false
             comment: ''
         email:

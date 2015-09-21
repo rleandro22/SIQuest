@@ -17,12 +17,12 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
-      <parameter key="UciBaseDatosBundle">Uci\Bundle\BaseDatosBundle\UciBaseDatosBundle</parameter>
       <parameter key="UciSeguridadBundle">Uci\Bundle\SeguridadBundle\UciSeguridadBundle</parameter>
       <parameter key="UciAdministradorBundle">Uci\Bundle\AdministradorBundle\UciAdministradorBundle</parameter>
       <parameter key="UciDecanoBundle">Uci\Bundle\DecanoBundle\UciDecanoBundle</parameter>
       <parameter key="UciProfesorBundle">Uci\Bundle\ProfesorBundle\UciProfesorBundle</parameter>
       <parameter key="UciAsistenteAcademicaBundle">Uci\Bundle\AsistenteAcademicaBundle\UciAsistenteAcademicaBundle</parameter>
+      <parameter key="UciBaseDatosBundle">Uci\Bundle\BaseDatosBundle\UciBaseDatosBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -1716,18 +1716,18 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
-            <argument type="service" id="security.user.provider.concrete.in_memory"/>
+            <argument type="service" id="security.user.provider.concrete.user_db"/>
             <argument type="service">
               <service class="Symfony\Component\Security\Core\User\UserChecker" public="false"/>
             </argument>
-            <argument>main</argument>
+            <argument>secured_area</argument>
             <argument type="service" id="security.encoder_factory"/>
             <argument>true</argument>
           </service>
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>55fb75cf675ff1.76263669</argument>
+            <argument>5600373819a1e9.16251154</argument>
           </service>
         </argument>
       </argument>
@@ -1781,10 +1781,14 @@
         <service class="Symfony\Bundle\SecurityBundle\Security\FirewallMap" public="false">
           <argument type="service" id="service_container"/>
           <argument type="collection">
-            <argument key="security.firewall.map.context.main">null</argument>
             <argument key="security.firewall.map.context.dev" type="service">
               <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                 <argument>^/(_(profiler|wdt)|css|images|js)/</argument>
+              </service>
+            </argument>
+            <argument key="security.firewall.map.context.secured_area" type="service">
+              <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                <argument>^/</argument>
               </service>
             </argument>
           </argument>
@@ -1797,7 +1801,7 @@
       <argument type="service" id="router" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
       <call method="registerListener">
-        <argument>main</argument>
+        <argument>secured_area</argument>
         <argument>/logout</argument>
         <argument>logout</argument>
         <argument>_csrf_token</argument>
@@ -1820,8 +1824,17 @@
       <tag name="templating.helper" alias="security"/>
       <argument type="service" id="security.authorization_checker" on-invalid="ignore"/>
     </service>
-    <service id="security.user.provider.concrete.in_memory" class="Symfony\Component\Security\Core\User\InMemoryUserProvider" public="false"/>
-    <service id="security.firewall.map.context.main" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+    <service id="security.user.provider.concrete.user_db" class="Symfony\Bridge\Doctrine\Security\User\EntityUserProvider" public="false">
+      <argument type="service" id="doctrine"/>
+      <argument>Uci\Bundle\BaseDatosBundle\Entity\Usuario</argument>
+      <argument>username</argument>
+      <argument>null</argument>
+    </service>
+    <service id="security.firewall.map.context.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="collection"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.firewall.map.context.secured_area" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\ChannelListener" public="false">
@@ -1831,11 +1844,44 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/admin</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMINISTRADOR</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/rol</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMINISTRADOR</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                       <argument>^/login</argument>
                     </service>
                   </argument>
                   <argument type="collection">
                     <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_FULLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -1854,9 +1900,9 @@
           <service class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
             <argument type="service" id="security.token_storage"/>
             <argument type="collection">
-              <argument type="service" id="security.user.provider.concrete.in_memory"/>
+              <argument type="service" id="security.user.provider.concrete.user_db"/>
             </argument>
-            <argument>main</argument>
+            <argument>secured_area</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
           </service>
@@ -1895,7 +1941,6 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false">
-            <tag name="security.remember_me_aware" id="main" provider="security.user.provider.concrete.in_memory"/>
             <argument type="service" id="security.token_storage"/>
             <argument type="service" id="security.authentication.manager"/>
             <argument type="service">
@@ -1909,7 +1954,7 @@
                 <argument type="service" id="router" on-invalid="null"/>
               </service>
             </argument>
-            <argument>main</argument>
+            <argument>secured_area</argument>
             <argument type="service">
               <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
                 <argument type="service">
@@ -1922,14 +1967,14 @@
                 <call method="setOptions">
                   <argument type="collection">
                     <argument key="login_path">/login</argument>
-                    <argument key="always_use_default_target_path">false</argument>
+                    <argument key="use_referer">false</argument>
+                    <argument key="always_use_default_target_path">true</argument>
                     <argument key="default_target_path">/</argument>
                     <argument key="target_path_parameter">_target_path</argument>
-                    <argument key="use_referer">false</argument>
                   </argument>
                 </call>
                 <call method="setProviderKey">
-                  <argument>main</argument>
+                  <argument>secured_area</argument>
                 </call>
               </service>
             </argument>
@@ -1972,7 +2017,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>55fb75cf675ff1.76263669</argument>
+            <argument>5600373819a1e9.16251154</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -1987,11 +2032,44 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/admin</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMINISTRADOR</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/rol</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMINISTRADOR</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                       <argument>^/login</argument>
                     </service>
                   </argument>
                   <argument type="collection">
                     <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_FULLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2011,7 +2089,7 @@
               <argument type="service" id="router" on-invalid="null"/>
             </service>
           </argument>
-          <argument>main</argument>
+          <argument>secured_area</argument>
           <argument type="service">
             <service class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
               <argument type="service" id="http_kernel"/>
@@ -2031,10 +2109,6 @@
           <argument>false</argument>
         </service>
       </argument>
-    </service>
-    <service id="security.firewall.map.context.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
-      <argument type="collection"/>
-      <argument>null</argument>
     </service>
     <service id="twig" class="Twig_Environment">
       <argument type="service" id="twig.loader"/>
@@ -2922,16 +2996,12 @@
     </service>
     <service id="security.encoder_factory" class="Symfony\Component\Security\Core\Encoder\EncoderFactory">
       <argument type="collection">
-        <argument key="Symfony\Component\Security\Core\User\User" type="collection">
-          <argument key="class">%security.encoder.plain.class%</argument>
+        <argument key="Uci\Bundle\BaseDatosBundle\Entity\Usuario" type="collection">
+          <argument key="class">%security.encoder.digest.class%</argument>
           <argument key="arguments" type="collection">
-            <argument>false</argument>
-          </argument>
-        </argument>
-        <argument key="Uci\BaseDatosBundle\Entity\Usuario" type="collection">
-          <argument key="class">%security.encoder.bcrypt.class%</argument>
-          <argument key="arguments" type="collection">
-            <argument>13</argument>
+            <argument>sha512</argument>
+            <argument>true</argument>
+            <argument>10</argument>
           </argument>
         </argument>
       </argument>
@@ -2964,10 +3034,6 @@
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp\www\SIQuest\src\Uci\Bundle\BaseDatosBundle/Resources/views</argument>
-        <argument>UciBaseDatos</argument>
-      </call>
-      <call method="addPath">
         <argument>C:\wamp\www\SIQuest\src\Uci\Bundle\SeguridadBundle/Resources/views</argument>
         <argument>UciSeguridad</argument>
       </call>
@@ -2986,6 +3052,10 @@
       <call method="addPath">
         <argument>C:\wamp\www\SIQuest\src\Uci\Bundle\AsistenteAcademicaBundle/Resources/views</argument>
         <argument>UciAsistenteAcademica</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp\www\SIQuest\src\Uci\Bundle\BaseDatosBundle/Resources/views</argument>
+        <argument>UciBaseDatos</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp\www\SIQuest\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>

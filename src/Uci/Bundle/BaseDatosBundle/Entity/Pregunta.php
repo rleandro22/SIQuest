@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pregunta
  *
- * @ORM\Table(name="pregunta", indexes={@ORM\Index(name="fk_pregunta_capitulo1_idx", columns={"capitulo_id"}), @ORM\Index(name="fk_pregunta_grupo_procesos1_idx", columns={"grupo_procesos_id"}), @ORM\Index(name="fk_pregunta_area_conocimiento1_idx", columns={"area_conocimiento_id"}), @ORM\Index(name="fk_pregunta_tipo_pregunta1_idx", columns={"tipo_pregunta_id"})})
+ * @ORM\Table(name="pregunta", indexes={@ORM\Index(name="fk_pregunta_capitulo1_idx", columns={"capitulo_id"}), @ORM\Index(name="fk_pregunta_grupo_procesos1_idx", columns={"grupo_procesos_id"}), @ORM\Index(name="fk_pregunta_area_conocimiento1_idx", columns={"area_conocimiento_id"})})
  * @ORM\Entity
  */
 class Pregunta
@@ -20,6 +20,23 @@ class Pregunta
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titulo", type="string", length=255, nullable=true)
+     */
+    private $titulo;
+
+    /**
+     * @var \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento
+     *
+     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="area_conocimiento_id", referencedColumnName="id")
+     * })
+     */
+    private $areaConocimiento;
 
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Capitulo
@@ -42,33 +59,6 @@ class Pregunta
     private $grupoProcesos;
 
     /**
-     * @var \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento
-     *
-     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="area_conocimiento_id", referencedColumnName="id")
-     * })
-     */
-    private $areaConocimiento;
-
-    /**
-     * @var \Uci\Bundle\BaseDatosBundle\Entity\TipoPregunta
-     *
-     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\TipoPregunta")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_pregunta_id", referencedColumnName="id")
-     * })
-     */
-    private $tipoPregunta;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Respuesta", mappedBy="pregunta")
-     */
-    private $respuesta;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba", inversedBy="pregunta")
@@ -88,7 +78,6 @@ class Pregunta
      */
     public function __construct()
     {
-        $this->respuesta = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tipoPrueba = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -101,6 +90,52 @@ class Pregunta
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set titulo
+     *
+     * @param string $titulo
+     * @return Pregunta
+     */
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+
+        return $this;
+    }
+
+    /**
+     * Get titulo
+     *
+     * @return string 
+     */
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+
+    /**
+     * Set areaConocimiento
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento
+     * @return Pregunta
+     */
+    public function setAreaConocimiento(\Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento = null)
+    {
+        $this->areaConocimiento = $areaConocimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get areaConocimiento
+     *
+     * @return \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento 
+     */
+    public function getAreaConocimiento()
+    {
+        return $this->areaConocimiento;
     }
 
     /**
@@ -147,85 +182,6 @@ class Pregunta
     public function getGrupoProcesos()
     {
         return $this->grupoProcesos;
-    }
-
-    /**
-     * Set areaConocimiento
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento
-     * @return Pregunta
-     */
-    public function setAreaConocimiento(\Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento = null)
-    {
-        $this->areaConocimiento = $areaConocimiento;
-
-        return $this;
-    }
-
-    /**
-     * Get areaConocimiento
-     *
-     * @return \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento 
-     */
-    public function getAreaConocimiento()
-    {
-        return $this->areaConocimiento;
-    }
-
-    /**
-     * Set tipoPregunta
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoPregunta $tipoPregunta
-     * @return Pregunta
-     */
-    public function setTipoPregunta(\Uci\Bundle\BaseDatosBundle\Entity\TipoPregunta $tipoPregunta = null)
-    {
-        $this->tipoPregunta = $tipoPregunta;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoPregunta
-     *
-     * @return \Uci\Bundle\BaseDatosBundle\Entity\TipoPregunta 
-     */
-    public function getTipoPregunta()
-    {
-        return $this->tipoPregunta;
-    }
-
-    /**
-     * Add respuesta
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta
-     * @return Pregunta
-     */
-    public function addRespuestum(\Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta)
-    {
-        $this->respuesta[] = $respuesta;
-
-        return $this;
-    }
-
-    /**
-     * Remove respuesta
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta
-     */
-    public function removeRespuestum(\Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta)
-    {
-        $this->respuesta->removeElement($respuesta);
-    }
-
-    /**
-     * Get respuesta
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRespuesta()
-    {
-        return $this->respuesta;
     }
 
     /**

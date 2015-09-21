@@ -3,14 +3,14 @@
 namespace Uci\Bundle\BaseDatosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Usuario
  *
- * @ORM\Table(name="usuario", indexes={@ORM\Index(name="fk_usuario_roles1_idx", columns={"rol_id"})})
+ * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="username_UNIQUE", columns={"username"})}, indexes={@ORM\Index(name="fk_usuario_roles1_idx", columns={"rol_id"})})
  * @ORM\Entity
  */
-class Usuario
+class Usuario implements UserInterface
 {
     /**
      * @var integer
@@ -27,27 +27,34 @@ class Usuario
      * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
      */
     private $nombre;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="apellidos", type="string", length=200, nullable=false)
      */
     private $apellidos;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="usuario", type="string", length=45, nullable=false)
-     */
-    private $usuario;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="clave", type="string", length=45, nullable=false)
+     * @ORM\Column(name="username", type="string", length=45, nullable=false)
      */
-    private $clave;
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
+     */
+    private $salt;
 
     /**
      * @var string
@@ -77,7 +84,7 @@ class Usuario
     {
         return $this->id;
     }
-    
+
     /**
      * Set nombre
      *
@@ -100,7 +107,7 @@ class Usuario
     {
         return $this->nombre;
     }
-    
+
     /**
      * Set apellidos
      *
@@ -125,49 +132,72 @@ class Usuario
     }
 
     /**
-     * Set usuario
+     * Set username
      *
-     * @param string $usuario
+     * @param string $username
      * @return Usuario
      */
-    public function setUsuario($usuario)
+    public function setUsername($username)
     {
-        $this->usuario = $usuario;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get usuario
+     * Get username
      *
      * @return string 
      */
-    public function getUsuario()
+    public function getUsername()
     {
-        return $this->usuario;
+        return $this->username;
     }
 
     /**
-     * Set clave
+     * Set password
      *
-     * @param string $clave
+     * @param string $password
      * @return Usuario
      */
-    public function setClave($clave)
+    public function setPassword($password)
     {
-        $this->clave = $clave;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get clave
+     * Get password
      *
      * @return string 
      */
-    public function getClave()
+    public function getPassword()
     {
-        return $this->clave;
+        return $this->password;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return Usuario
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
     }
 
     /**
@@ -215,4 +245,36 @@ class Usuario
     {
         return $this->rol;
     }
+    
+        /**
+     * Get roles
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getRoles() {
+        if ($this->rol->getNombre() == "Administrador") {
+            return array('ROLE_ADMINISTRADOR');
+        } elseif ($this->rol->getNombre() == "Decano") {
+            return array('ROLE_DECANO');
+        } elseif ($this->rol->getNombre() == "Asistente") {
+            return array('ROLE_ASISTENTE');
+        } else {
+            return array('ROLE_PROFESOR');
+        }
+    }
+
+    /**
+     * Compares this user to another to determine if they are the same.
+     *
+     * @param UserInterface $usuario The user
+     * @return boolean True if equal, false othwerwise.
+     */
+    public function equals(UserInterface $usuario) {
+        return md5($this->getUsername()) == md5($usuario->getUsername());
+    }
+
+    public function eraseCredentials() {
+        
+    }
+
 }

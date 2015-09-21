@@ -10,8 +10,8 @@ class __TwigTemplate_59aecf009bfb9029046f014f1c5485877e398abfdea395e47349aec5071
         // line 2
         $this->parent = $this->loadTemplate("::base.html.twig", "UciAdministradorBundle::base.html.twig", 2);
         $this->blocks = array(
+            'mensajeLogueado' => array($this, 'block_mensajeLogueado'),
             'navigation' => array($this, 'block_navigation'),
-            'header' => array($this, 'block_header'),
         );
     }
 
@@ -22,22 +22,39 @@ class __TwigTemplate_59aecf009bfb9029046f014f1c5485877e398abfdea395e47349aec5071
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d61a9ed6f8bdd84936f899669932331138f957f5c413fe837d9c41d48ddcd033 = $this->env->getExtension("native_profiler");
-        $__internal_d61a9ed6f8bdd84936f899669932331138f957f5c413fe837d9c41d48ddcd033->enter($__internal_d61a9ed6f8bdd84936f899669932331138f957f5c413fe837d9c41d48ddcd033_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle::base.html.twig"));
+        $__internal_8762f70797116f564d68aabf5ebfdaab432c827cdc3f8cf47b412657e9d7f58b = $this->env->getExtension("native_profiler");
+        $__internal_8762f70797116f564d68aabf5ebfdaab432c827cdc3f8cf47b412657e9d7f58b->enter($__internal_8762f70797116f564d68aabf5ebfdaab432c827cdc3f8cf47b412657e9d7f58b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle::base.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_d61a9ed6f8bdd84936f899669932331138f957f5c413fe837d9c41d48ddcd033->leave($__internal_d61a9ed6f8bdd84936f899669932331138f957f5c413fe837d9c41d48ddcd033_prof);
+        $__internal_8762f70797116f564d68aabf5ebfdaab432c827cdc3f8cf47b412657e9d7f58b->leave($__internal_8762f70797116f564d68aabf5ebfdaab432c827cdc3f8cf47b412657e9d7f58b_prof);
 
     }
 
     // line 5
+    public function block_mensajeLogueado($context, array $blocks = array())
+    {
+        $__internal_533ec334a80af03c4e3f24ad9341bb7482c4d328c621bc141c23d040c3db1128 = $this->env->getExtension("native_profiler");
+        $__internal_533ec334a80af03c4e3f24ad9341bb7482c4d328c621bc141c23d040c3db1128->enter($__internal_533ec334a80af03c4e3f24ad9341bb7482c4d328c621bc141c23d040c3db1128_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "mensajeLogueado"));
+
+        echo " 
+    Bienvenido(a) ";
+        // line 6
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
+        echo "
+";
+        
+        $__internal_533ec334a80af03c4e3f24ad9341bb7482c4d328c621bc141c23d040c3db1128->leave($__internal_533ec334a80af03c4e3f24ad9341bb7482c4d328c621bc141c23d040c3db1128_prof);
+
+    }
+
+    // line 9
     public function block_navigation($context, array $blocks = array())
     {
-        $__internal_9a8b9672b978ae1c1677cccfffeea7ae6ea97b664953a15fb878a91f4bc7da62 = $this->env->getExtension("native_profiler");
-        $__internal_9a8b9672b978ae1c1677cccfffeea7ae6ea97b664953a15fb878a91f4bc7da62->enter($__internal_9a8b9672b978ae1c1677cccfffeea7ae6ea97b664953a15fb878a91f4bc7da62_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "navigation"));
+        $__internal_08befc7de638599a2804ed8c6ab300a13713cf49ff0e3320c7534d21af9c393b = $this->env->getExtension("native_profiler");
+        $__internal_08befc7de638599a2804ed8c6ab300a13713cf49ff0e3320c7534d21af9c393b->enter($__internal_08befc7de638599a2804ed8c6ab300a13713cf49ff0e3320c7534d21af9c393b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "navigation"));
 
-        // line 6
+        // line 10
         echo "    <div class=\"navbar-collapse collapse\">
         <ul class=\"nav navbar-nav pull-right\">
             <li class=\"active\"><a href=\"#\">Inicio</a></li>
@@ -49,44 +66,16 @@ class __TwigTemplate_59aecf009bfb9029046f014f1c5485877e398abfdea395e47349aec5071
                     <li class=\"active\"><a href=\"sidebar-right.html\">Mantenimiento Preguntas</a></li>
                 </ul>
             </li>
-            <li class=\"dropdown\">
-                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                    ";
-        // line 19
-        if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "has", array(0 => "usuario"), "method")) {
-            echo " 
-                        ";
-            // line 20
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "usuario"), "method"), "html", null, true);
-            echo " 
-                    ";
-        }
-        // line 21
-        echo " 
-                    <b class=\"caret\"></b></a>
-                <ul class=\"dropdown-menu\">
-                    <li><a href=\"#\">Salir</a></li>
-                </ul>
-            </li>
+            <li>
+                <a class=\"btn\" href=\"";
+        // line 22
+        echo $this->env->getExtension('routing')->getPath("logout");
+        echo "\">Salir</a></li>
         </ul>
     </div><!--/.nav-collapse -->
 ";
         
-        $__internal_9a8b9672b978ae1c1677cccfffeea7ae6ea97b664953a15fb878a91f4bc7da62->leave($__internal_9a8b9672b978ae1c1677cccfffeea7ae6ea97b664953a15fb878a91f4bc7da62_prof);
-
-    }
-
-    // line 31
-    public function block_header($context, array $blocks = array())
-    {
-        $__internal_d6760388bb709fa473b182764887c0ca5c9f1bf83675a278578b77826cebc4aa = $this->env->getExtension("native_profiler");
-        $__internal_d6760388bb709fa473b182764887c0ca5c9f1bf83675a278578b77826cebc4aa->enter($__internal_d6760388bb709fa473b182764887c0ca5c9f1bf83675a278578b77826cebc4aa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
-
-        // line 32
-        echo "    <header id=\"head\" class=\"secondary\"></header>
-    ";
-        
-        $__internal_d6760388bb709fa473b182764887c0ca5c9f1bf83675a278578b77826cebc4aa->leave($__internal_d6760388bb709fa473b182764887c0ca5c9f1bf83675a278578b77826cebc4aa_prof);
+        $__internal_08befc7de638599a2804ed8c6ab300a13713cf49ff0e3320c7534d21af9c393b->leave($__internal_08befc7de638599a2804ed8c6ab300a13713cf49ff0e3320c7534d21af9c393b_prof);
 
     }
 
@@ -102,6 +91,6 @@ class __TwigTemplate_59aecf009bfb9029046f014f1c5485877e398abfdea395e47349aec5071
 
     public function getDebugInfo()
     {
-        return array (  86 => 32,  80 => 31,  65 => 21,  60 => 20,  56 => 19,  41 => 6,  35 => 5,  11 => 2,);
+        return array (  72 => 22,  58 => 10,  52 => 9,  43 => 6,  35 => 5,  11 => 2,);
     }
 }

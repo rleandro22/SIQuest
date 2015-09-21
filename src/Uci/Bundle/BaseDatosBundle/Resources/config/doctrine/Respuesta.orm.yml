@@ -1,6 +1,10 @@
 Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
     type: entity
     table: respuesta
+    indexes:
+        fk_respuesta_tipo_respuesta1_idx:
+            columns:
+                - tipo_respuesta_id
     id:
         id:
             type: integer
@@ -18,21 +22,21 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
             fixed: false
             comment: ''
             column: texto_respuesta
-    manyToMany:
-        pregunta:
-            targetEntity: Pregunta
+        textoRetroalimentacion:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: texto_retroalimentacion
+    manyToOne:
+        tipoRespuesta:
+            targetEntity: TipoRespuesta
             cascade: {  }
             mappedBy: null
-            inversedBy: respuesta
-            joinTable:
-                name: pregunta_tiene_respuestas
-                joinColumns:
-                    -
-                        name: respuesta_id
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: pregunta_id
-                        referencedColumnName: id
-            orderBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_respuesta_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

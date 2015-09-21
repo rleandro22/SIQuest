@@ -22,6 +22,13 @@ class Profesor
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="editaTodas", type="blob", length=1, nullable=false)
+     */
+    private $editatodas;
+
+    /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Usuario
      *
      * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Usuario")
@@ -63,6 +70,29 @@ class Profesor
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set editatodas
+     *
+     * @param string $editatodas
+     * @return Profesor
+     */
+    public function setEditatodas($editatodas)
+    {
+        $this->editatodas = $editatodas;
+
+        return $this;
+    }
+
+    /**
+     * Get editatodas
+     *
+     * @return string 
+     */
+    public function getEditatodas()
+    {
+        return $this->editatodas;
     }
 
     /**

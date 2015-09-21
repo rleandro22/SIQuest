@@ -3,56 +3,39 @@
 namespace Uci\Bundle\SeguridadBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class SeguridadController extends Controller {
 
     public function indexAction() {
-        return $this->render('UciSeguridadBundle:VistaIdentificacion:index.html.twig');
+        if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_ADMINISTRADOR')) {
+                return $this->render('UciAdministradorBundle:Vista:index.html.twig');
+        }
     }
 
-    public function loginAction(Request $request) {
-        if ($request->getMethod() == "POST") {
-            $usuario = $request->get("_username");
-            $clave = $request->get("_password");
-            //$user= Usuario();
-            //los parametros que se la pasan son nombres de los campos de la entidad
-            $user = $this->getDoctrine()->getRepository('UciBaseDatosBundle:Usuario')->findOneBy(array("usuario" => $usuario, "clave" => $clave));
-            if ($user) {
-                $session = $request->getSession();
-                $session->set("id", $user->getId());
-                $session->set("usuario", $user->getUsuario());
-                $session->set("rol", $user->getRol()->getNombre());
-                //echo $session->get("nombre");exit;
-//               if(strcasecmp($user->getNombreUsuario(),"administrador")==0 && strcasecmp($user->getContrasena(),$contrasena)==0){
-//               return $this->redirect($this->generateUrl('aInicio'));}
-//               if(strcasecmp($user->getNombreUsuario(),"medicos asistentes")==0 && strcasecmp($user->getContrasena(),$contrasena)==0){
-//               return $this->redirect($this->generateUrl('dInicio'));}
-//               if(strcasecmp($user->getNombreUsuario(),"medicos residentes")==0 && strcasecmp($user->getContrasena(),$contrasena)==0){
-//               return $this->redirect($this->generateUrl('rInicio'));}
-//              
-//               if(strcasecmp($user->getNombreUsuario(),"asociacion")==0 && strcasecmp($user->getContrasena(),$contrasena)==0){
-//               return $this->redirect($this->generateUrl('AsInicio'));}
-//                if (strcasecmp($user->getUsuario(), "rleandro") == 0 && strcasecmp($user->getClave(), $clave) == 0) {
-                return $this->redirect($this->generateUrl('uci_administrador_homepage'));
-//                }
-            }//end if user
-            else {
-                $this->get('session')->getFlashBag()->add(
-                        'mensaje', 'Los datos ingresados no son válidos'
-                );
-                return $this->redirect($this->generateUrl('login'));
+    public function loginAction() {
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_ADMINISTRADOR')) {
+                return $this->render('UciAdministradorBundle:Vista:index.html.twig');
             }
-        }//endif request
-        else {
-            $session = $request->getSession();
-            $rol = $session->get('rol');
-            if (strcasecmp($rol, 'Administrador') == 0) {
-                //return $this->render('UciAdministradorBundle:Vista:index.html.twig');
-                return $this->redirect($this->generateUrl('uci_administrador_homepage'));
-            }
-            return $this->render('UciSeguridadBundle:VistaIdentificacion:identificacion.html.twig');
         }
+        $request = $this->getRequest();
+        $session = $request->getSession();
+        // obtiene el error de inicio de sesión si lo hay
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+        }
+        return $this->render('UciSeguridadBundle:VistaIdentificacion:identificacion.html.twig', array(
+                    // el último nombre de usuario ingresado por el usuario
+                    'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+                    'error' => $error,
+        ));
+    }//fin metodo
+
+    public function loginCheckAction() {
+        // this controller will not be executed,
     }
 
 }

@@ -17,12 +17,12 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-            new Uci\Bundle\BaseDatosBundle\UciBaseDatosBundle(),
             new Uci\Bundle\SeguridadBundle\UciSeguridadBundle(),
             new Uci\Bundle\AdministradorBundle\UciAdministradorBundle(),
             new Uci\Bundle\DecanoBundle\UciDecanoBundle(),
             new Uci\Bundle\ProfesorBundle\UciProfesorBundle(),
             new Uci\Bundle\AsistenteAcademicaBundle\UciAsistenteAcademicaBundle(),
+            new Uci\Bundle\BaseDatosBundle\UciBaseDatosBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -12,6 +12,7 @@ login:
 
 login_check:
     pattern: /login_check
+    defaults: { _controller: UciSeguridadBundle:Seguridad:loginCheck }
 
 logout:
     pattern: /logout

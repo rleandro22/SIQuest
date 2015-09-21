@@ -36,16 +36,6 @@ class UsuarioCorrigePregunta
     private $comentario;
 
     /**
-     * @var \Uci\Bundle\BaseDatosBundle\Entity\Usuario
-     *
-     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Usuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
-     * })
-     */
-    private $usuario;
-
-    /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Pregunta
      *
      * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pregunta")
@@ -54,6 +44,16 @@ class UsuarioCorrigePregunta
      * })
      */
     private $pregunta;
+
+    /**
+     * @var \Uci\Bundle\BaseDatosBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
 
 
 
@@ -114,29 +114,6 @@ class UsuarioCorrigePregunta
     }
 
     /**
-     * Set usuario
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario
-     * @return UsuarioCorrigePregunta
-     */
-    public function setUsuario(\Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario = null)
-    {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return \Uci\Bundle\BaseDatosBundle\Entity\Usuario 
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-
-    /**
      * Set pregunta
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
@@ -157,5 +134,28 @@ class UsuarioCorrigePregunta
     public function getPregunta()
     {
         return $this->pregunta;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario
+     * @return UsuarioCorrigePregunta
+     */
+    public function setUsuario(\Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Uci\Bundle\BaseDatosBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }

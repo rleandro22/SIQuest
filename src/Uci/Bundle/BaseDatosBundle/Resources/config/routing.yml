@@ -6,13 +6,37 @@ uci_base_datos_usuario:
     resource: "@UciBaseDatosBundle/Resources/config/routing/usuario.yml"
     prefix:   /usuario
 
+uci_base_datos_tipoverdaderofalso:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tipoverdaderofalso.yml"
+    prefix:   /tipoverdaderofalso
+
+uci_base_datos_tiporespuestamultiple:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tiporespuestamultiple.yml"
+    prefix:   /tiporespuestamultiple
+
+uci_base_datos_tiporespuestacorta:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tiporespuestacorta.yml"
+    prefix:   /tiporespuestacorta
+
+uci_base_datos_tiporespuesta:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tiporespuesta.yml"
+    prefix:   /tiporespuesta
+
 uci_base_datos_tipoprueba:
     resource: "@UciBaseDatosBundle/Resources/config/routing/tipoprueba.yml"
     prefix:   /tipoprueba
 
-uci_base_datos_tipopregunta:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/tipopregunta.yml"
-    prefix:   /tipopregunta
+uci_base_datos_tipopreguntanumerica:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tipopreguntanumerica.yml"
+    prefix:   /tipopreguntanumerica
+
+uci_base_datos_tipopareo:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tipopareo.yml"
+    prefix:   /tipopareo
+
+uci_base_datos_tipopalabrafaltante:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/tipopalabrafaltante.yml"
+    prefix:   /tipopalabrafaltante
 
 uci_base_datos_solicitud:
     resource: "@UciBaseDatosBundle/Resources/config/routing/solicitud.yml"
@@ -29,6 +53,10 @@ uci_base_datos_respuesta:
 uci_base_datos_profesor:
     resource: "@UciBaseDatosBundle/Resources/config/routing/profesor.yml"
     prefix:   /profesor
+
+uci_base_datos_preguntatienerespuestas:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/preguntatienerespuestas.yml"
+    prefix:   /preguntatienerespuestas
 
 uci_base_datos_pregunta:
     resource: "@UciBaseDatosBundle/Resources/config/routing/pregunta.yml"

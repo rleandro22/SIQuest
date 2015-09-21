@@ -17,8 +17,8 @@ class UsuarioCorrigePreguntaType extends AbstractType
         $builder
             ->add('fechaCorreccion')
             ->add('comentario')
-            ->add('usuario')
             ->add('pregunta')
+            ->add('usuario')
         ;
     }
     

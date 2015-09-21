@@ -221,4 +221,15 @@ class Rol extends \Uci\Bundle\BaseDatosBundle\Entity\Rol implements \Doctrine\OR
         return parent::__toString();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getRole()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', array());
+
+        return parent::getRole();
+    }
+
 }

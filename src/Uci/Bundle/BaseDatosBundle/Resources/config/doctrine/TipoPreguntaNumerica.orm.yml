@@ -1,0 +1,49 @@
+Uci\Bundle\BaseDatosBundle\Entity\TipoPreguntaNumerica:
+    type: entity
+    table: tipo_pregunta_numerica
+    indexes:
+        fk_preguntas_numericas_respuesta1_idx:
+            columns:
+                - respuesta_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        primerNumero:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: primer_numero
+        segundoNumero:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: segundo_numero
+        esSpan:
+            type: blob
+            nullable: true
+            length: 1
+            fixed: false
+            comment: ''
+            column: es_span
+    manyToOne:
+        respuesta:
+            targetEntity: Respuesta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                respuesta_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

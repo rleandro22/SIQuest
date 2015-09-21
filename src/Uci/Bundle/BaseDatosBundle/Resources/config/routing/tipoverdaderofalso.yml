@@ -1,0 +1,30 @@
+tipoverdaderofalso:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:TipoVerdaderoFalso:index" }
+
+tipoverdaderofalso_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:TipoVerdaderoFalso:show" }
+
+tipoverdaderofalso_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:TipoVerdaderoFalso:new" }
+
+tipoverdaderofalso_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:TipoVerdaderoFalso:create" }
+    methods:  POST
+
+tipoverdaderofalso_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:TipoVerdaderoFalso:edit" }
+
+tipoverdaderofalso_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:TipoVerdaderoFalso:update" }
+    methods:  [POST, PUT]
+
+tipoverdaderofalso_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:TipoVerdaderoFalso:delete" }
+    methods:  [POST, DELETE]

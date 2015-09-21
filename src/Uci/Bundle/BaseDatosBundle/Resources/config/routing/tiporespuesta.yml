@@ -1,0 +1,30 @@
+tiporespuesta:
+    path:     /
+    defaults: { _controller: "UciBaseDatosBundle:TipoRespuesta:index" }
+
+tiporespuesta_show:
+    path:     /{id}/show
+    defaults: { _controller: "UciBaseDatosBundle:TipoRespuesta:show" }
+
+tiporespuesta_new:
+    path:     /new
+    defaults: { _controller: "UciBaseDatosBundle:TipoRespuesta:new" }
+
+tiporespuesta_create:
+    path:     /create
+    defaults: { _controller: "UciBaseDatosBundle:TipoRespuesta:create" }
+    methods:  POST
+
+tiporespuesta_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UciBaseDatosBundle:TipoRespuesta:edit" }
+
+tiporespuesta_update:
+    path:     /{id}/update
+    defaults: { _controller: "UciBaseDatosBundle:TipoRespuesta:update" }
+    methods:  [POST, PUT]
+
+tiporespuesta_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UciBaseDatosBundle:TipoRespuesta:delete" }
+    methods:  [POST, DELETE]

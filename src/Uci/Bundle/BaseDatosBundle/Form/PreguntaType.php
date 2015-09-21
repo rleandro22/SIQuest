@@ -15,11 +15,10 @@ class PreguntaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('titulo')
+            ->add('areaConocimiento')
             ->add('capitulo')
             ->add('grupoProcesos')
-            ->add('areaConocimiento')
-            ->add('tipoPregunta')
-            ->add('respuesta')
             ->add('tipoPrueba')
         ;
     }

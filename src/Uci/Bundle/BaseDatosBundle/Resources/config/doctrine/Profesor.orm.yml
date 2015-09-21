@@ -14,6 +14,14 @@ Uci\Bundle\BaseDatosBundle\Entity\Profesor:
             id: true
             generator:
                 strategy: IDENTITY
+    fields:
+        editatodas:
+            type: blob
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+            column: editaTodas
     manyToOne:
         usuario:
             targetEntity: Usuario

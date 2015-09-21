@@ -2,6 +2,7 @@
 
 namespace Uci\Bundle\BaseDatosBundle\Entity;
 
+use Symfony\Component\Security\Core\Role\RoleInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="rol")
  * @ORM\Entity
  */
-class Rol
+class Rol implements RoleInterface
 {
     /**
      * @var integer
@@ -66,4 +67,9 @@ class Rol
     public function __toString() {
     return $this->nombre;
 }
+
+    public function getRole() {
+        $this->getNombre();
+    }
+
 }
