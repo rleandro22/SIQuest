@@ -12,6 +12,7 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
         $this->blocks = array(
             'header' => array($this, 'block_header'),
             'body' => array($this, 'block_body'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -22,42 +23,45 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f963acc197db7e4d2e131f4ec30c17b4ff25c3d039de55a18b8863ef868a529d = $this->env->getExtension("native_profiler");
-        $__internal_f963acc197db7e4d2e131f4ec30c17b4ff25c3d039de55a18b8863ef868a529d->enter($__internal_f963acc197db7e4d2e131f4ec30c17b4ff25c3d039de55a18b8863ef868a529d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Vista:indiceUsuario.html.twig"));
+        $__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5 = $this->env->getExtension("native_profiler");
+        $__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5->enter($__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Vista:indiceUsuario.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_f963acc197db7e4d2e131f4ec30c17b4ff25c3d039de55a18b8863ef868a529d->leave($__internal_f963acc197db7e4d2e131f4ec30c17b4ff25c3d039de55a18b8863ef868a529d_prof);
+        $__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5->leave($__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_8001f33e729df83fb805c20c9297e0d5ae6c42e956fb63669141426a48e6c63c = $this->env->getExtension("native_profiler");
-        $__internal_8001f33e729df83fb805c20c9297e0d5ae6c42e956fb63669141426a48e6c63c->enter($__internal_8001f33e729df83fb805c20c9297e0d5ae6c42e956fb63669141426a48e6c63c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20 = $this->env->getExtension("native_profiler");
+        $__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20->enter($__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_8001f33e729df83fb805c20c9297e0d5ae6c42e956fb63669141426a48e6c63c->leave($__internal_8001f33e729df83fb805c20c9297e0d5ae6c42e956fb63669141426a48e6c63c_prof);
+        $__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20->leave($__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_0a61cfe4423638e4606efeb583086f9502bb8c7259531fbe1b55c487f24afea2 = $this->env->getExtension("native_profiler");
-        $__internal_0a61cfe4423638e4606efeb583086f9502bb8c7259531fbe1b55c487f24afea2->enter($__internal_0a61cfe4423638e4606efeb583086f9502bb8c7259531fbe1b55c487f24afea2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe = $this->env->getExtension("native_profiler");
+        $__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe->enter($__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
     <div class=\"container\">
 
         <ol class=\"breadcrumb\">
-            <li><a href=\"index.html\">Inicio</a></li>
-            <li class=\"active\">Mantenimiento de libros</li>
+            <li><a href=\"";
+        // line 12
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_indiceuser");
+        echo "\">Inicio</a></li>
+            <li class=\"active\">Mantenimiento de usuario</li>
         </ol>
         <div class=\"row\">
             <!-- Sidebar -->
@@ -87,43 +91,150 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
                 </div>
             </aside>
             <!-- /Sidebar -->
-
             <!-- Article main content -->
             <article class=\"col-sm-8 maincontent\">
                 <header class=\"page-header\">
-                    <h1 class=\"page-title\">Nuevo Libro</h1>
+                    <h1 class=\"page-title\">Lista de usuarios</h1>
                 </header>
-
-                <p>
-                    Ingrese los datos del libro
-                </p>
                 <br>
-                <form>
-                    <div class=\"top-margin\">
-                        <label>Titulo <span class=\"text-danger\">*</span></label>
-                        <input type=\"text\" class=\"form-control\">
-                    </div>
-                    <div class=\"top-margin\">
-                        <label>Año <span class=\"text-danger\">*</span></label>
-                        <input type=\"password\" class=\"form-control\">
-                    </div>
-                    <div class=\"top-margin\">
-                        <label>Autor <span class=\"text-danger\">*</span></label>
-                        <input type=\"text\" class=\"form-control\">
-                    </div>
-                    <div class=\"top-margin\">
-                        <label>Descripción <span class=\"text-danger\">*</span></label>
-                        <input type=\"password\" class=\"form-control\">
-                    </div>
+                <!-- /Aquí va el contenido -->
 
-                    <hr>
-
-                    <div class=\"row\">
-                        <div class=\"col-lg-4 text-right\">
-                            <button class=\"btn btn-action\" type=\"submit\">Guardar</button>
-                        </div>
+                <div class=\"row\">
+                    <div class=\"col-sm-4\">
+                        <input id=\"filter\" class=\"form-control\" type=\"text\" placeholder=\"Buscar\">
                     </div>
-                </form>
+                </div>
+                <br>
+
+
+                <table class=\"table demo table-bordered\" id=\"tabla\" data-filter=\"#filter\">
+                    <thead>
+                        <tr>
+                            <th data-toggle=\"true\">
+                                Nombre
+                            </th>
+                            <th data-hide=\"phone\">
+                                Apellido
+                            </th>
+                            <th data-hide=\"tablet,phone\">
+                                Job Title
+                            </th>
+                            <th data-hide=\"tablet,phone\">
+                                DOB
+                            </th>
+                            <th data-hide=\"tablet,phone\">
+                                Status
+                            </th>
+                            <th data-sort-ignore=\"true\" data-hide=\"tablet,phone\" data-name=\"Acciones\"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Isidra</td>
+                            <td><a href=\"#\">Boudreaux</a></td>
+                            <td>Traffic Court Referee</td>
+                            <td data-value=\"78025368997\">22 Jun 1972</td>
+                            <td data-value=\"1\"><span class=\"status-metro status-active\" title=\"Active\">Active</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Shona</td>
+                            <td>Woldt</td>
+                            <td><a href=\"#\">Airline Transport Pilot</a></td>
+                            <td data-value=\"370961043292\">3 Oct 1981</td>
+                            <td data-value=\"2\"><span class=\"status-metro status-disabled\" title=\"Disabled\">Disabled</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Granville</td>
+                            <td>Leonardo</td>
+                            <td>Business Services Sales Representative</td>
+                            <td data-value=\"-22133780420\">19 Apr 1969</td>
+                            <td data-value=\"3\"><span class=\"status-metro status-suspended\" title=\"Suspended\">Suspended</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Easer</td>
+                            <td>Dragoo</td>
+                            <td>Drywall Stripper</td>
+                            <td data-value=\"250833505574\">13 Dec 1977</td>
+                            <td data-value=\"1\"><span class=\"status-metro status-active\" title=\"Active\">Active</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Maple</td>
+                            <td>Halladay</td>
+                            <td>Aviation Tactical Readiness Officer</td>
+                            <td data-value=\"694116650726\">30 Dec 1991</td>
+                            <td data-value=\"3\"><span class=\"status-metro status-suspended\" title=\"Suspended\">Suspended</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Maxine</td>
+                            <td><a href=\"#\">Woldt</a></td>
+                            <td><a href=\"#\">Business Services Sales Representative</a></td>
+                            <td data-value=\"561440464855\">17 Oct 1987</td>
+                            <td data-value=\"2\"><span class=\"status-metro status-disabled\" title=\"Disabled\">Disabled</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorraine</td>
+                            <td>Mcgaughy</td>
+                            <td>Hemodialysis Technician</td>
+                            <td data-value=\"437400551390\">11 Nov 1983</td>
+                            <td data-value=\"2\"><span class=\"status-metro status-disabled\" title=\"Disabled\">Disabled</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lizzee</td>
+                            <td><a href=\"#\">Goodlow</a></td>
+                            <td>Technical Services Librarian</td>
+                            <td data-value=\"-257733999319\">1 Nov 1961</td>
+                            <td data-value=\"3\"><span class=\"status-metro status-suspended\" title=\"Suspended\">Suspended</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Judi</td>
+                            <td>Badgett</td>
+                            <td>Electrical Lineworker</td>
+                            <td data-value=\"362134712000\">23 Jun 1981</td>
+                            <td data-value=\"1\"><span class=\"status-metro status-active\" title=\"Active\">Active</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lauri</td>
+                            <td>Hyland</td>
+                            <td>Blackjack Supervisor</td>
+                            <td data-value=\"500874333932\">15 Nov 1985</td>
+                            <td data-value=\"3\"><span class=\"status-metro status-suspended\" title=\"Suspended\">Suspended</span></td>
+                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+                <!-- /Aquí acaba el contenido --> 
             </article>
             <!-- /Article -->
         </div>
@@ -131,7 +242,26 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
 
 ";
         
-        $__internal_0a61cfe4423638e4606efeb583086f9502bb8c7259531fbe1b55c487f24afea2->leave($__internal_0a61cfe4423638e4606efeb583086f9502bb8c7259531fbe1b55c487f24afea2_prof);
+        $__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe->leave($__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe_prof);
+
+    }
+
+    // line 194
+    public function block_javascripts($context, array $blocks = array())
+    {
+        $__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690 = $this->env->getExtension("native_profiler");
+        $__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690->enter($__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 195
+        echo "    \$(function () {
+    \$('table').footable().on('click', '.row-delete', function(e) {
+    e.preventDefault();
+    });
+    \$('tabla').scrollTableBody();
+    });
+";
+        
+        $__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690->leave($__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690_prof);
 
     }
 
@@ -147,6 +277,6 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
 
     public function getDebugInfo()
     {
-        return array (  55 => 8,  49 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  256 => 195,  250 => 194,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 }
