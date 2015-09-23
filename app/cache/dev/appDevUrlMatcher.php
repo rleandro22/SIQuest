@@ -1858,25 +1858,18 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         if (0 === strpos($pathinfo, '/admin')) {
             // uci_administrador_homepage
             if ($pathinfo === '/admin') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_uci_administrador_homepage;
-                }
-
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aInicioAction',  '_route' => 'uci_administrador_homepage',);
             }
-            not_uci_administrador_homepage:
 
             // uci_administrador_indiceuser
-            if ($pathinfo === '/admin/registrar_usuario') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_uci_administrador_indiceuser;
-                }
-
+            if ($pathinfo === '/admin/lista_usuarios') {
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aIndiceUsuarioAction',  '_route' => 'uci_administrador_indiceuser',);
             }
-            not_uci_administrador_indiceuser:
+
+            // uci_administrador_adduser
+            if ($pathinfo === '/admin/registrar_usuario') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aRegistrarUsuarioAction',  '_route' => 'uci_administrador_adduser',);
+            }
 
         }
 

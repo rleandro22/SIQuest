@@ -9,35 +9,13 @@
     <div class="container">
 
         <ol class="breadcrumb">
-            <li><a href="{{ path('uci_administrador_indiceuser') }}">Inicio</a></li>
-            <li class="active">Mantenimiento de usuario</li>
+            <li><a href="{{ path('uci_administrador_homepage') }}">Inicio</a></li>
+            <li class="active">Listado de Usuarios</li>
         </ol>
         <div class="row">
             <!-- Sidebar -->
             <aside class="col-md-4 sidebar sidebar-left">
-                <div class="row widget">
-                    <div class="col-xs-12">
-                        <h4>Menu de mantenimiento</h4>
-                    </div>
-                </div>
-                <div class="row widget">
-                    <div class="col-xs-12">
-                        <div id='cssmenu'>
-                            <ul>
-                                <li><a href='#'><span>Actualizar</span></a></li>
-                                <li class='active has-sub'><a href='#'><span>Ingresar</span></a>
-                                    <ul>
-                                        <li><a href='#'><span>PMBok</span></a>
-                                        </li>
-                                        <li><a href='#'><span>Otro</span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href='#'><span>Borrar</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                {% include 'UciAdministradorBundle:Menus:mantenimientoUsuario.html.twig' %}
             </aside>
             <!-- /Sidebar -->
             <!-- Article main content -->
@@ -54,9 +32,6 @@
                     </div>
                 </div>
                 <br>
-
-
-
                 <table class="table demo table-bordered" id="tabla" data-filter="#filter">
                     <thead>
                         <tr>
@@ -79,7 +54,6 @@
                         </tr>
                     </thead>
                     <tbody> 
-
                         {% for entity in entities %}
                             <tr>
                                 <td><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
@@ -92,11 +66,8 @@
                                 </td>
                             </tr>
                         {% endfor %}
-
                     </tbody>
                 </table>
-
-
                 <!-- /Aquí acaba el contenido --> 
             </article>
             <!-- /Article -->

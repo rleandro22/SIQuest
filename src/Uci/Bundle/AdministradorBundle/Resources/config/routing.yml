@@ -1,11 +1,11 @@
 uci_administrador_homepage:
     pattern:  /admin
     defaults: { _controller: UciAdministradorBundle:Default:aInicio }
-    requirements:
-        _method:  GET
 
 uci_administrador_indiceuser:
-    pattern:  /admin/registrar_usuario
+    pattern:  /admin/lista_usuarios
     defaults: { _controller: UciAdministradorBundle:Default:aIndiceUsuario }
-    requirements:
-        _method:  GET
+        
+uci_administrador_adduser:
+    pattern:  /admin/registrar_usuario
+    defaults: { _controller: UciAdministradorBundle:Default:aRegistrarUsuario }

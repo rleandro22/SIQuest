@@ -22,34 +22,34 @@ class __TwigTemplate_5058bbb89b5441ea622912f1a4772b70c48693e37b370fadb837c160d4d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f86efcb57e6573f7872940be999cb2f639750c5e5c06e9ae01dbe85a41e00f11 = $this->env->getExtension("native_profiler");
-        $__internal_f86efcb57e6573f7872940be999cb2f639750c5e5c06e9ae01dbe85a41e00f11->enter($__internal_f86efcb57e6573f7872940be999cb2f639750c5e5c06e9ae01dbe85a41e00f11_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciSeguridadBundle:VistaIdentificacion:identificacion.html.twig"));
+        $__internal_d67bd3969516d007d2ec5320e4ce568dc505749ac81c726d2eaaa5ba7f1efd0b = $this->env->getExtension("native_profiler");
+        $__internal_d67bd3969516d007d2ec5320e4ce568dc505749ac81c726d2eaaa5ba7f1efd0b->enter($__internal_d67bd3969516d007d2ec5320e4ce568dc505749ac81c726d2eaaa5ba7f1efd0b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciSeguridadBundle:VistaIdentificacion:identificacion.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_f86efcb57e6573f7872940be999cb2f639750c5e5c06e9ae01dbe85a41e00f11->leave($__internal_f86efcb57e6573f7872940be999cb2f639750c5e5c06e9ae01dbe85a41e00f11_prof);
+        $__internal_d67bd3969516d007d2ec5320e4ce568dc505749ac81c726d2eaaa5ba7f1efd0b->leave($__internal_d67bd3969516d007d2ec5320e4ce568dc505749ac81c726d2eaaa5ba7f1efd0b_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_70ff3273cddc654d0e8c51a77f045295976cc0bcfd1b44e71ac77cdc56a9e3d9 = $this->env->getExtension("native_profiler");
-        $__internal_70ff3273cddc654d0e8c51a77f045295976cc0bcfd1b44e71ac77cdc56a9e3d9->enter($__internal_70ff3273cddc654d0e8c51a77f045295976cc0bcfd1b44e71ac77cdc56a9e3d9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_85e4182614d3f21ab72ef294ac40fa093325e6083edd0635e538fbde91c33605 = $this->env->getExtension("native_profiler");
+        $__internal_85e4182614d3f21ab72ef294ac40fa093325e6083edd0635e538fbde91c33605->enter($__internal_85e4182614d3f21ab72ef294ac40fa093325e6083edd0635e538fbde91c33605_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_70ff3273cddc654d0e8c51a77f045295976cc0bcfd1b44e71ac77cdc56a9e3d9->leave($__internal_70ff3273cddc654d0e8c51a77f045295976cc0bcfd1b44e71ac77cdc56a9e3d9_prof);
+        $__internal_85e4182614d3f21ab72ef294ac40fa093325e6083edd0635e538fbde91c33605->leave($__internal_85e4182614d3f21ab72ef294ac40fa093325e6083edd0635e538fbde91c33605_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_50e2a46752d0cba4dcb5bf7b8145a6947328d2222f0774feea4a4568720a0422 = $this->env->getExtension("native_profiler");
-        $__internal_50e2a46752d0cba4dcb5bf7b8145a6947328d2222f0774feea4a4568720a0422->enter($__internal_50e2a46752d0cba4dcb5bf7b8145a6947328d2222f0774feea4a4568720a0422_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6038e17974e01aa0e7db2369843dd7742bcaca79498065cc30689a52dacce80d = $this->env->getExtension("native_profiler");
+        $__internal_6038e17974e01aa0e7db2369843dd7742bcaca79498065cc30689a52dacce80d->enter($__internal_6038e17974e01aa0e7db2369843dd7742bcaca79498065cc30689a52dacce80d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -105,9 +105,9 @@ class __TwigTemplate_5058bbb89b5441ea622912f1a4772b70c48693e37b370fadb837c160d4d
         // line 41
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
         echo "\">
-                                           </div>
-                                           <div class=\"top-margin\">
-                                           <label>Contraseña <span class=\"text-danger\">*</span></label>
+                                </div>
+                                <div class=\"top-margin\">
+                                    <label>Contraseña <span class=\"text-danger\">*</span></label>
                                     <input type=\"password\" class=\"form-control\" placeholder=\"Contraseña\" name=\"_password\">
                                 </div>
 
@@ -138,7 +138,7 @@ class __TwigTemplate_5058bbb89b5441ea622912f1a4772b70c48693e37b370fadb837c160d4d
 
 ";
         
-        $__internal_50e2a46752d0cba4dcb5bf7b8145a6947328d2222f0774feea4a4568720a0422->leave($__internal_50e2a46752d0cba4dcb5bf7b8145a6947328d2222f0774feea4a4568720a0422_prof);
+        $__internal_6038e17974e01aa0e7db2369843dd7742bcaca79498065cc30689a52dacce80d->leave($__internal_6038e17974e01aa0e7db2369843dd7742bcaca79498065cc30689a52dacce80d_prof);
 
     }
 
