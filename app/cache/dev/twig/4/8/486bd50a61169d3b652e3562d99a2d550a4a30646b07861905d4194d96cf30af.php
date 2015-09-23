@@ -23,34 +23,34 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5 = $this->env->getExtension("native_profiler");
-        $__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5->enter($__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Vista:indiceUsuario.html.twig"));
+        $__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670 = $this->env->getExtension("native_profiler");
+        $__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670->enter($__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Vista:indiceUsuario.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5->leave($__internal_98fecdc93f3742aa97e2a4f311909913428672d960c3f71f49e9a935809baac5_prof);
+        $__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670->leave($__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20 = $this->env->getExtension("native_profiler");
-        $__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20->enter($__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b = $this->env->getExtension("native_profiler");
+        $__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b->enter($__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20->leave($__internal_ae2c5a5b49a24f9b856550b92909f9ec4e06768c7c9bb6a067f993524c374a20_prof);
+        $__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b->leave($__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe = $this->env->getExtension("native_profiler");
-        $__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe->enter($__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57 = $this->env->getExtension("native_profiler");
+        $__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57->enter($__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -116,16 +116,16 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
                             <th data-hide=\"phone\">
                                 Apellido
                             </th>
-                            <th data-hide=\"tablet,phone\">
+                            <th data-hide=\"phone\">
                                 Job Title
                             </th>
-                            <th data-hide=\"tablet,phone\">
+                            <th data-hide=\"phone\">
                                 DOB
                             </th>
-                            <th data-hide=\"tablet,phone\">
+                            <th data-hide=\"phone\">
                                 Status
                             </th>
-                            <th data-sort-ignore=\"true\" data-hide=\"tablet,phone\" data-name=\"Acciones\"></th>
+                            <th data-sort-ignore=\"true\" data-hide=\"phone\" data-name=\"Acciones\"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -242,26 +242,29 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
 
 ";
         
-        $__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe->leave($__internal_14ad3dbaf96efc1803c6abd895dc75cdfe7dbd7269707c358ea7a0de728b3ffe_prof);
+        $__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57->leave($__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57_prof);
 
     }
 
     // line 194
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690 = $this->env->getExtension("native_profiler");
-        $__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690->enter($__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950 = $this->env->getExtension("native_profiler");
+        $__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950->enter($__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 195
-        echo "    \$(function () {
-    \$('table').footable().on('click', '.row-delete', function(e) {
-    e.preventDefault();
-    });
-    \$('tabla').scrollTableBody();
-    });
+        $this->displayParentBlock("javascripts", $context, $blocks);
+        echo "
+    <script type=\"text/javascript\">
+        \$(function () {
+\t\t\t\$('table').footable().on('click', '.row-delete', function(e) {
+\t\t\t\te.preventDefault();
+\t\t\t});
+        });
+    </script>
 ";
         
-        $__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690->leave($__internal_a508a2b48c433c302541a5ab036abeb88bc05013b4f0d00660f4296d44708690_prof);
+        $__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950->leave($__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950_prof);
 
     }
 

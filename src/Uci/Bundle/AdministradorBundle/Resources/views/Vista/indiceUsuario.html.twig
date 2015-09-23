@@ -55,6 +55,7 @@
                 </div>
                 <br>
 
+                
 
                 <table class="table demo table-bordered" id="tabla" data-filter="#filter">
                     <thead>
@@ -65,16 +66,16 @@
                             <th data-hide="phone">
                                 Apellido
                             </th>
-                            <th data-hide="tablet,phone">
+                            <th data-hide="phone">
                                 Job Title
                             </th>
-                            <th data-hide="tablet,phone">
+                            <th data-hide="phone">
                                 DOB
                             </th>
-                            <th data-hide="tablet,phone">
+                            <th data-hide="phone">
                                 Status
                             </th>
-                            <th data-sort-ignore="true" data-hide="tablet,phone" data-name="Acciones"></th>
+                            <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -192,11 +193,13 @@
 {% endblock %}
 
 {% block javascripts %}
-    $(function () {
-    $('table').footable().on('click', '.row-delete', function(e) {
-    e.preventDefault();
-    });
-    $('tabla').scrollTableBody();
-    });
+{{ parent() }}
+    <script type="text/javascript">
+        $(function () {
+			$('table').footable().on('click', '.row-delete', function(e) {
+				e.preventDefault();
+			});
+        });
+    </script>
 {% endblock %}
 

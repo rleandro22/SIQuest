@@ -9,12 +9,11 @@ body{
     }
 	
 .demo-container {
-	margin:10px;
+	margin:0px;
 }
 
 code {
     background: #ddd;
-    padding:2px 5px;
 }
 
 .status-metro {
