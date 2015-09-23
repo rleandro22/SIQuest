@@ -23,34 +23,34 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670 = $this->env->getExtension("native_profiler");
-        $__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670->enter($__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Vista:indiceUsuario.html.twig"));
+        $__internal_bc14d180d0348b62315b5e5c14d829941a778e26909792ead46e2ed455bb36c8 = $this->env->getExtension("native_profiler");
+        $__internal_bc14d180d0348b62315b5e5c14d829941a778e26909792ead46e2ed455bb36c8->enter($__internal_bc14d180d0348b62315b5e5c14d829941a778e26909792ead46e2ed455bb36c8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Vista:indiceUsuario.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670->leave($__internal_98c6b2ce85e0939909c76dd4aac2fc4b6010563220e4962fe4469fcd5c840670_prof);
+        $__internal_bc14d180d0348b62315b5e5c14d829941a778e26909792ead46e2ed455bb36c8->leave($__internal_bc14d180d0348b62315b5e5c14d829941a778e26909792ead46e2ed455bb36c8_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b = $this->env->getExtension("native_profiler");
-        $__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b->enter($__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_99c2f4c210a8e2b04a80c41f1289784a2b527df770d743e58a40d77fd40675d4 = $this->env->getExtension("native_profiler");
+        $__internal_99c2f4c210a8e2b04a80c41f1289784a2b527df770d743e58a40d77fd40675d4->enter($__internal_99c2f4c210a8e2b04a80c41f1289784a2b527df770d743e58a40d77fd40675d4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b->leave($__internal_cc6f76c8907bb31272344b1e94e82b90f68ffd41b92cdd8d7e91dc1275a3fb3b_prof);
+        $__internal_99c2f4c210a8e2b04a80c41f1289784a2b527df770d743e58a40d77fd40675d4->leave($__internal_99c2f4c210a8e2b04a80c41f1289784a2b527df770d743e58a40d77fd40675d4_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57 = $this->env->getExtension("native_profiler");
-        $__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57->enter($__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_f68b8b813756198fddfffb72a2713b8138e7f83f781438f3257c3abe7ac00109 = $this->env->getExtension("native_profiler");
+        $__internal_f68b8b813756198fddfffb72a2713b8138e7f83f781438f3257c3abe7ac00109->enter($__internal_f68b8b813756198fddfffb72a2713b8138e7f83f781438f3257c3abe7ac00109_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -107,6 +107,7 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
                 <br>
 
 
+
                 <table class=\"table demo table-bordered\" id=\"tabla\" data-filter=\"#filter\">
                     <thead>
                         <tr>
@@ -114,123 +115,69 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
                                 Nombre
                             </th>
                             <th data-hide=\"phone\">
-                                Apellido
+                                Apellidos
                             </th>
                             <th data-hide=\"phone\">
-                                Job Title
+                                Usuario
                             </th>
                             <th data-hide=\"phone\">
-                                DOB
+                                Email
                             </th>
                             <th data-hide=\"phone\">
-                                Status
+                                Rol
                             </th>
                             <th data-sort-ignore=\"true\" data-hide=\"phone\" data-name=\"Acciones\"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Isidra</td>
-                            <td><a href=\"#\">Boudreaux</a></td>
-                            <td>Traffic Court Referee</td>
-                            <td data-value=\"78025368997\">22 Jun 1972</td>
-                            <td data-value=\"1\"><span class=\"status-metro status-active\" title=\"Active\">Active</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Shona</td>
-                            <td>Woldt</td>
-                            <td><a href=\"#\">Airline Transport Pilot</a></td>
-                            <td data-value=\"370961043292\">3 Oct 1981</td>
-                            <td data-value=\"2\"><span class=\"status-metro status-disabled\" title=\"Disabled\">Disabled</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Granville</td>
-                            <td>Leonardo</td>
-                            <td>Business Services Sales Representative</td>
-                            <td data-value=\"-22133780420\">19 Apr 1969</td>
-                            <td data-value=\"3\"><span class=\"status-metro status-suspended\" title=\"Suspended\">Suspended</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Easer</td>
-                            <td>Dragoo</td>
-                            <td>Drywall Stripper</td>
-                            <td data-value=\"250833505574\">13 Dec 1977</td>
-                            <td data-value=\"1\"><span class=\"status-metro status-active\" title=\"Active\">Active</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Maple</td>
-                            <td>Halladay</td>
-                            <td>Aviation Tactical Readiness Officer</td>
-                            <td data-value=\"694116650726\">30 Dec 1991</td>
-                            <td data-value=\"3\"><span class=\"status-metro status-suspended\" title=\"Suspended\">Suspended</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Maxine</td>
-                            <td><a href=\"#\">Woldt</a></td>
-                            <td><a href=\"#\">Business Services Sales Representative</a></td>
-                            <td data-value=\"561440464855\">17 Oct 1987</td>
-                            <td data-value=\"2\"><span class=\"status-metro status-disabled\" title=\"Disabled\">Disabled</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Lorraine</td>
-                            <td>Mcgaughy</td>
-                            <td>Hemodialysis Technician</td>
-                            <td data-value=\"437400551390\">11 Nov 1983</td>
-                            <td data-value=\"2\"><span class=\"status-metro status-disabled\" title=\"Disabled\">Disabled</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Lizzee</td>
-                            <td><a href=\"#\">Goodlow</a></td>
-                            <td>Technical Services Librarian</td>
-                            <td data-value=\"-257733999319\">1 Nov 1961</td>
-                            <td data-value=\"3\"><span class=\"status-metro status-suspended\" title=\"Suspended\">Suspended</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Judi</td>
-                            <td>Badgett</td>
-                            <td>Electrical Lineworker</td>
-                            <td data-value=\"362134712000\">23 Jun 1981</td>
-                            <td data-value=\"1\"><span class=\"status-metro status-active\" title=\"Active\">Active</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Lauri</td>
-                            <td>Hyland</td>
-                            <td>Blackjack Supervisor</td>
-                            <td data-value=\"500874333932\">15 Nov 1985</td>
-                            <td data-value=\"3\"><span class=\"status-metro status-suspended\" title=\"Suspended\">Suspended</span></td>
-                            <td><a class=\"row-delete\" href=\"#\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                <a class=\"row-delete\" href=\"#\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody> 
 
+                        ";
+        // line 83
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
+        foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
+            // line 84
+            echo "                            <tr>
+                                <td><a href=\"";
+            // line 85
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("usuario_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "nombre", array()), "html", null, true);
+            echo "</a></td>
+                                <td>";
+            // line 86
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "apellidos", array()), "html", null, true);
+            echo "</td>
+                                <td>";
+            // line 87
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "username", array()), "html", null, true);
+            echo "</td>
+                                <td>";
+            // line 88
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "email", array()), "html", null, true);
+            echo "</td>
+                                <td><span class=\"status-metro status-active\" title=\"Active\">";
+            // line 89
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["entity"], "rol", array()), "nombre", array()), "html", null, true);
+            echo "</span></td>
+                                <td><a class=\"row-delete\" href=\"";
+            // line 90
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("usuario_show", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
+            echo "\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
+                                    <a class=\"row-delete\" href=\"";
+            // line 91
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("usuario_edit", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
+            echo "\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
+                                </td>
+                            </tr>
+                        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 95
+        echo "
+                    </tbody>
                 </table>
 
 
@@ -242,29 +189,30 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
 
 ";
         
-        $__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57->leave($__internal_0dce84a0bef8cb035ce3a4f5830ea8ce88f244aa2702abb2b6c8800d2eef0f57_prof);
+        $__internal_f68b8b813756198fddfffb72a2713b8138e7f83f781438f3257c3abe7ac00109->leave($__internal_f68b8b813756198fddfffb72a2713b8138e7f83f781438f3257c3abe7ac00109_prof);
 
     }
 
-    // line 194
+    // line 108
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950 = $this->env->getExtension("native_profiler");
-        $__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950->enter($__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_6d04f94acf53a5d918e6e859495f8463adf9c43b243f8c5f169fccbb93d26be4 = $this->env->getExtension("native_profiler");
+        $__internal_6d04f94acf53a5d918e6e859495f8463adf9c43b243f8c5f169fccbb93d26be4->enter($__internal_6d04f94acf53a5d918e6e859495f8463adf9c43b243f8c5f169fccbb93d26be4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 195
+        // line 109
+        echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script type=\"text/javascript\">
         \$(function () {
-\t\t\t\$('table').footable().on('click', '.row-delete', function(e) {
-\t\t\t\te.preventDefault();
-\t\t\t});
+            \$('table').footable().on('click', '.row-delete', function (e) {
+                e.preventDefault();
+            });
         });
     </script>
 ";
         
-        $__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950->leave($__internal_8df2ebc8546b00b97d323c5067c6b47ca4024e5f7a845062fca49f31c66f8950_prof);
+        $__internal_6d04f94acf53a5d918e6e859495f8463adf9c43b243f8c5f169fccbb93d26be4->leave($__internal_6d04f94acf53a5d918e6e859495f8463adf9c43b243f8c5f169fccbb93d26be4_prof);
 
     }
 
@@ -280,6 +228,6 @@ class __TwigTemplate_486bd50a61169d3b652e3562d99a2d550a4a30646b07861905d4194d96c
 
     public function getDebugInfo()
     {
-        return array (  256 => 195,  250 => 194,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  203 => 109,  197 => 108,  179 => 95,  169 => 91,  165 => 90,  161 => 89,  157 => 88,  153 => 87,  149 => 86,  143 => 85,  140 => 84,  136 => 83,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 }

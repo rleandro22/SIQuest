@@ -13,16 +13,13 @@ class DefaultController extends Controller {
     }
 
     public function aIndiceUsuarioAction() {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $entity = $em->getRepository('UciBaseDatosBundle:Usuario')->find($id);
-//
-//        if (!$entity) {
-//            throw $this->createNotFoundException('Unable to find Usuario entity.');
-//        }
-//
-//        $deleteForm = $this->createDeleteForm($id);
-        return $this->render('UciAdministradorBundle:Vista:indiceUsuario.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('UciBaseDatosBundle:Usuario')->findAll();
+
+        return $this->render('UciAdministradorBundle:Vista:indiceUsuario.html.twig', array(
+                    'entities' => $entities,
+        ));
     }
 
 }
