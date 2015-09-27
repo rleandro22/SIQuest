@@ -32,6 +32,14 @@ class DefaultController extends Controller {
                 $this->setSecurePassword($entity);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($entity);
+                $rol = $entity->getRol()->getNombre();
+                if($rol=='Profesor') {
+                    $edita = $username = $form["editatodas"]->getData();
+                    $profesor=new \Uci\Bundle\BaseDatosBundle\Entity\Profesor();
+                    $profesor->setUsuario($entity);
+                    $profesor->setEditatodas($edita);
+                    $em->persist($profesor);  
+                }
                 $em->flush();
                 return $this->redirectToRoute('uci_administrador_indiceuser');
             }
