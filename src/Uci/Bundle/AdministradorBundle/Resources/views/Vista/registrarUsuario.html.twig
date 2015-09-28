@@ -88,6 +88,7 @@
                                         {{ form_widget(form.rol,{'attr' : {'onChange':'quitarcomboProfe(this.value)'} }) }}
                                     </div>
                                 </div>
+                                <br>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden" id="filaPuededitar">
                                         {{ form_label(form.editatodas) }}
@@ -126,10 +127,11 @@
         function quitarcomboProfe(valor) {
             if (valor == 3) {
                 $("#filaPuededitar").removeClass('hidden');
-            }else{
+            } else {
                 $("#filaPuededitar").addClass('hidden');
             }
-        };
+        }
+        ;
     </script>
 {% endblock %}
 

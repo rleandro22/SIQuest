@@ -1129,3 +1129,9 @@ acead2,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/lista_usuarios,144
 5d07ab,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1443419347,,200
 37c5b1,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/lista_usuarios,1443419351,,200
 a44c2d,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/registrar_usuario,1443419353,,200
+6459ef,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1443419470,,200
+7ffff2,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/lista_usuarios,1443419474,,200
+e4e793,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/registrar_usuario,1443419477,,200
+aaa5b0,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1443419537,,200
+301dfa,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/lista_usuarios,1443419541,,200
+c6eb6a,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/registrar_usuario,1443419544,,200
