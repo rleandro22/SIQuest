@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Entity\Usuario;
 use Uci\Bundle\BaseDatosBundle\Form\UsuarioType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormError;
 
 class DefaultController extends Controller {
 
@@ -27,18 +28,24 @@ class DefaultController extends Controller {
         $form->handleRequest($request);
         $error = '';
         if ($request->getMethod() == 'POST') {
+            $clave = $form["password"]->getData();
+            if (empty($clave)) {
+//                $error = new FormError("Debe ingresar la clave");
+//                $form->get('password')->addError($error);
+                $form->addError(new FormError('Debe ingresar la clave'));
+            }
             $error = $form->getErrors();
             if ($form->isValid()) {
                 $this->setSecurePassword($entity);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($entity);
                 $rol = $entity->getRol()->getNombre();
-                if($rol=='Profesor') {
-                    $edita = $username = $form["editatodas"]->getData();
-                    $profesor=new \Uci\Bundle\BaseDatosBundle\Entity\Profesor();
+                if ($rol == 'Profesor') {
+                    $edita = $form["editatodas"]->getData();
+                    $profesor = new \Uci\Bundle\BaseDatosBundle\Entity\Profesor();
                     $profesor->setUsuario($entity);
                     $profesor->setEditatodas($edita);
-                    $em->persist($profesor);  
+                    $em->persist($profesor);
                 }
                 $em->flush();
                 return $this->redirectToRoute('uci_administrador_indiceuser');
@@ -51,11 +58,51 @@ class DefaultController extends Controller {
         ));
     }
 
+    public function aEditarUsuarioAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('UciBaseDatosBundle:Usuario')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $form = $this->createForm(new UsuarioType(), $entity);
+        $form->add('submit', 'submit', array('label' => 'Update'));
+        $editForm = $form;
+        $claveVieja = $entity->getPassword();
+        if ($request->getMethod() == 'POST') {
+            $claveFormulario = trim($form["password"]->getData());
+            if (!isset($claveFormulario) || $claveFormulario == '') {
+                $form->getData()->getPassword()->setValue($claveVieja);
+            }
+            $editForm->handleRequest($request);
+            if ($editForm->isValid()) {
+                $salt = $entity->getSalt();
+                if (!$this->clavesSonIguales($claveVieja, $entity->getPassword(), $salt)) {
+                    $this->setSecurePassword($entity);
+                }
+                $em->flush();
+                return $this->redirectToRoute('uci_administrador_indiceuser');
+            }
+        }
+        return $this->render('UciBaseDatosBundle:Usuario:edit.html.twig', array(
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+        ));
+    }
+
     private function setSecurePassword(&$entity) {
         $entity->setSalt(md5(time()));
         $encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
         $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
         $entity->setPassword($password);
+    }
+
+    private function clavesSonIguales($claveVieja, $claveNueva, $salt) {
+        $encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
+        $claveNuevaCodificada = $encoder->encodePassword($claveNueva, $salt);
+        if ($claveVieja === $claveNuevaCodificada) {
+            return true;
+        }
+        return false;
     }
 
 }

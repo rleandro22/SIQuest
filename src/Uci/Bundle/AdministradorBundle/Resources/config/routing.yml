@@ -9,3 +9,7 @@ uci_administrador_indiceuser:
 uci_administrador_adduser:
     pattern:  /admin/registrar_usuario
     defaults: { _controller: UciAdministradorBundle:Default:aRegistrarUsuario }
+    
+uci_administrador_edituser:
+    pattern:  /admin/editar_usuario/{id}
+    defaults: { _controller: UciAdministradorBundle:Default:aEditarUsuario }

@@ -15,8 +15,8 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3dd0035c8715040593404179c339e83970e0856d2c8e4fb101f0771338200e29 = $this->env->getExtension("native_profiler");
-        $__internal_3dd0035c8715040593404179c339e83970e0856d2c8e4fb101f0771338200e29->enter($__internal_3dd0035c8715040593404179c339e83970e0856d2c8e4fb101f0771338200e29_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoUsuario.html.twig"));
+        $__internal_95f8300523344e64549362cf6a0881743181cc19e57ecd5c6d8adb48a6d73ce2 = $this->env->getExtension("native_profiler");
+        $__internal_95f8300523344e64549362cf6a0881743181cc19e57ecd5c6d8adb48a6d73ce2->enter($__internal_95f8300523344e64549362cf6a0881743181cc19e57ecd5c6d8adb48a6d73ce2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoUsuario.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -31,7 +31,8 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
                 <li><a href='";
         // line 10
         echo $this->env->getExtension('routing')->getPath("uci_administrador_adduser");
-        echo "'><span>Nuevo</span></a></li>
+        echo "'><span>Nuevo usuario</span></a></li>
+                <li><a href='#'><span>Modificar usuario</span></a></li>
                 <li class='active has-sub'><a href='#'><span>Ingresar</span></a>
                     <ul>
                         <li><a href='#'><span>PMBok</span></a>
@@ -40,14 +41,14 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
                         </li>
                     </ul>
                 </li>
-                <li><a href='#'><span>Borrar</span></a></li>
+                
             </ul>
         </div>
     </div>
 </div>
 ";
         
-        $__internal_3dd0035c8715040593404179c339e83970e0856d2c8e4fb101f0771338200e29->leave($__internal_3dd0035c8715040593404179c339e83970e0856d2c8e4fb101f0771338200e29_prof);
+        $__internal_95f8300523344e64549362cf6a0881743181cc19e57ecd5c6d8adb48a6d73ce2->leave($__internal_95f8300523344e64549362cf6a0881743181cc19e57ecd5c6d8adb48a6d73ce2_prof);
 
     }
 

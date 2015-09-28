@@ -162,7 +162,7 @@ class UsuarioController extends Controller {
         $editForm = $this->createEditForm($entity);
         $current_pass = $entity->getPassword();
         $editForm->handleRequest($request);
-
+        $entity->setPassword($current_pass);
         if ($editForm->isValid()) {
             if ($current_pass != $entity->getPassword()) {
                 $this->setSecurePassword($entity);

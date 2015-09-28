@@ -61,8 +61,8 @@
                                 <td>{{ entity.username }}</td>
                                 <td>{{ entity.email }}</td>
                                 <td><span class="status-metro status-active" title="Active">{{ entity.rol.nombre }}</span></td>
-                                <td><a class="row-delete" href="{{ path('usuario_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a class="row-delete" href="{{ path('usuario_edit', { 'id': entity.id }) }}"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
+                                <td><a href="{{ path('uci_administrador_edituser', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="{{ path('usuario_show', { 'id': entity.id }) }}"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
                                 </td>
                             </tr>
                         {% endfor %}
