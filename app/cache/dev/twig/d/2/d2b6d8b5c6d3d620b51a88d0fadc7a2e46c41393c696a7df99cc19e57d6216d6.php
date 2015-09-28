@@ -23,34 +23,34 @@ class __TwigTemplate_d2b6d8b5c6d3d620b51a88d0fadc7a2e46c41393c696a7df99cc19e57d6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_1958402e386fc69c60cf2b129584899e205790f8b6b6f3f92953c2ffb38af8b8 = $this->env->getExtension("native_profiler");
-        $__internal_1958402e386fc69c60cf2b129584899e205790f8b6b6f3f92953c2ffb38af8b8->enter($__internal_1958402e386fc69c60cf2b129584899e205790f8b6b6f3f92953c2ffb38af8b8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Vista:registrarUsuario.html.twig"));
+        $__internal_6dd63003dd7ae84b25799913ff824a3dab4b05c6cd439e1374c4762303353c0e = $this->env->getExtension("native_profiler");
+        $__internal_6dd63003dd7ae84b25799913ff824a3dab4b05c6cd439e1374c4762303353c0e->enter($__internal_6dd63003dd7ae84b25799913ff824a3dab4b05c6cd439e1374c4762303353c0e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Vista:registrarUsuario.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_1958402e386fc69c60cf2b129584899e205790f8b6b6f3f92953c2ffb38af8b8->leave($__internal_1958402e386fc69c60cf2b129584899e205790f8b6b6f3f92953c2ffb38af8b8_prof);
+        $__internal_6dd63003dd7ae84b25799913ff824a3dab4b05c6cd439e1374c4762303353c0e->leave($__internal_6dd63003dd7ae84b25799913ff824a3dab4b05c6cd439e1374c4762303353c0e_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_fcc2d48d6df5a0525107c8760296cd88a9477d887b51904f3bfe681ed973b8d5 = $this->env->getExtension("native_profiler");
-        $__internal_fcc2d48d6df5a0525107c8760296cd88a9477d887b51904f3bfe681ed973b8d5->enter($__internal_fcc2d48d6df5a0525107c8760296cd88a9477d887b51904f3bfe681ed973b8d5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_3dced87dbafd492e134363e17f15ad8221d4153cf753ba02e66fe29ce6c9a503 = $this->env->getExtension("native_profiler");
+        $__internal_3dced87dbafd492e134363e17f15ad8221d4153cf753ba02e66fe29ce6c9a503->enter($__internal_3dced87dbafd492e134363e17f15ad8221d4153cf753ba02e66fe29ce6c9a503_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_fcc2d48d6df5a0525107c8760296cd88a9477d887b51904f3bfe681ed973b8d5->leave($__internal_fcc2d48d6df5a0525107c8760296cd88a9477d887b51904f3bfe681ed973b8d5_prof);
+        $__internal_3dced87dbafd492e134363e17f15ad8221d4153cf753ba02e66fe29ce6c9a503->leave($__internal_3dced87dbafd492e134363e17f15ad8221d4153cf753ba02e66fe29ce6c9a503_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_f976acc7bee7daed9fb5b6bb026a35f6b224abb61234491d61357ce735beb0c3 = $this->env->getExtension("native_profiler");
-        $__internal_f976acc7bee7daed9fb5b6bb026a35f6b224abb61234491d61357ce735beb0c3->enter($__internal_f976acc7bee7daed9fb5b6bb026a35f6b224abb61234491d61357ce735beb0c3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_2617ec154c7f85dc84461afe2ce69f31b16a840487d23eeac36a657efb3b075a = $this->env->getExtension("native_profiler");
+        $__internal_2617ec154c7f85dc84461afe2ce69f31b16a840487d23eeac36a657efb3b075a->enter($__internal_2617ec154c7f85dc84461afe2ce69f31b16a840487d23eeac36a657efb3b075a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -199,7 +199,7 @@ class __TwigTemplate_d2b6d8b5c6d3d620b51a88d0fadc7a2e46c41393c696a7df99cc19e57d6
                                     </div>
                                 </div>
                                 <br>
-                                <div class=\"top-margin\">
+                                <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
         // line 86
@@ -211,20 +211,22 @@ class __TwigTemplate_d2b6d8b5c6d3d620b51a88d0fadc7a2e46c41393c696a7df99cc19e57d6
         echo "
                                         ";
         // line 88
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "rol", array()), 'widget');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "rol", array()), 'widget', array("attr" => array("onChange" => "quitarcomboProfe(this.value)")));
         echo "
                                     </div>
-                                    <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
+                                </div>
+                                <div class=\"row top-margin\">
+                                    <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden\" id=\"filaPuededitar\">
                                         ";
-        // line 91
+        // line 93
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "editatodas", array()), 'label');
         echo "
                                         ";
-        // line 92
+        // line 94
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "editatodas", array()), 'errors');
         echo "
                                         ";
-        // line 93
+        // line 95
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "editatodas", array()), 'widget');
         echo "
                                     </div>
@@ -239,7 +241,7 @@ class __TwigTemplate_d2b6d8b5c6d3d620b51a88d0fadc7a2e46c41393c696a7df99cc19e57d6
                                     </div>
                                 </div>
                                 ";
-        // line 105
+        // line 107
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
                             </form>
@@ -257,30 +259,32 @@ class __TwigTemplate_d2b6d8b5c6d3d620b51a88d0fadc7a2e46c41393c696a7df99cc19e57d6
 
 ";
         
-        $__internal_f976acc7bee7daed9fb5b6bb026a35f6b224abb61234491d61357ce735beb0c3->leave($__internal_f976acc7bee7daed9fb5b6bb026a35f6b224abb61234491d61357ce735beb0c3_prof);
+        $__internal_2617ec154c7f85dc84461afe2ce69f31b16a840487d23eeac36a657efb3b075a->leave($__internal_2617ec154c7f85dc84461afe2ce69f31b16a840487d23eeac36a657efb3b075a_prof);
 
     }
 
-    // line 121
+    // line 123
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_2f815998c95b30bf25dda6e21ff535c7614e6c1e3d5b57b206c0f651a301afd1 = $this->env->getExtension("native_profiler");
-        $__internal_2f815998c95b30bf25dda6e21ff535c7614e6c1e3d5b57b206c0f651a301afd1->enter($__internal_2f815998c95b30bf25dda6e21ff535c7614e6c1e3d5b57b206c0f651a301afd1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_c9124b69ebd24063c9cd90153cea9d54eccddba5bf807bb2cae08d39f7af11e6 = $this->env->getExtension("native_profiler");
+        $__internal_c9124b69ebd24063c9cd90153cea9d54eccddba5bf807bb2cae08d39f7af11e6->enter($__internal_c9124b69ebd24063c9cd90153cea9d54eccddba5bf807bb2cae08d39f7af11e6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 122
+        // line 124
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script type=\"text/javascript\">
-        \$(function () {
-            \$('table').footable().on('click', '.row-delete', function (e) {
-                e.preventDefault();
-            });
-        });
+        function quitarcomboProfe(valor) {
+            if (valor == 3) {
+                \$(\"#filaPuededitar\").removeClass('hidden');
+            }else{
+                \$(\"#filaPuededitar\").addClass('hidden');
+            }
+        };
     </script>
 ";
         
-        $__internal_2f815998c95b30bf25dda6e21ff535c7614e6c1e3d5b57b206c0f651a301afd1->leave($__internal_2f815998c95b30bf25dda6e21ff535c7614e6c1e3d5b57b206c0f651a301afd1_prof);
+        $__internal_c9124b69ebd24063c9cd90153cea9d54eccddba5bf807bb2cae08d39f7af11e6->leave($__internal_c9124b69ebd24063c9cd90153cea9d54eccddba5bf807bb2cae08d39f7af11e6_prof);
 
     }
 
@@ -296,6 +300,6 @@ class __TwigTemplate_d2b6d8b5c6d3d620b51a88d0fadc7a2e46c41393c696a7df99cc19e57d6
 
     public function getDebugInfo()
     {
-        return array (  271 => 122,  265 => 121,  243 => 105,  228 => 93,  224 => 92,  220 => 91,  214 => 88,  210 => 87,  206 => 86,  197 => 80,  193 => 79,  189 => 78,  181 => 73,  177 => 72,  173 => 71,  165 => 66,  161 => 65,  157 => 64,  149 => 59,  145 => 58,  141 => 57,  133 => 52,  129 => 51,  125 => 50,  117 => 45,  113 => 44,  109 => 43,  103 => 40,  100 => 39,  94 => 37,  92 => 36,  73 => 19,  71 => 18,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  273 => 124,  267 => 123,  245 => 107,  230 => 95,  226 => 94,  222 => 93,  214 => 88,  210 => 87,  206 => 86,  197 => 80,  193 => 79,  189 => 78,  181 => 73,  177 => 72,  173 => 71,  165 => 66,  161 => 65,  157 => 64,  149 => 59,  145 => 58,  141 => 57,  133 => 52,  129 => 51,  125 => 50,  117 => 45,  113 => 44,  109 => 43,  103 => 40,  100 => 39,  94 => 37,  92 => 36,  73 => 19,  71 => 18,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 }

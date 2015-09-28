@@ -81,13 +81,15 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="top-margin">
+                                <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_label(form.rol) }}
                                         {{ form_errors(form.rol) }}
-                                        {{ form_widget(form.rol) }}
+                                        {{ form_widget(form.rol,{'attr' : {'onChange':'quitarcomboProfe(this.value)'} }) }}
                                     </div>
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden" id="filaPuededitar">
                                         {{ form_label(form.editatodas) }}
                                         {{ form_errors(form.editatodas) }}
                                         {{ form_widget(form.editatodas) }}
@@ -121,11 +123,13 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        $(function () {
-            $('table').footable().on('click', '.row-delete', function (e) {
-                e.preventDefault();
-            });
-        });
+        function quitarcomboProfe(valor) {
+            if (valor == 3) {
+                $("#filaPuededitar").removeClass('hidden');
+            }else{
+                $("#filaPuededitar").addClass('hidden');
+            }
+        };
     </script>
 {% endblock %}
 

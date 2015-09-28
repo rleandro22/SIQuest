@@ -14,13 +14,13 @@ class UsuarioType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-        ->add('nombre', 'text', array("label" => "Nombre: ", "required" => true, "attr" => array('class' => 'form-control')))
-        ->add('apellidos', 'text', array("label" => "Apellidos: ", "required" => true, "attr" => array('class' => 'form-control')))
-        ->add('username', 'text', array("label" => "Usuario: ", "required" => true, "attr" => array('class' => 'form-control')))
-        ->add('password', 'repeated', array('type' => 'password', 'invalid_message' => 'Las contraseñas no son iguales, repitelo', 'required' => true, 'first_options' => array('label' => 'Contraseña: ', "attr" => array('class' => 'form-control')), 'second_options' => array('label' => 'Repetir contraseña: ', "attr" => array('class' => 'form-control'))))
-        ->add('email', 'email', array("label" => "Correo electronico: ", "required" => true, "attr" => array('class' => 'form-control')))
-        ->add('rol', 'entity', array('class' => 'UciBaseDatosBundle:Rol', 'required' => true))
-        ->add('editatodas', 'choice', array('choices' => array(true => 'Sí', false => 'No'),'label' => '¿Edita todas las preguntas?: ', 'mapped' => false, 'multiple'  => false, 'expanded'  => true));
+                ->add('nombre', 'text', array("label" => "Nombre: ", "required" => true, "attr" => array('class' => 'form-control')))
+                ->add('apellidos', 'text', array("label" => "Apellidos: ", "required" => true, "attr" => array('class' => 'form-control')))
+                ->add('username', 'text', array("label" => "Usuario: ", "required" => true, "attr" => array('class' => 'form-control')))
+                ->add('password', 'repeated', array('type' => 'password', 'invalid_message' => 'Las contraseñas no son iguales, repitelo', 'required' => true, 'first_options' => array('label' => 'Contraseña: ', "attr" => array('class' => 'form-control')), 'second_options' => array('label' => 'Repetir contraseña: ', "attr" => array('class' => 'form-control'))))
+                ->add('email', 'email', array("label" => "Correo electronico: ", "required" => true, "attr" => array('class' => 'form-control')))
+                ->add('rol', 'entity', array('class' => 'UciBaseDatosBundle:Rol', 'required' => true))
+                ->add('editatodas', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Edita todas las preguntas?: ', 'mapped' => false, 'multiple' => false, 'expanded' => true, 'data' => 0));
     }
 
     /**
