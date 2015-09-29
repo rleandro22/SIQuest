@@ -30,8 +30,6 @@ class DefaultController extends Controller {
         if ($request->getMethod() == 'POST') {
             $clave = $form["password"]->getData();
             if (empty($clave)) {
-//                $error = new FormError("Debe ingresar la clave");
-//                $form->get('password')->addError($error);
                 $form->addError(new FormError('Debe ingresar la clave'));
             }
             $error = $form->getErrors();
@@ -69,14 +67,11 @@ class DefaultController extends Controller {
         $editForm = $form;
         $claveVieja = $entity->getPassword();
         if ($request->getMethod() == 'POST') {
-            $claveFormulario = trim($form["password"]->getData());
-            if (!isset($claveFormulario) || $claveFormulario == '') {
-                $form->getData()->getPassword()->setValue($claveVieja);
-            }
             $editForm->handleRequest($request);
             if ($editForm->isValid()) {
-                $salt = $entity->getSalt();
-                if (!$this->clavesSonIguales($claveVieja, $entity->getPassword(), $salt)) {
+                if ($entity->getPassword() == null) {
+                    $entity->setPassword($claveVieja);
+                } else {
                     $this->setSecurePassword($entity);
                 }
                 $em->flush();
