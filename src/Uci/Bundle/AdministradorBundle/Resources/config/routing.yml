@@ -11,5 +11,5 @@ uci_administrador_adduser:
     defaults: { _controller: UciAdministradorBundle:Default:aRegistrarUsuario }
     
 uci_administrador_edituser:
-    pattern:  /admin/editar_usuario/{id}
+    pattern:  /admin/{id}/editar_usuario
     defaults: { _controller: UciAdministradorBundle:Default:aEditarUsuario }

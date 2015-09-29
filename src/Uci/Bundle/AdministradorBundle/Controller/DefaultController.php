@@ -66,8 +66,10 @@ class DefaultController extends Controller {
         $form->add('submit', 'submit', array('label' => 'Update'));
         $editForm = $form;
         $claveVieja = $entity->getPassword();
+        $error = '';
         if ($request->getMethod() == 'POST') {
             $editForm->handleRequest($request);
+            $error = $form->getErrors();
             if ($editForm->isValid()) {
                 if ($entity->getPassword() == null) {
                     $entity->setPassword($claveVieja);
@@ -78,9 +80,10 @@ class DefaultController extends Controller {
                 return $this->redirectToRoute('uci_administrador_indiceuser');
             }
         }
-        return $this->render('UciBaseDatosBundle:Usuario:edit.html.twig', array(
+        return $this->render('UciAdministradorBundle:Vista:editarUsuario.html.twig', array(
                     'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
+                    'form' => $editForm->createView(),
+                    'error' => $error,
         ));
     }
 
@@ -89,15 +92,6 @@ class DefaultController extends Controller {
         $encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
         $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
         $entity->setPassword($password);
-    }
-
-    private function clavesSonIguales($claveVieja, $claveNueva, $salt) {
-        $encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
-        $claveNuevaCodificada = $encoder->encodePassword($claveNueva, $salt);
-        if ($claveVieja === $claveNuevaCodificada) {
-            return true;
-        }
-        return false;
     }
 
 }

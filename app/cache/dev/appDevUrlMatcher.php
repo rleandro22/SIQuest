@@ -1872,7 +1872,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // uci_administrador_edituser
-            if (0 === strpos($pathinfo, '/admin/editar_usuario') && preg_match('#^/admin/editar_usuario/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/admin/(?P<id>[^/]++)/editar_usuario$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_edituser')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aEditarUsuarioAction',));
             }
 
