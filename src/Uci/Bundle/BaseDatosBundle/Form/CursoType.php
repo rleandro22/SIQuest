@@ -15,10 +15,10 @@ class CursoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('generacion')
             ->add('nombrecurso')
             ->add('asistenteAcademica')
             ->add('solicitud')
+            ->add('generacion')
             ->add('profesor')
         ;
     }

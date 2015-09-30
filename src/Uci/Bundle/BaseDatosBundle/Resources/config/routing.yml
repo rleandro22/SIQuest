@@ -78,6 +78,10 @@ uci_base_datos_grupoprocesos:
     resource: "@UciBaseDatosBundle/Resources/config/routing/grupoprocesos.yml"
     prefix:   /grupoprocesos
 
+uci_base_datos_generacion:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/generacion.yml"
+    prefix:   /generacion
+
 uci_base_datos_decano:
     resource: "@UciBaseDatosBundle/Resources/config/routing/decano.yml"
     prefix:   /decano

@@ -1288,63 +1288,126 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/grupoprocesos')) {
-            // grupoprocesos
-            if (rtrim($pathinfo, '/') === '/grupoprocesos') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'grupoprocesos');
+        if (0 === strpos($pathinfo, '/g')) {
+            if (0 === strpos($pathinfo, '/grupoprocesos')) {
+                // grupoprocesos
+                if (rtrim($pathinfo, '/') === '/grupoprocesos') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'grupoprocesos');
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::indexAction',  '_route' => 'grupoprocesos',);
                 }
 
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::indexAction',  '_route' => 'grupoprocesos',);
-            }
-
-            // grupoprocesos_show
-            if (preg_match('#^/grupoprocesos/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grupoprocesos_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::showAction',));
-            }
-
-            // grupoprocesos_new
-            if ($pathinfo === '/grupoprocesos/new') {
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::newAction',  '_route' => 'grupoprocesos_new',);
-            }
-
-            // grupoprocesos_create
-            if ($pathinfo === '/grupoprocesos/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_grupoprocesos_create;
+                // grupoprocesos_show
+                if (preg_match('#^/grupoprocesos/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'grupoprocesos_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::showAction',));
                 }
 
-                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::createAction',  '_route' => 'grupoprocesos_create',);
-            }
-            not_grupoprocesos_create:
-
-            // grupoprocesos_edit
-            if (preg_match('#^/grupoprocesos/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grupoprocesos_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::editAction',));
-            }
-
-            // grupoprocesos_update
-            if (preg_match('#^/grupoprocesos/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_grupoprocesos_update;
+                // grupoprocesos_new
+                if ($pathinfo === '/grupoprocesos/new') {
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::newAction',  '_route' => 'grupoprocesos_new',);
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grupoprocesos_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::updateAction',));
-            }
-            not_grupoprocesos_update:
+                // grupoprocesos_create
+                if ($pathinfo === '/grupoprocesos/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_grupoprocesos_create;
+                    }
 
-            // grupoprocesos_delete
-            if (preg_match('#^/grupoprocesos/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_grupoprocesos_delete;
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::createAction',  '_route' => 'grupoprocesos_create',);
+                }
+                not_grupoprocesos_create:
+
+                // grupoprocesos_edit
+                if (preg_match('#^/grupoprocesos/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'grupoprocesos_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::editAction',));
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grupoprocesos_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::deleteAction',));
+                // grupoprocesos_update
+                if (preg_match('#^/grupoprocesos/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_grupoprocesos_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'grupoprocesos_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::updateAction',));
+                }
+                not_grupoprocesos_update:
+
+                // grupoprocesos_delete
+                if (preg_match('#^/grupoprocesos/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_grupoprocesos_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'grupoprocesos_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GrupoProcesosController::deleteAction',));
+                }
+                not_grupoprocesos_delete:
+
             }
-            not_grupoprocesos_delete:
+
+            if (0 === strpos($pathinfo, '/generacion')) {
+                // generacion
+                if (rtrim($pathinfo, '/') === '/generacion') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'generacion');
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GeneracionController::indexAction',  '_route' => 'generacion',);
+                }
+
+                // generacion_show
+                if (preg_match('#^/generacion/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'generacion_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GeneracionController::showAction',));
+                }
+
+                // generacion_new
+                if ($pathinfo === '/generacion/new') {
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GeneracionController::newAction',  '_route' => 'generacion_new',);
+                }
+
+                // generacion_create
+                if ($pathinfo === '/generacion/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_generacion_create;
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GeneracionController::createAction',  '_route' => 'generacion_create',);
+                }
+                not_generacion_create:
+
+                // generacion_edit
+                if (preg_match('#^/generacion/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'generacion_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GeneracionController::editAction',));
+                }
+
+                // generacion_update
+                if (preg_match('#^/generacion/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_generacion_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'generacion_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GeneracionController::updateAction',));
+                }
+                not_generacion_update:
+
+                // generacion_delete
+                if (preg_match('#^/generacion/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_generacion_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'generacion_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\GeneracionController::deleteAction',));
+                }
+                not_generacion_delete:
+
+            }
 
         }
 

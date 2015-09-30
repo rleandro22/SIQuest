@@ -11,12 +11,6 @@ Uci\Bundle\BaseDatosBundle\Entity\Curso:
             generator:
                 strategy: IDENTITY
     fields:
-        generacion:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
-            comment: ''
         nombrecurso:
             type: string
             nullable: false
@@ -34,6 +28,13 @@ Uci\Bundle\BaseDatosBundle\Entity\Curso:
             orderBy: null
         solicitud:
             targetEntity: Solicitud
+            cascade: {  }
+            mappedBy: curso
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        generacion:
+            targetEntity: Generacion
             cascade: {  }
             mappedBy: curso
             inversedBy: null

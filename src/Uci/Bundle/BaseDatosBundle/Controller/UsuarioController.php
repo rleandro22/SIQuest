@@ -4,6 +4,7 @@ namespace Uci\Bundle\BaseDatosBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Uci\Bundle\BaseDatosBundle\Entity\Usuario;
 use Uci\Bundle\BaseDatosBundle\Form\UsuarioType;
 
@@ -11,33 +12,34 @@ use Uci\Bundle\BaseDatosBundle\Form\UsuarioType;
  * Usuario controller.
  *
  */
-class UsuarioController extends Controller {
+class UsuarioController extends Controller
+{
 
     /**
      * Lists all Usuario entities.
      *
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('UciBaseDatosBundle:Usuario')->findAll();
 
         return $this->render('UciBaseDatosBundle:Usuario:index.html.twig', array(
-                    'entities' => $entities,
+            'entities' => $entities,
         ));
     }
-
     /**
      * Creates a new Usuario entity.
      *
      */
-    public function createAction(Request $request) {
+    public function createAction(Request $request)
+    {
         $entity = new Usuario();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $this->setSecurePassword($entity);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -46,8 +48,8 @@ class UsuarioController extends Controller {
         }
 
         return $this->render('UciBaseDatosBundle:Usuario:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
+            'entity' => $entity,
+            'form'   => $form->createView(),
         ));
     }
 
@@ -58,7 +60,8 @@ class UsuarioController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Usuario $entity) {
+    private function createCreateForm(Usuario $entity)
+    {
         $form = $this->createForm(new UsuarioType(), $entity, array(
             'action' => $this->generateUrl('usuario_create'),
             'method' => 'POST',
@@ -73,13 +76,14 @@ class UsuarioController extends Controller {
      * Displays a form to create a new Usuario entity.
      *
      */
-    public function newAction() {
+    public function newAction()
+    {
         $entity = new Usuario();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
 
         return $this->render('UciBaseDatosBundle:Usuario:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
+            'entity' => $entity,
+            'form'   => $form->createView(),
         ));
     }
 
@@ -87,7 +91,8 @@ class UsuarioController extends Controller {
      * Finds and displays a Usuario entity.
      *
      */
-    public function showAction($id) {
+    public function showAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('UciBaseDatosBundle:Usuario')->find($id);
@@ -99,8 +104,8 @@ class UsuarioController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('UciBaseDatosBundle:Usuario:show.html.twig', array(
-                    'entity' => $entity,
-                    'delete_form' => $deleteForm->createView(),
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -108,7 +113,8 @@ class UsuarioController extends Controller {
      * Displays a form to edit an existing Usuario entity.
      *
      */
-    public function editAction($id) {
+    public function editAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('UciBaseDatosBundle:Usuario')->find($id);
@@ -121,20 +127,21 @@ class UsuarioController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('UciBaseDatosBundle:Usuario:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Creates a form to edit a Usuario entity.
-     *
-     * @param Usuario $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(Usuario $entity) {
+    * Creates a form to edit a Usuario entity.
+    *
+    * @param Usuario $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Usuario $entity)
+    {
         $form = $this->createForm(new UsuarioType(), $entity, array(
             'action' => $this->generateUrl('usuario_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -144,12 +151,12 @@ class UsuarioController extends Controller {
 
         return $form;
     }
-
     /**
      * Edits an existing Usuario entity.
      *
      */
-    public function updateAction(Request $request, $id) {
+    public function updateAction(Request $request, $id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('UciBaseDatosBundle:Usuario')->find($id);
@@ -160,30 +167,26 @@ class UsuarioController extends Controller {
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
-        $current_pass = $entity->getPassword();
         $editForm->handleRequest($request);
-        $entity->setPassword($current_pass);
+
         if ($editForm->isValid()) {
-            if ($current_pass != $entity->getPassword()) {
-                $this->setSecurePassword($entity);
-            }
             $em->flush();
 
             return $this->redirect($this->generateUrl('usuario_edit', array('id' => $id)));
         }
 
         return $this->render('UciBaseDatosBundle:Usuario:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a Usuario entity.
      *
      */
-    public function deleteAction(Request $request, $id) {
+    public function deleteAction(Request $request, $id)
+    {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -209,20 +212,13 @@ class UsuarioController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id) {
+    private function createDeleteForm($id)
+    {
         return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('usuario_delete', array('id' => $id)))
-                        ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Delete'))
-                        ->getForm()
+            ->setAction($this->generateUrl('usuario_delete', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->getForm()
         ;
     }
-
-    private function setSecurePassword(&$entity) {
-        $entity->setSalt(md5(time()));
-        $encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
-        $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
-        $entity->setPassword($password);
-    }
-
 }

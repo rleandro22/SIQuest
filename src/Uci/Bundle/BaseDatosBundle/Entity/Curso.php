@@ -24,13 +24,6 @@ class Curso
     /**
      * @var string
      *
-     * @ORM\Column(name="generacion", type="string", length=45, nullable=false)
-     */
-    private $generacion;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="nombreCurso", type="string", length=45, nullable=false)
      */
     private $nombrecurso;
@@ -52,6 +45,13 @@ class Curso
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Generacion", mappedBy="curso")
+     */
+    private $generacion;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Profesor", mappedBy="curso")
      */
     private $profesor;
@@ -63,6 +63,7 @@ class Curso
     {
         $this->asistenteAcademica = new \Doctrine\Common\Collections\ArrayCollection();
         $this->solicitud = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->generacion = new \Doctrine\Common\Collections\ArrayCollection();
         $this->profesor = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -75,29 +76,6 @@ class Curso
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set generacion
-     *
-     * @param string $generacion
-     * @return Curso
-     */
-    public function setGeneracion($generacion)
-    {
-        $this->generacion = $generacion;
-
-        return $this;
-    }
-
-    /**
-     * Get generacion
-     *
-     * @return string 
-     */
-    public function getGeneracion()
-    {
-        return $this->generacion;
     }
 
     /**
@@ -187,6 +165,39 @@ class Curso
     public function getSolicitud()
     {
         return $this->solicitud;
+    }
+
+    /**
+     * Add generacion
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion
+     * @return Curso
+     */
+    public function addGeneracion(\Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion)
+    {
+        $this->generacion[] = $generacion;
+
+        return $this;
+    }
+
+    /**
+     * Remove generacion
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion
+     */
+    public function removeGeneracion(\Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion)
+    {
+        $this->generacion->removeElement($generacion);
+    }
+
+    /**
+     * Get generacion
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGeneracion()
+    {
+        return $this->generacion;
     }
 
     /**
