@@ -15,8 +15,8 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2b32590e7a21bb5d6d9dd3569663afea13004144811e8ac7c2293d4dd5d75ff1 = $this->env->getExtension("native_profiler");
-        $__internal_2b32590e7a21bb5d6d9dd3569663afea13004144811e8ac7c2293d4dd5d75ff1->enter($__internal_2b32590e7a21bb5d6d9dd3569663afea13004144811e8ac7c2293d4dd5d75ff1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoUsuario.html.twig"));
+        $__internal_71ef323d6d707d906956875b9881be7e2adbe4f9b89766b4425ed74248a2b2a2 = $this->env->getExtension("native_profiler");
+        $__internal_71ef323d6d707d906956875b9881be7e2adbe4f9b89766b4425ed74248a2b2a2->enter($__internal_71ef323d6d707d906956875b9881be7e2adbe4f9b89766b4425ed74248a2b2a2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoUsuario.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -30,9 +30,12 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
             <ul>
                 <li><a href='";
         // line 10
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_indiceuser");
+        echo "'><span>Lista de usuarios</span></a></li>
+                <li><a href='";
+        // line 11
         echo $this->env->getExtension('routing')->getPath("uci_administrador_adduser");
         echo "'><span>Nuevo usuario</span></a></li>
-                <li><a href='#'><span>Modificar usuario</span></a></li>
                 <li class='active has-sub'><a href='#'><span>Ingresar</span></a>
                     <ul>
                         <li><a href='#'><span>PMBok</span></a>
@@ -48,7 +51,7 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
 </div>
 ";
         
-        $__internal_2b32590e7a21bb5d6d9dd3569663afea13004144811e8ac7c2293d4dd5d75ff1->leave($__internal_2b32590e7a21bb5d6d9dd3569663afea13004144811e8ac7c2293d4dd5d75ff1_prof);
+        $__internal_71ef323d6d707d906956875b9881be7e2adbe4f9b89766b4425ed74248a2b2a2->leave($__internal_71ef323d6d707d906956875b9881be7e2adbe4f9b89766b4425ed74248a2b2a2_prof);
 
     }
 
@@ -64,6 +67,6 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
 
     public function getDebugInfo()
     {
-        return array (  33 => 10,  22 => 1,);
+        return array (  37 => 11,  33 => 10,  22 => 1,);
     }
 }

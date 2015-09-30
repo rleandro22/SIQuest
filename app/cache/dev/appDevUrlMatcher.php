@@ -1863,17 +1863,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // uci_administrador_indiceuser
             if ($pathinfo === '/admin/lista_usuarios') {
-                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aIndiceUsuarioAction',  '_route' => 'uci_administrador_indiceuser',);
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\UsuarioController::aIndiceUsuarioAction',  '_route' => 'uci_administrador_indiceuser',);
             }
 
             // uci_administrador_adduser
             if ($pathinfo === '/admin/registrar_usuario') {
-                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aRegistrarUsuarioAction',  '_route' => 'uci_administrador_adduser',);
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\UsuarioController::aRegistrarUsuarioAction',  '_route' => 'uci_administrador_adduser',);
             }
 
             // uci_administrador_edituser
             if (preg_match('#^/admin/(?P<id>[^/]++)/editar_usuario$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_edituser')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\DefaultController::aEditarUsuarioAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_edituser')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\UsuarioController::aEditarUsuarioAction',));
+            }
+
+            // uci_administrador_indicecurso
+            if ($pathinfo === '/admin/lista_cursos') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CursoController::aIndiceCursoAction',  '_route' => 'uci_administrador_indicecurso',);
             }
 
         }

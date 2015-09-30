@@ -4,12 +4,16 @@ uci_administrador_homepage:
 
 uci_administrador_indiceuser:
     pattern:  /admin/lista_usuarios
-    defaults: { _controller: UciAdministradorBundle:Default:aIndiceUsuario }
+    defaults: { _controller: UciAdministradorBundle:Usuario:aIndiceUsuario }
         
 uci_administrador_adduser:
     pattern:  /admin/registrar_usuario
-    defaults: { _controller: UciAdministradorBundle:Default:aRegistrarUsuario }
+    defaults: { _controller: UciAdministradorBundle:Usuario:aRegistrarUsuario }
     
 uci_administrador_edituser:
     pattern:  /admin/{id}/editar_usuario
-    defaults: { _controller: UciAdministradorBundle:Default:aEditarUsuario }
+    defaults: { _controller: UciAdministradorBundle:Usuario:aEditarUsuario }
+    
+uci_administrador_indicecurso:
+    pattern:  /admin/lista_cursos
+    defaults: { _controller: UciAdministradorBundle:Curso:aIndiceCurso }
