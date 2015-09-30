@@ -38,13 +38,7 @@ class DefaultController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($entity);
                 $rol = $entity->getRol()->getNombre();
-                if ($rol == 'Profesor') {
-                    $edita = $form["editatodas"]->getData();
-                    $profesor = new \Uci\Bundle\BaseDatosBundle\Entity\Profesor();
-                    $profesor->setUsuario($entity);
-                    $profesor->setEditatodas($edita);
-                    $em->persist($profesor);
-                }
+                $this->agregaOtrasTablas($entity, $rol, $form);
                 $em->flush();
                 return $this->redirectToRoute('uci_administrador_indiceuser');
             }
@@ -68,7 +62,6 @@ class DefaultController extends Controller {
             $profesor = $em->getRepository('UciBaseDatosBundle:Profesor')->findOneBy(array('usuario' => $id));
             $editaTodas = $profesor->getEditatodas();
         }
-
         $form = $this->createForm(new UsuarioType($editaTodas), $entity);
         $editForm = $form;
         $claveVieja = $entity->getPassword();
@@ -105,12 +98,37 @@ class DefaultController extends Controller {
                 $profesor->setUsuario($entity);
                 $profesor->setEditatodas($edita);
                 $em->persist($profesor);
-            } else {
-                $profesor = $em->getRepository('UciBaseDatosBundle:Profesor')->findOneBy(array('usuario' => $entity->getId()));
-                $em->remove($profesor);
+            } else if ($rolNuevo == 'Asistente') {
+                $asistente = new \Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica();
+                $asistente->setUsuario($entity);
+                $em->persist($asistente);
+            }
+            if ($rolInicial == 'Profesor') {
+                $profesorBorrar = $em->getRepository('UciBaseDatosBundle:Profesor')->findOneBy(array('usuario' => $entity->getId()));
+                $em->remove($profesorBorrar);
+                $em->flush();
+            } else if ($rolInicial == 'Asistente') {
+                $asistenteBorrar = $em->getRepository('UciBaseDatosBundle:AsistenteAcademica')->findOneBy(array('usuario' => $entity->getId()));
+                $em->remove($asistenteBorrar);
                 $em->flush();
             }
         }
+    }
+
+    private function agregaOtrasTablas($entity, $rol, $form) {
+        $em = $this->getDoctrine()->getManager();
+        if ($rol == 'Profesor') {
+            $edita = $form["editatodas"]->getData();
+            $profesor = new \Uci\Bundle\BaseDatosBundle\Entity\Profesor();
+            $profesor->setUsuario($entity);
+            $profesor->setEditatodas($edita);
+            $em->persist($profesor);
+        } else if ($rol == 'Asistente') {
+            $asistente = new \Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica();
+            $asistente->setUsuario($entity);
+            $em->persist($asistente);
+        }
+        $em->flush();
     }
 
     private function setSecurePassword(&$entity) {
