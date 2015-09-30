@@ -10,7 +10,7 @@
 
         <ol class="breadcrumb">
             <li><a href="{{ path('uci_administrador_homepage') }}">Inicio</a></li>
-            <li class="active">Edición de Usuario</li>
+            <li class="active">Editar Usuario</li>
         </ol>
         <div class="row">
             <!-- Sidebar -->
@@ -21,7 +21,7 @@
             <!-- Article main content -->
             <article class="col-sm-8 maincontent">
                 <header class="page-header">
-                    <h1 class="page-title">Nuevo usuario</h1>
+                    <h1 class="page-title">Edición de usuario</h1>
                 </header>
                 <br>
                 <!-- /Aquí va el contenido -->
@@ -29,7 +29,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <h3 class="thin text-center">Registrar un nuevo usuario</h3>
+                            <h3 class="thin text-center">Editar usuario</h3>
                             <p class="text-center text-muted">Todos los campos son requeridos. </p>
                             <hr>
 
@@ -37,7 +37,7 @@
                                 <div style="color:red">{{ error }}</div>
                             {% endif %}
 
-                            <form action="{{ path('uci_administrador_edituser') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ path('uci_administrador_edituser', { 'id': entity.id }) }}" method="POST" enctype="multipart/form-data">
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_label(form.nombre) }}
@@ -102,7 +102,7 @@
                                     <div class="col-lg-8">                     
                                     </div>
                                     <div class="col-lg-4 text-right">
-                                        <button class="btn btn-action" type="submit">Registrar</button>
+                                        <button class="btn btn-action" type="submit">Actualizar</button>
                                     </div>
                                 </div>
                                 {{ form_rest(form) }}
@@ -124,6 +124,14 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
+        $(document).ready(function () {
+            var rol={{ entity.rol.nombre|json_encode|raw }};
+            if (rol == 'Profesor') {
+                $("#filaPuededitar").removeClass('hidden');
+            } else {
+                $("#filaPuededitar").addClass('hidden');
+            }
+        });
         function quitarcomboProfe(valor) {
             if (valor == 3) {
                 $("#filaPuededitar").removeClass('hidden');

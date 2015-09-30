@@ -24,7 +24,7 @@ class DefaultController extends Controller {
 
     public function aRegistrarUsuarioAction(Request $request) {
         $entity = new Usuario();
-        $form = $this->createForm(new UsuarioType(), $entity);
+        $form = $this->createForm(new UsuarioType(0), $entity);
         $form->handleRequest($request);
         $error = '';
         if ($request->getMethod() == 'POST') {
@@ -57,13 +57,19 @@ class DefaultController extends Controller {
     }
 
     public function aEditarUsuarioAction(Request $request, $id) {
+        $editaTodas = 0;
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Usuario')->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-        $form = $this->createForm(new UsuarioType(), $entity);
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $rol = $entity->getRol()->getNombre();
+        if ($rol == 'Profesor') {
+            $profesor = $em->getRepository('UciBaseDatosBundle:Profesor')->findOneBy(array('usuario' => $id));
+            $editaTodas = $profesor->getEditatodas();
+        }
+        
+        $form = $this->createForm(new UsuarioType($editaTodas), $entity);
         $editForm = $form;
         $claveVieja = $entity->getPassword();
         $error = '';
@@ -84,6 +90,7 @@ class DefaultController extends Controller {
                     'entity' => $entity,
                     'form' => $editForm->createView(),
                     'error' => $error,
+                    'editaTodas' => $editaTodas,
         ));
     }
 
