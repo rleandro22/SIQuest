@@ -63,12 +63,12 @@ class DefaultController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-        $rol = $entity->getRol()->getNombre();
-        if ($rol == 'Profesor') {
+        $rolInicial = $entity->getRol()->getNombre();
+        if ($rolInicial == 'Profesor') {
             $profesor = $em->getRepository('UciBaseDatosBundle:Profesor')->findOneBy(array('usuario' => $id));
             $editaTodas = $profesor->getEditatodas();
         }
-        
+
         $form = $this->createForm(new UsuarioType($editaTodas), $entity);
         $editForm = $form;
         $claveVieja = $entity->getPassword();
@@ -77,6 +77,7 @@ class DefaultController extends Controller {
             $editForm->handleRequest($request);
             $error = $form->getErrors();
             if ($editForm->isValid()) {
+                $this->modificarOtrasTablas($entity, $rolInicial, $form);
                 if ($entity->getPassword() == null) {
                     $entity->setPassword($claveVieja);
                 } else {
@@ -92,6 +93,24 @@ class DefaultController extends Controller {
                     'error' => $error,
                     'editaTodas' => $editaTodas,
         ));
+    }
+
+    private function modificarOtrasTablas($entity, $rolInicial, $form) {
+        $em = $this->getDoctrine()->getManager();
+        $rolNuevo = $entity->getRol()->getNombre();
+        if ($rolNuevo != $rolInicial) {
+            if ($rolNuevo == 'Profesor') {
+                $edita = $form["editatodas"]->getData();
+                $profesor = new \Uci\Bundle\BaseDatosBundle\Entity\Profesor();
+                $profesor->setUsuario($entity);
+                $profesor->setEditatodas($edita);
+                $em->persist($profesor);
+            } else {
+                $profesor = $em->getRepository('UciBaseDatosBundle:Profesor')->findOneBy(array('usuario' => $entity->getId()));
+                $em->remove($profesor);
+                $em->flush();
+            }
+        }
     }
 
     private function setSecurePassword(&$entity) {
