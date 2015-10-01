@@ -131,6 +131,14 @@ class UsuarioController extends Controller {
                 $em->remove($asistenteBorrar);
                 $em->flush();
             }
+        } else {
+            $rol = $entity->getRol()->getNombre();
+            if ($rol == 'Profesor') {
+                $profesor = $em->getRepository('UciBaseDatosBundle:Profesor')->findOneBy(array('usuario' => $entity->getId()));
+                $edita = $form["editatodas"]->getData();
+                $profesor->setEditatodas($edita);
+                $em->flush();
+            } 
         }
     }
 

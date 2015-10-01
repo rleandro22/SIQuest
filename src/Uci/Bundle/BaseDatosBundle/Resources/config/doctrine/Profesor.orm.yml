@@ -16,7 +16,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Profesor:
                 strategy: IDENTITY
     fields:
         editatodas:
-            type: boolean
+            type: smallint
             nullable: false
             length: 1
             fixed: false

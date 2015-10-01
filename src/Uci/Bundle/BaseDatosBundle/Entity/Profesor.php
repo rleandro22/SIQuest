@@ -24,7 +24,7 @@ class Profesor
     /**
      * @var string
      *
-     * @ORM\Column(name="editaTodas", type="boolean", length=1, nullable=false)
+     * @ORM\Column(name="editaTodas", type="smallint", length=1, nullable=false)
      */
     private $editatodas;
 
