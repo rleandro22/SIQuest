@@ -1939,9 +1939,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_edituser')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\UsuarioController::aEditarUsuarioAction',));
             }
 
-            // uci_administrador_indicecurso
-            if ($pathinfo === '/admin/lista_cursos') {
-                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CursoController::aIndiceCursoAction',  '_route' => 'uci_administrador_indicecurso',);
+            // uci_administrador_deleteuser
+            if (preg_match('#^/admin/(?P<id>[^/]++)/borrar_usuario$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deleteuser')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\UsuarioController::aBorrarUsuarioAction',));
             }
 
         }

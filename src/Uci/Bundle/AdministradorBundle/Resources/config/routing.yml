@@ -13,7 +13,7 @@ uci_administrador_adduser:
 uci_administrador_edituser:
     pattern:  /admin/{id}/editar_usuario
     defaults: { _controller: UciAdministradorBundle:Usuario:aEditarUsuario }
-    
-uci_administrador_indicecurso:
-    pattern:  /admin/lista_cursos
-    defaults: { _controller: UciAdministradorBundle:Curso:aIndiceCurso }
+
+uci_administrador_deleteuser:
+    pattern:  /admin/{id}/borrar_usuario
+    defaults: { _controller: UciAdministradorBundle:Usuario:aBorrarUsuario }

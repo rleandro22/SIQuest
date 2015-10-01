@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="asistente_academica", indexes={@ORM\Index(name="fk_asistente_academica_usuario1_idx", columns={"usuario_id"})})
  * @ORM\Entity
  */
-class AsistenteAcademica
-{
+class AsistenteAcademica {
+
     /**
      * @var integer
      *
@@ -49,19 +49,16 @@ class AsistenteAcademica
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->curso = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -71,8 +68,7 @@ class AsistenteAcademica
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario
      * @return AsistenteAcademica
      */
-    public function setUsuario(\Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario = null)
-    {
+    public function setUsuario(\Uci\Bundle\BaseDatosBundle\Entity\Usuario $usuario = null) {
         $this->usuario = $usuario;
 
         return $this;
@@ -83,8 +79,7 @@ class AsistenteAcademica
      *
      * @return \Uci\Bundle\BaseDatosBundle\Entity\Usuario 
      */
-    public function getUsuario()
-    {
+    public function getUsuario() {
         return $this->usuario;
     }
 
@@ -94,8 +89,7 @@ class AsistenteAcademica
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Curso $curso
      * @return AsistenteAcademica
      */
-    public function addCurso(\Uci\Bundle\BaseDatosBundle\Entity\Curso $curso)
-    {
+    public function addCurso(\Uci\Bundle\BaseDatosBundle\Entity\Curso $curso) {
         $this->curso[] = $curso;
 
         return $this;
@@ -106,8 +100,7 @@ class AsistenteAcademica
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Curso $curso
      */
-    public function removeCurso(\Uci\Bundle\BaseDatosBundle\Entity\Curso $curso)
-    {
+    public function removeCurso(\Uci\Bundle\BaseDatosBundle\Entity\Curso $curso) {
         $this->curso->removeElement($curso);
     }
 
@@ -116,8 +109,12 @@ class AsistenteAcademica
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCurso()
-    {
+    public function getCurso() {
         return $this->curso;
     }
+
+    public function __toString() {
+        return $this->usuario->getNombre().' '.$this->usuario->getApellidos();
+    }
+
 }

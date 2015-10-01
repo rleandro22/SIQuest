@@ -65,8 +65,8 @@ class Rol implements RoleInterface
     }
     
     public function __toString() {
-    return $this->nombre;
-}
+        return $this->nombre;
+    }
 
     public function getRole() {
         $this->getNombre();

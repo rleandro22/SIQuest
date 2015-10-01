@@ -150,4 +150,8 @@ class Profesor
     {
         return $this->curso;
     }
+    
+    public function __toString() {
+        return $this->usuario->getNombre().' '.$this->usuario->getApellidos();
+    }
 }

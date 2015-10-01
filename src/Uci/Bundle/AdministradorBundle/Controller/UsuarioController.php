@@ -9,12 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
 
 class UsuarioController extends Controller {
-    
 
     public function aIndiceUsuarioAction() {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('UciBaseDatosBundle:Usuario')->findBy(array(), array('nombre' => 'ASC'));
-        return $this->render('UciAdministradorBundle:Vista:indiceUsuario.html.twig', array(
+        return $this->render('UciAdministradorBundle:VistaUsuario:indiceUsuario.html.twig', array(
                     'entities' => $entities,
         ));
     }
@@ -40,7 +39,7 @@ class UsuarioController extends Controller {
                 return $this->redirectToRoute('uci_administrador_indiceuser');
             }
         }
-        return $this->render('UciAdministradorBundle:Vista:registrarUsuario.html.twig', array(
+        return $this->render('UciAdministradorBundle:VistaUsuario:registrarUsuario.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
                     'error' => $error,
@@ -77,12 +76,35 @@ class UsuarioController extends Controller {
                 return $this->redirectToRoute('uci_administrador_indiceuser');
             }
         }
-        return $this->render('UciAdministradorBundle:Vista:editarUsuario.html.twig', array(
+
+
+        return $this->render('UciAdministradorBundle:VistaUsuario:editarUsuario.html.twig', array(
                     'entity' => $entity,
                     'form' => $editForm->createView(),
                     'error' => $error,
                     'editaTodas' => $editaTodas,
         ));
+    }
+
+    public function aBorrarUsuarioAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('UciBaseDatosBundle:Usuario')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $rol = $entity->getRol()->getNombre();
+        if ($rol == 'Profesor') {
+            $profesorBorrar = $em->getRepository('UciBaseDatosBundle:Profesor')->findOneBy(array('usuario' => $entity->getId()));
+            $em->remove($profesorBorrar);
+            $em->flush();
+        } else if ($rol == 'Asistente') {
+            $asistenteBorrar = $em->getRepository('UciBaseDatosBundle:AsistenteAcademica')->findOneBy(array('usuario' => $entity->getId()));
+            $em->remove($asistenteBorrar);
+            $em->flush();
+        }
+        $em->remove($entity);
+        $em->flush();
+        return $this->redirectToRoute('uci_administrador_indiceuser');
     }
 
     private function modificarOtrasTablas($entity, $rolInicial, $form) {
