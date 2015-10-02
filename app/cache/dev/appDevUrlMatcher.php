@@ -1944,6 +1944,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deleteuser')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\UsuarioController::aBorrarUsuarioAction',));
             }
 
+            // uci_administrador_indicecategoria
+            if ($pathinfo === '/admin/lista_categorias') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aIndiceCategoriaAction',  '_route' => 'uci_administrador_indicecategoria',);
+            }
+
+            // uci_administrador_addcategoria
+            if ($pathinfo === '/admin/ingresar_generacion') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aIngresarGeneracionAction',  '_route' => 'uci_administrador_addcategoria',);
+            }
+
+            // uci_administrador_editcategoria
+            if (preg_match('#^/admin/(?P<id>[^/]++)/editar_categoria$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_editcategoria')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aEditarCategoriaAction',));
+            }
+
         }
 
         // uci_principal_homepage

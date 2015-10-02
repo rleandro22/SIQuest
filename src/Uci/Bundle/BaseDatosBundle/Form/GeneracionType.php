@@ -15,8 +15,8 @@ class GeneracionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('generacion')
-            ->add('curso')
+            ->add('generacion', 'text', array("label" => "Generación: ", "required" => true, "attr" => array('class' => 'form-control')))
+            //->add('curso')
         ;
     }
     

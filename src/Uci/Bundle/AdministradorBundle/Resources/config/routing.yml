@@ -17,3 +17,15 @@ uci_administrador_edituser:
 uci_administrador_deleteuser:
     pattern:  /admin/{id}/borrar_usuario
     defaults: { _controller: UciAdministradorBundle:Usuario:aBorrarUsuario }
+    
+uci_administrador_indicecategoria:
+    pattern:  /admin/lista_categorias
+    defaults: { _controller: UciAdministradorBundle:Categoria:aIndiceCategoria }
+    
+uci_administrador_addcategoria:
+    pattern:  /admin/ingresar_generacion
+    defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarGeneracion }
+    
+uci_administrador_editcategoria:
+    pattern:  /admin/{id}/editar_categoria
+    defaults: { _controller: UciAdministradorBundle:Categoria:aEditarCategoria }

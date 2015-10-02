@@ -232,4 +232,8 @@ class Curso
     {
         return $this->profesor;
     }
+    
+    public function __toString() {
+        return $this->nombrecurso;
+    }
 }

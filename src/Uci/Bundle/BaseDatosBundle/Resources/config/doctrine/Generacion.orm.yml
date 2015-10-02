@@ -1,6 +1,10 @@
 Uci\Bundle\BaseDatosBundle\Entity\Generacion:
     type: entity
     table: generacion
+    uniqueConstraints:
+        generacion_UNIQUE:
+            columns:
+                - generacion
     id:
         id:
             type: integer
