@@ -147,3 +147,8 @@ d00ba9,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1443945363,,200
 3f408b,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/3/editar_categoria,1443945368,,200
 287086,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/3/editar_categoria,1443945375,,302
 537bb7,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/lista_categorias,1443945376,,200
+afe7ac,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1443945399,,200
+376674,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/lista_categorias,1443945403,,200
+4880df,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/editar_categoria,1443945406,,200
+58d7d7,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/2/editar_categoria,1443945411,,302
+4304d3,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/lista_categorias,1443945411,,200
