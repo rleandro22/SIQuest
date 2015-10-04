@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Entity\Generacion;
 use Uci\Bundle\BaseDatosBundle\Form\GeneracionType;
+use Symfony\Component\HttpFoundation\Response;
 
 class CategoriaController extends Controller {
 
@@ -16,7 +17,7 @@ class CategoriaController extends Controller {
                     'entities' => $entities,
         ));
     }
-    
+
     public function aEditarCategoriaAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Generacion')->find($id);
@@ -25,25 +26,20 @@ class CategoriaController extends Controller {
         }
         $form = $this->createForm(new GeneracionType(), $entity);
         $editForm = $form;
-        $error = '';
         if ($request->getMethod() == 'POST') {
             $editForm->handleRequest($request);
-            $error = $form->getErrors();
             if ($editForm->isValid()) {
                 $em->flush();
-                return $this->redirectToRoute('uci_administrador_indiceuser');
             }
+            return $this->redirectToRoute('uci_administrador_indicecategoria');
         }
-
-
         return $this->render('UciAdministradorBundle:VistaCategoria:editarCategoria.html.twig', array(
                     'entity' => $entity,
-                    'form' => $editForm->createView(),
-                    'error' => $error,
+                    'form' => $editForm->createView()
         ));
     }
-    
-    public function aIngresarGeneracionAction(Request $request){
+
+    public function aIngresarGeneracionAction(Request $request) {
         $entity = new Generacion();
         $form = $this->createForm(new GeneracionType(), $entity);
         $form->handleRequest($request);

@@ -5,6 +5,7 @@ namespace Uci\Bundle\BaseDatosBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 class GeneracionType extends AbstractType
 {
@@ -26,7 +27,9 @@ class GeneracionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Generacion'
+            'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Generacion',
+            'constraints' => array(
+                new UniqueEntity(array('fields' => array('generacion')))),
         ));
     }
 

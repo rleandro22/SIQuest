@@ -24,22 +24,25 @@
                     <h1 class="page-title">Lista de categorias</h1>
                 </header>
                 <br>
-                <!-- /Aquí va el contenido -->
 
-    
-                <br><br><br>
-                        {% for entity in entities %}
-                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                            <a class="thumbnail" href="{{ path('generacion_show', { 'id': entity.id }) }}">
-                                <p>{{ entity.generacion }}</p>
-                                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                            </a>
-                                <a href="{{ path('uci_administrador_edituser', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <a href="{{ path('uci_administrador_deleteuser', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
-                        </div>
-                    {% endfor %}
+                <br><br>
+                {% for entity in entities %}
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a class="thumbnail" data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal">
+                            <p>{{ entity.generacion }}</p>
+                            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        </a>
+                        <a href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="{{ path('uci_administrador_deleteuser', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
+                    </div>
+                {% endfor %}
                 <!-- /Aquí acaba el contenido --> 
-    
+
+                <div id="myModal" class="modal fade" role="dialog">
+
+                </div>
+
+
 
             </article>
             <!-- /Article -->
@@ -52,20 +55,19 @@
     {{ parent() }}
     <script type="text/javascript">
         document.ready = function () {
+  
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
-            });
-
+            }
+            );
             var handleSpeedBump = function (e) {
                 e.preventDefault();
-
                 var href = this.getAttribute("data-href");
                 var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación no es reversible)");
                 if (!sure)
                     return;
                 document.location = href;
             };
-
             $("a.speedbump")
                     .click(handleSpeedBump)
                     .bind("contextmenu", handleSpeedBump)
