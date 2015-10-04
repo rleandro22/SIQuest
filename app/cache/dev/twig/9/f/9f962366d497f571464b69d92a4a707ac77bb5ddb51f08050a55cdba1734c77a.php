@@ -23,34 +23,34 @@ class __TwigTemplate_9f962366d497f571464b69d92a4a707ac77bb5ddb51f08050a55cdba173
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_20f2dcc5a5c4510e22adf2e736ba36e6cce1272621ad05e118f6b4556b6dfb6d = $this->env->getExtension("native_profiler");
-        $__internal_20f2dcc5a5c4510e22adf2e736ba36e6cce1272621ad05e118f6b4556b6dfb6d->enter($__internal_20f2dcc5a5c4510e22adf2e736ba36e6cce1272621ad05e118f6b4556b6dfb6d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:indiceCategoria.html.twig"));
+        $__internal_e480803a8fc02f37b2a41a5ef3c9c76509837147fa04424bfccb0a410291d772 = $this->env->getExtension("native_profiler");
+        $__internal_e480803a8fc02f37b2a41a5ef3c9c76509837147fa04424bfccb0a410291d772->enter($__internal_e480803a8fc02f37b2a41a5ef3c9c76509837147fa04424bfccb0a410291d772_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:indiceCategoria.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_20f2dcc5a5c4510e22adf2e736ba36e6cce1272621ad05e118f6b4556b6dfb6d->leave($__internal_20f2dcc5a5c4510e22adf2e736ba36e6cce1272621ad05e118f6b4556b6dfb6d_prof);
+        $__internal_e480803a8fc02f37b2a41a5ef3c9c76509837147fa04424bfccb0a410291d772->leave($__internal_e480803a8fc02f37b2a41a5ef3c9c76509837147fa04424bfccb0a410291d772_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_69942df764ccce3d1a3793f95e6b6c881343fb97181996dec9bc06aaf7fe6330 = $this->env->getExtension("native_profiler");
-        $__internal_69942df764ccce3d1a3793f95e6b6c881343fb97181996dec9bc06aaf7fe6330->enter($__internal_69942df764ccce3d1a3793f95e6b6c881343fb97181996dec9bc06aaf7fe6330_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_85ecaeef0296354d8eeb3a15892516fe2f0db44d26a6118835893c9771d6616a = $this->env->getExtension("native_profiler");
+        $__internal_85ecaeef0296354d8eeb3a15892516fe2f0db44d26a6118835893c9771d6616a->enter($__internal_85ecaeef0296354d8eeb3a15892516fe2f0db44d26a6118835893c9771d6616a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_69942df764ccce3d1a3793f95e6b6c881343fb97181996dec9bc06aaf7fe6330->leave($__internal_69942df764ccce3d1a3793f95e6b6c881343fb97181996dec9bc06aaf7fe6330_prof);
+        $__internal_85ecaeef0296354d8eeb3a15892516fe2f0db44d26a6118835893c9771d6616a->leave($__internal_85ecaeef0296354d8eeb3a15892516fe2f0db44d26a6118835893c9771d6616a_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_d2dcfe0b9c9253da6a546655276177aa059d26f2ba87796a932e8c490e3f5980 = $this->env->getExtension("native_profiler");
-        $__internal_d2dcfe0b9c9253da6a546655276177aa059d26f2ba87796a932e8c490e3f5980->enter($__internal_d2dcfe0b9c9253da6a546655276177aa059d26f2ba87796a932e8c490e3f5980_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_5a33202db0eb3fcd723764362bea223c3400af2d3a12d1213979d0d7e8eebf17 = $this->env->getExtension("native_profiler");
+        $__internal_5a33202db0eb3fcd723764362bea223c3400af2d3a12d1213979d0d7e8eebf17->enter($__internal_5a33202db0eb3fcd723764362bea223c3400af2d3a12d1213979d0d7e8eebf17_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -95,23 +95,18 @@ class __TwigTemplate_9f962366d497f571464b69d92a4a707ac77bb5ddb51f08050a55cdba173
             // line 32
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "generacion", array()), "html", null, true);
             echo "</p>
-                            <img class=\"img-responsive\" src=\"http://placehold.it/400x300\" alt=\"\">
+                            <img class=\"img-responsive\" src=\"";
+            // line 33
+            echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/categoria.png"), "html", null, true);
+            echo "\" alt=\"\">
                         </a>
-                        <a href=\"";
-            // line 35
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_editcategoria", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
-            echo "\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                        <a href=\"";
-            // line 36
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_deleteuser", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
-            echo "\" class=\"speedbump\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
                     </div>
                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 37
         echo "                <!-- /Aquí acaba el contenido --> 
 
                 <div id=\"myModal\" class=\"modal fade\" role=\"dialog\">
@@ -127,23 +122,23 @@ class __TwigTemplate_9f962366d497f571464b69d92a4a707ac77bb5ddb51f08050a55cdba173
 
 ";
         
-        $__internal_d2dcfe0b9c9253da6a546655276177aa059d26f2ba87796a932e8c490e3f5980->leave($__internal_d2dcfe0b9c9253da6a546655276177aa059d26f2ba87796a932e8c490e3f5980_prof);
+        $__internal_5a33202db0eb3fcd723764362bea223c3400af2d3a12d1213979d0d7e8eebf17->leave($__internal_5a33202db0eb3fcd723764362bea223c3400af2d3a12d1213979d0d7e8eebf17_prof);
 
     }
 
-    // line 54
+    // line 52
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_c3371ff69f1d01db0995bfed6ba4f28f9b4d6f83db0b984c6dd5a4913e90fdad = $this->env->getExtension("native_profiler");
-        $__internal_c3371ff69f1d01db0995bfed6ba4f28f9b4d6f83db0b984c6dd5a4913e90fdad->enter($__internal_c3371ff69f1d01db0995bfed6ba4f28f9b4d6f83db0b984c6dd5a4913e90fdad_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_283b929c783f25ee151533cbc6529f45fac301899b671e142837be3879553256 = $this->env->getExtension("native_profiler");
+        $__internal_283b929c783f25ee151533cbc6529f45fac301899b671e142837be3879553256->enter($__internal_283b929c783f25ee151533cbc6529f45fac301899b671e142837be3879553256_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 55
+        // line 53
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script type=\"text/javascript\">
         document.ready = function () {
-  
+
             \$('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
             }
@@ -169,7 +164,7 @@ class __TwigTemplate_9f962366d497f571464b69d92a4a707ac77bb5ddb51f08050a55cdba173
     </script>
 ";
         
-        $__internal_c3371ff69f1d01db0995bfed6ba4f28f9b4d6f83db0b984c6dd5a4913e90fdad->leave($__internal_c3371ff69f1d01db0995bfed6ba4f28f9b4d6f83db0b984c6dd5a4913e90fdad_prof);
+        $__internal_283b929c783f25ee151533cbc6529f45fac301899b671e142837be3879553256->leave($__internal_283b929c783f25ee151533cbc6529f45fac301899b671e142837be3879553256_prof);
 
     }
 
@@ -185,6 +180,6 @@ class __TwigTemplate_9f962366d497f571464b69d92a4a707ac77bb5ddb51f08050a55cdba173
 
     public function getDebugInfo()
     {
-        return array (  141 => 55,  135 => 54,  115 => 39,  106 => 36,  102 => 35,  96 => 32,  92 => 31,  89 => 30,  85 => 29,  73 => 19,  71 => 18,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  136 => 53,  130 => 52,  110 => 37,  100 => 33,  96 => 32,  92 => 31,  89 => 30,  85 => 29,  73 => 19,  71 => 18,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 }
