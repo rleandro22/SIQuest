@@ -59,4 +59,15 @@ class CategoriaController extends Controller {
         ));
     }
 
+    public function aBorrarCategoriaAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('UciBaseDatosBundle:Generacion')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $em->remove($entity);
+        $em->flush();
+        return $this->redirectToRoute('uci_administrador_indicecategoria');
+    }
+
 }

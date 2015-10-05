@@ -34,7 +34,7 @@
                                         <p>{{ entity.generacion }}</p>
                                     </a></div>
                                 <div class="col-md-6"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="#" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
+                                    <a href="{{ path('uci_administrador_deletecategoria', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
                             </div>
 
                             <a href="#">

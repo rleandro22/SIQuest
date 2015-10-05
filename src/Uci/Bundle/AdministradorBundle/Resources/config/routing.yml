@@ -33,3 +33,7 @@ uci_administrador_editcategoria:
 uci_administrador_addcategoria:
     pattern:  /admin/registrar_generacion
     defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarGeneracion }
+    
+uci_administrador_deletecategoria:
+    pattern:  /admin/{id}/borrar_categoria
+    defaults: { _controller: UciAdministradorBundle:Categoria:aBorrarCategoria }

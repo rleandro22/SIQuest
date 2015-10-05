@@ -32,7 +32,7 @@ class Generacion
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Curso", inversedBy="generacion")
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Curso", inversedBy="generacion", cascade="delete")
      * @ORM\JoinTable(name="generacion_tiene_curso",
      *   joinColumns={
      *     @ORM\JoinColumn(name="generacion_id", referencedColumnName="id")
