@@ -28,10 +28,19 @@
                 <br><br>
                 {% for entity in entities %}
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a class="thumbnail" data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal">
-                            <p>{{ entity.generacion }}</p>
-                            <img class="img-responsive" src="{{asset('images/categoria.png')}}" alt="">
-                        </a>
+                        <div class="thumbnail">
+                            <div class="row">
+                                <div class="col-md-6"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal">
+                                        <p>{{ entity.generacion }}</p>
+                                    </a></div>
+                                <div class="col-md-6"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="#" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
+                            </div>
+
+                            <a href="#">
+                                <img class="img-responsive" src="{{asset('images/categoria.png')}}" alt="">
+                            </a>
+                        </div>
                     </div>
                 {% endfor %}
                 <!-- /Aquí acaba el contenido --> 
