@@ -15,8 +15,8 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fe260a5666667bbaee7ac410a915db484c25de52a421031a9c2675f063730631 = $this->env->getExtension("native_profiler");
-        $__internal_fe260a5666667bbaee7ac410a915db484c25de52a421031a9c2675f063730631->enter($__internal_fe260a5666667bbaee7ac410a915db484c25de52a421031a9c2675f063730631_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig"));
+        $__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1 = $this->env->getExtension("native_profiler");
+        $__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1->enter($__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -30,12 +30,12 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
             <ul>
                 <li><a href='";
         // line 10
-        echo $this->env->getExtension('routing')->getPath("uci_administrador_indiceuser");
-        echo "'><span>Lista de usuarios</span></a></li>
-                <li><a href='";
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_indicecategoria");
+        echo "'><span>Lista de generaciones</span></a></li>
+                <li><a data-toggle=\"modal\" href=\"";
         // line 11
-        echo $this->env->getExtension('routing')->getPath("uci_administrador_adduser");
-        echo "'><span>Nuevo usuario</span></a></li>
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_addcategoria");
+        echo "\" data-target=\"#myModal\">Nueva generación</a></li>
                 <li class='active has-sub'><a href='#'><span>Ingresar</span></a>
                     <ul>
                         <li><a href='#'><span>PMBok</span></a>
@@ -51,7 +51,7 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 </div>
 ";
         
-        $__internal_fe260a5666667bbaee7ac410a915db484c25de52a421031a9c2675f063730631->leave($__internal_fe260a5666667bbaee7ac410a915db484c25de52a421031a9c2675f063730631_prof);
+        $__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1->leave($__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1_prof);
 
     }
 

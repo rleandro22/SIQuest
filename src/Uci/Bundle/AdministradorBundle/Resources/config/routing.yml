@@ -29,3 +29,7 @@ uci_administrador_addcategoria:
 uci_administrador_editcategoria:
     pattern:  /admin/{id}/editar_categoria
     defaults: { _controller: UciAdministradorBundle:Categoria:aEditarCategoria }
+
+uci_administrador_addcategoria:
+    pattern:  /admin/registrar_generacion
+    defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarGeneracion }

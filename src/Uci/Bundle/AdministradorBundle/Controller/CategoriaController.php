@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Entity\Generacion;
 use Uci\Bundle\BaseDatosBundle\Form\GeneracionType;
-use Symfony\Component\HttpFoundation\Response;
 
 class CategoriaController extends Controller {
 
@@ -53,7 +52,7 @@ class CategoriaController extends Controller {
                 return $this->redirectToRoute('uci_administrador_indicecategoria');
             }
         }
-        return $this->render('UciAdministradorBundle:VistaCategoria:editarCategoria.html.twig', array(
+        return $this->render('UciAdministradorBundle:VistaCategoria:registrarCategoria.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
                     'error' => $error,
