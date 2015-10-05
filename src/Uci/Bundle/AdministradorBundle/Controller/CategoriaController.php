@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Entity\Generacion;
 use Uci\Bundle\BaseDatosBundle\Form\GeneracionType;
+use Symfony\Component\Form\FormError;
 
 class CategoriaController extends Controller {
 
@@ -17,7 +18,25 @@ class CategoriaController extends Controller {
         ));
     }
 
-    public function aEditarCategoriaAction(Request $request, $id) {
+    public function aIndiceCursosAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('UciBaseDatosBundle:Curso');
+        $query = $repository->createQueryBuilder('c')
+                ->where('c.generacion > :id')
+                ->setParameter('id', $id)
+                ->orderBy('c.nombrecurso', 'ASC')
+                ->getQuery();
+
+        $cursos = $query->getResult();
+        $error = '';
+//        $form->addError(new FormError('Debe ingresar la clave'));
+        return $this->render('UciAdministradorBundle:VistaCategoria:indiceCursos.html.twig', array(
+                    'cursos' => $cursos,
+                    'error' => $error
+        ));
+    }
+
+    public function aEditarCategoriaAction($id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Generacion')->find($id);
         if (!$entity) {

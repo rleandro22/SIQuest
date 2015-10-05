@@ -118,4 +118,8 @@ class Generacion
     {
         return $this->curso;
     }
+    
+    public function __toString() {
+        return $this->getGeneracion();
+    }
 }

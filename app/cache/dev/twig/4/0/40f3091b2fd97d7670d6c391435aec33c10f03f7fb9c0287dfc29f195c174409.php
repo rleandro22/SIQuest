@@ -15,8 +15,8 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1 = $this->env->getExtension("native_profiler");
-        $__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1->enter($__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig"));
+        $__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772 = $this->env->getExtension("native_profiler");
+        $__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772->enter($__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -32,15 +32,14 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
         // line 10
         echo $this->env->getExtension('routing')->getPath("uci_administrador_indicecategoria");
         echo "'><span>Lista de generaciones</span></a></li>
-                <li><a data-toggle=\"modal\" href=\"";
-        // line 11
-        echo $this->env->getExtension('routing')->getPath("uci_administrador_addcategoria");
-        echo "\" data-target=\"#myModal\">Nueva generación</a></li>
-                <li class='active has-sub'><a href='#'><span>Ingresar</span></a>
+                <li class='active has-sub'><a href='#'><span>Nuevo</span></a>
                     <ul>
-                        <li><a href='#'><span>PMBok</span></a>
+                        <li><a data-toggle=\"modal\" href=\"";
+        // line 13
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_addcategoria");
+        echo "\" data-target=\"#myModal\">Generación</a>
                         </li>
-                        <li><a href='#'><span>Otro</span></a>
+                        <li><a href='#'><span>Curso</span></a>
                         </li>
                     </ul>
                 </li>
@@ -51,7 +50,7 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 </div>
 ";
         
-        $__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1->leave($__internal_ac95d5944583df626f1876b7f6cfde0d462f44bf1409a58ae6276a021dab42d1_prof);
+        $__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772->leave($__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772_prof);
 
     }
 
@@ -67,6 +66,6 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 
     public function getDebugInfo()
     {
-        return array (  37 => 11,  33 => 10,  22 => 1,);
+        return array (  39 => 13,  33 => 10,  22 => 1,);
     }
 }
