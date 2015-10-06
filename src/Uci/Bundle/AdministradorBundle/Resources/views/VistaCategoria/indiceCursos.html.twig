@@ -31,23 +31,26 @@
                 {% endif %}
 
                 <br><br>
-                {% for entity in entities %}
-                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <div class="thumbnail">
-                            <div class="row">
-                                <div class="col-md-6"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal">
-                                        <p>{{ entity.nombrecurso }}</p>
-                                    </a></div>
-                                <div class="col-md-6"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="{{ path('uci_administrador_deletecategoria', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
-                            </div>
-
-                            <a href="#">
-                                <img class="img-responsive" src="{{asset('images/categoria.png')}}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                {% endfor %}
+                 <table class="table demo table-bordered" id="tabla" data-filter="#filter">
+                    <thead>
+                        <tr>
+                            <th data-toggle="true">
+                                Curso
+                            </th>
+                            <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        {% for entity in entities %}
+                            <tr>
+                                <td width="90%"><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.nombrecurso }}</a></td>
+                                <td><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_edituser', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="{{ path('uci_administrador_deleteuser', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
                 <!-- /Aquí acaba el contenido --> 
 
                 <div id="myModal" class="modal fade" role="dialog">

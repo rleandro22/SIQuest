@@ -15,8 +15,8 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f7a71037f3096bf05db323cf5d47fbc792f11fcf7830d331b73485e0bb208db2 = $this->env->getExtension("native_profiler");
-        $__internal_f7a71037f3096bf05db323cf5d47fbc792f11fcf7830d331b73485e0bb208db2->enter($__internal_f7a71037f3096bf05db323cf5d47fbc792f11fcf7830d331b73485e0bb208db2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoUsuario.html.twig"));
+        $__internal_7b4493f06e74e83e6ce4c042ff03f298dbea723191b49ab678f6bd19e865893f = $this->env->getExtension("native_profiler");
+        $__internal_7b4493f06e74e83e6ce4c042ff03f298dbea723191b49ab678f6bd19e865893f->enter($__internal_7b4493f06e74e83e6ce4c042ff03f298dbea723191b49ab678f6bd19e865893f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoUsuario.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -36,22 +36,13 @@ class __TwigTemplate_c186e722612b4b738720cec5541bf2b1791c672ab7496e948a4cfb82cf8
         // line 11
         echo $this->env->getExtension('routing')->getPath("uci_administrador_adduser");
         echo "'><span>Nuevo usuario</span></a></li>
-                <li class='active has-sub'><a href='#'><span>Ingresar</span></a>
-                    <ul>
-                        <li><a href='#'><span>PMBok</span></a>
-                        </li>
-                        <li><a href='#'><span>Otro</span></a>
-                        </li>
-                    </ul>
-                </li>
-                
             </ul>
         </div>
     </div>
 </div>
 ";
         
-        $__internal_f7a71037f3096bf05db323cf5d47fbc792f11fcf7830d331b73485e0bb208db2->leave($__internal_f7a71037f3096bf05db323cf5d47fbc792f11fcf7830d331b73485e0bb208db2_prof);
+        $__internal_7b4493f06e74e83e6ce4c042ff03f298dbea723191b49ab678f6bd19e865893f->leave($__internal_7b4493f06e74e83e6ce4c042ff03f298dbea723191b49ab678f6bd19e865893f_prof);
 
     }
 

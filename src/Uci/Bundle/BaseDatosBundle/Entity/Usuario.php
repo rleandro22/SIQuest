@@ -274,5 +274,9 @@ class Usuario implements UserInterface
     public function eraseCredentials() {
         
     }
+    
+    public function __toString() {
+        return $this->nombre.' '.$this->apellidos;
+    }
 
 }

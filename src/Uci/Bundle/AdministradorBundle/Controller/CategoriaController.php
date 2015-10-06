@@ -19,16 +19,18 @@ class CategoriaController extends Controller {
 
     public function aIndiceCursosAction($id) {
         $em = $this->getDoctrine()->getManager();
-        $generacion =  $em->getRepository('UciBaseDatosBundle:Generacion')->find($id);
-        $repository = $em->getRepository('UciBaseDatosBundle:Curso');
-        $entities = $repository->createQueryBuilder('u')
+        $generacion = $em->getRepository('UciBaseDatosBundle:Generacion')->find($id);
+        $entities = $em->getRepository('UciBaseDatosBundle:Curso')->createQueryBuilder('u')
                         ->innerJoin('u.generacion', 'g')
                         ->where('g.id = :id')
                         ->setParameter('id', $id)
                         ->getQuery()->getResult();
+        foreach ($entities as $entity) {
+            $this->setProfesoresBase($entity);
+        }
         $error = '';
-        if(empty($entities)){
-            $error = 'La '.$generacion->getGeneracion().' aún no tiene cursos';
+        if (empty($entities)) {
+            $error = 'La ' . $generacion->getGeneracion() . ' aún no tiene cursos';
         }
         return $this->render('UciAdministradorBundle:VistaCategoria:indiceCursos.html.twig', array(
                     'entities' => $entities,
@@ -88,6 +90,16 @@ class CategoriaController extends Controller {
         $em->remove($entity);
         $em->flush();
         return $this->redirectToRoute('uci_administrador_indicecategoria');
+    }
+
+    private function setProfesoresBase(&$entityp) {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('UciBaseDatosBundle:Profesor')->createQueryBuilder('u')
+                        ->innerJoin('u.curso', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $entityp->getId())
+                        ->getQuery()->getResult();
+        $entityp->setProfesores($entities);
     }
 
 }

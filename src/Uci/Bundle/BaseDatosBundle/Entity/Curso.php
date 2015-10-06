@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="curso")
  * @ORM\Entity
  */
-class Curso
-{
+class Curso {
+
     /**
      * @var integer
      *
@@ -59,22 +59,19 @@ class Curso
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->asistenteAcademica = new \Doctrine\Common\Collections\ArrayCollection();
         $this->solicitud = new \Doctrine\Common\Collections\ArrayCollection();
         $this->generacion = new \Doctrine\Common\Collections\ArrayCollection();
         $this->profesor = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -84,8 +81,7 @@ class Curso
      * @param string $nombrecurso
      * @return Curso
      */
-    public function setNombrecurso($nombrecurso)
-    {
+    public function setNombrecurso($nombrecurso) {
         $this->nombrecurso = $nombrecurso;
 
         return $this;
@@ -96,8 +92,7 @@ class Curso
      *
      * @return string 
      */
-    public function getNombrecurso()
-    {
+    public function getNombrecurso() {
         return $this->nombrecurso;
     }
 
@@ -107,8 +102,7 @@ class Curso
      * @param \Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica $asistenteAcademica
      * @return Curso
      */
-    public function addAsistenteAcademica(\Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica $asistenteAcademica)
-    {
+    public function addAsistenteAcademica(\Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica $asistenteAcademica) {
         $this->asistenteAcademica[] = $asistenteAcademica;
 
         return $this;
@@ -119,8 +113,7 @@ class Curso
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica $asistenteAcademica
      */
-    public function removeAsistenteAcademica(\Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica $asistenteAcademica)
-    {
+    public function removeAsistenteAcademica(\Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica $asistenteAcademica) {
         $this->asistenteAcademica->removeElement($asistenteAcademica);
     }
 
@@ -129,8 +122,7 @@ class Curso
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAsistenteAcademica()
-    {
+    public function getAsistenteAcademica() {
         return $this->asistenteAcademica;
     }
 
@@ -140,8 +132,7 @@ class Curso
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Solicitud $solicitud
      * @return Curso
      */
-    public function addSolicitud(\Uci\Bundle\BaseDatosBundle\Entity\Solicitud $solicitud)
-    {
+    public function addSolicitud(\Uci\Bundle\BaseDatosBundle\Entity\Solicitud $solicitud) {
         $this->solicitud[] = $solicitud;
 
         return $this;
@@ -152,8 +143,7 @@ class Curso
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Solicitud $solicitud
      */
-    public function removeSolicitud(\Uci\Bundle\BaseDatosBundle\Entity\Solicitud $solicitud)
-    {
+    public function removeSolicitud(\Uci\Bundle\BaseDatosBundle\Entity\Solicitud $solicitud) {
         $this->solicitud->removeElement($solicitud);
     }
 
@@ -162,8 +152,7 @@ class Curso
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSolicitud()
-    {
+    public function getSolicitud() {
         return $this->solicitud;
     }
 
@@ -173,8 +162,7 @@ class Curso
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion
      * @return Curso
      */
-    public function addGeneracion(\Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion)
-    {
+    public function addGeneracion(\Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion) {
         $this->generacion[] = $generacion;
 
         return $this;
@@ -185,8 +173,7 @@ class Curso
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion
      */
-    public function removeGeneracion(\Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion)
-    {
+    public function removeGeneracion(\Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion) {
         $this->generacion->removeElement($generacion);
     }
 
@@ -195,8 +182,7 @@ class Curso
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getGeneracion()
-    {
+    public function getGeneracion() {
         return $this->generacion;
     }
 
@@ -206,8 +192,7 @@ class Curso
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Profesor $profesor
      * @return Curso
      */
-    public function addProfesor(\Uci\Bundle\BaseDatosBundle\Entity\Profesor $profesor)
-    {
+    public function addProfesor(\Uci\Bundle\BaseDatosBundle\Entity\Profesor $profesor) {
         $this->profesor[] = $profesor;
 
         return $this;
@@ -218,8 +203,7 @@ class Curso
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Profesor $profesor
      */
-    public function removeProfesor(\Uci\Bundle\BaseDatosBundle\Entity\Profesor $profesor)
-    {
+    public function removeProfesor(\Uci\Bundle\BaseDatosBundle\Entity\Profesor $profesor) {
         $this->profesor->removeElement($profesor);
     }
 
@@ -228,11 +212,21 @@ class Curso
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProfesor()
-    {
+    public function getProfesor() {
         return $this->profesor;
     }
     
+    /**
+     * Set profesores
+     *
+     * @param \Doctrine\Common\Collections\Collection  $profesores
+     * @return Curso
+     */
+    public function setProfesores($profesores) {
+        $this->profesor = $profesores;
+        return $this->profesor;
+    }
+
     public function __toString() {
         return $this->nombrecurso;
     }
