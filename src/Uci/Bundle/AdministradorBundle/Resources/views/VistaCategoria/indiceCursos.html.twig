@@ -10,7 +10,8 @@
 
         <ol class="breadcrumb">
             <li><a href="{{ path('uci_administrador_homepage') }}">Inicio</a></li>
-            <li class="active">Listado de Generaciones</li>
+            <li><a href="{{ path('uci_administrador_indicecategoria') }}">Listado de Generaciones</a></li>
+            <li class="active">Listado de Cursos {{ generacion }}</li>
         </ol>
         <div class="row">
             <!-- Sidebar -->
@@ -21,7 +22,7 @@
             <!-- Article main content -->
             <article class="col-sm-8 maincontent">
                 <header class="page-header">
-                    <h1 class="page-title">Lista de generaciones</h1>
+                    <h1 class="page-title">Lista de Cursos de la {{ generacion }}</h1>
                 </header>
                 <br>
 

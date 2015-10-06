@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Entity\Generacion;
 use Uci\Bundle\BaseDatosBundle\Form\GeneracionType;
-use Symfony\Component\Form\FormError;
 
 class CategoriaController extends Controller {
 
@@ -20,23 +19,25 @@ class CategoriaController extends Controller {
 
     public function aIndiceCursosAction($id) {
         $em = $this->getDoctrine()->getManager();
+        $generacion =  $em->getRepository('UciBaseDatosBundle:Generacion')->find($id);
         $repository = $em->getRepository('UciBaseDatosBundle:Curso');
-        $query = $repository->createQueryBuilder('c')
-                ->where('c.generacion > :id')
-                ->setParameter('id', $id)
-                ->orderBy('c.nombrecurso', 'ASC')
-                ->getQuery();
-
-        $cursos = $query->getResult();
+        $entities = $repository->createQueryBuilder('u')
+                        ->innerJoin('u.generacion', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $id)
+                        ->getQuery()->getResult();
         $error = '';
-//        $form->addError(new FormError('Debe ingresar la clave'));
+        if(empty($entities)){
+            $error = 'La '.$generacion->getGeneracion().' aún no tiene cursos';
+        }
         return $this->render('UciAdministradorBundle:VistaCategoria:indiceCursos.html.twig', array(
-                    'cursos' => $cursos,
-                    'error' => $error
+                    'entities' => $entities,
+                    'error' => $error,
+                    'generacion' => $generacion->getGeneracion()
         ));
     }
 
-    public function aEditarCategoriaAction($id) {
+    public function aEditarCategoriaAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Generacion')->find($id);
         if (!$entity) {
