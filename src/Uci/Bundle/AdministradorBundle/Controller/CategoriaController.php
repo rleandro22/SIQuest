@@ -85,6 +85,28 @@ class CategoriaController extends Controller {
         ));
     }
 
+    public function aEditarCursoAction(Request $request, $id, $idGeneracion) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('UciBaseDatosBundle:Curso')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $form = $this->createForm(new CursoType(), $entity);
+        $editForm = $form;
+        if ($request->getMethod() == 'POST') {
+            $editForm->handleRequest($request);
+            if ($editForm->isValid()) {
+                $em->flush();
+            }
+            return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
+        }
+        return $this->render('UciAdministradorBundle:VistaCategoria:editarCurso.html.twig', array(
+                    'entity' => $entity,
+                    'form' => $editForm->createView(),
+                    'idGeneracion' => $idGeneracion
+        ));
+    }
+
     public function aIngresarGeneracionAction(Request $request) {
         $entity = new Generacion();
         $form = $this->createForm(new GeneracionType(), $entity);

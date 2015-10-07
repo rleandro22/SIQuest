@@ -47,5 +47,9 @@ uci_administrador_indicecurso:
     defaults: { _controller: UciAdministradorBundle:Categoria:aIndiceCursos }
     
 uci_administrador_addcurso:
-    pattern:  /admin/{id}/add_curso
+    pattern:  /admin/{id}/registrar_curso
     defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarCurso }
+    
+uci_administrador_editcurso:
+    pattern:  /admin/{idGeneracion}/editar_curso/{id}
+    defaults: { _controller: UciAdministradorBundle:Categoria:aEditarCurso }
