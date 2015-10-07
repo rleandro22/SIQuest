@@ -22,42 +22,77 @@
             <!-- Article main content -->
             <article class="col-sm-8 maincontent">
                 <header class="page-header">
-                    <h1 class="page-title">Lista de Cursos de la {{ generacion }}</h1>
+                    <h1 class="page-title">Lista de Cursos de la {{ generacion.generacion }}</h1>
                 </header>
                 <br>
 
                 {% if error %}
                     <div style="color:red">{{ error }}</div>
-                {% endif %}
-
-                <br><br>
-                 <table class="table demo table-bordered" id="tabla" data-filter="#filter">
-                    <thead>
-                        <tr>
-                            <th data-toggle="true">
-                                Curso
-                            </th>
-                            <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
-                        </tr>
-                    </thead>
-                    <tbody> 
-                        {% for entity in entities %}
+                {% else %}
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input id="filter" class="form-control" type="text" placeholder="Buscar">
+                        </div>
+                    </div>
+                    <br><br>
+                    <table class="table demo table-bordered" id="tabla" data-filter="#filter">
+                        <thead>
                             <tr>
-                                <td width="90%"><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.nombrecurso }}</a></td>
-                                <td><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_edituser', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="{{ path('uci_administrador_deleteuser', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
-                                </td>
+                                <th data-toggle="true">
+                                    Curso
+                                </th>
+                                <th data-toggle="true" data-hide="phone">
+                                    Profesores
+                                </th>
+                                <th data-toggle="true" data-hide="phone">
+                                    Asistentes
+                                </th>
+                                <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody> 
+                            {% for entity in entities %}
+                                <tr>
+                                    <td>{{ entity.nombrecurso }}</td>
+                                    <td>
+                                        {% if entity.profesor is not empty %}
+                                            {% for profesor in entity.profesor %}
+                                                {{ profesor.usuario.nombre }} {{ profesor.usuario.apellidos }}
+                                            {% endfor %}
+                                        {% else %}
+                                            <a href="#">Agregar</a>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if entity.asistenteAcademica is not empty %}
+                                            {% for asistenteAcademica in entity.asistenteAcademica %}
+                                                {{ asistenteAcademica.usuario.nombre }} {{ asistenteAcademica.usuario.apellidos }}<BR>
+                                            {% endfor %}
+                                        {% else %}
+                                            <a href="#">Agregar</a>
+                                        {% endif %}
+                                    </td>
+                                    <td><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_edituser', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a href="{{ path('uci_administrador_deleteuser', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                    </br></br>
+                {% endif %}
+                </br></br>
+                <div class="row">
+                    <div class="col-lg-8 text-right">
+                        <button class="btn btn-action" type="button" data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_addcurso', { 'id': generacion.id }) }}">Agregar curso</button>
+                    </div>
+                </div>
                 <!-- /Aquí acaba el contenido --> 
 
                 <div id="myModal" class="modal fade" role="dialog">
 
                 </div>
-
-
 
             </article>
             <!-- /Article -->
@@ -101,6 +136,3 @@
         };
     </script>
 {% endblock %}
-
-
-

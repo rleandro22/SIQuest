@@ -45,3 +45,7 @@ uci_administrador_deletecategoria:
 uci_administrador_indicecurso:
     pattern:  /admin/{id}/cursos_categoria
     defaults: { _controller: UciAdministradorBundle:Categoria:aIndiceCursos }
+    
+uci_administrador_addcurso:
+    pattern:  /admin/{id}/add_curso
+    defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarCurso }

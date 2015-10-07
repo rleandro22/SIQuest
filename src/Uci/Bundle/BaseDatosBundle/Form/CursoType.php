@@ -6,28 +6,26 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CursoType extends AbstractType
-{
+class CursoType extends AbstractType {
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('nombrecurso')
-            ->add('asistenteAcademica')
-            ->add('solicitud')
-            ->add('generacion')
-            ->add('profesor')
+                ->add('nombrecurso', 'text', array("label" => "Nombre del curso: ", "required" => true, "attr" => array('class' => 'form-control')))
+        //->add('asistenteAcademica')
+        //->add('solicitud')
+        //->add('generacion')
+        //->add('profesor')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Curso'
         ));
@@ -36,8 +34,8 @@ class CursoType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'uci_bundle_basedatosbundle_curso';
     }
+
 }

@@ -41,12 +41,21 @@ class Curso {
      * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Solicitud", mappedBy="curso")
      */
     private $solicitud;
-
+   
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Generacion", mappedBy="curso")
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Generacion", inversedBy="curso", cascade="delete")
+     * @ORM\JoinTable(name="generacion_tiene_curso",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="curso_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="generacion_id", referencedColumnName="id")
+     *   }
+     * )
      */
+    
     private $generacion;
 
     /**
@@ -164,7 +173,7 @@ class Curso {
      */
     public function addGeneracion(\Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion) {
         $this->generacion[] = $generacion;
-
+        $generacion->addCurso($this);
         return $this;
     }
 
@@ -175,6 +184,7 @@ class Curso {
      */
     public function removeGeneracion(\Uci\Bundle\BaseDatosBundle\Entity\Generacion $generacion) {
         $this->generacion->removeElement($generacion);
+        $generacion->removeCurso($this);
     }
 
     /**
@@ -213,17 +223,6 @@ class Curso {
      * @return \Doctrine\Common\Collections\Collection 
      */
     public function getProfesor() {
-        return $this->profesor;
-    }
-    
-    /**
-     * Set profesores
-     *
-     * @param \Doctrine\Common\Collections\Collection  $profesores
-     * @return Curso
-     */
-    public function setProfesores($profesores) {
-        $this->profesor = $profesores;
         return $this->profesor;
     }
 

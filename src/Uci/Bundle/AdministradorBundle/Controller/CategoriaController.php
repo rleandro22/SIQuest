@@ -5,7 +5,9 @@ namespace Uci\Bundle\AdministradorBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Entity\Generacion;
+use Uci\Bundle\BaseDatosBundle\Entity\Curso;
 use Uci\Bundle\BaseDatosBundle\Form\GeneracionType;
+use Uci\Bundle\BaseDatosBundle\Form\CursoType;
 
 class CategoriaController extends Controller {
 
@@ -26,7 +28,7 @@ class CategoriaController extends Controller {
                         ->setParameter('id', $id)
                         ->getQuery()->getResult();
         foreach ($entities as $entity) {
-            $this->setProfesoresBase($entity);
+            $this->setTodasLasPropiedades($entity);
         }
         $error = '';
         if (empty($entities)) {
@@ -35,7 +37,30 @@ class CategoriaController extends Controller {
         return $this->render('UciAdministradorBundle:VistaCategoria:indiceCursos.html.twig', array(
                     'entities' => $entities,
                     'error' => $error,
-                    'generacion' => $generacion->getGeneracion()
+                    'generacion' => $generacion
+        ));
+    }
+
+    public function aIngresarCursoAction(Request $request, $id) {
+        $entity = new Curso();
+        $form = $this->createForm(new CursoType(), $entity);
+        $form->handleRequest($request);
+        $error = '';
+        if ($request->getMethod() == 'POST') {
+            $error = $form->getErrors();
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $entity->addGeneracion($em->getRepository('UciBaseDatosBundle:Generacion')->find($id));
+                $em->persist($entity);
+                $em->flush();
+                return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $id)));
+            }
+        }
+        return $this->render('UciAdministradorBundle:VistaCategoria:registrarCurso.html.twig', array(
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                    'error' => $error,
+                    'id' => $id
         ));
     }
 
@@ -92,14 +117,9 @@ class CategoriaController extends Controller {
         return $this->redirectToRoute('uci_administrador_indicecategoria');
     }
 
-    private function setProfesoresBase(&$entityp) {
+    private function setTodasLasPropiedades(&$entityp) {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('UciBaseDatosBundle:Profesor')->createQueryBuilder('u')
-                        ->innerJoin('u.curso', 'g')
-                        ->where('g.id = :id')
-                        ->setParameter('id', $entityp->getId())
-                        ->getQuery()->getResult();
-        $entityp->setProfesores($entities);
+        $entityp = $em->getRepository('UciBaseDatosBundle:Curso')->find($entityp->getId());
     }
 
 }
