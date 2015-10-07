@@ -1970,13 +1970,18 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // uci_administrador_addcurso
-            if (preg_match('#^/admin/(?P<id>[^/]++)/registrar_curso$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/registrar_curso$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_addcurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aIngresarCursoAction',));
             }
 
             // uci_administrador_editcurso
             if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/editar_curso/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_editcurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aEditarCursoAction',));
+            }
+
+            // uci_administrador_deletecurso
+            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/borrar_curso/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletecurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aBorrarCursoAction',));
             }
 
         }

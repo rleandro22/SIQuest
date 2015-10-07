@@ -32,7 +32,7 @@ class Generacion
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Curso", mappedBy="generacion")
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Curso", mappedBy="generacion" cascade={"persist","remove"})
      */
     private $curso;
 

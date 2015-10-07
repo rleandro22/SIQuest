@@ -15,8 +15,8 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772 = $this->env->getExtension("native_profiler");
-        $__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772->enter($__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig"));
+        $__internal_2ed5100b7dd7f8e7520f7b7b7e5d3f70cf1a10fcc88bb3bcd1fb5b829858e572 = $this->env->getExtension("native_profiler");
+        $__internal_2ed5100b7dd7f8e7520f7b7b7e5d3f70cf1a10fcc88bb3bcd1fb5b829858e572->enter($__internal_2ed5100b7dd7f8e7520f7b7b7e5d3f70cf1a10fcc88bb3bcd1fb5b829858e572_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -32,17 +32,10 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
         // line 10
         echo $this->env->getExtension('routing')->getPath("uci_administrador_indicecategoria");
         echo "'><span>Lista de generaciones</span></a></li>
-                <li class='active has-sub'><a href='#'><span>Nuevo</span></a>
-                    <ul>
-                        <li><a data-toggle=\"modal\" href=\"";
-        // line 13
+                <li><a data-toggle=\"modal\" href=\"";
+        // line 11
         echo $this->env->getExtension('routing')->getPath("uci_administrador_addcategoria");
-        echo "\" data-target=\"#myModal\">Generación</a>
-                        </li>
-                        <li><a href='#'><span>Curso</span></a>
-                        </li>
-                    </ul>
-                </li>
+        echo "\" data-target=\"#myModal\">Nueva generación</a></li>
                 
             </ul>
         </div>
@@ -50,7 +43,7 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 </div>
 ";
         
-        $__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772->leave($__internal_f8cb60872602ba0b64682c696785594c2a65e3d4129f4060b5024599c093e772_prof);
+        $__internal_2ed5100b7dd7f8e7520f7b7b7e5d3f70cf1a10fcc88bb3bcd1fb5b829858e572->leave($__internal_2ed5100b7dd7f8e7520f7b7b7e5d3f70cf1a10fcc88bb3bcd1fb5b829858e572_prof);
 
     }
 
@@ -66,6 +59,6 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 
     public function getDebugInfo()
     {
-        return array (  39 => 13,  33 => 10,  22 => 1,);
+        return array (  37 => 11,  33 => 10,  22 => 1,);
     }
 }

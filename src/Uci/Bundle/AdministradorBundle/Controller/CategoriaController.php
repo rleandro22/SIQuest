@@ -26,6 +26,7 @@ class CategoriaController extends Controller {
                         ->innerJoin('u.generacion', 'g')
                         ->where('g.id = :id')
                         ->setParameter('id', $id)
+                        ->orderBy('u.nombrecurso', 'ASC')
                         ->getQuery()->getResult();
         foreach ($entities as $entity) {
             $this->setTodasLasPropiedades($entity);
@@ -41,7 +42,7 @@ class CategoriaController extends Controller {
         ));
     }
 
-    public function aIngresarCursoAction(Request $request, $id) {
+    public function aIngresarCursoAction(Request $request, $idGeneracion) {
         $entity = new Curso();
         $form = $this->createForm(new CursoType(), $entity);
         $form->handleRequest($request);
@@ -50,17 +51,18 @@ class CategoriaController extends Controller {
             $error = $form->getErrors();
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                $entity->addGeneracion($em->getRepository('UciBaseDatosBundle:Generacion')->find($id));
+                $generacion = $em->getRepository('UciBaseDatosBundle:Generacion')->find($idGeneracion);
+                $entity->addGeneracion($generacion);
                 $em->persist($entity);
                 $em->flush();
-                return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $id)));
+                return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
             }
         }
         return $this->render('UciAdministradorBundle:VistaCategoria:registrarCurso.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
                     'error' => $error,
-                    'id' => $id
+                    'idGeneracion' => $idGeneracion
         ));
     }
 
@@ -137,6 +139,17 @@ class CategoriaController extends Controller {
         $em->remove($entity);
         $em->flush();
         return $this->redirectToRoute('uci_administrador_indicecategoria');
+    }
+    
+    public function aBorrarCursoAction($idGeneracion, $id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('UciBaseDatosBundle:Curso')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $em->remove($entity);
+        $em->flush();
+        return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
     }
 
     private function setTodasLasPropiedades(&$entityp) {

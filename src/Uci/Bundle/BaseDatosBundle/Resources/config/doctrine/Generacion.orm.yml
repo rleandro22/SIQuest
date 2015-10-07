@@ -33,6 +33,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Generacion:
                     -
                         name: generacion_id
                         referencedColumnName: id
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     -
                         name: curso_id

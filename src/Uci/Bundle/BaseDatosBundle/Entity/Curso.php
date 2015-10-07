@@ -61,7 +61,7 @@ class Curso {
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Profesor", mappedBy="curso")
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Profesor", mappedBy="curso", cascade={"persist","remove"})
      */
     private $profesor;
 

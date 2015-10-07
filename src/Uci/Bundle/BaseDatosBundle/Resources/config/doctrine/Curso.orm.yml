@@ -40,6 +40,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Curso:
             inversedBy: null
             joinTable: null
             orderBy: null
+            onDelete: "CASCADE"
         profesor:
             targetEntity: Profesor
             cascade: {  }

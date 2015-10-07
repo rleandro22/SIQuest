@@ -7,7 +7,7 @@
             <h4 class="modal-title">Ingrese el nombre del curso</h4>
         </div>
         <div class="modal-body">
-            <form action="{{ path('uci_administrador_addcurso', { 'id': id }) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ path('uci_administrador_addcurso', { 'idGeneracion': idGeneracion }) }}" method="POST" enctype="multipart/form-data">
                 <div class="row top-margin">
                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                         {{ form_label(form.nombrecurso) }}

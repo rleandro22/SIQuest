@@ -73,7 +73,7 @@
                                         {% endif %}
                                     </td>
                                     <td><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_editcurso', { 'id': entity.id, 'idGeneracion': generacion.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <a href="{{ path('uci_administrador_deleteuser', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
+                                        <a href="{{ path('uci_administrador_deletecurso', { 'id': entity.id, 'idGeneracion': generacion.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
                                     </td>
                                 </tr>
                             {% endfor %}
