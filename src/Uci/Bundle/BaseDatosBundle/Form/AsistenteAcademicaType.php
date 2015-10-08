@@ -15,7 +15,7 @@ class AsistenteAcademicaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('usuario')
+            //->add('usuario')
             ->add('curso')
         ;
     }

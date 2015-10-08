@@ -6,8 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Entity\Generacion;
 use Uci\Bundle\BaseDatosBundle\Entity\Curso;
+use Uci\Bundle\BaseDatosBundle\Entity\Profesor;
+use \Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica;
 use Uci\Bundle\BaseDatosBundle\Form\GeneracionType;
 use Uci\Bundle\BaseDatosBundle\Form\CursoType;
+use Uci\Bundle\BaseDatosBundle\Form\AsistenteMatriculaType;
 
 class CategoriaController extends Controller {
 
@@ -66,6 +69,27 @@ class CategoriaController extends Controller {
         ));
     }
 
+    public function matricularUsuarioAction(Request $request, $idCurso, $idGeneracion, $tipoUsuario) {     
+        $form = $this->createForm(new AsistenteMatriculaType());
+        $form->handleRequest($request);
+        if ($request->getMethod() == 'POST') {
+            if ($form->isValid()) {
+                $asistenteAcademica = $form["asistenteAcademica"]->getData();
+                $em = $this->getDoctrine()->getManager();
+                $asistenteAcademica->addCurso($em->getRepository('UciBaseDatosBundle:Curso')->find($idCurso));
+                $em->persist($asistenteAcademica);
+                $em->flush();
+            }
+            return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
+        }
+        return $this->render('UciAdministradorBundle:VistaCategoria:matricularUsuario.html.twig', array(
+                    'form' => $form->createView(),
+                    'idGeneracion' => $idGeneracion,
+                    'idCurso' => $idCurso,
+                    'tipoUsuario' => $tipoUsuario
+        ));
+    }
+
     public function aEditarCategoriaAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Generacion')->find($id);
@@ -73,17 +97,16 @@ class CategoriaController extends Controller {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
         $form = $this->createForm(new GeneracionType(), $entity);
-        $editForm = $form;
         if ($request->getMethod() == 'POST') {
-            $editForm->handleRequest($request);
-            if ($editForm->isValid()) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
                 $em->flush();
             }
             return $this->redirectToRoute('uci_administrador_indicecategoria');
         }
         return $this->render('UciAdministradorBundle:VistaCategoria:editarCategoria.html.twig', array(
                     'entity' => $entity,
-                    'form' => $editForm->createView()
+                    'form' => $form->createView()
         ));
     }
 
@@ -140,7 +163,7 @@ class CategoriaController extends Controller {
         $em->flush();
         return $this->redirectToRoute('uci_administrador_indicecategoria');
     }
-    
+
     public function aBorrarCursoAction($idGeneracion, $id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Curso')->find($id);

@@ -35,6 +35,10 @@ security:
                 path: /logout
                 target: /admin
                 invalidate_session: false
+                delete_cookies:
+                    name:
+                    path: null
+                    domain: null
 
     access_control:
       - { path: ^/admin, roles: ROLE_ADMINISTRADOR }

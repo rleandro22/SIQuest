@@ -32,6 +32,14 @@
     </div><!--/.nav-collapse -->
 {% endblock %}  
 
+{% block navegacionfooter %}
+    <p class="simplenav">
+        <a href="{{ path('uci_principal_homepage') }}">Inicio</a> | 
+        <a href="about.html">Ayuda</a> |
+        <a href="{{ path('logout') }}">Salir</a>
+    </p>
+{% endblock %}
+
 
 {% block javascripts %}
     {{ parent() }}

@@ -68,8 +68,7 @@
                                             {% for asistenteAcademica in entity.asistenteAcademica %}
                                                 {{ asistenteAcademica.usuario.nombre }} {{ asistenteAcademica.usuario.apellidos }}<BR>
                                             {% endfor %}
-                                        {% else %}
-                                            <a href="#">Agregar</a>
+                                            <a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 2 }) }}">Agregar</a>
                                         {% endif %}
                                     </td>
                                     <td><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_editcurso', { 'id': entity.id, 'idGeneracion': generacion.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
