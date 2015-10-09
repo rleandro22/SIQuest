@@ -15,8 +15,8 @@ class __TwigTemplate_dace79e10c7191957dd706523804fe92f001aeafd121e15c0c064baf156
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378 = $this->env->getExtension("native_profiler");
-        $__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378->enter($__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:matricularUsuario.html.twig"));
+        $__internal_1eef561168cdc53180f00bf95e6ad88d8f27a1b9d9da0a01efb2da6b8221b101 = $this->env->getExtension("native_profiler");
+        $__internal_1eef561168cdc53180f00bf95e6ad88d8f27a1b9d9da0a01efb2da6b8221b101->enter($__internal_1eef561168cdc53180f00bf95e6ad88d8f27a1b9d9da0a01efb2da6b8221b101_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:matricularUsuario.html.twig"));
 
         // line 1
         echo "
@@ -25,7 +25,7 @@ class __TwigTemplate_dace79e10c7191957dd706523804fe92f001aeafd121e15c0c064baf156
     <div class=\"modal-content\">
         <div class=\"modal-header\">
             <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
-            <h4 class=\"modal-title\">Seleccione la asistente académica</h4>
+            <h4 class=\"modal-title\">Seleccione al usuario que desea matricular</h4>
         </div>
         <div class=\"modal-body\">
             <form action=\"";
@@ -66,7 +66,7 @@ class __TwigTemplate_dace79e10c7191957dd706523804fe92f001aeafd121e15c0c064baf156
 
 ";
         
-        $__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378->leave($__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378_prof);
+        $__internal_1eef561168cdc53180f00bf95e6ad88d8f27a1b9d9da0a01efb2da6b8221b101->leave($__internal_1eef561168cdc53180f00bf95e6ad88d8f27a1b9d9da0a01efb2da6b8221b101_prof);
 
     }
 

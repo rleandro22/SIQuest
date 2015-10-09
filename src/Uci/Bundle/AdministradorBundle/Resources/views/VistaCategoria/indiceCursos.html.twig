@@ -41,7 +41,8 @@
                                 <th style="border-right:0;" data-toggle="true">
                                     Curso
                                 </th>
-                                <th style="border-left:0;" data-sort-ignore="true" data-hide="phone"></th>
+                                <th style="border-left:0; border-right:0" data-sort-ignore="true" data-hide="phone"></th>
+                                <th style="border-left:0; border-right:0" data-sort-ignore="true" data-hide="phone"></th>
                                 <th data-toggle="true" data-hide="phone">
                                     Profesores
                                 </th>
@@ -55,6 +56,9 @@
                             {% for entity in entities %}
                                 <tr>
                                     <td style="border-right:0;" class="primera-columna">{{ entity.nombrecurso }} </td>
+                                    <td style="border-left:0; border-right:0">
+                                        <a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_desmatricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id}) }}"><span class="navigationSpace glyphicon glyphicon-minus-sign"></span></a>
+                                    </td>
                                     <td style="border-left:0;">
                                         <div class="dropdown">
                                             <a data-toggle="dropdown"><span class="navigationSpace glyphicon glyphicon-plus-sign"></span></a>
@@ -75,8 +79,8 @@
                                         {% if entity.asistenteAcademica is not empty %}
                                             {% for asistenteAcademica in entity.asistenteAcademica %}
                                                 {{ asistenteAcademica.usuario.nombre }} {{ asistenteAcademica.usuario.apellidos }}<BR>
-                                                {% endfor %}
-                                            {% endif %}                        
+                                            {% endfor %}
+                                        {% endif %}                        
                                     </td>
                                     <td><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_editcurso', { 'id': entity.id, 'idGeneracion': generacion.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
                                         <a href="{{ path('uci_administrador_deletecurso', { 'id': entity.id, 'idGeneracion': generacion.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>

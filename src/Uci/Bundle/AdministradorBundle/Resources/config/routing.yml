@@ -63,3 +63,7 @@ uci_administrador_deletecurso:
 uci_administrador_matricularusuario:
     pattern:  /admin/{idGeneracion}/{idCurso}/matricular_usuario/{tipoUsuario}
     defaults: { _controller: UciAdministradorBundle:Categoria:matricularUsuario }
+
+uci_administrador_desmatricularusuario:
+    pattern:  /admin/{idGeneracion}/{idCurso}/desmatricular_usuario/
+    defaults: { _controller: UciAdministradorBundle:Categoria:aDesmatricularUsuario }
