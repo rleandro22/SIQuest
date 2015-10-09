@@ -14,7 +14,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Curso:
         nombrecurso:
             type: string
             nullable: false
-            length: 45
+            length: 200
             fixed: false
             comment: ''
             column: nombreCurso

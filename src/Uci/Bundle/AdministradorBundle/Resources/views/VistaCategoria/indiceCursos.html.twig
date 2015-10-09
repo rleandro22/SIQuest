@@ -38,9 +38,10 @@
                     <table class="table demo table-bordered" id="tabla" data-filter="#filter">
                         <thead>
                             <tr>
-                                <th data-toggle="true">
+                                <th style="border-right:0;" data-toggle="true">
                                     Curso
                                 </th>
+                                <th style="border-left:0;" data-sort-ignore="true" data-hide="phone"></th>
                                 <th data-toggle="true" data-hide="phone">
                                     Profesores
                                 </th>
@@ -53,23 +54,29 @@
                         <tbody> 
                             {% for entity in entities %}
                                 <tr>
-                                    <td>{{ entity.nombrecurso }}</td>
-                                    <td>
+                                    <td style="border-right:0;" class="primera-columna">{{ entity.nombrecurso }} </td>
+                                    <td style="border-left:0;">
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown"><span class="navigationSpace glyphicon glyphicon-plus-sign"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 2 }) }}">A. Académica</a></li>
+                                                <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 1 }) }}">Profesor</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="segunda-columna">
                                         {% if entity.profesor is not empty %}
                                             {% for profesor in entity.profesor %}
-                                                {{ profesor.usuario.nombre }} {{ profesor.usuario.apellidos }}
+                                                {{ profesor.usuario.nombre }} {{ profesor.usuario.apellidos }}<BR>
                                             {% endfor %}
-                                        {% else %}
-                                            <a href="#">Agregar</a>
                                         {% endif %}
                                     </td>
-                                    <td>
+                                    <td class="segunda-columna">
                                         {% if entity.asistenteAcademica is not empty %}
                                             {% for asistenteAcademica in entity.asistenteAcademica %}
                                                 {{ asistenteAcademica.usuario.nombre }} {{ asistenteAcademica.usuario.apellidos }}<BR>
-                                            {% endfor %}
-                                            <a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 2 }) }}">Agregar</a>
-                                        {% endif %}
+                                                {% endfor %}
+                                            {% endif %}                        
                                     </td>
                                     <td><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_editcurso', { 'id': entity.id, 'idGeneracion': generacion.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
                                         <a href="{{ path('uci_administrador_deletecurso', { 'id': entity.id, 'idGeneracion': generacion.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>

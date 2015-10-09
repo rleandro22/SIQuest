@@ -1,25 +1,7 @@
-body{
-    color:#2B2B2B;
-	font-family: 'trebuchet MS' , 'Lucida sans' , Arial;
-}
-
-    body.dark {
-        background: #444;
-        color:#ffd;
-    }
-	
-.demo-container {
-	margin:0px;
-}
-
-code {
-    background: #ddd;
-}
-
 .status-metro {
     display: inline-block;
     padding: 2px 5px;
-	color:#fff;
+    color:#fff;
 }
 
 .status-metro.status-active {
@@ -35,9 +17,40 @@ code {
 }
 
 .foo-setup li {
-	margin-bottom:30px;
+    margin-bottom:30px;
 }
 
 .navigationSpace {
     padding-left: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #E6F2FF;
+}
+
+
+td:last-child {
+    width: 10%
+}
+
+.primera-columna{
+    max-width: 40%;
+    border:0; 
+    border-color:#FFFFFF;
+}
+
+.segunda-columna {
+    width: 25%
+}
+
+td {
+    word-wrap: break-word;         /* All browsers since IE 5.5+ */
+    overflow-wrap: break-word;     /* Renamed property in CSS3 draft spec */
+}
+
+a.plus {
+    display: block;
+    position: relative;
+    text-align: center;
+    float: right;
 }

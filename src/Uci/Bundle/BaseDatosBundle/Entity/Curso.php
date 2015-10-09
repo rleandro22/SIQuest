@@ -24,7 +24,7 @@ class Curso {
     /**
      * @var string
      *
-     * @ORM\Column(name="nombreCurso", type="string", length=45, nullable=false)
+     * @ORM\Column(name="nombreCurso", type="string", length=200, nullable=false)
      */
     private $nombrecurso;
 

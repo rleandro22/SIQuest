@@ -4,14 +4,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Seleccione 1 o más asistentes académicas</h4>
+            <h4 class="modal-title">Seleccione la asistente académica</h4>
         </div>
         <div class="modal-body">
             <form action="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': idGeneracion, 'idCurso': idCurso, 'tipoUsuario': tipoUsuario }) }}" method="POST" enctype="multipart/form-data">
                 <div class="row top-margin">
                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                        {{ form_errors(form.asistenteAcademica) }}
-                        {{ form_widget(form.asistenteAcademica) }}
+                        {{ form_errors(form.usuario) }}
+                        {{ form_widget(form.usuario) }}
                     </div>
                 </div>
 

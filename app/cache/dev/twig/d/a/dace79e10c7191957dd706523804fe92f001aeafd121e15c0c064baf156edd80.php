@@ -15,8 +15,8 @@ class __TwigTemplate_dace79e10c7191957dd706523804fe92f001aeafd121e15c0c064baf156
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3b0fb1c4a07675f80846e0889c824df7579378a06220dfa1dfbafbeed5dbf7ba = $this->env->getExtension("native_profiler");
-        $__internal_3b0fb1c4a07675f80846e0889c824df7579378a06220dfa1dfbafbeed5dbf7ba->enter($__internal_3b0fb1c4a07675f80846e0889c824df7579378a06220dfa1dfbafbeed5dbf7ba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:matricularUsuario.html.twig"));
+        $__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378 = $this->env->getExtension("native_profiler");
+        $__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378->enter($__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:matricularUsuario.html.twig"));
 
         // line 1
         echo "
@@ -25,7 +25,7 @@ class __TwigTemplate_dace79e10c7191957dd706523804fe92f001aeafd121e15c0c064baf156
     <div class=\"modal-content\">
         <div class=\"modal-header\">
             <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
-            <h4 class=\"modal-title\">Seleccione 1 o más asistentes académicas</h4>
+            <h4 class=\"modal-title\">Seleccione la asistente académica</h4>
         </div>
         <div class=\"modal-body\">
             <form action=\"";
@@ -36,11 +36,11 @@ class __TwigTemplate_dace79e10c7191957dd706523804fe92f001aeafd121e15c0c064baf156
                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                         ";
         // line 13
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "asistenteAcademica", array()), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "usuario", array()), 'errors');
         echo "
                         ";
         // line 14
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "asistenteAcademica", array()), 'widget');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "usuario", array()), 'widget');
         echo "
                     </div>
                 </div>
@@ -66,7 +66,7 @@ class __TwigTemplate_dace79e10c7191957dd706523804fe92f001aeafd121e15c0c064baf156
 
 ";
         
-        $__internal_3b0fb1c4a07675f80846e0889c824df7579378a06220dfa1dfbafbeed5dbf7ba->leave($__internal_3b0fb1c4a07675f80846e0889c824df7579378a06220dfa1dfbafbeed5dbf7ba_prof);
+        $__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378->leave($__internal_371b21397132ccaf0b57f15b2e000b294bcfaa361be05790bdc8f400ff935378_prof);
 
     }
 

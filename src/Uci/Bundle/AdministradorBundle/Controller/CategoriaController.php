@@ -6,11 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Entity\Generacion;
 use Uci\Bundle\BaseDatosBundle\Entity\Curso;
-use Uci\Bundle\BaseDatosBundle\Entity\Profesor;
-use \Uci\Bundle\BaseDatosBundle\Entity\AsistenteAcademica;
 use Uci\Bundle\BaseDatosBundle\Form\GeneracionType;
 use Uci\Bundle\BaseDatosBundle\Form\CursoType;
-use Uci\Bundle\BaseDatosBundle\Form\AsistenteMatriculaType;
+use Uci\Bundle\BaseDatosBundle\Form\UsuarioMatriculaType;
 
 class CategoriaController extends Controller {
 
@@ -70,14 +68,14 @@ class CategoriaController extends Controller {
     }
 
     public function matricularUsuarioAction(Request $request, $idCurso, $idGeneracion, $tipoUsuario) {     
-        $form = $this->createForm(new AsistenteMatriculaType());
+        $form = $this->createForm(new UsuarioMatriculaType($tipoUsuario));
         $form->handleRequest($request);
         if ($request->getMethod() == 'POST') {
             if ($form->isValid()) {
-                $asistenteAcademica = $form["asistenteAcademica"]->getData();
+                $usuario = $form["usuario"]->getData();
                 $em = $this->getDoctrine()->getManager();
-                $asistenteAcademica->addCurso($em->getRepository('UciBaseDatosBundle:Curso')->find($idCurso));
-                $em->persist($asistenteAcademica);
+                $usuario->addCurso($em->getRepository('UciBaseDatosBundle:Curso')->find($idCurso));
+                $em->persist($usuario);
                 $em->flush();
             }
             return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
