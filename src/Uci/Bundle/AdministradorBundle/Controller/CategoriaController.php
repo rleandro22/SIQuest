@@ -70,7 +70,6 @@ class CategoriaController extends Controller {
 
     public function matricularUsuarioAction(Request $request, $idCurso, $idGeneracion, $tipoUsuario) {
         $form = $this->createForm(new UsuarioMatriculaType($tipoUsuario));
-        $this->usuariosDecurso($idCurso);
         $form->handleRequest($request);
         if ($request->getMethod() == 'POST') {
             if ($form->isValid()) {
@@ -91,15 +90,10 @@ class CategoriaController extends Controller {
         ));
     }
 
-    public function aDesmatricularUsuarioAction(Request $request, $idCurso, $idGeneracion) {
-        $usuarios = $this->usuariosMatriculadosCurso($usuarios, $idCurso);
-        $form = $this->createForm(new UsuarioDesmatriculaType($usuarios));
-        return $this->render('UciAdministradorBundle:VistaCategoria:desmatricularUsuario.html.twig', array(
-                    'form' => $form->createView(),
-                    'idGeneracion' => $idGeneracion,
-                    'idCurso' => $idCurso,
-                    'accion' => 'desmatricular'
-        ));
+    public function aDesmatricularUsuarioAction(Request $request, $idGeneracion, $idCurso, $idUsuario) {
+        $generacion = $em->getRepository('UciBaseDatosBundle:Generacion')->find($idGeneracion);
+        $generacion = $em->getRepository('UciBaseDatosBundle:Generacion')->find($idGeneracion);
+        return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
     }
 
     public function aEditarCategoriaAction(Request $request, $id) {
@@ -190,19 +184,6 @@ class CategoriaController extends Controller {
     private function setTodasLasPropiedades(&$entityp) {
         $em = $this->getDoctrine()->getManager();
         $entityp = $em->getRepository('UciBaseDatosBundle:Curso')->find($entityp->getId());
-    }
-
-    private function usuariosMatriculadosCurso(&$usuarios, $idCurso) {
-        $em = $this->getDoctrine()->getManager();
-        $curso = $em->getRepository('UciBaseDatosBundle:Curso')->find($idCurso);  
-        $asistentes = $curso->getAsistenteAcademica();
-        $profesores = $curso->getProfesor();
-        foreach ($asistentes as $entityAsistente) {
-            $this->usuarios[] = $entityAsistente;
-        }
-        foreach ($profesores as $entityProfesor) {
-            $this->usuarios[] = $entityProfesor;
-        }
     }
 
 }

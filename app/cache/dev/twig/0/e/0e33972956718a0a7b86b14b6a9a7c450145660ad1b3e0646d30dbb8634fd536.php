@@ -23,34 +23,34 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_bc21f6438109bf35fac93c5dec13d1c706cdd3ac9dad57b83dac16b75fc2368b = $this->env->getExtension("native_profiler");
-        $__internal_bc21f6438109bf35fac93c5dec13d1c706cdd3ac9dad57b83dac16b75fc2368b->enter($__internal_bc21f6438109bf35fac93c5dec13d1c706cdd3ac9dad57b83dac16b75fc2368b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:indiceCursos.html.twig"));
+        $__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b = $this->env->getExtension("native_profiler");
+        $__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b->enter($__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:indiceCursos.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_bc21f6438109bf35fac93c5dec13d1c706cdd3ac9dad57b83dac16b75fc2368b->leave($__internal_bc21f6438109bf35fac93c5dec13d1c706cdd3ac9dad57b83dac16b75fc2368b_prof);
+        $__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b->leave($__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_113bd18a57c97a1a3a4664382d9095d729d973926ff152ca7655942917444410 = $this->env->getExtension("native_profiler");
-        $__internal_113bd18a57c97a1a3a4664382d9095d729d973926ff152ca7655942917444410->enter($__internal_113bd18a57c97a1a3a4664382d9095d729d973926ff152ca7655942917444410_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff = $this->env->getExtension("native_profiler");
+        $__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff->enter($__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_113bd18a57c97a1a3a4664382d9095d729d973926ff152ca7655942917444410->leave($__internal_113bd18a57c97a1a3a4664382d9095d729d973926ff152ca7655942917444410_prof);
+        $__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff->leave($__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_cbfb5388afc0b629ed0d3c86e2cfb356b094c4d5a2215f6cf66dcb272e74770f = $this->env->getExtension("native_profiler");
-        $__internal_cbfb5388afc0b629ed0d3c86e2cfb356b094c4d5a2215f6cf66dcb272e74770f->enter($__internal_cbfb5388afc0b629ed0d3c86e2cfb356b094c4d5a2215f6cf66dcb272e74770f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549 = $this->env->getExtension("native_profiler");
+        $__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549->enter($__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -111,8 +111,7 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
                                 <th style=\"border-right:0;\" data-toggle=\"true\">
                                     Curso
                                 </th>
-                                <th style=\"border-left:0; border-right:0\" data-sort-ignore=\"true\" data-hide=\"phone\"></th>
-                                <th style=\"border-left:0; border-right:0\" data-sort-ignore=\"true\" data-hide=\"phone\"></th>
+                                <th style=\"border-left:0;\" data-sort-ignore=\"true\" data-hide=\"phone\"></th>
                                 <th data-toggle=\"true\" data-hide=\"phone\">
                                     Profesores
                                 </th>
@@ -124,32 +123,26 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
                         </thead>
                         <tbody> 
                             ";
-            // line 56
+            // line 55
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
             foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-                // line 57
+                // line 56
                 echo "                                <tr>
                                     <td style=\"border-right:0;\" class=\"primera-columna\">";
-                // line 58
+                // line 57
                 echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "nombrecurso", array()), "html", null, true);
                 echo " </td>
-                                    <td style=\"border-left:0; border-right:0\">
-                                        <a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
-                // line 60
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_desmatricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
-                echo "\"><span class=\"navigationSpace glyphicon glyphicon-minus-sign\"></span></a>
-                                    </td>
                                     <td style=\"border-left:0;\">
                                         <div class=\"dropdown\">
                                             <a data-toggle=\"dropdown\"><span class=\"navigationSpace glyphicon glyphicon-plus-sign\"></span></a>
                                             <ul class=\"dropdown-menu\">
                                                 <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
-                // line 66
+                // line 62
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 2)), "html", null, true);
                 echo "\">A. Académica</a></li>
                                                 <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
-                // line 67
+                // line 63
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 1)), "html", null, true);
                 echo "\">Profesor</a></li>
                                             </ul>
@@ -157,60 +150,86 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
                                     </td>
                                     <td class=\"segunda-columna\">
                                         ";
-                // line 72
+                // line 68
                 if ( !twig_test_empty($this->getAttribute($context["entity"], "profesor", array()))) {
-                    // line 73
+                    // line 69
                     echo "                                            ";
                     $context['_parent'] = (array) $context;
                     $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["entity"], "profesor", array()));
                     foreach ($context['_seq'] as $context["_key"] => $context["profesor"]) {
-                        // line 74
-                        echo "                                                ";
+                        // line 70
+                        echo "                                                <div class=\"dropdown\">
+                                                    <a data-toggle=\"dropdown\"><div class=\"noIbar\">";
+                        // line 71
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["profesor"], "usuario", array()), "nombre", array()), "html", null, true);
                         echo " ";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["profesor"], "usuario", array()), "apellidos", array()), "html", null, true);
-                        echo "<BR>
+                        echo "</div></a>
+                                                    <ul class=\"dropdown-menu\">
+                                                        <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
+                        // line 73
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 2)), "html", null, true);
+                        echo "\">A. Académica</a></li>
+                                                        <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
+                        // line 74
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 1)), "html", null, true);
+                        echo "\">Profesor</a></li>
+                                                    </ul>
+                                                </div>
                                             ";
                     }
                     $_parent = $context['_parent'];
                     unset($context['_seq'], $context['_iterated'], $context['_key'], $context['profesor'], $context['_parent'], $context['loop']);
                     $context = array_intersect_key($context, $_parent) + $_parent;
-                    // line 76
+                    // line 78
                     echo "                                        ";
                 }
-                // line 77
+                // line 79
                 echo "                                    </td>
                                     <td class=\"segunda-columna\">
                                         ";
-                // line 79
+                // line 81
                 if ( !twig_test_empty($this->getAttribute($context["entity"], "asistenteAcademica", array()))) {
-                    // line 80
+                    // line 82
                     echo "                                            ";
                     $context['_parent'] = (array) $context;
                     $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["entity"], "asistenteAcademica", array()));
                     foreach ($context['_seq'] as $context["_key"] => $context["asistenteAcademica"]) {
-                        // line 81
-                        echo "                                                ";
+                        // line 83
+                        echo "                                                <div class=\"dropdown\">
+                                                    <a data-toggle=\"dropdown\"><div class=\"noIbar\">";
+                        // line 84
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["asistenteAcademica"], "usuario", array()), "nombre", array()), "html", null, true);
                         echo " ";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["asistenteAcademica"], "usuario", array()), "apellidos", array()), "html", null, true);
-                        echo "<BR>
+                        echo "</div></a>
+                                                    <ul class=\"dropdown-menu\">
+                                                        <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
+                        // line 86
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 2)), "html", null, true);
+                        echo "\">A. Académica</a></li>
+                                                        <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
+                        // line 87
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 1)), "html", null, true);
+                        echo "\">Profesor</a></li>
+                                                    </ul>
+                                                </div>
                                             ";
                     }
                     $_parent = $context['_parent'];
                     unset($context['_seq'], $context['_iterated'], $context['_key'], $context['asistenteAcademica'], $context['_parent'], $context['loop']);
                     $context = array_intersect_key($context, $_parent) + $_parent;
-                    // line 83
+                    // line 91
                     echo "                                        ";
                 }
                 echo "                        
                                     </td>
                                     <td><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
-                // line 85
+                // line 93
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_editcurso", array("id" => $this->getAttribute($context["entity"], "id", array()), "idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()))), "html", null, true);
                 echo "\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
                                         <a href=\"";
-                // line 86
+                // line 94
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_deletecurso", array("id" => $this->getAttribute($context["entity"], "id", array()), "idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()))), "html", null, true);
                 echo "\" class=\"speedbump\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
                                     </td>
@@ -220,19 +239,19 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 90
+            // line 98
             echo "
                         </tbody>
                     </table>
                     </br></br>
                 ";
         }
-        // line 95
+        // line 103
         echo "                </br></br>
                 <div class=\"row\">
                     <div class=\"col-lg-8 text-right\">
                         <button class=\"btn btn-action\" type=\"button\" data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
-        // line 98
+        // line 106
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_addcurso", array("id" => 0, "idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()))), "html", null, true);
         echo "\">Agregar curso</button>
                     </div>
@@ -250,17 +269,17 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
 
 ";
         
-        $__internal_cbfb5388afc0b629ed0d3c86e2cfb356b094c4d5a2215f6cf66dcb272e74770f->leave($__internal_cbfb5388afc0b629ed0d3c86e2cfb356b094c4d5a2215f6cf66dcb272e74770f_prof);
+        $__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549->leave($__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549_prof);
 
     }
 
-    // line 114
+    // line 122
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_cafbe528d3d5949440f36ae556ba3196ee590b154ab5e6be448d7cc948b3a3ba = $this->env->getExtension("native_profiler");
-        $__internal_cafbe528d3d5949440f36ae556ba3196ee590b154ab5e6be448d7cc948b3a3ba->enter($__internal_cafbe528d3d5949440f36ae556ba3196ee590b154ab5e6be448d7cc948b3a3ba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8 = $this->env->getExtension("native_profiler");
+        $__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8->enter($__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 115
+        // line 123
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
@@ -298,7 +317,7 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
     </script>
 ";
         
-        $__internal_cafbe528d3d5949440f36ae556ba3196ee590b154ab5e6be448d7cc948b3a3ba->leave($__internal_cafbe528d3d5949440f36ae556ba3196ee590b154ab5e6be448d7cc948b3a3ba_prof);
+        $__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8->leave($__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8_prof);
 
     }
 
@@ -314,6 +333,6 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
 
     public function getDebugInfo()
     {
-        return array (  264 => 115,  258 => 114,  236 => 98,  231 => 95,  224 => 90,  214 => 86,  210 => 85,  204 => 83,  193 => 81,  188 => 80,  186 => 79,  182 => 77,  179 => 76,  168 => 74,  163 => 73,  161 => 72,  153 => 67,  149 => 66,  140 => 60,  135 => 58,  132 => 57,  128 => 56,  102 => 32,  96 => 30,  94 => 29,  87 => 25,  80 => 20,  78 => 19,  70 => 14,  66 => 13,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  283 => 123,  277 => 122,  255 => 106,  250 => 103,  243 => 98,  233 => 94,  229 => 93,  223 => 91,  213 => 87,  209 => 86,  202 => 84,  199 => 83,  194 => 82,  192 => 81,  188 => 79,  185 => 78,  175 => 74,  171 => 73,  164 => 71,  161 => 70,  156 => 69,  154 => 68,  146 => 63,  142 => 62,  134 => 57,  131 => 56,  127 => 55,  102 => 32,  96 => 30,  94 => 29,  87 => 25,  80 => 20,  78 => 19,  70 => 14,  66 => 13,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 }

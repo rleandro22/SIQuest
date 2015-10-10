@@ -41,8 +41,7 @@
                                 <th style="border-right:0;" data-toggle="true">
                                     Curso
                                 </th>
-                                <th style="border-left:0; border-right:0" data-sort-ignore="true" data-hide="phone"></th>
-                                <th style="border-left:0; border-right:0" data-sort-ignore="true" data-hide="phone"></th>
+                                <th style="border-left:0;" data-sort-ignore="true" data-hide="phone"></th>
                                 <th data-toggle="true" data-hide="phone">
                                     Profesores
                                 </th>
@@ -56,9 +55,6 @@
                             {% for entity in entities %}
                                 <tr>
                                     <td style="border-right:0;" class="primera-columna">{{ entity.nombrecurso }} </td>
-                                    <td style="border-left:0; border-right:0">
-                                        <a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_desmatricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id}) }}"><span class="navigationSpace glyphicon glyphicon-minus-sign"></span></a>
-                                    </td>
                                     <td style="border-left:0;">
                                         <div class="dropdown">
                                             <a data-toggle="dropdown"><span class="navigationSpace glyphicon glyphicon-plus-sign"></span></a>
@@ -71,14 +67,26 @@
                                     <td class="segunda-columna">
                                         {% if entity.profesor is not empty %}
                                             {% for profesor in entity.profesor %}
-                                                {{ profesor.usuario.nombre }} {{ profesor.usuario.apellidos }}<BR>
+                                                <div class="dropdown">
+                                                    <a data-toggle="dropdown"><div class="noIbar">{{ profesor.usuario.nombre }} {{ profesor.usuario.apellidos }}</div></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 2 }) }}">A. Académica</a></li>
+                                                        <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 1 }) }}">Profesor</a></li>
+                                                    </ul>
+                                                </div>
                                             {% endfor %}
                                         {% endif %}
                                     </td>
                                     <td class="segunda-columna">
                                         {% if entity.asistenteAcademica is not empty %}
                                             {% for asistenteAcademica in entity.asistenteAcademica %}
-                                                {{ asistenteAcademica.usuario.nombre }} {{ asistenteAcademica.usuario.apellidos }}<BR>
+                                                <div class="dropdown">
+                                                    <a data-toggle="dropdown"><div class="noIbar">{{ asistenteAcademica.usuario.nombre }} {{ asistenteAcademica.usuario.apellidos }}</div></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 2 }) }}">A. Académica</a></li>
+                                                        <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 1 }) }}">Profesor</a></li>
+                                                    </ul>
+                                                </div>
                                             {% endfor %}
                                         {% endif %}                        
                                     </td>
