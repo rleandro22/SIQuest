@@ -15,8 +15,8 @@ class __TwigTemplate_d3d98f2500f7846823cf8d20523ae8639606da13cb9d76223a253a9e34e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_cccbdb6622e33808bb464e0382e490cef21717d14082b88971fd99d6a024b960 = $this->env->getExtension("native_profiler");
-        $__internal_cccbdb6622e33808bb464e0382e490cef21717d14082b88971fd99d6a024b960->enter($__internal_cccbdb6622e33808bb464e0382e490cef21717d14082b88971fd99d6a024b960_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:toolbar_item.html.twig"));
+        $__internal_dbc66890718c11061a76f06495cd268cdf0fe0c89421cd81653b824bafbe3a26 = $this->env->getExtension("native_profiler");
+        $__internal_dbc66890718c11061a76f06495cd268cdf0fe0c89421cd81653b824bafbe3a26->enter($__internal_dbc66890718c11061a76f06495cd268cdf0fe0c89421cd81653b824bafbe3a26_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:toolbar_item.html.twig"));
 
         // line 1
         if ((isset($context["link"]) ? $context["link"] : $this->getContext($context, "link"))) {
@@ -45,7 +45,7 @@ class __TwigTemplate_d3d98f2500f7846823cf8d20523ae8639606da13cb9d76223a253a9e34e
 </div>
 ";
         
-        $__internal_cccbdb6622e33808bb464e0382e490cef21717d14082b88971fd99d6a024b960->leave($__internal_cccbdb6622e33808bb464e0382e490cef21717d14082b88971fd99d6a024b960_prof);
+        $__internal_dbc66890718c11061a76f06495cd268cdf0fe0c89421cd81653b824bafbe3a26->leave($__internal_dbc66890718c11061a76f06495cd268cdf0fe0c89421cd81653b824bafbe3a26_prof);
 
     }
 
