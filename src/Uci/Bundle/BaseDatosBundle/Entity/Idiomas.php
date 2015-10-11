@@ -92,4 +92,8 @@ class Idiomas
     {
         return $this->nombreLenguaje;
     }
+    
+    public function __toString() {
+        return $this->nombreLenguaje;
+    }
 }

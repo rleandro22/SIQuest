@@ -19,7 +19,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Solicitud:
             comment: ''
             column: textoSolicitud
         activa:
-            type: blob
+            type: smallint
             nullable: false
             length: 1
             fixed: false

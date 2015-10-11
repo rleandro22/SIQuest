@@ -17,7 +17,7 @@ class Capitulo
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -137,5 +137,9 @@ class Capitulo
     public function getLibro()
     {
         return $this->libro;
+    }
+    
+     public function __toString() {
+        return $this->numeroCapitulo.'-'.$this->nombreCapitulo;
     }
 }

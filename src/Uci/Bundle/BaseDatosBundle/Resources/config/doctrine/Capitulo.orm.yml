@@ -12,6 +12,8 @@ Uci\Bundle\BaseDatosBundle\Entity\Capitulo:
             unsigned: false
             comment: ''
             id: true
+            generator:
+                strategy: IDENTITY
     fields:
         numeroCapitulo:
             type: integer

@@ -23,7 +23,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
     fields:
         titulo:
             type: string
-            nullable: true
+            nullable: false
             length: 255
             fixed: false
             comment: ''

@@ -35,6 +35,9 @@
 }
 .navbar-inverse .log-text { font-size: 10px; color:#3399FF; text-align:right; margin-top:-24px; padding-bottom:10px;}
 
+.navbar-inverse .log-text a{
+    color:#3399FF;
+}
 
 .navbar-nav .dropdown-menu > li > a { color:rgba(255, 255, 255, .7); padding:7px 20px; }
 .navbar-nav .dropdown-menu > li > a:hover,

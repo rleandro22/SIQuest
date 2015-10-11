@@ -38,7 +38,7 @@ class Libro
     /**
      * @var string
      *
-     * @ORM\Column(name="es_pmbok", type="blob", length=1, nullable=false)
+     * @ORM\Column(name="es_pmbok", type="smallint", length=1, nullable=false)
      */
     private $esPmbok;
 
@@ -155,4 +155,9 @@ class Libro
     {
         return $this->idiomas;
     }
+    
+    public function __toString() {
+        return $this->titulo;
+    }
+
 }

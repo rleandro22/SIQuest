@@ -27,7 +27,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Libro:
             unsigned: false
             comment: ''
         esPmbok:
-            type: blob
+            type: smallint
             nullable: false
             length: 1
             fixed: false

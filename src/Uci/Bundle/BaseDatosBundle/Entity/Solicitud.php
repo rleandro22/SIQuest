@@ -31,7 +31,7 @@ class Solicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="activa", type="blob", length=1, nullable=false)
+     * @ORM\Column(name="activa", type="smallint", length=1, nullable=false)
      */
     private $activa;
 

@@ -9,7 +9,7 @@
 {% endblock %} 
 
 {% block mensajeLogueado %} 
-    Bienvenido(a) {{ app.user.username }}
+    Bienvenido(a) <a href="{{ path('uci_administrador_edituser', { 'id': app.user.id }) }}">{{ app.user.username }}</a>
 {% endblock %}
 
 {% block navigation %}

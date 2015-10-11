@@ -15,8 +15,8 @@ class __TwigTemplate_ffbfdf088e984d73d90ec1eab0a47ef75ea22c7631ef1fd2a2ddf416380
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_34f19b01b49f5b494f45714ff20ecc135058591b2ea1d2f70b7bb50e6413871c = $this->env->getExtension("native_profiler");
-        $__internal_34f19b01b49f5b494f45714ff20ecc135058591b2ea1d2f70b7bb50e6413871c->enter($__internal_34f19b01b49f5b494f45714ff20ecc135058591b2ea1d2f70b7bb50e6413871c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:editarCurso.html.twig"));
+        $__internal_dcf03cbcb117c656762c597709f1cc591e5681e94aae6be47921159e33ad4caa = $this->env->getExtension("native_profiler");
+        $__internal_dcf03cbcb117c656762c597709f1cc591e5681e94aae6be47921159e33ad4caa->enter($__internal_dcf03cbcb117c656762c597709f1cc591e5681e94aae6be47921159e33ad4caa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:editarCurso.html.twig"));
 
         // line 1
         echo "
@@ -70,7 +70,7 @@ class __TwigTemplate_ffbfdf088e984d73d90ec1eab0a47ef75ea22c7631ef1fd2a2ddf416380
 
 ";
         
-        $__internal_34f19b01b49f5b494f45714ff20ecc135058591b2ea1d2f70b7bb50e6413871c->leave($__internal_34f19b01b49f5b494f45714ff20ecc135058591b2ea1d2f70b7bb50e6413871c_prof);
+        $__internal_dcf03cbcb117c656762c597709f1cc591e5681e94aae6be47921159e33ad4caa->leave($__internal_dcf03cbcb117c656762c597709f1cc591e5681e94aae6be47921159e33ad4caa_prof);
 
     }
 
