@@ -70,8 +70,8 @@
                                                 <div class="dropdown">
                                                     <a data-toggle="dropdown"><div class="noIbar">{{ profesor.usuario.nombre }} {{ profesor.usuario.apellidos }}</div></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 2 }) }}">A. Académica</a></li>
-                                                        <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 1 }) }}">Profesor</a></li>
+                                                        <li><a class="speedbump" href="{{ path('uci_administrador_desmatricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 1, 'idUsuario': profesor.id }) }}">Desmatricular</a></li>
+                                                        <li><a href="{{ path('uci_administrador_edituser', { 'id': profesor.usuario.id }) }}">Ver</a></li>
                                                     </ul>
                                                 </div>
                                             {% endfor %}
@@ -83,8 +83,8 @@
                                                 <div class="dropdown">
                                                     <a data-toggle="dropdown"><div class="noIbar">{{ asistenteAcademica.usuario.nombre }} {{ asistenteAcademica.usuario.apellidos }}</div></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 2 }) }}">A. Académica</a></li>
-                                                        <li><a data-toggle="modal" data-target="#myModal" href="{{ path('uci_administrador_matricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 1 }) }}">Profesor</a></li>
+                                                        <li><a class="speedbump" href="{{ path('uci_administrador_desmatricularusuario', { 'idGeneracion': generacion.id, 'idCurso': entity.id, 'tipoUsuario': 2, 'idUsuario': asistenteAcademica.id }) }}">Desmatricular</a></li>
+                                                        <li><a href="{{ path('uci_administrador_edituser', { 'id': asistenteAcademica.usuario.id }) }}">Ver</a></li>
                                                     </ul>
                                                 </div>
                                             {% endfor %}
@@ -137,7 +137,7 @@
             var handleSpeedBump = function (e) {
                 e.preventDefault();
                 var href = this.getAttribute("data-href");
-                var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación no es reversible)");
+                var sure = confirm("¿Esta seguro que desea desmatricular a este usuario?\n (Esta operación no es reversible)");
                 if (!sure)
                     return;
                 document.location = href;

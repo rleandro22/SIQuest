@@ -23,34 +23,34 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b = $this->env->getExtension("native_profiler");
-        $__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b->enter($__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:indiceCursos.html.twig"));
+        $__internal_a60ad04a928cd978d31f21da585f7f90bdb5ec066a75e36715656cbd16f30ba7 = $this->env->getExtension("native_profiler");
+        $__internal_a60ad04a928cd978d31f21da585f7f90bdb5ec066a75e36715656cbd16f30ba7->enter($__internal_a60ad04a928cd978d31f21da585f7f90bdb5ec066a75e36715656cbd16f30ba7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCategoria:indiceCursos.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b->leave($__internal_9dd7bac5d20c9ff06e6e763ac4f1b15556e670092c0fac567ec36138f99c293b_prof);
+        $__internal_a60ad04a928cd978d31f21da585f7f90bdb5ec066a75e36715656cbd16f30ba7->leave($__internal_a60ad04a928cd978d31f21da585f7f90bdb5ec066a75e36715656cbd16f30ba7_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff = $this->env->getExtension("native_profiler");
-        $__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff->enter($__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_62f3085d33a386fa38654a71a19ca58a569f228cb0eff624c563008fdfa60586 = $this->env->getExtension("native_profiler");
+        $__internal_62f3085d33a386fa38654a71a19ca58a569f228cb0eff624c563008fdfa60586->enter($__internal_62f3085d33a386fa38654a71a19ca58a569f228cb0eff624c563008fdfa60586_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff->leave($__internal_4cd24ac6a2676b3a9b15d0454e65867b7eec11c0bc93405b188d04e90ea6b8ff_prof);
+        $__internal_62f3085d33a386fa38654a71a19ca58a569f228cb0eff624c563008fdfa60586->leave($__internal_62f3085d33a386fa38654a71a19ca58a569f228cb0eff624c563008fdfa60586_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549 = $this->env->getExtension("native_profiler");
-        $__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549->enter($__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_abb39d4ef7a038cb7fb16e5fa6837d7aeac598932b76e992669441eb8f09fece = $this->env->getExtension("native_profiler");
+        $__internal_abb39d4ef7a038cb7fb16e5fa6837d7aeac598932b76e992669441eb8f09fece->enter($__internal_abb39d4ef7a038cb7fb16e5fa6837d7aeac598932b76e992669441eb8f09fece_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -166,14 +166,14 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["profesor"], "usuario", array()), "apellidos", array()), "html", null, true);
                         echo "</div></a>
                                                     <ul class=\"dropdown-menu\">
-                                                        <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
+                                                        <li><a class=\"speedbump\" href=\"";
                         // line 73
-                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 2)), "html", null, true);
-                        echo "\">A. Académica</a></li>
-                                                        <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_desmatricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 1, "idUsuario" => $this->getAttribute($context["profesor"], "id", array()))), "html", null, true);
+                        echo "\">Desmatricular</a></li>
+                                                        <li><a href=\"";
                         // line 74
-                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 1)), "html", null, true);
-                        echo "\">Profesor</a></li>
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_edituser", array("id" => $this->getAttribute($this->getAttribute($context["profesor"], "usuario", array()), "id", array()))), "html", null, true);
+                        echo "\">Ver</a></li>
                                                     </ul>
                                                 </div>
                                             ";
@@ -204,14 +204,14 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["asistenteAcademica"], "usuario", array()), "apellidos", array()), "html", null, true);
                         echo "</div></a>
                                                     <ul class=\"dropdown-menu\">
-                                                        <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
+                                                        <li><a class=\"speedbump\" href=\"";
                         // line 86
-                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 2)), "html", null, true);
-                        echo "\">A. Académica</a></li>
-                                                        <li><a data-toggle=\"modal\" data-target=\"#myModal\" href=\"";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_desmatricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 2, "idUsuario" => $this->getAttribute($context["asistenteAcademica"], "id", array()))), "html", null, true);
+                        echo "\">Desmatricular</a></li>
+                                                        <li><a href=\"";
                         // line 87
-                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_matricularusuario", array("idGeneracion" => $this->getAttribute((isset($context["generacion"]) ? $context["generacion"] : $this->getContext($context, "generacion")), "id", array()), "idCurso" => $this->getAttribute($context["entity"], "id", array()), "tipoUsuario" => 1)), "html", null, true);
-                        echo "\">Profesor</a></li>
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_edituser", array("id" => $this->getAttribute($this->getAttribute($context["asistenteAcademica"], "usuario", array()), "id", array()))), "html", null, true);
+                        echo "\">Ver</a></li>
                                                     </ul>
                                                 </div>
                                             ";
@@ -269,15 +269,15 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
 
 ";
         
-        $__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549->leave($__internal_540c029b60cbf35a3578685ed3d9bfd2929f556b646096cbac9d8e6989db0549_prof);
+        $__internal_abb39d4ef7a038cb7fb16e5fa6837d7aeac598932b76e992669441eb8f09fece->leave($__internal_abb39d4ef7a038cb7fb16e5fa6837d7aeac598932b76e992669441eb8f09fece_prof);
 
     }
 
     // line 122
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8 = $this->env->getExtension("native_profiler");
-        $__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8->enter($__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_65887c6e6a4395e2f2b46ac56f7a011b02a901493324547112e5bb2b07668f15 = $this->env->getExtension("native_profiler");
+        $__internal_65887c6e6a4395e2f2b46ac56f7a011b02a901493324547112e5bb2b07668f15->enter($__internal_65887c6e6a4395e2f2b46ac56f7a011b02a901493324547112e5bb2b07668f15_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 123
         echo "    ";
@@ -299,7 +299,7 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
             var handleSpeedBump = function (e) {
                 e.preventDefault();
                 var href = this.getAttribute(\"data-href\");
-                var sure = confirm(\"¿Esta seguro que desea realizar el borrado?\\n (Esta operación no es reversible)\");
+                var sure = confirm(\"¿Esta seguro que desea desmatricular a este usuario?\\n (Esta operación no es reversible)\");
                 if (!sure)
                     return;
                 document.location = href;
@@ -317,7 +317,7 @@ class __TwigTemplate_0e33972956718a0a7b86b14b6a9a7c450145660ad1b3e0646d30dbb8634
     </script>
 ";
         
-        $__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8->leave($__internal_535388b75bbe5f6d6f1832ddcf0fd89786e4d2e7c00ac0f5e8a40a751c19f3a8_prof);
+        $__internal_65887c6e6a4395e2f2b46ac56f7a011b02a901493324547112e5bb2b07668f15->leave($__internal_65887c6e6a4395e2f2b46ac56f7a011b02a901493324547112e5bb2b07668f15_prof);
 
     }
 

@@ -1990,11 +1990,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // uci_administrador_desmatricularusuario
-            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/(?P<idCurso>[^/]++)/desmatricular_usuario/?$#s', $pathinfo, $matches)) {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'uci_administrador_desmatricularusuario');
-                }
-
+            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/(?P<idCurso>[^/]++)/desmatricular_usuario/(?P<tipoUsuario>[^/]++)/(?P<idUsuario>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_desmatricularusuario')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aDesmatricularUsuarioAction',));
             }
 

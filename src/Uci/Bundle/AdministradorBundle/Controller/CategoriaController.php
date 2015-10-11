@@ -9,7 +9,6 @@ use Uci\Bundle\BaseDatosBundle\Entity\Curso;
 use Uci\Bundle\BaseDatosBundle\Form\GeneracionType;
 use Uci\Bundle\BaseDatosBundle\Form\CursoType;
 use Uci\Bundle\BaseDatosBundle\Form\UsuarioMatriculaType;
-use \Uci\Bundle\BaseDatosBundle\Form\UsuarioDesmatriculaType;
 
 class CategoriaController extends Controller {
 
@@ -90,9 +89,17 @@ class CategoriaController extends Controller {
         ));
     }
 
-    public function aDesmatricularUsuarioAction(Request $request, $idGeneracion, $idCurso, $idUsuario) {
-        $generacion = $em->getRepository('UciBaseDatosBundle:Generacion')->find($idGeneracion);
-        $generacion = $em->getRepository('UciBaseDatosBundle:Generacion')->find($idGeneracion);
+    public function aDesmatricularUsuarioAction($idGeneracion, $idCurso, $tipoUsuario, $idUsuario) {
+        $em = $this->getDoctrine()->getManager();
+        $curso = $em->getRepository('UciBaseDatosBundle:Curso')->find($idCurso);
+        if($tipoUsuario==1){
+           $usuario = $em->getRepository('UciBaseDatosBundle:Profesor')->find($idUsuario); 
+        }else{
+            $usuario = $em->getRepository('UciBaseDatosBundle:AsistenteAcademica')->find($idUsuario); 
+        }
+        $usuario->removeCurso($curso);
+        $em->persist($usuario);
+        $em->flush();
         return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
     }
 
