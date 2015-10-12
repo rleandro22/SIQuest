@@ -11,6 +11,9 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
         fk_pregunta_area_conocimiento1_idx:
             columns:
                 - area_conocimiento_id
+        fk_pregunta_libro1_idx:
+            columns:
+                - libro_id
     id:
         id:
             type: integer
@@ -53,6 +56,15 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
             inversedBy: null
             joinColumns:
                 grupo_procesos_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        libro:
+            targetEntity: Libro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                libro_id:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:

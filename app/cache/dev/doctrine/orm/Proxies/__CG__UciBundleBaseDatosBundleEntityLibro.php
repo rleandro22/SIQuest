@@ -64,10 +64,10 @@ class Libro extends \Uci\Bundle\BaseDatosBundle\Entity\Libro implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'id', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'titulo', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'anio', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'esPmbok', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'idiomas');
+            return array('__isInitialized__', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'id', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'titulo', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'anio', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'esPmbok', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'idiomas', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'pmbok');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'id', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'titulo', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'anio', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'esPmbok', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'idiomas');
+        return array('__isInitialized__', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'id', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'titulo', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'anio', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'esPmbok', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'idiomas', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\Libro' . "\0" . 'pmbok');
     }
 
     /**
@@ -173,6 +173,28 @@ class Libro extends \Uci\Bundle\BaseDatosBundle\Entity\Libro implements \Doctrin
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function setPmbok(\Uci\Bundle\BaseDatosBundle\Entity\Pmbok $pmbok = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPmbok', array($pmbok));
+
+        return parent::setPmbok($pmbok);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPmbok()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPmbok', array());
+
+        return parent::getPmbok();
+    }
+
     /**
      * {@inheritDoc}
      */

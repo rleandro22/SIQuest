@@ -16,7 +16,6 @@ class PmbokType extends AbstractType
     {
         $builder
             ->add('edicion')
-            ->add('libro')
             ->add('areaConocimiento')
             ->add('grupoProcesos')
         ;

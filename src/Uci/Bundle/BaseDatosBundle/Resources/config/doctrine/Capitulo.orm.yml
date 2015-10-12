@@ -28,7 +28,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Capitulo:
             fixed: false
             comment: ''
             column: nombre_capitulo
-    oneToOne:
+    manyToOne:
         libro:
             targetEntity: Libro
             cascade: {  }

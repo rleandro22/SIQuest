@@ -21,20 +21,20 @@ class __TwigTemplate_6c4501650f37caa8cbacf08cc2f047f3510cdfc15c7a04f949d6423d7bf
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_87fe87ea801e5e5b35659690aca2b1e31562cf014cd51f65f8863b226bb16d63 = $this->env->getExtension("native_profiler");
-        $__internal_87fe87ea801e5e5b35659690aca2b1e31562cf014cd51f65f8863b226bb16d63->enter($__internal_87fe87ea801e5e5b35659690aca2b1e31562cf014cd51f65f8863b226bb16d63_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciBaseDatosBundle:Libro:index.html.twig"));
+        $__internal_cfd93bf67fea7f4ef3c0fe6213fdccd8dadd5f325e0beefc346d44e8afdccc6c = $this->env->getExtension("native_profiler");
+        $__internal_cfd93bf67fea7f4ef3c0fe6213fdccd8dadd5f325e0beefc346d44e8afdccc6c->enter($__internal_cfd93bf67fea7f4ef3c0fe6213fdccd8dadd5f325e0beefc346d44e8afdccc6c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciBaseDatosBundle:Libro:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_87fe87ea801e5e5b35659690aca2b1e31562cf014cd51f65f8863b226bb16d63->leave($__internal_87fe87ea801e5e5b35659690aca2b1e31562cf014cd51f65f8863b226bb16d63_prof);
+        $__internal_cfd93bf67fea7f4ef3c0fe6213fdccd8dadd5f325e0beefc346d44e8afdccc6c->leave($__internal_cfd93bf67fea7f4ef3c0fe6213fdccd8dadd5f325e0beefc346d44e8afdccc6c_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_2ed343b7f2c432325746b43aee10d40215147c97010a2e78b7c297fcfdeeb8f5 = $this->env->getExtension("native_profiler");
-        $__internal_2ed343b7f2c432325746b43aee10d40215147c97010a2e78b7c297fcfdeeb8f5->enter($__internal_2ed343b7f2c432325746b43aee10d40215147c97010a2e78b7c297fcfdeeb8f5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_474e32b50b27b46d1f6c2239f50c17e7a61389ece930f02f44c6cee4f7c92bac = $this->env->getExtension("native_profiler");
+        $__internal_474e32b50b27b46d1f6c2239f50c17e7a61389ece930f02f44c6cee4f7c92bac->enter($__internal_474e32b50b27b46d1f6c2239f50c17e7a61389ece930f02f44c6cee4f7c92bac_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "<h1>Libro list</h1>
@@ -113,7 +113,7 @@ class __TwigTemplate_6c4501650f37caa8cbacf08cc2f047f3510cdfc15c7a04f949d6423d7bf
     </ul>
     ";
         
-        $__internal_2ed343b7f2c432325746b43aee10d40215147c97010a2e78b7c297fcfdeeb8f5->leave($__internal_2ed343b7f2c432325746b43aee10d40215147c97010a2e78b7c297fcfdeeb8f5_prof);
+        $__internal_474e32b50b27b46d1f6c2239f50c17e7a61389ece930f02f44c6cee4f7c92bac->leave($__internal_474e32b50b27b46d1f6c2239f50c17e7a61389ece930f02f44c6cee4f7c92bac_prof);
 
     }
 

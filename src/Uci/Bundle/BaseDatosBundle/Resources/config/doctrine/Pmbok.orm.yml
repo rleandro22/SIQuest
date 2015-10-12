@@ -1,10 +1,6 @@
 Uci\Bundle\BaseDatosBundle\Entity\Pmbok:
     type: entity
     table: pmbok
-    indexes:
-        fk_pmbok_libro1_idx:
-            columns:
-                - libro_id
     id:
         id:
             type: integer
@@ -20,16 +16,6 @@ Uci\Bundle\BaseDatosBundle\Entity\Pmbok:
             nullable: false
             unsigned: false
             comment: ''
-    manyToOne:
-        libro:
-            targetEntity: Libro
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                libro_id:
-                    referencedColumnName: id
-            orphanRemoval: false
     manyToMany:
         areaConocimiento:
             targetEntity: AreaConocimiento

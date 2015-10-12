@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="capitulo", indexes={@ORM\Index(name="fk_Capitulo_PMBok_idx", columns={"libro_id"})})
  * @ORM\Entity
  */
-class Capitulo
-{
+class Capitulo {
+
     /**
      * @var integer
      *
@@ -38,14 +38,12 @@ class Capitulo
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Libro
      *
-     * @ORM\OneToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Libro")
+     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Libro")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="libro_id", referencedColumnName="id", unique=true)
+     *   @ORM\JoinColumn(name="libro_id", referencedColumnName="id")
      * })
      */
     private $libro;
-
-
 
     /**
      * Set id
@@ -53,8 +51,7 @@ class Capitulo
      * @param integer $id
      * @return Capitulo
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
 
         return $this;
@@ -65,8 +62,7 @@ class Capitulo
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -76,8 +72,7 @@ class Capitulo
      * @param integer $numeroCapitulo
      * @return Capitulo
      */
-    public function setNumeroCapitulo($numeroCapitulo)
-    {
+    public function setNumeroCapitulo($numeroCapitulo) {
         $this->numeroCapitulo = $numeroCapitulo;
 
         return $this;
@@ -88,8 +83,7 @@ class Capitulo
      *
      * @return integer 
      */
-    public function getNumeroCapitulo()
-    {
+    public function getNumeroCapitulo() {
         return $this->numeroCapitulo;
     }
 
@@ -99,8 +93,7 @@ class Capitulo
      * @param string $nombreCapitulo
      * @return Capitulo
      */
-    public function setNombreCapitulo($nombreCapitulo)
-    {
+    public function setNombreCapitulo($nombreCapitulo) {
         $this->nombreCapitulo = $nombreCapitulo;
 
         return $this;
@@ -111,8 +104,7 @@ class Capitulo
      *
      * @return string 
      */
-    public function getNombreCapitulo()
-    {
+    public function getNombreCapitulo() {
         return $this->nombreCapitulo;
     }
 
@@ -122,8 +114,7 @@ class Capitulo
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Libro $libro
      * @return Capitulo
      */
-    public function setLibro(\Uci\Bundle\BaseDatosBundle\Entity\Libro $libro = null)
-    {
+    public function setLibro(\Uci\Bundle\BaseDatosBundle\Entity\Libro $libro = null) {
         $this->libro = $libro;
 
         return $this;
@@ -134,12 +125,12 @@ class Capitulo
      *
      * @return \Uci\Bundle\BaseDatosBundle\Entity\Libro 
      */
-    public function getLibro()
-    {
+    public function getLibro() {
         return $this->libro;
     }
-    
-     public function __toString() {
-        return $this->numeroCapitulo.'-'.$this->nombreCapitulo;
+
+    public function __toString() {
+        return $this->numeroCapitulo . '-' . $this->nombreCapitulo;
     }
+
 }

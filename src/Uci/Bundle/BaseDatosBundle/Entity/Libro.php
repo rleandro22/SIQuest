@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Libro
  *
- * @ORM\Table(name="libro", indexes={@ORM\Index(name="fk_libro_idiomas1_idx", columns={"idiomas_id"})})
+ * @ORM\Table(name="libro", indexes={@ORM\Index(name="fk_libro_idiomas1_idx", columns={"idiomas_id"}),@ORM\Index(name="fk_libro_pmbok1_idx", columns={"pmbok_id"})})
  * @ORM\Entity
  */
-class Libro
-{
+class Libro {
+
     /**
      * @var integer
      *
@@ -52,15 +52,43 @@ class Libro
      */
     private $idiomas;
 
+    /**
+     * @var \Uci\Bundle\BaseDatosBundle\Entity\Pmbok
+     *
+     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pmbok")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pmbok_id", referencedColumnName="id")
+     * })
+     */
+    private $pmbok;
 
+    /**
+     * Set usuario
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pmbok $pmbok
+     * @return Libro
+     */
+    public function setPmbok(\Uci\Bundle\BaseDatosBundle\Entity\Pmbok $pmbok = null) {
+        $this->pmbok = $pmbok;
+
+        return $this;
+    }
+
+    /**
+     * Get pmbok
+     *
+     * @return \Uci\Bundle\BaseDatosBundle\Entity\Pmbok
+     */
+    public function getPmbok() {
+        return $this->pmbok;
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -70,8 +98,7 @@ class Libro
      * @param string $titulo
      * @return Libro
      */
-    public function setTitulo($titulo)
-    {
+    public function setTitulo($titulo) {
         $this->titulo = $titulo;
 
         return $this;
@@ -82,8 +109,7 @@ class Libro
      *
      * @return string 
      */
-    public function getTitulo()
-    {
+    public function getTitulo() {
         return $this->titulo;
     }
 
@@ -93,8 +119,7 @@ class Libro
      * @param integer $anio
      * @return Libro
      */
-    public function setAnio($anio)
-    {
+    public function setAnio($anio) {
         $this->anio = $anio;
 
         return $this;
@@ -105,8 +130,7 @@ class Libro
      *
      * @return integer 
      */
-    public function getAnio()
-    {
+    public function getAnio() {
         return $this->anio;
     }
 
@@ -116,8 +140,7 @@ class Libro
      * @param string $esPmbok
      * @return Libro
      */
-    public function setEsPmbok($esPmbok)
-    {
+    public function setEsPmbok($esPmbok) {
         $this->esPmbok = $esPmbok;
 
         return $this;
@@ -128,8 +151,7 @@ class Libro
      *
      * @return string 
      */
-    public function getEsPmbok()
-    {
+    public function getEsPmbok() {
         return $this->esPmbok;
     }
 
@@ -139,8 +161,7 @@ class Libro
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Idiomas $idiomas
      * @return Libro
      */
-    public function setIdiomas(\Uci\Bundle\BaseDatosBundle\Entity\Idiomas $idiomas = null)
-    {
+    public function setIdiomas(\Uci\Bundle\BaseDatosBundle\Entity\Idiomas $idiomas = null) {
         $this->idiomas = $idiomas;
 
         return $this;
@@ -151,11 +172,10 @@ class Libro
      *
      * @return \Uci\Bundle\BaseDatosBundle\Entity\Idiomas 
      */
-    public function getIdiomas()
-    {
+    public function getIdiomas() {
         return $this->idiomas;
     }
-    
+
     public function __toString() {
         return $this->titulo;
     }

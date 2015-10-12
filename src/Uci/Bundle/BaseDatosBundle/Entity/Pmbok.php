@@ -7,9 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pmbok
  *
- * @ORM\Table(name="pmbok", indexes={@ORM\Index(name="fk_pmbok_libro1_idx", columns={"libro_id"})})
+ * @ORM\Table(name="pmbok")
  * @ORM\Entity
  */
+
 class Pmbok
 {
     /**
@@ -27,16 +28,6 @@ class Pmbok
      * @ORM\Column(name="edicion", type="integer", nullable=false)
      */
     private $edicion;
-
-    /**
-     * @var \Uci\Bundle\BaseDatosBundle\Entity\Libro
-     *
-     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Libro")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="libro_id", referencedColumnName="id")
-     * })
-     */
-    private $libro;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -101,29 +92,6 @@ class Pmbok
     public function getEdicion()
     {
         return $this->edicion;
-    }
-
-    /**
-     * Set libro
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\Libro $libro
-     * @return Pmbok
-     */
-    public function setLibro(\Uci\Bundle\BaseDatosBundle\Entity\Libro $libro = null)
-    {
-        $this->libro = $libro;
-
-        return $this;
-    }
-
-    /**
-     * Get libro
-     *
-     * @return \Uci\Bundle\BaseDatosBundle\Entity\Libro 
-     */
-    public function getLibro()
-    {
-        return $this->libro;
     }
 
     /**

@@ -5,6 +5,9 @@ Uci\Bundle\BaseDatosBundle\Entity\Libro:
         fk_libro_idiomas1_idx:
             columns:
                 - idiomas_id
+        fk_libro_pmbok1_idx:
+            columns:
+                - pmbok_id
     id:
         id:
             type: integer
@@ -41,6 +44,15 @@ Uci\Bundle\BaseDatosBundle\Entity\Libro:
             inversedBy: null
             joinColumns:
                 idiomas_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        pmbok:
+            targetEntity: Pmbok
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pmbok_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }
