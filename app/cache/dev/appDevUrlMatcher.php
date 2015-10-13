@@ -1994,6 +1994,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_desmatricularusuario')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aDesmatricularUsuarioAction',));
             }
 
+            // uci_administrador_indicepreguntas
+            if ($pathinfo === '/admin/ver_preguntas') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aIndicePreguntaAction',  '_route' => 'uci_administrador_indicepreguntas',);
+            }
+
         }
 
         // uci_principal_homepage
