@@ -27,7 +27,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form action="{{ path('uci_administrador_indicepreguntas') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ path('uci_administrador_indicepreguntas') }}" class="ajaxForm" method="POST" enctype="multipart/form-data">
                             <div class="row top-margin">
                                 <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                     {{ form_label(form.libro) }}
@@ -53,27 +53,29 @@
                 </div>
             </div>
             <br><br>
-            <table class="table demo table-bordered" id="tabla" data-filter="#filter">
-                <thead>
-                    <tr>
-                        <th style="border-right:0;" data-toggle="true">
-                            Titulo
-                        </th>
-                        <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    {% for entity in entities %}
+            <div class="aleta">
+                <table class="table demo table-bordered" id="tabla" data-filter="#filter">
+                    <thead>
                         <tr>
-                            <td style="border-right:0;" class="primera-columna">{{ entity.titulo }} </td>
-                            <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
-                            </td>
+                            <th style="border-right:0;" data-toggle="true">
+                                Titulo
+                            </th>
+                            <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
                         </tr>
-                    {% endfor %}
+                    </thead>
+                    <tbody> 
+                        {% for entity in entities %}
+                            <tr>
+                                <td style="border-right:0;" class="primera-columna">{{ entity.titulo }} </td>
+                                <td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
             </br></br>
 
         </div>
@@ -84,7 +86,40 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
+
+
         document.ready = function () {
+
+            $('body').on('submit', '.ajaxForm', function (e) {
+
+                e.preventDefault();
+                
+                alert('PUTA');
+
+                $.ajax({
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize()
+                })
+                        .done(function (data) {
+                            if (typeof data.message !== 'undefined') {
+                                alert(data.message);
+                            }
+                        })
+                        .fail(function (jqXHR, textStatus, errorThrown) {
+                            if (typeof jqXHR.responseJSON !== 'undefined') {
+                                if (jqXHR.responseJSON.hasOwnProperty('form')) {
+                                    $('.aleta').html(jqXHR.responseJSON.form);
+                                }
+
+                                $('.aleta').html(jqXHR.responseJSON.message);
+
+                            } else {
+                                alert(errorThrown);
+                            }
+
+                        });
+            });
 
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
