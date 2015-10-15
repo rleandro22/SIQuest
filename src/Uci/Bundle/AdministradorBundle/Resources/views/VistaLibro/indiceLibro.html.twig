@@ -77,6 +77,42 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        document.ready = function () {
+
+            $('table').footable().on('click', '.row-delete', function (e) {
+                e.preventDefault();
+            }
+            );
+
+            $('body').on('hidden.bs.modal', '.modal', function () {
+                $('.modal-content', this).empty();
+                $(this).removeData('bs.modal');
+            });
+
+            var handleSpeedBump = function (e) {
+                e.preventDefault();
+                var href = this.getAttribute("data-href");
+                var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación no es reversible)");
+                if (!sure)
+                    return;
+                document.location = href;
+            };
+            $("a.speedbump")
+                    .click(handleSpeedBump)
+                    .bind("contextmenu", handleSpeedBump)
+                    .dblclick(handleSpeedBump)
+                    .each(function () {
+                        var href = this.href;
+                        this.setAttribute("data-href", href);
+                        this.href = "javascript:void('Navigate to " + href.replace("'", "") + "')";
+                    });
+        };
+    </script>
+{% endblock %}
+
 
 
 
