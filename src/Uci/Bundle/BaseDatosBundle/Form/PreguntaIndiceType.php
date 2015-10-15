@@ -7,10 +7,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PreguntaIndiceType extends AbstractType {
-//    private $tipoUsuario;
+//    private $libro;
 //
-//    public function __construct($tipoUsuario) {
-//        $this->tipoUsuario = $tipoUsuario;
+//    public function __construct($libro) {
+//        $this->libro = $libro;
 //    }
 
     /**
@@ -19,15 +19,15 @@ class PreguntaIndiceType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'mapped' => false));
+                ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false));
     }
 
-    /**
+  /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => null
+            'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Pregunta'
         ));
     }
 
@@ -35,7 +35,7 @@ class PreguntaIndiceType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'uci_bundle_basedatosbundle_preguntaindice';
+        return 'PreguntaIndiceType';
     }
 
 }

@@ -5,23 +5,34 @@ namespace Uci\Bundle\AdministradorBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Form\PreguntaIndiceType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use \Uci\Bundle\BaseDatosBundle\Entity\Pregunta;
 
 class PreguntaController extends Controller {
 
     public function aIndicePreguntaAction(Request $request) {
+        $idLibro = '';
+        $idCapitulo = '';
+        $idGrupoProcesos = '';
+        $idAreaConocimiento = '';
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('UciBaseDatosBundle:Pregunta')->findBy(array(), array('titulo' => 'ASC'));
-        $form = $this->createForm(new PreguntaIndiceType());
+        $pregunta = new Pregunta();
         if ($request->getMethod() == 'POST') {
-            if ($request->isXmlHttpRequest()) {
-                return new Response("<b>The email is valid</b>");
-            }
+            $libro = $em->getRepository('UciBaseDatosBundle:Libro')->find($request->request->get('PreguntaIndiceType')['libro']);
+            $pregunta->setLibro($libro);
+            $idLibro = $libro->getId();
         }
+        $preguntas = $this->aSortearPreguntas($idLibro, '', '', '');
+        $form = $this->createForm(new PreguntaIndiceType(), $pregunta);
         return $this->render('UciAdministradorBundle:VistaPregunta:indicePregunta.html.twig', array(
-                    'entities' => $entities,
+                    'entities' => $preguntas,
                     'form' => $form->createView(),
         ));
+    }
+
+    private function aSortearPreguntas($idLibro, $idCapitulo, $idGrupoProcesos, $idAreaConocimiento) {
+        $em = $this->getDoctrine()->getManager();
+        $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findOneBy(array('libro' => $idLibro));
+        return $preguntas;
     }
 
 }
