@@ -73,3 +73,9 @@ uci_administrador_desmatricularusuario:
 uci_administrador_indicepreguntas:
     pattern:  /admin/ver_preguntas
     defaults: { _controller: UciAdministradorBundle:Pregunta:aIndicePregunta }
+
+
+#---------------------Routing Libro----------------------------------------
+uci_administrador_libro:
+    resource: "@UciAdministradorBundle/Resources/config/routing/libro.yml"
+    prefix:   /admin/libro

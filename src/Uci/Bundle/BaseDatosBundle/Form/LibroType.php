@@ -7,6 +7,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class LibroType extends AbstractType {
+    
+    private $edita;
+
+    public function __construct($edita) {
+        $this->edita= $edita;
+    }
 
     /**
      * @param FormBuilderInterface $builder
@@ -16,7 +22,7 @@ class LibroType extends AbstractType {
         $builder
                 ->add('titulo')
                 ->add('anio')
-                ->add('esPmbok')
+                ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ', 'mapped' => false, 'multiple' => false, 'expanded' => true, 'data' => $this->edita))
                 ->add('idiomas')
                 ->add('pmbok')
         ;

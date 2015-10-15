@@ -1999,6 +1999,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aIndicePreguntaAction',  '_route' => 'uci_administrador_indicepreguntas',);
             }
 
+            if (0 === strpos($pathinfo, '/admin/libro')) {
+                // uci_administrador_indicelibro
+                if ($pathinfo === '/admin/libro/lista_libros') {
+                    return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\LibroController::aIndiceLibroAction',  '_route' => 'uci_administrador_indicelibro',);
+                }
+
+                // uci_administrador_nuevolibro
+                if ($pathinfo === '/admin/libro/registrar_libro') {
+                    return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\LibroController::aRegistrarLibroAction',  '_route' => 'uci_administrador_nuevolibro',);
+                }
+
+            }
+
         }
 
         // uci_principal_homepage

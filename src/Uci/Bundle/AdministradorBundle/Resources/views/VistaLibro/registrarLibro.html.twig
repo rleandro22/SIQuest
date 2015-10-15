@@ -1,0 +1,98 @@
+{% extends 'UciAdministradorBundle::base.html.twig' %}
+
+
+{% block header %}
+    <header id="head" class="secondary"></header>
+    {% endblock %}
+
+{% block body %}
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="{{ path('uci_administrador_homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('uci_administrador_indicelibro') }}">Listado de libros</a></li>
+            <li class="active">Registrar Libro</li>
+        </ol>
+        <div class="row">
+            <!-- Sidebar -->
+            <aside class="col-md-4 sidebar sidebar-left">
+                {% include 'UciAdministradorBundle:Menus:mantenimientoLibro.html.twig' %}
+            </aside>
+            <!-- /Sidebar -->
+            <!-- Article main content -->
+            <article class="col-sm-8 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Nuevo libro</h1>
+                </header>
+                <br>
+                <!-- /Aquí va el contenido -->
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="thin text-center">Registrar un nuevo libro</h3>
+                            <p class="text-center text-muted">Todos los campos son requeridos. </p>
+                            <hr>
+
+                            {% if error %}
+                                <div style="color:red">{{ error }}</div>
+                            {% endif %}
+
+                            <form action="{{ path('uci_administrador_nuevolibro') }}" method="POST" enctype="multipart/form-data">
+                               
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.titulo) }}
+                                        {{ form_errors(form.titulo) }}
+                                        {{ form_widget(form.titulo) }}
+                                    </div>
+                                </div>
+                            
+                                 <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.anio) }}
+                                        {{ form_errors(form.anio) }}
+                                        {{ form_widget(form.anio) }}
+                                    </div>
+                                </div>
+                                    
+
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.idiomas) }}
+                                        {{ form_errors(form.idiomas) }}
+                                        {{ form_widget(form.idiomas) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.esPmbok) }}
+                                        {{ form_errors(form.esPmbok) }}
+                                        {{ form_widget(form.esPmbok) }}
+                                    </div>
+                                </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-lg-8">                     
+                                        </div>
+                                        <div class="col-lg-4 text-right">
+                                            <button class="btn btn-action" type="submit">Registrar</button>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- /Aquí acaba el contenido --> 
+            </article>
+            <!-- /Article -->
+        </div>
+    </div>	<!-- /container -->
+
+{% endblock %}
+
+

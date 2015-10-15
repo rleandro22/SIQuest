@@ -1,0 +1,8 @@
+uci_administrador_indicelibro:
+    pattern:  /lista_libros
+    defaults: { _controller: UciAdministradorBundle:Libro:aIndiceLibro }
+    
+uci_administrador_nuevolibro:
+    pattern:  /registrar_libro
+    defaults: { _controller: UciAdministradorBundle:Libro:aRegistrarLibro }
+   
