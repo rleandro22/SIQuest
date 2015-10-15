@@ -31,7 +31,12 @@ class PreguntaController extends Controller {
 
     private function aSortearPreguntas($idLibro, $idCapitulo, $idGrupoProcesos, $idAreaConocimiento) {
         $em = $this->getDoctrine()->getManager();
-        $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findOneBy(array('libro' => $idLibro));
+        $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                        ->innerJoin('u.libro', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $idLibro)
+                        ->orderBy('u.titulo', 'ASC')
+                        ->getQuery()->getResult();
         return $preguntas;
     }
 

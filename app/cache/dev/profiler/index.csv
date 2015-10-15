@@ -481,3 +481,8 @@ dc8490,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,144
 a42a45,::1,GET,http://localhost/SIQuest/web/app_dev.php/?XDEBUG_SESSION_START=netbeans-xdebug,1444949615,,200
 dcba0a,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1444949624,,200
 30a658,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1444949681,,200
+a0d15e,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1444949879,,200
+ddc02b,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1444949882,,200
+40d6c9,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1444949885,,200
+4d519a,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1444949888,,200
+3c23dc,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1444949890,,200
