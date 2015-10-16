@@ -14,13 +14,15 @@ class PreguntaController extends Controller {
         $idCapitulo = '';
         $idGrupoProcesos = '';
         $idAreaConocimiento = '';
+        $esPmbok = 0;
         $em = $this->getDoctrine()->getManager();
         $pregunta = new Pregunta();
         if ($request->getMethod() == 'POST') {
             $idLibro = $request->request->get('PreguntaIndiceType')['libro'];
             $libro = $em->getRepository('UciBaseDatosBundle:Libro')->find($idLibro);
-            if (isset($idLibro)) {
+            if (isset($libro)) {
                 $pregunta->setLibro($libro);
+                $esPmbok = $libro->getEsPmbok();
             }
         }
         $preguntas = $this->aSortearPreguntas($idLibro, '', '', '');
@@ -28,6 +30,7 @@ class PreguntaController extends Controller {
         return $this->render('UciAdministradorBundle:VistaPregunta:indicePregunta.html.twig', array(
                     'entities' => $preguntas,
                     'form' => $form->createView(),
+                    'espmbok' => $esPmbok
         ));
     }
 

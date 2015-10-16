@@ -18,8 +18,11 @@ class PreguntaIndiceType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        $factory = $builder->getFormFactory();
         $builder
-                ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false));
+                ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'));
+        $citySubscriber = new EventSuscribers\AgregarCapituloSuscriber($factory);
+        $builder->addEventSubscriber($citySubscriber);
     }
 
   /**

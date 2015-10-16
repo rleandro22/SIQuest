@@ -27,17 +27,42 @@
 
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form action="{{ path('uci_administrador_indicepreguntas') }}" method="POST" enctype="multipart/form-data">
-                            <div class="row top-margin">
-                                <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                    {{ form_label(form.libro) }}
-                                    {{ form_errors(form.libro) }}
-                                    {{ form_widget(form.libro,{'attr' : {'onChange':'this.form.submit()'} }) }}
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <p class="text-center text-muted">Criterios de libro</p>
+                                    <form action="{{ path('uci_administrador_indicepreguntas') }}" method="POST" enctype="multipart/form-data">
+                                        <div class="row top-margin">
+                                            <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                                {{ form_label(form.libro) }}
+                                                {{ form_errors(form.libro) }}
+                                                {{ form_widget(form.libro,{'attr' : {'onChange':'this.form.submit()'} }) }}
+                                            </div>
+                                        </div>
+                                        <div class="row top-margin">
+                                            <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                                {{ form_label(form.capitulo) }}
+                                                {{ form_errors(form.capitulo) }}
+                                                {{ form_widget(form.capitulo) }}
+                                            </div>
+                                        </div>
+                                        {{ form_rest(form) }}
+                                    </form>
+                                    <br><br>
                                 </div>
                             </div>
-                            {{ form_rest(form) }}
-                        </form>
-                        <br><br>
+                        </div>
+                        <div class="col-sm-6">
+                            {% if espmbok == 1 %}
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <p class="text-center text-muted">Criterios de PMBok</p>
+
+                                        <br><br>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
 
