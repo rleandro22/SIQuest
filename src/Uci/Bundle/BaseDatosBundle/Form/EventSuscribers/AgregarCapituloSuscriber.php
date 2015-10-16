@@ -42,7 +42,6 @@ class AgregarCapituloSuscriber implements EventSubscriberInterface {
                             $qb->where('libro.titulo = :libro')
                                     ->setParameter('libro', null);
                         }
-
                         return $qb;
                     }
         )));
@@ -55,7 +54,6 @@ class AgregarCapituloSuscriber implements EventSubscriberInterface {
         if (null === $data) {
             return;
         }
-
         $libro = ($data->getLibro()) ? $data->getLibro() : null;
         $this->agregarLibroForm($form, $libro);
     }
@@ -67,7 +65,6 @@ class AgregarCapituloSuscriber implements EventSubscriberInterface {
         if (null === $data) {
             return;
         }
-
         $libro = array_key_exists('libro', $data) ? $data['libro'] : null;
         $this->agregarLibroForm($form, $libro);
     }

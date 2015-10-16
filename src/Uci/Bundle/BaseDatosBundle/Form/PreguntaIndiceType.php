@@ -7,11 +7,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PreguntaIndiceType extends AbstractType {
-//    private $libro;
-//
-//    public function __construct($libro) {
-//        $this->libro = $libro;
-//    }
 
     /**
      * @param FormBuilderInterface $builder
@@ -21,11 +16,11 @@ class PreguntaIndiceType extends AbstractType {
         $factory = $builder->getFormFactory();
         $builder
                 ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'));
-        $citySubscriber = new EventSuscribers\AgregarCapituloSuscriber($factory);
-        $builder->addEventSubscriber($citySubscriber);
+        $capituloSubscriber = new EventSuscribers\AgregarCapituloSuscriber($factory);
+        $builder->addEventSubscriber($capituloSubscriber);
     }
 
-  /**
+    /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
