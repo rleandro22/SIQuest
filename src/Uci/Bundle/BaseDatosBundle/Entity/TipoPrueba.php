@@ -109,4 +109,9 @@ class TipoPrueba
     {
         return $this->pregunta;
     }
+    
+    public function __toString() {
+        return $this->nombreTipo;
+    }
+
 }
