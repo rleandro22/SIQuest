@@ -31,7 +31,7 @@ class GrupoProcesos
     /**
      * @var string
      *
-     * @ORM\Column(name="porcentaje", type="decimal", precision=2, scale=0, nullable=false)
+     * @ORM\Column(name="porcentaje", type="decimal", precision=10, scale=2, nullable=false)
      */
     private $porcentaje;
 
@@ -139,4 +139,9 @@ class GrupoProcesos
     {
         return $this->pmbok;
     }
+    
+    public function __toString() {
+        return $this->nombreGrupo;
+    }
+
 }

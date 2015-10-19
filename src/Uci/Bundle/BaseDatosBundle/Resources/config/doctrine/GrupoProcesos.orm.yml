@@ -21,8 +21,8 @@ Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos:
         porcentaje:
             type: decimal
             nullable: false
-            precision: 2
-            scale: 0
+            precision: 10
+            scale: 2
             comment: ''
     manyToMany:
         pmbok:

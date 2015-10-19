@@ -18,6 +18,10 @@ class PreguntaIndiceType extends AbstractType {
                 ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'));
         $capituloSubscriber = new EventSuscribers\AgregarCapituloSuscriber($factory);
         $builder->addEventSubscriber($capituloSubscriber);
+        $grupoSubscriber = new EventSuscribers\AgregarGrupoSuscriber($factory);
+        $builder->addEventSubscriber($grupoSubscriber);
+        $areaSubscriber = new EventSuscribers\AgregarAreaSuscriber($factory);
+        $builder->addEventSubscriber($areaSubscriber);
     }
 
     /**
