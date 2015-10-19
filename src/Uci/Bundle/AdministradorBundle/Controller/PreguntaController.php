@@ -58,7 +58,7 @@ class PreguntaController extends Controller {
 
     private function aSortearPreguntas($idLibro = '', $idCapitulo = '', $idGrupoProcesos = '', $idAreaConocimiento = '') {
         $em = $this->getDoctrine()->getManager();
-        if (empty($idLibro) && empty($idCapitulo) && empty($idGrupoProcesos) && empty($idAreaConocimiento)) {
+        if (empty($idLibro)) {
             $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findBy(array(), array('titulo' => 'ASC'));
         } else {
             $repository = $this->getDoctrine()
