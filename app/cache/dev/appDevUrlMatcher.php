@@ -1999,6 +1999,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aIndicePreguntaAction',  '_route' => 'uci_administrador_indicepreguntas',);
             }
 
+            // uci_administrador_eligeTipoPregunta
+            if ($pathinfo === '/admin/elegir_tipo') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aElegirTipoAction',  '_route' => 'uci_administrador_eligeTipoPregunta',);
+            }
+
+            // uci_administrador_registrarRespuestaCorta
+            if (preg_match('#^/admin/(?P<id>[^/]++)/respuesta_corta$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_registrarRespuestaCorta')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aRegistrarRespuestaCortaAction',));
+            }
+
             if (0 === strpos($pathinfo, '/admin/libro')) {
                 // uci_administrador_indicelibro
                 if ($pathinfo === '/admin/libro/lista_libros') {

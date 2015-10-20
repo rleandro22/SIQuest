@@ -1,10 +1,6 @@
 Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
     type: entity
     table: respuesta
-    indexes:
-        fk_respuesta_tipo_respuesta1_idx:
-            columns:
-                - tipo_respuesta_id
     id:
         id:
             type: integer
@@ -29,14 +25,4 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
             fixed: false
             comment: ''
             column: texto_retroalimentacion
-    manyToOne:
-        tipoRespuesta:
-            targetEntity: TipoRespuesta
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                tipo_respuesta_id:
-                    referencedColumnName: id
-            orphanRemoval: false
     lifecycleCallbacks: {  }

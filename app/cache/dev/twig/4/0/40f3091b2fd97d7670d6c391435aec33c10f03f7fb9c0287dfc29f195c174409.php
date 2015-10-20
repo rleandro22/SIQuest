@@ -15,8 +15,8 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_449df0842490d645b10c4283b8853865d7afb297c76dff9eb9bd211eeb6cdd73 = $this->env->getExtension("native_profiler");
-        $__internal_449df0842490d645b10c4283b8853865d7afb297c76dff9eb9bd211eeb6cdd73->enter($__internal_449df0842490d645b10c4283b8853865d7afb297c76dff9eb9bd211eeb6cdd73_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig"));
+        $__internal_eea6aa362b840ff71a7a34279100e5e7e995c670b5dfa97b85c9dea5c5a01426 = $this->env->getExtension("native_profiler");
+        $__internal_eea6aa362b840ff71a7a34279100e5e7e995c670b5dfa97b85c9dea5c5a01426->enter($__internal_eea6aa362b840ff71a7a34279100e5e7e995c670b5dfa97b85c9dea5c5a01426_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -36,14 +36,13 @@ class __TwigTemplate_40f3091b2fd97d7670d6c391435aec33c10f03f7fb9c0287dfc29f195c1
         // line 11
         echo $this->env->getExtension('routing')->getPath("uci_administrador_addcategoria");
         echo "\" data-target=\"#myModal\">Nueva generación</a></li>
-                
             </ul>
         </div>
     </div>
 </div>
 ";
         
-        $__internal_449df0842490d645b10c4283b8853865d7afb297c76dff9eb9bd211eeb6cdd73->leave($__internal_449df0842490d645b10c4283b8853865d7afb297c76dff9eb9bd211eeb6cdd73_prof);
+        $__internal_eea6aa362b840ff71a7a34279100e5e7e995c670b5dfa97b85c9dea5c5a01426->leave($__internal_eea6aa362b840ff71a7a34279100e5e7e995c670b5dfa97b85c9dea5c5a01426_prof);
 
     }
 

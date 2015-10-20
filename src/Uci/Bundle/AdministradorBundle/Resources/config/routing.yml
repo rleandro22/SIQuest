@@ -68,14 +68,23 @@ uci_administrador_desmatricularusuario:
     pattern:  /admin/{idGeneracion}/{idCurso}/desmatricular_usuario/{tipoUsuario}/{idUsuario}
     defaults: { _controller: UciAdministradorBundle:Categoria:aDesmatricularUsuario }
     
-#---------------------Preguntas----------------------------------------
+#---------------------PREGUNTAS-------------------------------------------------
 
 uci_administrador_indicepreguntas:
     pattern:  /admin/ver_preguntas
     defaults: { _controller: UciAdministradorBundle:Pregunta:aIndicePregunta }
+    
+uci_administrador_eligeTipoPregunta:
+    pattern:  /admin/elegir_tipo
+    defaults: { _controller: UciAdministradorBundle:Pregunta:aElegirTipo }
+    
+#-----------------PARA DIFERENTES TIPOS DE PREGUNTAS----------------------------
 
+uci_administrador_registrarRespuestaCorta:
+    pattern:  /admin/{id}/respuesta_corta
+    defaults: { _controller: UciAdministradorBundle:Pregunta:aRegistrarRespuestaCorta }
 
-#---------------------Routing Libro----------------------------------------
+#---------------------Routing Libro---------------------------------------------
 uci_administrador_libro:
     resource: "@UciAdministradorBundle/Resources/config/routing/libro.yml"
     prefix:   /admin/libro

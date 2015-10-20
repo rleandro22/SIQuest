@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Form\PreguntaIndiceType;
 use Symfony\Component\HttpFoundation\Request;
 use \Uci\Bundle\BaseDatosBundle\Entity\Pregunta;
+use Uci\Bundle\BaseDatosBundle\Form\EligeTipoType;
 
 class PreguntaController extends Controller {
 
@@ -32,6 +33,26 @@ class PreguntaController extends Controller {
                     'entities' => $preguntas,
                     'form' => $form->createView(),
                     'espmbok' => $esPmbok
+        ));
+    }
+
+    public function aRegistrarRespuestaCortaAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+        $tipoRespuesta= $em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($id);
+        
+    }
+
+    public function aElegirTipoAction(Request $request) {
+        $form = $this->createForm(new EligeTipoType());
+        $form->handleRequest($request);
+        if ($request->getMethod() == 'POST') {
+            if ($form->isValid()) {
+                $tipoRespuesta = $form["tipoRespuesta"]->getData();
+                return $this->redirect($this->generateUrl("uci_administrador_registrarRespuestaCorta", array("id" => $tipoRespuesta->getId())));
+            }
+        }
+        return $this->render('UciAdministradorBundle:VistaPregunta:elegirTipoPregunta.html.twig', array(
+                    'form' => $form->createView()
         ));
     }
 

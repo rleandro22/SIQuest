@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tipo_respuesta")
  * @ORM\Entity
  */
-class TipoRespuesta
-{
+class TipoRespuesta {
+
     /**
      * @var integer
      *
@@ -28,15 +28,19 @@ class TipoRespuesta
      */
     private $nombre;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="explicacion", type="text", nullable=false)
+     */
+    private $explicacion;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -46,8 +50,7 @@ class TipoRespuesta
      * @param string $nombre
      * @return TipoRespuesta
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -58,8 +61,34 @@ class TipoRespuesta
      *
      * @return string 
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
+    
+    /**
+     * Get explicacion
+     *
+     * @return string 
+     */
+    function getExplicacion() {
+        return $this->explicacion;
+    }
+
+    /**
+     * Set explicacion
+     *
+     * @param string $explicacion
+     * @return TipoRespuesta
+     */
+    function setExplicacion($explicacion) {
+        $this->explicacion = $explicacion;
+        return $this;
+    }
+
+    
+
+    public function __toString() {
+        return $this->nombre;
+    }
+
 }

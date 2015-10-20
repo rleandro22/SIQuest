@@ -1,0 +1,38 @@
+
+<div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Elija el tipo de pregunta</h4>
+        </div>
+        <div class="modal-body">
+            <form action="{{ path('uci_administrador_eligeTipoPregunta') }}" method="POST" enctype="multipart/form-data">
+
+                {{ form_errors(form.tipoRespuesta) }}
+                {% for choiceFormView in form.tipoRespuesta %}
+                    <div class="row top-margin">
+                        <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                            {{ form_widget(choiceFormView) }}
+                            <span class="glyphicon glyphicon-share-alt"></span>
+                            {{ form_label(choiceFormView) }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+                <hr>
+                <div class="row">
+                    <div class="col-lg-8 text-right">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                    </div>
+                    <div class="col-lg-4 text-right">
+                        <button class="btn btn-action" type="submit">Continuar</button>
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+
+</div>

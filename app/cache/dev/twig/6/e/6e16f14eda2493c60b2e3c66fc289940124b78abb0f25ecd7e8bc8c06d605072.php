@@ -15,8 +15,8 @@ class __TwigTemplate_6e16f14eda2493c60b2e3c66fc289940124b78abb0f25ecd7e8bc8c06d6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_be58bf70e401fc0b6664649c42bf854dc45b167e2889bb7661f94f16f8e2bb4f = $this->env->getExtension("native_profiler");
-        $__internal_be58bf70e401fc0b6664649c42bf854dc45b167e2889bb7661f94f16f8e2bb4f->enter($__internal_be58bf70e401fc0b6664649c42bf854dc45b167e2889bb7661f94f16f8e2bb4f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoPregunta.html.twig"));
+        $__internal_9319b3d378e88ec02c7a060cf2ab9ecca0baaec39199d778c5bb7de3cbbe412c = $this->env->getExtension("native_profiler");
+        $__internal_9319b3d378e88ec02c7a060cf2ab9ecca0baaec39199d778c5bb7de3cbbe412c->enter($__internal_9319b3d378e88ec02c7a060cf2ab9ecca0baaec39199d778c5bb7de3cbbe412c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoPregunta.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -34,7 +34,10 @@ class __TwigTemplate_6e16f14eda2493c60b2e3c66fc289940124b78abb0f25ecd7e8bc8c06d6
         echo "'><span>Lista de preguntas</span></a></li>
                 <li class='active has-sub'><a href='#'><span>Nueva pregunta</span></a>
                     <ul>
-                        <li><a href='#'><span>PMBok</span></a></li>
+                        <li><a data-toggle=\"modal\" href=\"";
+        // line 13
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_eligeTipoPregunta");
+        echo "\" data-target=\"#myModal\">PMBok</a></li>
                         <li class='last'><a href='#'><span>Otro</span></a></li>
                     </ul>
                 </li>
@@ -44,7 +47,7 @@ class __TwigTemplate_6e16f14eda2493c60b2e3c66fc289940124b78abb0f25ecd7e8bc8c06d6
 </div>
 ";
         
-        $__internal_be58bf70e401fc0b6664649c42bf854dc45b167e2889bb7661f94f16f8e2bb4f->leave($__internal_be58bf70e401fc0b6664649c42bf854dc45b167e2889bb7661f94f16f8e2bb4f_prof);
+        $__internal_9319b3d378e88ec02c7a060cf2ab9ecca0baaec39199d778c5bb7de3cbbe412c->leave($__internal_9319b3d378e88ec02c7a060cf2ab9ecca0baaec39199d778c5bb7de3cbbe412c_prof);
 
     }
 
@@ -60,6 +63,6 @@ class __TwigTemplate_6e16f14eda2493c60b2e3c66fc289940124b78abb0f25ecd7e8bc8c06d6
 
     public function getDebugInfo()
     {
-        return array (  33 => 10,  22 => 1,);
+        return array (  39 => 13,  33 => 10,  22 => 1,);
     }
 }
