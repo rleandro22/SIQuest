@@ -249,4 +249,9 @@ class Pregunta
     {
         return $this->tipoPrueba;
     }
+    
+    public function __toString() {
+        return $this->titulo;
+    }
+
 }
