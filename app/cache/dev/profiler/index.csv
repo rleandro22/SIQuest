@@ -1310,3 +1310,10 @@ f9fb6b,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,144
 8b8a9b,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445360627,,200
 11b6d3,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445360629,,200
 5fe759,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445360633,,200
+bde1e6,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445360917,,200
+8d9d88,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445360920,,200
+2dbdda,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445360973,,200
+531152,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1445361213,,200
+1cbc19,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445361215,,200
+f0c96a,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445361219,,200
+ee1c59,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445361222,,200

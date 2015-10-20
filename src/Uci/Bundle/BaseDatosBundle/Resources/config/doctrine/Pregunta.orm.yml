@@ -25,11 +25,12 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
                 strategy: IDENTITY
     fields:
         titulo:
-            type: string
+            type: text
             nullable: false
-            length: 255
+            length: null
             fixed: false
             comment: ''
+            column: titulo
     manyToOne:
         areaConocimiento:
             targetEntity: AreaConocimiento
