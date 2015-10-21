@@ -117,4 +117,9 @@ class AreaConocimiento
     {
         return $this->pmbok;
     }
+    
+    public function __toString() {
+        return $this->nombreArea;
+    }
+
 }

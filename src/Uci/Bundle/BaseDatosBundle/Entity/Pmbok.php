@@ -21,7 +21,7 @@ class Pmbok
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
+    
     /**
      * @var integer
      *
@@ -158,5 +158,9 @@ class Pmbok
     public function getGrupoProcesos()
     {
         return $this->grupoProcesos;
+    }
+    
+    public function __toString() {
+        return 'Año: '.$this->getEdicion();
     }
 }

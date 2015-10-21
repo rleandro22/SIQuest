@@ -30,16 +30,16 @@ class AgregarGrupoSuscriber implements EventSubscriberInterface {
                     'class' => 'UciBaseDatosBundle:GrupoProcesos',
                     'empty_value' => 'G. Procesos',
                     'query_builder' => function (EntityRepository $repository) use ($pmbok) {
-                        $qb = $repository->createQueryBuilder('grupoProcesos')
-                                ->innerJoin('grupoProcesos.pmbok', 'pmbok');
+                        $qb = $repository->createQueryBuilder('u')
+                                ->innerJoin('u.pmbok', 'g');
                         if ($pmbok instanceof Pmbok) {
-                            $qb->where('grupoProcesos.pmbok = :pmbok')
+                            $qb->where('g.id = :pmbok')
                                     ->setParameter('pmbok', $pmbok->getId());
                         } elseif (is_numeric($pmbok)) {
-                            $qb->where('pmbok.id = :pmbok')
+                            $qb->where('g.id = :pmbok')
                                     ->setParameter('pmbok', $pmbok);
                         } else {
-                            $qb->where('pmbok.id = :pmbok')
+                            $qb->where('g.id = :pmbok')
                                     ->setParameter('pmbok', null);
                         }
                         return $qb;
@@ -54,7 +54,16 @@ class AgregarGrupoSuscriber implements EventSubscriberInterface {
         if (null === $data) {
             return;
         }
-        $pmbok = ($data->getLibro()->getPmbok()) ? $data->getLibro()->getPmbok() : null;
+        $libro = ($data->getLibro()) ? $data->getLibro() : null;
+        if (null === $libro) {
+            return;
+        } else {
+            if ($libro->getEsPmbok() == 1) {
+                $pmbok = $data->getLibro()->getPmbok();
+            } else {
+                return;
+            }
+        }
         $this->agregarGrupoForm($form, $pmbok);
     }
 
@@ -65,7 +74,16 @@ class AgregarGrupoSuscriber implements EventSubscriberInterface {
         if (null === $data) {
             return;
         }
-        $pmbok = array_key_exists('pmbok', $data) ? $data['pmbok'] : null;
+        $libro = array_key_exists('libro', $data) ? $data['libro'] : null;
+        if (null === $libro) {
+            return;
+        } else {
+            if ($libro->getEsPmbok() == 1) {
+                $pmbok = $data->getLibro()->getPmbok();
+            } else {
+                return;
+            }
+        }
         $this->agregarGrupoForm($form, $pmbok);
     }
 

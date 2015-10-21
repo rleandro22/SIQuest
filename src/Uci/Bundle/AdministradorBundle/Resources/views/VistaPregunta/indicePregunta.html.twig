@@ -27,11 +27,12 @@
 
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="col-sm-6">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <p class="text-center text-muted">Criterios de libro</p>
-                                    <form action="{{ path('uci_administrador_indicepreguntas') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ path('uci_administrador_indicepreguntas') }}" method="POST" enctype="multipart/form-data">
+                            <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <p class="text-center text-muted">Criterios de libro</p>
+
                                         <div class="row top-margin">
                                             <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                                 <label>{{ form_label(form.libro) }}</label><br>
@@ -43,31 +44,47 @@
                                             <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                                 <label>{{ form_label(form.capitulo) }}</label><br>
                                                 {{ form_errors(form.capitulo) }}
-                                                {{ form_widget(form.capitulo) }}
+                                                {{ form_widget(form.capitulo,{'attr' : {'onChange':'this.form.submit()'} }) }}
                                             </div>
                                         </div>
-                                        {{ form_rest(form) }}
-                                    </form>
-                                    <br><br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            {% if espmbok == 1 %}
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <p class="text-center text-muted">Criterios de PMBok</p>
-
                                         <br><br>
                                     </div>
                                 </div>
-                            {% endif %}
-                        </div>
+                            </div>
+                            <div class="col-sm-6">
+                                {% if espmbok == 1 %}
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <p class="text-center text-muted">Criterios de PMBok</p>
+                                            <div class="row top-margin">
+                                                <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                                    <label>{{ form_label(form.grupoProcesos) }}</label><br>
+                                                    {{ form_errors(form.grupoProcesos) }}
+                                                    {{ form_widget(form.grupoProcesos,{'attr' : {'onChange':'this.form.submit()'} }) }}
+                                                </div>
+                                            </div>
+                                            <div class="row top-margin">
+                                                <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                                    <label>{{ form_label(form.areaConocimiento) }}</label><br>
+                                                    {{ form_errors(form.areaConocimiento) }}
+                                                    {{ form_widget(form.areaConocimiento,{'attr' : {'onChange':'this.form.submit()'} }) }}
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {{ form_rest(form) }}
+                        </form>
                     </div>
                 </div>
 
             </article>
             <!-- /Article -->
+        </div>
+        <div id="myModal" class="modal fade" role="dialog">
+
         </div>
         </br></br>
         <div class="row">

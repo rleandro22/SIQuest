@@ -11,6 +11,13 @@ Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta:
             generator:
                 strategy: IDENTITY
     fields:
+        explicacion:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+            column: explicacion
         nombre:
             type: string
             nullable: false

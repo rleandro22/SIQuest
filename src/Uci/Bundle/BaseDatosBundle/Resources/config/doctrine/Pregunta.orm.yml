@@ -14,6 +14,9 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
         fk_pregunta_libro1_idx:
             columns:
                 - libro_id
+        fk_respuesta_tipo_respuesta1_idx:
+            columns:
+                - tipo_respuesta_id
     id:
         id:
             type: integer
@@ -25,11 +28,12 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
                 strategy: IDENTITY
     fields:
         titulo:
-            type: string
+            type: text
             nullable: false
-            length: 255
+            length: null
             fixed: false
             comment: ''
+            column: titulo
     manyToOne:
         areaConocimiento:
             targetEntity: AreaConocimiento
@@ -65,6 +69,15 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
             inversedBy: null
             joinColumns:
                 libro_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoRespuesta:
+            targetEntity: TipoRespuesta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_respuesta_id:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:

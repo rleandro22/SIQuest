@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pregunta
  *
- * @ORM\Table(name="pregunta", indexes={@ORM\Index(name="fk_pregunta_capitulo1_idx", columns={"capitulo_id"}), @ORM\Index(name="fk_pregunta_grupo_procesos1_idx", columns={"grupo_procesos_id"}), @ORM\Index(name="fk_pregunta_area_conocimiento1_idx", columns={"area_conocimiento_id"}), @ORM\Index(name="fk_pregunta_libro1_idx", columns={"libro_id"})})
+ * @ORM\Table(name="pregunta", indexes={@ORM\Index(name="fk_pregunta_capitulo1_idx", columns={"capitulo_id"}), @ORM\Index(name="fk_pregunta_grupo_procesos1_idx", columns={"grupo_procesos_id"}), @ORM\Index(name="fk_respuesta_tipo_respuesta1_idx", columns={"tipo_respuesta_id"}), @ORM\Index(name="fk_pregunta_area_conocimiento1_idx", columns={"area_conocimiento_id"}), @ORM\Index(name="fk_pregunta_libro1_idx", columns={"libro_id"})})
  * @ORM\Entity
  */
 class Pregunta
@@ -24,7 +24,7 @@ class Pregunta
     /**
      * @var string
      *
-     * @ORM\Column(name="titulo", type="string", length=255, nullable=false)
+     * @ORM\Column(name="titulo", type="text", nullable=false)
      */
     private $titulo;
 
@@ -82,6 +82,16 @@ class Pregunta
      * )
      */
     private $tipoPrueba;
+    
+        /**
+     * @var \Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta
+     *
+     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipo_respuesta_id", referencedColumnName="id")
+     * })
+     */
+    private $tipoRespuesta;
 
     /**
      * Constructor
@@ -249,4 +259,32 @@ class Pregunta
     {
         return $this->tipoPrueba;
     }
+    
+    /**
+     * Set tipoRespuesta
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta $tipoRespuesta
+     * @return Respuesta
+     */
+    public function setTipoRespuesta(\Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta $tipoRespuesta = null)
+    {
+        $this->tipoRespuesta = $tipoRespuesta;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoRespuesta
+     *
+     * @return \Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta 
+     */
+    public function getTipoRespuesta()
+    {
+        return $this->tipoRespuesta;
+    }
+    
+    public function __toString() {
+        return $this->titulo;
+    }
+
 }
