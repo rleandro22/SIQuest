@@ -15,9 +15,9 @@ class CapituloType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numeroCapitulo')
-            ->add('nombreCapitulo')
-            ->add('libro')
+            ->add('numeroCapitulo', 'integer', array("label" => "Número: ", "required" => true, "attr" => array('class' => 'form-control')))
+            ->add('nombreCapitulo', 'text', array("label" => "Nombre: ", "required" => true, "attr" => array('class' => 'form-control')))
+            ->add('libro','hidden')
         ;
     }
     

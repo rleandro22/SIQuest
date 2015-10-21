@@ -23,8 +23,28 @@ class LibroController extends Controller
         ));
     }
     
+    public function obtenerCapitulosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery
+        (
+            'SELECT p.nombreCapitulo,p.numeroCapitulo,c.id as libro,c.titulo as titulo
+               FROM UciBaseDatosBundle:Capitulo p
+               JOIN UciBaseDatosBundle:Libro c WITH c.id =p.libro
+               '
+        );
+         
+        $datos = $query->getResult();
+        //print_r($datos);exit;
+        return $this->render('UciAdministradorBundle:VistaLibro:index.html.twig',compact("datos"));
+    }
+    
     public function aRegistrarLibroAction(Request $request) {
         $entity = new Libro();
+        $capitulo = new \Uci\Bundle\BaseDatosBundle\Entity\Capitulo();
+        //$emc = $this->getDoctrine()->getManager();
+        //$capitulo = $emc->getRepository('UciBaseDatosBundle:Capitulo')->find(1);
+        $entity->addCapitulo($capitulo);
         $form = $this->createForm(new LibroType(0), $entity);
         $form->handleRequest($request);
         $error = '';

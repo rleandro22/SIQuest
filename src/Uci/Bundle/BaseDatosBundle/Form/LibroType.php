@@ -20,11 +20,18 @@ class LibroType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('titulo')
-                ->add('anio')
+                ->add('titulo', 'text', array("label" => "Titulo: ", "required" => true, "attr" => array('class' => 'form-control')))
+                ->add('anio', 'integer', array("label" => "Año: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ', 'mapped' => false, 'multiple' => false, 'expanded' => true, 'data' => $this->edita))
-                ->add('idiomas')
-                ->add('pmbok')
+                ->add('idiomas','entity', array('class' => 'UciBaseDatosBundle:Idiomas', 'required' => true))
+              //  ->add('capitulos','entity', array('class' => 'UciBaseDatosBundle:Capitulo','multiple'=>true,'mapped'=>false, 'required' => false))
+                ->add('pmbok','hidden')
+                ->add('capitulos', 'collection', array(
+                'type' => new CapituloType(),
+                'by_reference'   => false,
+                'allow_delete'   => true,
+                'allow_add'      => true,
+                'prototype'      => true))
         ;
     }
 

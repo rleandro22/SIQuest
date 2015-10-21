@@ -1,6 +1,7 @@
 <?php
 
 namespace Uci\Bundle\BaseDatosBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,6 +12,17 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  */
 class Libro {
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Categoria", mappedBy="libro_id")
+     */
+    private $capitulos;
+ 
+    public function __construct()
+    {
+        $this->capitulos = new ArrayCollection();
+    }
+    
 
     /**
      * @var integer
@@ -175,8 +187,31 @@ class Libro {
     public function getIdiomas() {
         return $this->idiomas;
     }
+    
+    /**
+     * Add capitulo
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Capitulo $capitulo
+     * @return Curso
+     */
+    public function addCapitulo(\Uci\Bundle\BaseDatosBundle\Entity\Capitulo $capitulo)
+    {
+        $this->capitulos[] = $capitulo;
 
-    public function __toString() {
+        return $this;
+    }
+    
+    
+    public function setCapitulos($capitulos) {
+     $this->capitulos= $capitulos;
+    }
+    
+    public function getCapitulos(){
+        return $this->capitulos;
+    }
+
+
+        public function __toString() {
         return $this->titulo;
     }
 

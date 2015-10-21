@@ -22,44 +22,48 @@ class __TwigTemplate_feb45c0b119c51a0e5be3cddba787f5df0b95c4f2365225f43c8487cbd6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_63e552c97f3d3a87a58ef75db64f185b8064948e113d0985bc565ed6c6df0bc0 = $this->env->getExtension("native_profiler");
-        $__internal_63e552c97f3d3a87a58ef75db64f185b8064948e113d0985bc565ed6c6df0bc0->enter($__internal_63e552c97f3d3a87a58ef75db64f185b8064948e113d0985bc565ed6c6df0bc0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaLibro:registrarLibro.html.twig"));
+        $__internal_e1ee0f124d292dcece61a16ad83a391646722314023c3eeab3035890cc0ba080 = $this->env->getExtension("native_profiler");
+        $__internal_e1ee0f124d292dcece61a16ad83a391646722314023c3eeab3035890cc0ba080->enter($__internal_e1ee0f124d292dcece61a16ad83a391646722314023c3eeab3035890cc0ba080_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaLibro:registrarLibro.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_63e552c97f3d3a87a58ef75db64f185b8064948e113d0985bc565ed6c6df0bc0->leave($__internal_63e552c97f3d3a87a58ef75db64f185b8064948e113d0985bc565ed6c6df0bc0_prof);
+        $__internal_e1ee0f124d292dcece61a16ad83a391646722314023c3eeab3035890cc0ba080->leave($__internal_e1ee0f124d292dcece61a16ad83a391646722314023c3eeab3035890cc0ba080_prof);
 
     }
 
-    // line 5
+    // line 4
     public function block_header($context, array $blocks = array())
     {
-        $__internal_caecca273a5d5a01ddb21b36d372f21e4f0193ae9461427bdba02d5496ac535e = $this->env->getExtension("native_profiler");
-        $__internal_caecca273a5d5a01ddb21b36d372f21e4f0193ae9461427bdba02d5496ac535e->enter($__internal_caecca273a5d5a01ddb21b36d372f21e4f0193ae9461427bdba02d5496ac535e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_fd9a6049954daa4bbe396097872859b299eed5ae3e96b145f5ed3da54c91ee9d = $this->env->getExtension("native_profiler");
+        $__internal_fd9a6049954daa4bbe396097872859b299eed5ae3e96b145f5ed3da54c91ee9d->enter($__internal_fd9a6049954daa4bbe396097872859b299eed5ae3e96b145f5ed3da54c91ee9d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
-        // line 6
+        // line 5
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_caecca273a5d5a01ddb21b36d372f21e4f0193ae9461427bdba02d5496ac535e->leave($__internal_caecca273a5d5a01ddb21b36d372f21e4f0193ae9461427bdba02d5496ac535e_prof);
+        $__internal_fd9a6049954daa4bbe396097872859b299eed5ae3e96b145f5ed3da54c91ee9d->leave($__internal_fd9a6049954daa4bbe396097872859b299eed5ae3e96b145f5ed3da54c91ee9d_prof);
 
     }
 
-    // line 9
+    // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_139d7af73c674648b01d72ae45f07f866e64011b8cbfee61900ca20389482faa = $this->env->getExtension("native_profiler");
-        $__internal_139d7af73c674648b01d72ae45f07f866e64011b8cbfee61900ca20389482faa->enter($__internal_139d7af73c674648b01d72ae45f07f866e64011b8cbfee61900ca20389482faa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_c20c292a7c11991691a639c7c6bb9589be48c2d7ebdbc8808b8f913582122e61 = $this->env->getExtension("native_profiler");
+        $__internal_c20c292a7c11991691a639c7c6bb9589be48c2d7ebdbc8808b8f913582122e61->enter($__internal_c20c292a7c11991691a639c7c6bb9589be48c2d7ebdbc8808b8f913582122e61_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 10
+        // line 9
         echo "    <!-- container -->
     <div class=\"container\">
 
         <ol class=\"breadcrumb\">
             <li><a href=\"";
-        // line 14
+        // line 13
         echo $this->env->getExtension('routing')->getPath("uci_administrador_homepage");
         echo "\">Inicio</a></li>
+            <li><a href=\"";
+        // line 14
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_indicelibro");
+        echo "\">Listado de libros</a></li>
             <li class=\"active\">Registrar Libro</li>
         </ol>
         <div class=\"row\">
@@ -100,8 +104,10 @@ class __TwigTemplate_feb45c0b119c51a0e5be3cddba787f5df0b95c4f2365225f43c8487cbd6
                             <form action=\"";
         // line 42
         echo $this->env->getExtension('routing')->getPath("uci_administrador_nuevolibro");
-        echo "\" method=\"POST\" enctype=\"multipart/form-data\">
-                               
+        echo "\" method=\"POST\" ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'enctype');
+        echo ">
+
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
@@ -118,8 +124,8 @@ class __TwigTemplate_feb45c0b119c51a0e5be3cddba787f5df0b95c4f2365225f43c8487cbd6
         echo "
                                     </div>
                                 </div>
-                            
-                                 <div class=\"row top-margin\">
+
+                                <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
         // line 54
@@ -135,7 +141,7 @@ class __TwigTemplate_feb45c0b119c51a0e5be3cddba787f5df0b95c4f2365225f43c8487cbd6
         echo "
                                     </div>
                                 </div>
-                                    
+
 
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
@@ -153,30 +159,114 @@ class __TwigTemplate_feb45c0b119c51a0e5be3cddba787f5df0b95c4f2365225f43c8487cbd6
         echo "
                                     </div>
                                 </div>
+                                
+                                    <hr>
+                                <!-- /Aquí inicia capitulo --> 
+                                
+                                <div class=\"row top-margin\">
+                                    <div class=\"cols-xs-6 col-sm-5 col-md-4 col-lg-4\">
+                                        ";
+        // line 74
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "capitulos", array()), 'label');
+        echo "
+                                        ";
+        // line 75
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "capitulos", array()), 'widget');
+        echo "
+                                        ";
+        // line 76
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "capitulos", array()), 'errors');
+        echo "
+                                        
+                                    </div>
+                                </div>
+                                <!-- /Fin Nuevo capitulo -->
+                                <br>
+                                <!-- /Tabla capitulos -->
+                                    
+                                <table class=\"table demo table-bordered\" id=\"tabla\" data-filter=\"#filter\">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th data-hide=\"phone\">
+                                                Numero 
+                                            </th>
+                                            <th data-hide=\"phone\">
+                                                Nombre
+                                            </th>
+                                            
+                                            
+                                            <th data-sort-ignore=\"true\" data-hide=\"phone\" data-name=\"Acciones\"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ";
+        // line 100
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "capitulos", array()));
+        foreach ($context['_seq'] as $context["_key"] => $context["capitulo"]) {
+            // line 101
+            echo "                                            <tr>
+                                                
+                                                <td>";
+            // line 103
+            echo twig_escape_filter($this->env, $this->getAttribute($context["capitulo"], "numeroCapitulo", array()), "html", null, true);
+            echo "</td>
+                                                <td>";
+            // line 104
+            echo twig_escape_filter($this->env, $this->getAttribute($context["capitulo"], "nombreCapitulo", array()), "html", null, true);
+            echo "</td>
+                                                <td>
+                                                    <ul>
+                                                      
+                                                     
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['capitulo'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 113
+        echo "                                    </tbody>
+                                </table>
+                                <!-- /Aquí acaba el contenido de capitulo--> 
+                                <hr>
+
+
+
+
+                                <!-- /Aquí inicia si es pmbok --> 
+
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
-        // line 70
+        // line 125
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "esPmbok", array()), 'label');
         echo "
                                         ";
-        // line 71
+        // line 126
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "esPmbok", array()), 'errors');
         echo "
                                         ";
-        // line 72
+        // line 127
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "esPmbok", array()), 'widget');
         echo "
                                     </div>
                                 </div>
-                                    <hr>
-                                    <div class=\"row\">
-                                        <div class=\"col-lg-8\">                     
-                                        </div>
-                                        <div class=\"col-lg-4 text-right\">
-                                            <button class=\"btn btn-action\" type=\"submit\">Registrar</button>
-                                        </div>
+                                <hr>
+                                <div class=\"row\">
+                                    <div class=\"col-lg-8\">                     
                                     </div>
+                                    <div class=\"col-lg-4 text-right\">
+                                        <button class=\"btn btn-action\" type=\"submit\">Registrar</button>
+                                    </div>
+                                </div>
+                                ";
+        // line 138
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
+        echo "
                             </form>
                         </div>
                     </div>
@@ -192,7 +282,7 @@ class __TwigTemplate_feb45c0b119c51a0e5be3cddba787f5df0b95c4f2365225f43c8487cbd6
 
 ";
         
-        $__internal_139d7af73c674648b01d72ae45f07f866e64011b8cbfee61900ca20389482faa->leave($__internal_139d7af73c674648b01d72ae45f07f866e64011b8cbfee61900ca20389482faa_prof);
+        $__internal_c20c292a7c11991691a639c7c6bb9589be48c2d7ebdbc8808b8f913582122e61->leave($__internal_c20c292a7c11991691a639c7c6bb9589be48c2d7ebdbc8808b8f913582122e61_prof);
 
     }
 
@@ -208,6 +298,6 @@ class __TwigTemplate_feb45c0b119c51a0e5be3cddba787f5df0b95c4f2365225f43c8487cbd6
 
     public function getDebugInfo()
     {
-        return array (  168 => 72,  164 => 71,  160 => 70,  152 => 65,  148 => 64,  144 => 63,  134 => 56,  130 => 55,  126 => 54,  117 => 48,  113 => 47,  109 => 46,  102 => 42,  99 => 41,  93 => 39,  91 => 38,  72 => 21,  70 => 20,  61 => 14,  55 => 10,  49 => 9,  41 => 6,  35 => 5,  11 => 1,);
+        return array (  268 => 138,  254 => 127,  250 => 126,  246 => 125,  232 => 113,  217 => 104,  213 => 103,  209 => 101,  205 => 100,  178 => 76,  174 => 75,  170 => 74,  158 => 65,  154 => 64,  150 => 63,  140 => 56,  136 => 55,  132 => 54,  123 => 48,  119 => 47,  115 => 46,  106 => 42,  103 => 41,  97 => 39,  95 => 38,  76 => 21,  74 => 20,  65 => 14,  61 => 13,  55 => 9,  49 => 8,  41 => 5,  35 => 4,  11 => 1,);
     }
 }

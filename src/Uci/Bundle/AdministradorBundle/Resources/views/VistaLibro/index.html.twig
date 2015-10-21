@@ -1,0 +1,23 @@
+{% extends 'UciAdministradorBundle::base.html.twig' %}
+
+{% block header %}
+    <header id="head" class="secondary"></header>
+    {% endblock %}
+
+{% block title %}
+	tÃ­tulo desde la vista
+{% endblock %}
+
+{% block body %}
+	<h1>Listado de Noticias</h1>
+    <ul>
+    {% for dato in datos %}
+        <li>{{ dato.nombreCapitulo }} ( {{dato.numeroCapitulo}} ) </li>
+    {% endfor %}
+    </ul>
+    
+	
+{% endblock %}
+
+
+

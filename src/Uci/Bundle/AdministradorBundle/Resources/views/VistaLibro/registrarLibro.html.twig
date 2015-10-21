@@ -39,8 +39,8 @@
                                 <div style="color:red">{{ error }}</div>
                             {% endif %}
 
-                            <form action="{{ path('uci_administrador_nuevolibro') }}" method="POST" enctype="multipart/form-data">
-                               
+                            <form action="{{ path('uci_administrador_nuevolibro') }}" method="POST" {{form_enctype(form)}}>
+
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_label(form.titulo) }}
@@ -48,15 +48,15 @@
                                         {{ form_widget(form.titulo) }}
                                     </div>
                                 </div>
-                            
-                                 <div class="row top-margin">
+
+                                <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_label(form.anio) }}
                                         {{ form_errors(form.anio) }}
                                         {{ form_widget(form.anio) }}
                                     </div>
                                 </div>
-                                    
+
 
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
@@ -65,6 +65,61 @@
                                         {{ form_widget(form.idiomas) }}
                                     </div>
                                 </div>
+                                
+                                    <hr>
+                                <!-- /Aquí inicia capitulo --> 
+                                
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.capitulos) }}
+                                        {{form_widget(form.capitulos)}}
+                                        {{ form_errors(form.capitulos) }}
+                                        
+                                    </div>
+                                </div>
+                                <!-- /Fin Nuevo capitulo -->
+                                <br>
+                                <!-- /Tabla capitulos -->
+                                    
+                                <table class="table demo table-bordered" id="tabla" data-filter="#filter">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th data-hide="phone">
+                                                Numero 
+                                            </th>
+                                            <th data-hide="phone">
+                                                Nombre
+                                            </th>
+                                            
+                                            
+                                            <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for capitulo in entity.capitulos %}
+                                            <tr>
+                                                
+                                                <td>{{capitulo.numeroCapitulo}}</td>
+                                                <td>{{capitulo.nombreCapitulo}}</td>
+                                                <td>
+                                                    <ul>
+                                                      
+                                                     
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <!-- /Aquí acaba el contenido de capitulo--> 
+                                <hr>
+
+
+
+
+                                <!-- /Aquí inicia si es pmbok --> 
+
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_label(form.esPmbok) }}
@@ -72,14 +127,15 @@
                                         {{ form_widget(form.esPmbok) }}
                                     </div>
                                 </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-lg-8">                     
-                                        </div>
-                                        <div class="col-lg-4 text-right">
-                                            <button class="btn btn-action" type="submit">Registrar</button>
-                                        </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-8">                     
                                     </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" type="submit">Registrar</button>
+                                    </div>
+                                </div>
+                                {{ form_rest(form) }}
                             </form>
                         </div>
                     </div>
