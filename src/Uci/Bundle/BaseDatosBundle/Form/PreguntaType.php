@@ -20,6 +20,8 @@ class PreguntaType extends AbstractType {
                 ->add('grupoProcesos')
                 ->add('tipoPrueba')
                 ->add('libro')
+                ->add('respuesta')
+                ->add('tipoRespuesta')
         ;
     }
 

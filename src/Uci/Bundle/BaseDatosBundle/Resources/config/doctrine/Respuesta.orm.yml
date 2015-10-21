@@ -18,6 +18,11 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
             fixed: false
             comment: ''
             column: texto_respuesta
+        orden:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
         textoRetroalimentacion:
             type: text
             nullable: true
@@ -25,4 +30,13 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
             fixed: false
             comment: ''
             column: texto_retroalimentacion
+    manyToMany:
+        pregunta:
+            targetEntity: Pregunta
+            cascade: {  }
+            mappedBy: respuesta
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+            onDelete: "CASCADE"
     lifecycleCallbacks: {  }

@@ -15,8 +15,8 @@ class __TwigTemplate_98c610971ad8fa5373ba85e25e9ef1774716d74c1c179af0f49e722ccdc
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d0a89c35b4f0b5cca6f88a2a77bf6907c1a945b4c4df4b646c5a222c8f421df5 = $this->env->getExtension("native_profiler");
-        $__internal_d0a89c35b4f0b5cca6f88a2a77bf6907c1a945b4c4df4b646c5a222c8f421df5->enter($__internal_d0a89c35b4f0b5cca6f88a2a77bf6907c1a945b4c4df4b646c5a222c8f421df5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaPregunta:elegirTipoPregunta.html.twig"));
+        $__internal_21ac98111230c76d95e831181c04b195933cb6c9e773eb6802eb49b934f0dc81 = $this->env->getExtension("native_profiler");
+        $__internal_21ac98111230c76d95e831181c04b195933cb6c9e773eb6802eb49b934f0dc81->enter($__internal_21ac98111230c76d95e831181c04b195933cb6c9e773eb6802eb49b934f0dc81_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaPregunta:elegirTipoPregunta.html.twig"));
 
         // line 1
         echo "
@@ -84,7 +84,7 @@ class __TwigTemplate_98c610971ad8fa5373ba85e25e9ef1774716d74c1c179af0f49e722ccdc
 </div>
 ";
         
-        $__internal_d0a89c35b4f0b5cca6f88a2a77bf6907c1a945b4c4df4b646c5a222c8f421df5->leave($__internal_d0a89c35b4f0b5cca6f88a2a77bf6907c1a945b4c4df4b646c5a222c8f421df5_prof);
+        $__internal_21ac98111230c76d95e831181c04b195933cb6c9e773eb6802eb49b934f0dc81->leave($__internal_21ac98111230c76d95e831181c04b195933cb6c9e773eb6802eb49b934f0dc81_prof);
 
     }
 

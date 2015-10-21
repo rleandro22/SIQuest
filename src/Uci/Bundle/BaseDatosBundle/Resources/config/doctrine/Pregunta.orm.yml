@@ -97,4 +97,21 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
                         name: tipo_prueba_id
                         referencedColumnName: id
             orderBy: null
+        respuesta:
+            targetEntity: Respuesta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: pregunta
+            joinTable:
+                name: pregunta_tiene_respuesta
+                joinColumns:
+                    -
+                        name: pregunta_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: respuesta_id
+                        referencedColumnName: id
+            orderBy: null
     lifecycleCallbacks: {  }

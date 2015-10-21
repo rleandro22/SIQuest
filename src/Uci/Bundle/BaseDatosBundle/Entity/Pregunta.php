@@ -27,6 +27,13 @@ class Pregunta
      * @ORM\Column(name="titulo", type="text", nullable=false)
      */
     private $titulo;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Respuesta", mappedBy="pregunta")
+     */
+    private $respuesta;
 
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento
@@ -99,6 +106,40 @@ class Pregunta
     public function __construct()
     {
         $this->tipoPrueba = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->respuesta = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add respuesta
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta
+     * @return Pregunta
+     */
+    public function addRespuesta(\Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta)
+    {
+        $this->respuesta[] = $respuesta;
+
+        return $this;
+    }
+
+    /**
+     * Remove respuesta
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta
+     */
+    public function removeRespuesta(\Uci\Bundle\BaseDatosBundle\Entity\Respuesta $respuesta)
+    {
+        $this->respuesta->removeElement($respuesta);
+    }
+
+    /**
+     * Get respuesta
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRespuesta()
+    {
+        return $this->respuesta;
     }
 
 

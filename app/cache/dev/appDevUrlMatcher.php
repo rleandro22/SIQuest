@@ -985,66 +985,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
 
                 if (0 === strpos($pathinfo, '/pregunta')) {
-                    if (0 === strpos($pathinfo, '/preguntatienerespuestas')) {
-                        // preguntatienerespuestas
-                        if (rtrim($pathinfo, '/') === '/preguntatienerespuestas') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'preguntatienerespuestas');
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\PreguntaTieneRespuestasController::indexAction',  '_route' => 'preguntatienerespuestas',);
-                        }
-
-                        // preguntatienerespuestas_show
-                        if (preg_match('#^/preguntatienerespuestas/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'preguntatienerespuestas_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\PreguntaTieneRespuestasController::showAction',));
-                        }
-
-                        // preguntatienerespuestas_new
-                        if ($pathinfo === '/preguntatienerespuestas/new') {
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\PreguntaTieneRespuestasController::newAction',  '_route' => 'preguntatienerespuestas_new',);
-                        }
-
-                        // preguntatienerespuestas_create
-                        if ($pathinfo === '/preguntatienerespuestas/create') {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_preguntatienerespuestas_create;
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\PreguntaTieneRespuestasController::createAction',  '_route' => 'preguntatienerespuestas_create',);
-                        }
-                        not_preguntatienerespuestas_create:
-
-                        // preguntatienerespuestas_edit
-                        if (preg_match('#^/preguntatienerespuestas/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'preguntatienerespuestas_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\PreguntaTieneRespuestasController::editAction',));
-                        }
-
-                        // preguntatienerespuestas_update
-                        if (preg_match('#^/preguntatienerespuestas/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                                $allow = array_merge($allow, array('POST', 'PUT'));
-                                goto not_preguntatienerespuestas_update;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'preguntatienerespuestas_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\PreguntaTieneRespuestasController::updateAction',));
-                        }
-                        not_preguntatienerespuestas_update:
-
-                        // preguntatienerespuestas_delete
-                        if (preg_match('#^/preguntatienerespuestas/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                                $allow = array_merge($allow, array('POST', 'DELETE'));
-                                goto not_preguntatienerespuestas_delete;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'preguntatienerespuestas_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\PreguntaTieneRespuestasController::deleteAction',));
-                        }
-                        not_preguntatienerespuestas_delete:
-
-                    }
-
                     // pregunta
                     if (rtrim($pathinfo, '/') === '/pregunta') {
                         if (substr($pathinfo, -1) !== '/') {

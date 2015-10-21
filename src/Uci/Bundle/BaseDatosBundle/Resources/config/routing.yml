@@ -54,10 +54,6 @@ uci_base_datos_profesor:
     resource: "@UciBaseDatosBundle/Resources/config/routing/profesor.yml"
     prefix:   /profesor
 
-uci_base_datos_preguntatienerespuestas:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/preguntatienerespuestas.yml"
-    prefix:   /preguntatienerespuestas
-
 uci_base_datos_pregunta:
     resource: "@UciBaseDatosBundle/Resources/config/routing/pregunta.yml"
     prefix:   /pregunta
