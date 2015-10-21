@@ -84,6 +84,13 @@
                                 <br>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.respuesta) }}
+                                        {{ form_errors(form.respuesta) }}
+                                        {{ form_widget(form.respuesta) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         <a href="#" onclick="add();">Agregar pregunta</a>
                                     </div>
                                 </div>
@@ -119,7 +126,7 @@
         function add() {
             var collectionHolder = $('#uci_bundle_basedatosbundle_pregunta_respuesta');
             var prototype = collectionHolder.attr('data-prototype');
-            form = prototype.replace(collectionHolder.children().length);
+            form = prototype.replace(/__name__label__/g, 'Pregunta '+collectionHolder.children().length);
             collectionHolder.append(form);
         }
 
