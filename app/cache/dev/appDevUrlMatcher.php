@@ -1944,9 +1944,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aElegirTipoAction',  '_route' => 'uci_administrador_eligeTipoPregunta',);
             }
 
-            // uci_administrador_registrarRespuestaCorta
-            if (preg_match('#^/admin/(?P<id>[^/]++)/respuesta_corta$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_registrarRespuestaCorta')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aRegistrarRespuestaCortaAction',));
+            // uci_administrador_registrarPregunta
+            if (preg_match('#^/admin/(?P<idTipoRespuesta>[^/]++)/registrar_pregunta$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_registrarPregunta')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aRegistrarPreguntaAction',));
             }
 
             if (0 === strpos($pathinfo, '/admin/libro')) {

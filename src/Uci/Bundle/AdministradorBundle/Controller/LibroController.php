@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Entity\Libro;
 use Uci\Bundle\BaseDatosBundle\Form\LibroType;
-use Symfony\Component\Form\FormError;
+use Uci\Bundle\BaseDatosBundle\Entity\Capitulo;
 
 
 /**
@@ -41,7 +41,7 @@ class LibroController extends Controller
     
     public function aRegistrarLibroAction(Request $request) {
         $entity = new Libro();
-        $capitulo = new \Uci\Bundle\BaseDatosBundle\Entity\Capitulo();
+        $capitulo = new Capitulo();
         //$emc = $this->getDoctrine()->getManager();
         //$capitulo = $emc->getRepository('UciBaseDatosBundle:Capitulo')->find(1);
         $entity->addCapitulo($capitulo);

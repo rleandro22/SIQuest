@@ -166,5 +166,10 @@ class Respuesta {
     public function getPregunta() {
         return $this->pregunta;
     }
+    
+    
+    public function __toString() {
+        return $this->textoRespuesta;
+    }
 
 }

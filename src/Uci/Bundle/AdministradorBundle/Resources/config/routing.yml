@@ -77,12 +77,10 @@ uci_administrador_indicepreguntas:
 uci_administrador_eligeTipoPregunta:
     pattern:  /admin/elegir_tipo
     defaults: { _controller: UciAdministradorBundle:Pregunta:aElegirTipo }
-    
-#-----------------PARA DIFERENTES TIPOS DE PREGUNTAS----------------------------
 
-uci_administrador_registrarRespuestaCorta:
-    pattern:  /admin/{id}/respuesta_corta
-    defaults: { _controller: UciAdministradorBundle:Pregunta:aRegistrarRespuestaCorta }
+uci_administrador_registrarPregunta:
+    pattern:  /admin/{idTipoRespuesta}/registrar_pregunta
+    defaults: { _controller: UciAdministradorBundle:Pregunta:aRegistrarPregunta }
 
 #---------------------Routing Libro---------------------------------------------
 uci_administrador_libro:

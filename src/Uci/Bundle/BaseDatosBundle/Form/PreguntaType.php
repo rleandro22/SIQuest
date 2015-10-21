@@ -14,14 +14,19 @@ class PreguntaType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('titulo')
-                ->add('areaConocimiento')
-                ->add('capitulo')
-                ->add('grupoProcesos')
-                ->add('tipoPrueba')
-                ->add('libro')
-                ->add('respuesta')
-                ->add('tipoRespuesta')
+                ->add('titulo', 'textarea', array("label" => "Enunciado: ", "required" => true, "attr" => array('class' => 'form-control')))
+                ->add('areaConocimiento', 'entity', array('class' => 'UciBaseDatosBundle:AreaConocimiento', 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('capitulo', 'entity', array('class' => 'UciBaseDatosBundle:Capitulo', 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('tipoPrueba', 'entity', array('class' => 'UciBaseDatosBundle:TipoPrueba', 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('respuesta', 'collection', array(
+                    'type' => new RespuestaType(),
+                    'by_reference' => false,
+                    'allow_delete' => true,
+                    'allow_add' => true,
+                    'prototype' => true
+                ))
         ;
     }
 

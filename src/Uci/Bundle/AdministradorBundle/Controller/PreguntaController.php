@@ -7,6 +7,7 @@ use Uci\Bundle\BaseDatosBundle\Form\PreguntaIndiceType;
 use Symfony\Component\HttpFoundation\Request;
 use \Uci\Bundle\BaseDatosBundle\Entity\Pregunta;
 use Uci\Bundle\BaseDatosBundle\Form\EligeTipoType;
+use Uci\Bundle\BaseDatosBundle\Form\PreguntaType;
 
 class PreguntaController extends Controller {
 
@@ -36,10 +37,19 @@ class PreguntaController extends Controller {
         ));
     }
 
-    public function aRegistrarRespuestaCortaAction(Request $request, $id) {
+    public function aRegistrarPreguntaAction(Request $request, $idTipoRespuesta) {
+        $entity = new Pregunta();
         $em = $this->getDoctrine()->getManager();
-        $tipoRespuesta= $em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($id);
-        
+        $tipoRespuesta = $em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($idTipoRespuesta);
+        $error = '';
+        $form = $this->createForm(new PreguntaType(), $entity);
+        $form->handleRequest($request);
+        return $this->render('UciAdministradorBundle:VistaPregunta:registrarPregunta.html.twig', array(
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                    'tipoRespuesta' => $tipoRespuesta,
+                    'error' => $error,
+        ));
     }
 
     public function aElegirTipoAction(Request $request) {
@@ -48,7 +58,7 @@ class PreguntaController extends Controller {
         if ($request->getMethod() == 'POST') {
             if ($form->isValid()) {
                 $tipoRespuesta = $form["tipoRespuesta"]->getData();
-                return $this->redirect($this->generateUrl("uci_administrador_registrarRespuestaCorta", array("id" => $tipoRespuesta->getId())));
+                return $this->redirect($this->generateUrl("uci_administrador_registrarPregunta", array("idTipoRespuesta" => $tipoRespuesta->getId())));
             }
         }
         return $this->render('UciAdministradorBundle:VistaPregunta:elegirTipoPregunta.html.twig', array(
