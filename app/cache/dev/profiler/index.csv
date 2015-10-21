@@ -1649,3 +1649,22 @@ a41ef4,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,144537
 8b0ac8,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/respuesta_corta,1445379528,4f03a1,200
 4f03a1,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/respuesta_corta,1445379528,,500
 >>>>>>> 5a5598c5090f9c84aa4d157b9b62cf8516e1f18a
+831382,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1445437977,,302
+d02df1,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1445437978,,200
+d5cdf0,::1,POST,http://localhost/SIQuest/web/app_dev.php/login_check,1445437987,,302
+2ccf0e,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1445437988,,200
+e6d983,::1,POST,http://localhost/SIQuest/web/app_dev.php/login_check,1445438021,,302
+2f47dd,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1445438021,,200
+98ee84,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/lista_libros,1445438026,,200
+fe70e3,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1445438032,,200
+ab87ca,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1445438084,9517c8,200
+9517c8,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1445438084,,500
+0d41b9,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1445438097,72b40e,200
+72b40e,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1445438097,,500
+accfc9,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/lista_libros,1445438136,,200
+87a14b,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/editar_usuario,1445438138,85eb6c,200
+85eb6c,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/editar_usuario,1445438138,,404
+6fdf51,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1445438143,,200
+9e569d,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuario/1/show,1445438147,f5f137,200
+f5f137,::1,GET,http://localhost/SIQuest/web/app_dev.php/usuario/1/show,1445438147,,404
+18b433,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1445438151,,200
