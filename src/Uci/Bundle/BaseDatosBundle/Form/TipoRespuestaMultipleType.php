@@ -6,26 +6,25 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TipoRespuestaMultipleType extends AbstractType
-{
+class TipoRespuestaMultipleType extends AbstractType {
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('correcta')
-            ->add('porcentajeCorreccion')
-            ->add('respuesta')
-        ;
+                ->add('respuesta', new RespuestaType(), array(
+                    'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Respuesta',
+                    'label' => ' '))
+                ->add('correcta', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es correcta? ', 'mapped' => true, 'multiple' => false, 'expanded' => true, 'data' => 1))
+                ->add('porcentajeCorreccion');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\TipoRespuestaMultiple'
         ));
@@ -34,8 +33,8 @@ class TipoRespuestaMultipleType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'uci_bundle_basedatosbundle_tiporespuestamultiple';
     }
+
 }

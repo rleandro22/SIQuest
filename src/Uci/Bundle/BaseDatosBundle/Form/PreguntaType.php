@@ -20,13 +20,14 @@ class PreguntaType extends AbstractType {
                 ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('tipoPrueba', 'entity', array('class' => 'UciBaseDatosBundle:TipoPrueba', 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'attr' => array('style' => 'width: 100%')))
-                ->add('respuesta', 'collection', array(
-                    'type' => new RespuestaType(),
+                ->add('tiporespuestamultiple', 'collection', array(
+                    'type' => new TipoRespuestaMultipleType(),
                     'by_reference' => false,
                     'allow_delete' => true,
                     'allow_add' => true,
                     'prototype' => true,
-                    'label' => ' '
+                    'label' => ' ',
+                    'mapped' => false
                 ))
         ;
     }

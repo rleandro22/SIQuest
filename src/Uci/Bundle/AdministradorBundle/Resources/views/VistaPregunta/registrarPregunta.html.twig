@@ -84,9 +84,9 @@
                                 <br>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.respuesta) }}
-                                        {{ form_errors(form.respuesta) }}
-                                        {{ form_widget(form.respuesta) }}
+                                        {{ form_label(form.tiporespuestamultiple) }}
+                                        {{ form_errors(form.tiporespuestamultiple) }}
+                                        {{ form_widget(form.tiporespuestamultiple) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
@@ -124,7 +124,7 @@
     <script type="text/javascript">
 
         function add() {
-            var collectionHolder = $('#uci_bundle_basedatosbundle_pregunta_respuesta');
+            var collectionHolder = $('#uci_bundle_basedatosbundle_pregunta_tiporespuestamultiple');
             var prototype = collectionHolder.attr('data-prototype');
             form = prototype.replace(/__name__label__/g, 'Pregunta '+collectionHolder.children().length);
             collectionHolder.append(form);
