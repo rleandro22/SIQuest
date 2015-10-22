@@ -16,11 +16,12 @@ Uci\Bundle\BaseDatosBundle\Entity\TipoRespuestaMultiple:
                 strategy: IDENTITY
     fields:
         correcta:
-            type: blob
+            type: smallint
             nullable: false
             length: 1
             fixed: false
             comment: ''
+            column: correcta
         porcentajeCorreccion:
             type: decimal
             nullable: true

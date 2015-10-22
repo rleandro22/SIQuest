@@ -44,6 +44,18 @@ class PreguntaController extends Controller {
         $error = '';
         $form = $this->createForm(new PreguntaType(), $entity);
         $form->handleRequest($request);
+        if ($request->getMethod() == 'POST') {
+            $error = $form->getErrors();
+            if ($form->isValid()) {
+//                $em->persist($entity);
+                $tiporespuestamultiple=$form["tiporespuestamultiple"]->getData();
+                foreach ($form["tiporespuestamultiple"]->getData() as $respuestamultiple) {
+                    $prueba = $respuestamultiple;
+                }
+//                $em->flush();
+                return $this->redirectToRoute('uci_administrador_indicepreguntas');
+            }
+        }
         return $this->render('UciAdministradorBundle:VistaPregunta:registrarPregunta.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),

@@ -17,7 +17,7 @@ class TipoRespuestaMultipleType extends AbstractType {
                 ->add('respuesta', new RespuestaType(), array(
                     'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Respuesta',
                     'label' => ' '))
-                ->add('correcta', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es correcta? ', 'mapped' => true, 'multiple' => false, 'expanded' => true, 'data' => 1))
+                ->add('correcta', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es correcta? ',  'multiple' => false, 'expanded' => false, 'required' => true))
                 ->add('porcentajeCorreccion');
     }
 

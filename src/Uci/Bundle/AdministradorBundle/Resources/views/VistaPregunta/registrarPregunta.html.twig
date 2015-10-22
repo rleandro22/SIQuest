@@ -41,58 +41,50 @@
                             <form action="{{ path('uci_administrador_registrarPregunta', { 'idTipoRespuesta': tipoRespuesta.id }) }}" method="POST" enctype="multipart/form-data">
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.titulo) }}
-                                        {{ form_errors(form.titulo) }}<br>
-                                        {{ form_widget(form.titulo) }}
+                                        {{ form_row(form.titulo) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.areaConocimiento) }}
-                                        {{ form_errors(form.areaConocimiento) }}
-                                        {{ form_widget(form.areaConocimiento) }}
+                                        {{ form_row(form.areaConocimiento) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.capitulo) }}
-                                        {{ form_errors(form.capitulo) }}
-                                        {{ form_widget(form.capitulo) }}
+                                        {{ form_row(form.capitulo) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.grupoProcesos) }}
-                                        {{ form_errors(form.grupoProcesos) }}
-                                        {{ form_widget(form.grupoProcesos) }}
+                                        {{ form_row(form.grupoProcesos) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.tipoPrueba) }}
-                                        {{ form_errors(form.tipoPrueba) }}
-                                        {{ form_widget(form.tipoPrueba) }}
+                                        {{ form_row(form.tipoPrueba) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.libro) }}
-                                        {{ form_errors(form.libro) }}
-                                        {{ form_widget(form.libro) }}
+                                        {{ form_row(form.libro) }}
                                     </div>
                                 </div>
                                 <br>
-                                <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.tiporespuestamultiple) }}
-                                        {{ form_errors(form.tiporespuestamultiple) }}
-                                        {{ form_widget(form.tiporespuestamultiple) }}
-                                    </div>
-                                </div>
-                                <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        <a href="#" onclick="add();">Agregar pregunta</a>
-                                    </div>
+                                <h3>Respuestas</h3>
+                                <div class="respuestas" data-prototype="{{ form_widget(form.tiporespuestamultiple.vars.prototype)|e }}">
+                                    {# iterate over each existing tag and render its only field: name #}
+                                    {% for respuesta in form.tiporespuestamultiple %}
+                                        <div class="row top-margin">
+                                            <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                                {{ form_row(respuesta.correcta) }}
+                                            </div>
+                                        </div>
+                                        <div class="row top-margin">
+                                            <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                                {{ form_row(respuesta.porcentajeCorreccion) }}
+                                            </div>
+                                        </div> 
+                                    {% endfor %}
                                 </div>
                                 <hr>
                                 <div class="row">
@@ -123,14 +115,51 @@
     {{ parent() }}
     <script type="text/javascript">
 
-        function add() {
-            var collectionHolder = $('#uci_bundle_basedatosbundle_pregunta_tiporespuestamultiple');
-            var prototype = collectionHolder.attr('data-prototype');
-            form = prototype.replace(/__name__label__/g, 'Pregunta '+collectionHolder.children().length);
-            collectionHolder.append(form);
+        var $collectionHolder;
+
+        // setup an "add a tag" link
+        var $addTagLink = $('<a href="#" class="add_tag_link">Add a tag</a>');
+        var $newLinkLi = $('<div></div>').append($addTagLink);
+
+        function addTagForm($collectionHolder, $newLinkLi) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<div></div>').append(newForm);
+            $newLinkLi.before($newFormLi);
         }
 
         document.ready = function () {
+
+            // Get the ul that holds the collection of tags
+            $collectionHolder = $('div.respuestas');
+
+            // add the "add a tag" anchor and li to the tags ul
+            $collectionHolder.append($newLinkLi);
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+            $addTagLink.on('click', function (e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addTagForm($collectionHolder, $newLinkLi);
+            });
+
 
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();

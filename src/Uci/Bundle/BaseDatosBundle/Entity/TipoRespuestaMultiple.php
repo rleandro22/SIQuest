@@ -24,7 +24,7 @@ class TipoRespuestaMultiple
     /**
      * @var string
      *
-     * @ORM\Column(name="correcta", type="blob", length=1, nullable=false)
+     * @ORM\Column(name="correcta", type="smallint", length=1, nullable=false)
      */
     private $correcta;
 
@@ -38,7 +38,7 @@ class TipoRespuestaMultiple
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Respuesta
      *
-     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Respuesta")
+     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Respuesta", cascade={"persist", "remove"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="respuesta_id", referencedColumnName="id")
      * })
