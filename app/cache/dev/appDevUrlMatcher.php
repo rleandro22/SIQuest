@@ -430,126 +430,123 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/r')) {
-            if (0 === strpos($pathinfo, '/rol')) {
-                // rol
-                if (rtrim($pathinfo, '/') === '/rol') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'rol');
-                    }
-
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::indexAction',  '_route' => 'rol',);
+        if (0 === strpos($pathinfo, '/bitacora')) {
+            // rol
+            if (rtrim($pathinfo, '/') === '/bitacora') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'rol');
                 }
 
-                // rol_show
-                if (preg_match('#^/rol/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::showAction',));
-                }
-
-                // rol_new
-                if ($pathinfo === '/rol/new') {
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::newAction',  '_route' => 'rol_new',);
-                }
-
-                // rol_create
-                if ($pathinfo === '/rol/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_rol_create;
-                    }
-
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::createAction',  '_route' => 'rol_create',);
-                }
-                not_rol_create:
-
-                // rol_edit
-                if (preg_match('#^/rol/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::editAction',));
-                }
-
-                // rol_update
-                if (preg_match('#^/rol/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_rol_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::updateAction',));
-                }
-                not_rol_update:
-
-                // rol_delete
-                if (preg_match('#^/rol/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_rol_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::deleteAction',));
-                }
-                not_rol_delete:
-
+                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::indexAction',  '_route' => 'rol',);
             }
 
-            if (0 === strpos($pathinfo, '/respuesta')) {
-                // respuesta
-                if (rtrim($pathinfo, '/') === '/respuesta') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'respuesta');
-                    }
-
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::indexAction',  '_route' => 'respuesta',);
-                }
-
-                // respuesta_show
-                if (preg_match('#^/respuesta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::showAction',));
-                }
-
-                // respuesta_new
-                if ($pathinfo === '/respuesta/new') {
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::newAction',  '_route' => 'respuesta_new',);
-                }
-
-                // respuesta_create
-                if ($pathinfo === '/respuesta/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_respuesta_create;
-                    }
-
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::createAction',  '_route' => 'respuesta_create',);
-                }
-                not_respuesta_create:
-
-                // respuesta_edit
-                if (preg_match('#^/respuesta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::editAction',));
-                }
-
-                // respuesta_update
-                if (preg_match('#^/respuesta/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_respuesta_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::updateAction',));
-                }
-                not_respuesta_update:
-
-                // respuesta_delete
-                if (preg_match('#^/respuesta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_respuesta_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::deleteAction',));
-                }
-                not_respuesta_delete:
-
+            // rol_show
+            if (preg_match('#^/bitacora/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::showAction',));
             }
+
+            // rol_new
+            if ($pathinfo === '/bitacora/new') {
+                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::newAction',  '_route' => 'rol_new',);
+            }
+
+            // rol_create
+            if ($pathinfo === '/bitacora/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_rol_create;
+                }
+
+                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::createAction',  '_route' => 'rol_create',);
+            }
+            not_rol_create:
+
+            // rol_edit
+            if (preg_match('#^/bitacora/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::editAction',));
+            }
+
+            // rol_update
+            if (preg_match('#^/bitacora/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_rol_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::updateAction',));
+            }
+            not_rol_update:
+
+            // rol_delete
+            if (preg_match('#^/bitacora/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_rol_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rol_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RolController::deleteAction',));
+            }
+            not_rol_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/respuesta')) {
+            // respuesta
+            if (rtrim($pathinfo, '/') === '/respuesta') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'respuesta');
+                }
+
+                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::indexAction',  '_route' => 'respuesta',);
+            }
+
+            // respuesta_show
+            if (preg_match('#^/respuesta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::showAction',));
+            }
+
+            // respuesta_new
+            if ($pathinfo === '/respuesta/new') {
+                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::newAction',  '_route' => 'respuesta_new',);
+            }
+
+            // respuesta_create
+            if ($pathinfo === '/respuesta/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_respuesta_create;
+                }
+
+                return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::createAction',  '_route' => 'respuesta_create',);
+            }
+            not_respuesta_create:
+
+            // respuesta_edit
+            if (preg_match('#^/respuesta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::editAction',));
+            }
+
+            // respuesta_update
+            if (preg_match('#^/respuesta/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_respuesta_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::updateAction',));
+            }
+            not_respuesta_update:
+
+            // respuesta_delete
+            if (preg_match('#^/respuesta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_respuesta_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'respuesta_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\RespuestaController::deleteAction',));
+            }
+            not_respuesta_delete:
 
         }
 
