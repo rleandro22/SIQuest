@@ -2170,3 +2170,14 @@ f77888,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/lista_usuarios,144
 0f9c79,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1445553251,,302
 1b9920,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/registrar_pregunta,1445553251,,200
 b52e6d,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin,1445553261,,200
+d103b5,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1445611619,,302
+69d73f,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1445611619,,200
+35ba86,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1445617348,,302
+edf0b5,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1445617348,,200
+60e090,::1,POST,http://localhost/SIQuest/web/app_dev.php/login_check,1445617354,,302
+01058d,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1445617355,,200
+c9677d,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1445617358,,200
+24363e,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1445617361,,200
+f9de9c,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1445617575,,302
+54d9d3,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/registrar_pregunta,1445617576,,200
+d9e6cd,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/registrar_pregunta,1445618160,,200
