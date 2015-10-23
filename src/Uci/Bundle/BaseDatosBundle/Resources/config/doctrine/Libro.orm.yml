@@ -36,6 +36,12 @@ Uci\Bundle\BaseDatosBundle\Entity\Libro:
             fixed: false
             comment: ''
             column: es_pmbok
+        numeroPaginas:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: numero_paginas
     manyToOne:
         idiomas:
             targetEntity: Idiomas

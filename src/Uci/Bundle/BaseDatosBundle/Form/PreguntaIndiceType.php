@@ -22,6 +22,8 @@ class PreguntaIndiceType extends AbstractType {
         $builder->addEventSubscriber($grupoSubscriber);
         $areaSubscriber = new EventSuscribers\AgregarAreaSuscriber($factory);
         $builder->addEventSubscriber($areaSubscriber);
+        $trianguloSubscriber = new EventSuscribers\AgregarTrianguloSuscriber($factory);
+        $builder->addEventSubscriber($trianguloSubscriber);
     }
 
     /**

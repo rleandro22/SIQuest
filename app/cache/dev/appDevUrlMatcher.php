@@ -248,187 +248,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/tipo')) {
-            if (0 === strpos($pathinfo, '/tipoverdaderofalso')) {
-                // tipoverdaderofalso
-                if (rtrim($pathinfo, '/') === '/tipoverdaderofalso') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'tipoverdaderofalso');
-                    }
-
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoVerdaderoFalsoController::indexAction',  '_route' => 'tipoverdaderofalso',);
-                }
-
-                // tipoverdaderofalso_show
-                if (preg_match('#^/tipoverdaderofalso/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoverdaderofalso_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoVerdaderoFalsoController::showAction',));
-                }
-
-                // tipoverdaderofalso_new
-                if ($pathinfo === '/tipoverdaderofalso/new') {
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoVerdaderoFalsoController::newAction',  '_route' => 'tipoverdaderofalso_new',);
-                }
-
-                // tipoverdaderofalso_create
-                if ($pathinfo === '/tipoverdaderofalso/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_tipoverdaderofalso_create;
-                    }
-
-                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoVerdaderoFalsoController::createAction',  '_route' => 'tipoverdaderofalso_create',);
-                }
-                not_tipoverdaderofalso_create:
-
-                // tipoverdaderofalso_edit
-                if (preg_match('#^/tipoverdaderofalso/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoverdaderofalso_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoVerdaderoFalsoController::editAction',));
-                }
-
-                // tipoverdaderofalso_update
-                if (preg_match('#^/tipoverdaderofalso/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_tipoverdaderofalso_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoverdaderofalso_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoVerdaderoFalsoController::updateAction',));
-                }
-                not_tipoverdaderofalso_update:
-
-                // tipoverdaderofalso_delete
-                if (preg_match('#^/tipoverdaderofalso/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_tipoverdaderofalso_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoverdaderofalso_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoVerdaderoFalsoController::deleteAction',));
-                }
-                not_tipoverdaderofalso_delete:
-
-            }
-
             if (0 === strpos($pathinfo, '/tiporespuesta')) {
-                if (0 === strpos($pathinfo, '/tiporespuestamultiple')) {
-                    // tiporespuestamultiple
-                    if (rtrim($pathinfo, '/') === '/tiporespuestamultiple') {
-                        if (substr($pathinfo, -1) !== '/') {
-                            return $this->redirect($pathinfo.'/', 'tiporespuestamultiple');
-                        }
-
-                        return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaMultipleController::indexAction',  '_route' => 'tiporespuestamultiple',);
-                    }
-
-                    // tiporespuestamultiple_show
-                    if (preg_match('#^/tiporespuestamultiple/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'tiporespuestamultiple_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaMultipleController::showAction',));
-                    }
-
-                    // tiporespuestamultiple_new
-                    if ($pathinfo === '/tiporespuestamultiple/new') {
-                        return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaMultipleController::newAction',  '_route' => 'tiporespuestamultiple_new',);
-                    }
-
-                    // tiporespuestamultiple_create
-                    if ($pathinfo === '/tiporespuestamultiple/create') {
-                        if ($this->context->getMethod() != 'POST') {
-                            $allow[] = 'POST';
-                            goto not_tiporespuestamultiple_create;
-                        }
-
-                        return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaMultipleController::createAction',  '_route' => 'tiporespuestamultiple_create',);
-                    }
-                    not_tiporespuestamultiple_create:
-
-                    // tiporespuestamultiple_edit
-                    if (preg_match('#^/tiporespuestamultiple/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'tiporespuestamultiple_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaMultipleController::editAction',));
-                    }
-
-                    // tiporespuestamultiple_update
-                    if (preg_match('#^/tiporespuestamultiple/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                            $allow = array_merge($allow, array('POST', 'PUT'));
-                            goto not_tiporespuestamultiple_update;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'tiporespuestamultiple_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaMultipleController::updateAction',));
-                    }
-                    not_tiporespuestamultiple_update:
-
-                    // tiporespuestamultiple_delete
-                    if (preg_match('#^/tiporespuestamultiple/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                            $allow = array_merge($allow, array('POST', 'DELETE'));
-                            goto not_tiporespuestamultiple_delete;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'tiporespuestamultiple_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaMultipleController::deleteAction',));
-                    }
-                    not_tiporespuestamultiple_delete:
-
-                }
-
-                if (0 === strpos($pathinfo, '/tiporespuestacorta')) {
-                    // tiporespuestacorta
-                    if (rtrim($pathinfo, '/') === '/tiporespuestacorta') {
-                        if (substr($pathinfo, -1) !== '/') {
-                            return $this->redirect($pathinfo.'/', 'tiporespuestacorta');
-                        }
-
-                        return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaCortaController::indexAction',  '_route' => 'tiporespuestacorta',);
-                    }
-
-                    // tiporespuestacorta_show
-                    if (preg_match('#^/tiporespuestacorta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'tiporespuestacorta_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaCortaController::showAction',));
-                    }
-
-                    // tiporespuestacorta_new
-                    if ($pathinfo === '/tiporespuestacorta/new') {
-                        return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaCortaController::newAction',  '_route' => 'tiporespuestacorta_new',);
-                    }
-
-                    // tiporespuestacorta_create
-                    if ($pathinfo === '/tiporespuestacorta/create') {
-                        if ($this->context->getMethod() != 'POST') {
-                            $allow[] = 'POST';
-                            goto not_tiporespuestacorta_create;
-                        }
-
-                        return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaCortaController::createAction',  '_route' => 'tiporespuestacorta_create',);
-                    }
-                    not_tiporespuestacorta_create:
-
-                    // tiporespuestacorta_edit
-                    if (preg_match('#^/tiporespuestacorta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'tiporespuestacorta_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaCortaController::editAction',));
-                    }
-
-                    // tiporespuestacorta_update
-                    if (preg_match('#^/tiporespuestacorta/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                            $allow = array_merge($allow, array('POST', 'PUT'));
-                            goto not_tiporespuestacorta_update;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'tiporespuestacorta_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaCortaController::updateAction',));
-                    }
-                    not_tiporespuestacorta_update:
-
-                    // tiporespuestacorta_delete
-                    if (preg_match('#^/tiporespuestacorta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                            $allow = array_merge($allow, array('POST', 'DELETE'));
-                            goto not_tiporespuestacorta_delete;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'tiporespuestacorta_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoRespuestaCortaController::deleteAction',));
-                    }
-                    not_tiporespuestacorta_delete:
-
-                }
-
                 // tiporespuesta
                 if (rtrim($pathinfo, '/') === '/tiporespuesta') {
                     if (substr($pathinfo, -1) !== '/') {
@@ -488,252 +308,63 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            if (0 === strpos($pathinfo, '/tipop')) {
-                if (0 === strpos($pathinfo, '/tipopr')) {
-                    if (0 === strpos($pathinfo, '/tipoprueba')) {
-                        // tipoprueba
-                        if (rtrim($pathinfo, '/') === '/tipoprueba') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'tipoprueba');
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::indexAction',  '_route' => 'tipoprueba',);
-                        }
-
-                        // tipoprueba_show
-                        if (preg_match('#^/tipoprueba/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoprueba_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::showAction',));
-                        }
-
-                        // tipoprueba_new
-                        if ($pathinfo === '/tipoprueba/new') {
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::newAction',  '_route' => 'tipoprueba_new',);
-                        }
-
-                        // tipoprueba_create
-                        if ($pathinfo === '/tipoprueba/create') {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_tipoprueba_create;
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::createAction',  '_route' => 'tipoprueba_create',);
-                        }
-                        not_tipoprueba_create:
-
-                        // tipoprueba_edit
-                        if (preg_match('#^/tipoprueba/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoprueba_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::editAction',));
-                        }
-
-                        // tipoprueba_update
-                        if (preg_match('#^/tipoprueba/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                                $allow = array_merge($allow, array('POST', 'PUT'));
-                                goto not_tipoprueba_update;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoprueba_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::updateAction',));
-                        }
-                        not_tipoprueba_update:
-
-                        // tipoprueba_delete
-                        if (preg_match('#^/tipoprueba/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                                $allow = array_merge($allow, array('POST', 'DELETE'));
-                                goto not_tipoprueba_delete;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoprueba_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::deleteAction',));
-                        }
-                        not_tipoprueba_delete:
-
+            if (0 === strpos($pathinfo, '/tipoprueba')) {
+                // tipoprueba
+                if (rtrim($pathinfo, '/') === '/tipoprueba') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'tipoprueba');
                     }
 
-                    if (0 === strpos($pathinfo, '/tipopreguntanumerica')) {
-                        // tipopreguntanumerica
-                        if (rtrim($pathinfo, '/') === '/tipopreguntanumerica') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'tipopreguntanumerica');
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPreguntaNumericaController::indexAction',  '_route' => 'tipopreguntanumerica',);
-                        }
-
-                        // tipopreguntanumerica_show
-                        if (preg_match('#^/tipopreguntanumerica/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopreguntanumerica_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPreguntaNumericaController::showAction',));
-                        }
-
-                        // tipopreguntanumerica_new
-                        if ($pathinfo === '/tipopreguntanumerica/new') {
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPreguntaNumericaController::newAction',  '_route' => 'tipopreguntanumerica_new',);
-                        }
-
-                        // tipopreguntanumerica_create
-                        if ($pathinfo === '/tipopreguntanumerica/create') {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_tipopreguntanumerica_create;
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPreguntaNumericaController::createAction',  '_route' => 'tipopreguntanumerica_create',);
-                        }
-                        not_tipopreguntanumerica_create:
-
-                        // tipopreguntanumerica_edit
-                        if (preg_match('#^/tipopreguntanumerica/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopreguntanumerica_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPreguntaNumericaController::editAction',));
-                        }
-
-                        // tipopreguntanumerica_update
-                        if (preg_match('#^/tipopreguntanumerica/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                                $allow = array_merge($allow, array('POST', 'PUT'));
-                                goto not_tipopreguntanumerica_update;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopreguntanumerica_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPreguntaNumericaController::updateAction',));
-                        }
-                        not_tipopreguntanumerica_update:
-
-                        // tipopreguntanumerica_delete
-                        if (preg_match('#^/tipopreguntanumerica/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                                $allow = array_merge($allow, array('POST', 'DELETE'));
-                                goto not_tipopreguntanumerica_delete;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopreguntanumerica_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPreguntaNumericaController::deleteAction',));
-                        }
-                        not_tipopreguntanumerica_delete:
-
-                    }
-
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::indexAction',  '_route' => 'tipoprueba',);
                 }
 
-                if (0 === strpos($pathinfo, '/tipopa')) {
-                    if (0 === strpos($pathinfo, '/tipopareo')) {
-                        // tipopareo
-                        if (rtrim($pathinfo, '/') === '/tipopareo') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'tipopareo');
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPareoController::indexAction',  '_route' => 'tipopareo',);
-                        }
-
-                        // tipopareo_show
-                        if (preg_match('#^/tipopareo/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopareo_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPareoController::showAction',));
-                        }
-
-                        // tipopareo_new
-                        if ($pathinfo === '/tipopareo/new') {
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPareoController::newAction',  '_route' => 'tipopareo_new',);
-                        }
-
-                        // tipopareo_create
-                        if ($pathinfo === '/tipopareo/create') {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_tipopareo_create;
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPareoController::createAction',  '_route' => 'tipopareo_create',);
-                        }
-                        not_tipopareo_create:
-
-                        // tipopareo_edit
-                        if (preg_match('#^/tipopareo/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopareo_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPareoController::editAction',));
-                        }
-
-                        // tipopareo_update
-                        if (preg_match('#^/tipopareo/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                                $allow = array_merge($allow, array('POST', 'PUT'));
-                                goto not_tipopareo_update;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopareo_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPareoController::updateAction',));
-                        }
-                        not_tipopareo_update:
-
-                        // tipopareo_delete
-                        if (preg_match('#^/tipopareo/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                                $allow = array_merge($allow, array('POST', 'DELETE'));
-                                goto not_tipopareo_delete;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopareo_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPareoController::deleteAction',));
-                        }
-                        not_tipopareo_delete:
-
-                    }
-
-                    if (0 === strpos($pathinfo, '/tipopalabrafaltante')) {
-                        // tipopalabrafaltante
-                        if (rtrim($pathinfo, '/') === '/tipopalabrafaltante') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'tipopalabrafaltante');
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPalabraFaltanteController::indexAction',  '_route' => 'tipopalabrafaltante',);
-                        }
-
-                        // tipopalabrafaltante_show
-                        if (preg_match('#^/tipopalabrafaltante/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopalabrafaltante_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPalabraFaltanteController::showAction',));
-                        }
-
-                        // tipopalabrafaltante_new
-                        if ($pathinfo === '/tipopalabrafaltante/new') {
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPalabraFaltanteController::newAction',  '_route' => 'tipopalabrafaltante_new',);
-                        }
-
-                        // tipopalabrafaltante_create
-                        if ($pathinfo === '/tipopalabrafaltante/create') {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_tipopalabrafaltante_create;
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPalabraFaltanteController::createAction',  '_route' => 'tipopalabrafaltante_create',);
-                        }
-                        not_tipopalabrafaltante_create:
-
-                        // tipopalabrafaltante_edit
-                        if (preg_match('#^/tipopalabrafaltante/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopalabrafaltante_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPalabraFaltanteController::editAction',));
-                        }
-
-                        // tipopalabrafaltante_update
-                        if (preg_match('#^/tipopalabrafaltante/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                                $allow = array_merge($allow, array('POST', 'PUT'));
-                                goto not_tipopalabrafaltante_update;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopalabrafaltante_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPalabraFaltanteController::updateAction',));
-                        }
-                        not_tipopalabrafaltante_update:
-
-                        // tipopalabrafaltante_delete
-                        if (preg_match('#^/tipopalabrafaltante/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                                $allow = array_merge($allow, array('POST', 'DELETE'));
-                                goto not_tipopalabrafaltante_delete;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipopalabrafaltante_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPalabraFaltanteController::deleteAction',));
-                        }
-                        not_tipopalabrafaltante_delete:
-
-                    }
-
+                // tipoprueba_show
+                if (preg_match('#^/tipoprueba/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoprueba_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::showAction',));
                 }
+
+                // tipoprueba_new
+                if ($pathinfo === '/tipoprueba/new') {
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::newAction',  '_route' => 'tipoprueba_new',);
+                }
+
+                // tipoprueba_create
+                if ($pathinfo === '/tipoprueba/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_tipoprueba_create;
+                    }
+
+                    return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::createAction',  '_route' => 'tipoprueba_create',);
+                }
+                not_tipoprueba_create:
+
+                // tipoprueba_edit
+                if (preg_match('#^/tipoprueba/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoprueba_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::editAction',));
+                }
+
+                // tipoprueba_update
+                if (preg_match('#^/tipoprueba/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_tipoprueba_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoprueba_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::updateAction',));
+                }
+                not_tipoprueba_update:
+
+                // tipoprueba_delete
+                if (preg_match('#^/tipoprueba/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_tipoprueba_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'tipoprueba_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\TipoPruebaController::deleteAction',));
+                }
+                not_tipoprueba_delete:
 
             }
 
@@ -1837,6 +1468,66 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_areaconocimiento_delete:
 
             }
+
+        }
+
+        if (0 === strpos($pathinfo, '/triangulotalento')) {
+            // triangulotalento
+            if (rtrim($pathinfo, '/') === '/triangulotalento') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'triangulotalento');
+                }
+
+                return array (  '_controller' => 'UciBaseDatosBundle:TrianguloTalento:index',  '_route' => 'triangulotalento',);
+            }
+
+            // triangulotalento_show
+            if (preg_match('#^/triangulotalento/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'triangulotalento_show')), array (  '_controller' => 'UciBaseDatosBundle:TrianguloTalento:show',));
+            }
+
+            // triangulotalento_new
+            if ($pathinfo === '/triangulotalento/new') {
+                return array (  '_controller' => 'UciBaseDatosBundle:TrianguloTalento:new',  '_route' => 'triangulotalento_new',);
+            }
+
+            // triangulotalento_create
+            if ($pathinfo === '/triangulotalento/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_triangulotalento_create;
+                }
+
+                return array (  '_controller' => 'UciBaseDatosBundle:TrianguloTalento:create',  '_route' => 'triangulotalento_create',);
+            }
+            not_triangulotalento_create:
+
+            // triangulotalento_edit
+            if (preg_match('#^/triangulotalento/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'triangulotalento_edit')), array (  '_controller' => 'UciBaseDatosBundle:TrianguloTalento:edit',));
+            }
+
+            // triangulotalento_update
+            if (preg_match('#^/triangulotalento/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_triangulotalento_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'triangulotalento_update')), array (  '_controller' => 'UciBaseDatosBundle:TrianguloTalento:update',));
+            }
+            not_triangulotalento_update:
+
+            // triangulotalento_delete
+            if (preg_match('#^/triangulotalento/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_triangulotalento_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'triangulotalento_delete')), array (  '_controller' => 'UciBaseDatosBundle:TrianguloTalento:delete',));
+            }
+            not_triangulotalento_delete:
 
         }
 

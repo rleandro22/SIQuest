@@ -229,8 +229,7 @@ class Usuario implements UserInterface
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Rol $rol
      * @return Usuario
      */
-    public function setRol(\Uci\Bundle\BaseDatosBundle\Entity\Rol $rol = null)
-    {
+    public function setRol(\Uci\Bundle\BaseDatosBundle\Entity\Rol $rol = null) {
         $this->rol = $rol;
 
         return $this;
@@ -241,12 +240,11 @@ class Usuario implements UserInterface
      *
      * @return \Uci\Bundle\BaseDatosBundle\Entity\Rol 
      */
-    public function getRol()
-    {
+    public function getRol() {
         return $this->rol;
     }
-    
-        /**
+
+    /**
      * Get roles
      *
      * @return Doctrine\Common\Collections\Collection

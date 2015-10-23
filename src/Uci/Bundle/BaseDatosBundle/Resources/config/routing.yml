@@ -6,18 +6,6 @@ uci_base_datos_usuario:
     resource: "@UciBaseDatosBundle/Resources/config/routing/usuario.yml"
     prefix:   /usuario
 
-uci_base_datos_tipoverdaderofalso:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/tipoverdaderofalso.yml"
-    prefix:   /tipoverdaderofalso
-
-uci_base_datos_tiporespuestamultiple:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/tiporespuestamultiple.yml"
-    prefix:   /tiporespuestamultiple
-
-uci_base_datos_tiporespuestacorta:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/tiporespuestacorta.yml"
-    prefix:   /tiporespuestacorta
-
 uci_base_datos_tiporespuesta:
     resource: "@UciBaseDatosBundle/Resources/config/routing/tiporespuesta.yml"
     prefix:   /tiporespuesta
@@ -26,18 +14,6 @@ uci_base_datos_tipoprueba:
     resource: "@UciBaseDatosBundle/Resources/config/routing/tipoprueba.yml"
     prefix:   /tipoprueba
 
-uci_base_datos_tipopreguntanumerica:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/tipopreguntanumerica.yml"
-    prefix:   /tipopreguntanumerica
-
-uci_base_datos_tipopareo:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/tipopareo.yml"
-    prefix:   /tipopareo
-
-uci_base_datos_tipopalabrafaltante:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/tipopalabrafaltante.yml"
-    prefix:   /tipopalabrafaltante
-
 uci_base_datos_solicitud:
     resource: "@UciBaseDatosBundle/Resources/config/routing/solicitud.yml"
     prefix:   /solicitud
@@ -45,6 +21,11 @@ uci_base_datos_solicitud:
 uci_base_datos_rol:
     resource: "@UciBaseDatosBundle/Resources/config/routing/rol.yml"
     prefix:   /rol
+    
+uci_base_datos_bitacora:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/bitacora.yml"
+    prefix:   /bitacora
+
 
 uci_base_datos_respuesta:
     resource: "@UciBaseDatosBundle/Resources/config/routing/respuesta.yml"
@@ -109,6 +90,10 @@ uci_base_datos_asistenteacademica:
 uci_base_datos_areaconocimiento:
     resource: "@UciBaseDatosBundle/Resources/config/routing/areaconocimiento.yml"
     prefix:   /areaconocimiento
+    
+uci_base_datos_triangulotalento:
+    resource: "@UciBaseDatosBundle/Resources/config/routing/triangulotalento.yml"
+    prefix:   /triangulotalento
 
 uci_base_datos_homepage:
     path:     /hello/{name}

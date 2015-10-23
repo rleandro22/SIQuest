@@ -11,6 +11,9 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
         fk_pregunta_area_conocimiento1_idx:
             columns:
                 - area_conocimiento_id
+        fk_pregunta_triangulo_talento1_idx:
+            columns:
+                - triangulo_talento_id
         fk_pregunta_libro1_idx:
             columns:
                 - libro_id
@@ -34,6 +37,12 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
             fixed: false
             comment: ''
             column: titulo
+        numeroPagina:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: numero_pagina
     manyToOne:
         areaConocimiento:
             targetEntity: AreaConocimiento
@@ -42,6 +51,15 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
             inversedBy: null
             joinColumns:
                 area_conocimiento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        trianguloTalento:
+            targetEntity: TrianguloTalento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                triangulo_talento_id:
                     referencedColumnName: id
             orphanRemoval: false
         capitulo:

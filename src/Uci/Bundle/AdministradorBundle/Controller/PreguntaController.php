@@ -16,6 +16,7 @@ class PreguntaController extends Controller {
         $idCapitulo = '';
         $idGrupoProcesos = '';
         $idAreaConocimiento = '';
+        $idTrianguloTalento = '';
         $esPmbok = 0;
         $pregunta = new Pregunta();
         if ($request->getMethod() == 'POST') {
@@ -23,12 +24,13 @@ class PreguntaController extends Controller {
             $idCapitulo = $request->request->get('PreguntaIndiceType')['capitulo'];
             $idGrupoProcesos = isset($request->request->get('PreguntaIndiceType')['grupoProcesos']) ? $request->request->get('PreguntaIndiceType')['grupoProcesos'] : '';
             $idAreaConocimiento = isset($request->request->get('PreguntaIndiceType')['areaConocimiento']) ? $request->request->get('PreguntaIndiceType')['areaConocimiento'] : '';
-            $this->setearPregunta($idLibro, $idCapitulo, $idGrupoProcesos, $idAreaConocimiento, $pregunta);
+            $idTrianguloTalento = isset($request->request->get('PreguntaIndiceType')['trianguloTalento']) ? $request->request->get('PreguntaIndiceType')['trianguloTalento'] : '';
+            $this->setearPregunta($idLibro, $idCapitulo, $idGrupoProcesos, $idAreaConocimiento, $idTrianguloTalento, $pregunta);
             if ($pregunta->getLibro()) {
                 $esPmbok = $pregunta->getLibro()->getEsPmbok();
             }
         }
-        $preguntas = $this->aSortearPreguntas($idLibro, $idCapitulo, $idGrupoProcesos, $idAreaConocimiento);
+        $preguntas = $this->aSortearPreguntas($idLibro, $idCapitulo, $idGrupoProcesos, $idAreaConocimiento, $idTrianguloTalento);
         $form = $this->createForm(new PreguntaIndiceType(), $pregunta);
         return $this->render('UciAdministradorBundle:VistaPregunta:indicePregunta.html.twig', array(
                     'entities' => $preguntas,
@@ -82,14 +84,16 @@ class PreguntaController extends Controller {
      * Este metodo contruye la entidad pregunta a partir de los id de sus componentes
      */
 
-    private function setearPregunta($idLibro, $idCapitulo, $idGrupoProcesos, $idAreaConocimiento, &$pregunta) {
+    private function setearPregunta($idLibro, $idCapitulo, $idGrupoProcesos, $idAreaConocimiento, $idTrianguloTalento, &$pregunta) {
         $em = $this->getDoctrine()->getManager();
         $libro = $em->getRepository('UciBaseDatosBundle:Libro')->find($idLibro);
         $capitulo = $em->getRepository('UciBaseDatosBundle:Capitulo')->find($idCapitulo);
         $grupo = $em->getRepository('UciBaseDatosBundle:GrupoProcesos')->find($idGrupoProcesos);
         $area = $em->getRepository('UciBaseDatosBundle:AreaConocimiento')->find($idAreaConocimiento);
+        $triangulo = $em->getRepository('UciBaseDatosBundle:TrianguloTalento')->find($idTrianguloTalento);
         $pregunta->setLibro($libro);
         $pregunta->setAreaConocimiento($area);
+        $pregunta->setTrianguloTalento($triangulo);
         $pregunta->setCapitulo($capitulo);
         $pregunta->setGrupoProcesos($grupo);
     }
@@ -99,7 +103,7 @@ class PreguntaController extends Controller {
      * Si ninguno de los parametro esta establecido, devuelve toda la lista
      */
 
-    private function aSortearPreguntas($idLibro = '', $idCapitulo = '', $idGrupoProcesos = '', $idAreaConocimiento = '') {
+    private function aSortearPreguntas($idLibro = '', $idCapitulo = '', $idGrupoProcesos = '', $idAreaConocimiento = '', $idTrianguloTalento = '') {
         $em = $this->getDoctrine()->getManager();
         if (empty($idLibro)) {
             $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findBy(array(), array('titulo' => 'ASC'));
@@ -111,6 +115,7 @@ class PreguntaController extends Controller {
             $qb->innerJoin('p.capitulo', 'c');
             $qb->innerJoin('p.areaConocimiento', 'a');
             $qb->innerJoin('p.grupoProcesos', 'g');
+            $qb->innerJoin('p.trianguloTalento', 't');
             if (!empty($idLibro)) {
                 $qb->where('l.id= :idLibro')
                         ->setParameter('idLibro', $idLibro);
@@ -126,6 +131,10 @@ class PreguntaController extends Controller {
             if (!empty($idAreaConocimiento)) {
                 $qb->andWhere('a.id= :idAreaConocimiento')
                         ->setParameter('idAreaConocimiento', $idAreaConocimiento);
+            }
+            if (!empty($idTrianguloTalento)) {
+                $qb->andWhere('a.id= :idTrianguloTalento')
+                        ->setParameter('idTrianguloTalento', $idTrianguloTalento);
             }
             $preguntas = $qb->getQuery()->getResult();
         }

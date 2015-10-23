@@ -1,0 +1,38 @@
+Uci\Bundle\BaseDatosBundle\Entity\TrianguloTalento:
+    type: entity
+    table: triangulo_talento
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombreTalento:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: nombre_talento
+    manyToMany:
+        pmbok:
+            targetEntity: Pmbok
+            cascade: {  }
+            mappedBy: null
+            inversedBy: trianguloTalento
+            joinTable:
+                name: pmbok_tiene_triangulos_talento
+                joinColumns:
+                    -
+                        name: triangulo_talento_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: pmbok_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

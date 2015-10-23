@@ -18,11 +18,6 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
             fixed: false
             comment: ''
             column: texto_respuesta
-        orden:
-            type: integer
-            nullable: false
-            unsigned: false
-            comment: ''
         textoRetroalimentacion:
             type: text
             nullable: true
@@ -30,6 +25,20 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
             fixed: false
             comment: ''
             column: texto_retroalimentacion
+        correcta:
+            type: smallint
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+            column: correcta
+        extra:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: extra
     manyToMany:
         pregunta:
             targetEntity: Pregunta

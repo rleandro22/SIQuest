@@ -46,6 +46,11 @@
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.numeroPagina) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.areaConocimiento) }}
                                     </div>
                                 </div>
@@ -61,6 +66,11 @@
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.trianguloTalento) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.tipoPrueba) }}
                                     </div>
                                 </div>
@@ -71,9 +81,9 @@
                                 </div>
                                 <br>
                                 <h3>Respuestas</h3>
-                                <div class="respuestas" data-prototype="{{ form_widget(form.tiporespuestamultiple.vars.prototype)|e }}">
+                                <div class="respuestas" data-prototype="{{ form_widget(form.respuesta.vars.prototype)|e }}">
                                     {# iterate over each existing tag and render its only field: name #}
-                                    {% for respuesta in form.tiporespuestamultiple %}
+                                    {% for respuesta in form.respuesta %}
                                         <div class="row top-margin">
                                             <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                                 {{ form_row(respuesta.correcta) }}
@@ -99,6 +109,10 @@
 
                         </div>
                     </div>
+
+                </div>
+
+                <div id="myModal" class="modal fade" role="dialog">
 
                 </div>
 

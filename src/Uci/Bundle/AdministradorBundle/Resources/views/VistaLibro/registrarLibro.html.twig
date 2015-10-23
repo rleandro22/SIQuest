@@ -51,6 +51,14 @@
 
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.numeroPaginas) }}
+                                        {{ form_errors(form.numeroPaginas) }}
+                                        {{ form_widget(form.numeroPaginas) }}
+                                    </div>
+                                </div>
+
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_label(form.anio) }}
                                         {{ form_errors(form.anio) }}
                                         {{ form_widget(form.anio) }}
@@ -65,47 +73,47 @@
                                         {{ form_widget(form.idiomas) }}
                                     </div>
                                 </div>
-                                
-                                    <hr>
+
+                                <hr>
                                 <!-- /Aquí inicia capitulo --> 
-                                
+
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_label(form.capitulos) }}
                                         {{form_widget(form.capitulos)}}
                                         {{ form_errors(form.capitulos) }}
-                                        
+
                                     </div>
                                 </div>
                                 <!-- /Fin Nuevo capitulo -->
                                 <br>
                                 <!-- /Tabla capitulos -->
-                                    
+
                                 <table class="table demo table-bordered" id="tabla" data-filter="#filter">
                                     <thead>
                                         <tr>
-                                            
+
                                             <th data-hide="phone">
                                                 Numero 
                                             </th>
                                             <th data-hide="phone">
                                                 Nombre
                                             </th>
-                                            
-                                            
+
+
                                             <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for capitulo in entity.capitulos %}
                                             <tr>
-                                                
+
                                                 <td>{{capitulo.numeroCapitulo}}</td>
                                                 <td>{{capitulo.nombreCapitulo}}</td>
                                                 <td>
                                                     <ul>
-                                                      
-                                                     
+
+
                                                     </ul>
                                                 </td>
                                             </tr>

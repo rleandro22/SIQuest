@@ -10,9 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="pmbok")
  * @ORM\Entity
  */
+class Pmbok {
 
-class Pmbok
-{
     /**
      * @var integer
      *
@@ -21,7 +20,7 @@ class Pmbok
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-    
+
     /**
      * @var integer
      *
@@ -35,6 +34,13 @@ class Pmbok
      * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento", mappedBy="pmbok")
      */
     private $areaConocimiento;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\TrianguloTalento", mappedBy="pmbok")
+     */
+    private $trianguloTalento;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -54,20 +60,18 @@ class Pmbok
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->areaConocimiento = new \Doctrine\Common\Collections\ArrayCollection();
         $this->grupoProcesos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->trianguloTalento = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -77,8 +81,7 @@ class Pmbok
      * @param integer $edicion
      * @return Pmbok
      */
-    public function setEdicion($edicion)
-    {
+    public function setEdicion($edicion) {
         $this->edicion = $edicion;
 
         return $this;
@@ -89,8 +92,7 @@ class Pmbok
      *
      * @return integer 
      */
-    public function getEdicion()
-    {
+    public function getEdicion() {
         return $this->edicion;
     }
 
@@ -100,8 +102,7 @@ class Pmbok
      * @param \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento
      * @return Pmbok
      */
-    public function addAreaConocimiento(\Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento)
-    {
+    public function addAreaConocimiento(\Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento) {
         $this->areaConocimiento[] = $areaConocimiento;
 
         return $this;
@@ -112,8 +113,7 @@ class Pmbok
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento
      */
-    public function removeAreaConocimiento(\Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento)
-    {
+    public function removeAreaConocimiento(\Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento $areaConocimiento) {
         $this->areaConocimiento->removeElement($areaConocimiento);
     }
 
@@ -122,8 +122,7 @@ class Pmbok
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAreaConocimiento()
-    {
+    public function getAreaConocimiento() {
         return $this->areaConocimiento;
     }
 
@@ -133,8 +132,7 @@ class Pmbok
      * @param \Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos $grupoProcesos
      * @return Pmbok
      */
-    public function addGrupoProceso(\Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos $grupoProcesos)
-    {
+    public function addGrupoProceso(\Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos $grupoProcesos) {
         $this->grupoProcesos[] = $grupoProcesos;
 
         return $this;
@@ -145,8 +143,7 @@ class Pmbok
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos $grupoProcesos
      */
-    public function removeGrupoProceso(\Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos $grupoProcesos)
-    {
+    public function removeGrupoProceso(\Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos $grupoProcesos) {
         $this->grupoProcesos->removeElement($grupoProcesos);
     }
 
@@ -155,12 +152,42 @@ class Pmbok
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getGrupoProcesos()
-    {
+    public function getGrupoProcesos() {
         return $this->grupoProcesos;
     }
-    
-    public function __toString() {
-        return 'Año: '.$this->getEdicion();
+
+    /**
+     * Add trianguloTalento
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\TrianguloTalento $trianguloTalento
+     * @return Pmbok
+     */
+    public function addTrianguloTalento(\Uci\Bundle\BaseDatosBundle\Entity\TrianguloTalento $trianguloTalento) {
+        $this->trianguloTalento[] = $trianguloTalento;
+
+        return $this;
     }
+
+    /**
+     * Remove trianguloTalento
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\TrianguloTalento $trianguloTalento
+     */
+    public function removeTrianguloTalento(\Uci\Bundle\BaseDatosBundle\Entity\TrianguloTalento $trianguloTalento) {
+        $this->trianguloTalento->removeElement($trianguloTalento);
+    }
+
+    /**
+     * Get trianguloTalento
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTrianguloTalento() {
+        return $this->trianguloTalento;
+    }
+
+    public function __toString() {
+        return 'Año: ' . $this->getEdicion();
+    }
+
 }

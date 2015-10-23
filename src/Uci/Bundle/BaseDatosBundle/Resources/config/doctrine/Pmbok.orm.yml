@@ -24,6 +24,13 @@ Uci\Bundle\BaseDatosBundle\Entity\Pmbok:
             inversedBy: null
             joinTable: null
             orderBy: null
+        trianguloTalento:
+            targetEntity: TrianguloTalento
+            cascade: {  }
+            mappedBy: pmbok
+            inversedBy: null
+            joinTable: null
+            orderBy: null
         grupoProcesos:
             targetEntity: GrupoProcesos
             cascade: {  }

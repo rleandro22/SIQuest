@@ -53,6 +53,13 @@ class Libro {
      * @ORM\Column(name="es_pmbok", type="smallint", length=1, nullable=false)
      */
     private $esPmbok;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numero_paginas", type="integer", nullable=false)
+     */
+    private $numeroPaginas;
 
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Idiomas
@@ -209,7 +216,16 @@ class Libro {
     public function getCapitulos(){
         return $this->capitulos;
     }
+    
+    function getNumeroPaginas() {
+        return $this->numeroPaginas;
+    }
 
+    function setNumeroPaginas($numeroPaginas) {
+        $this->numeroPaginas = $numeroPaginas;
+    }
+
+    
 
         public function __toString() {
         return $this->titulo;

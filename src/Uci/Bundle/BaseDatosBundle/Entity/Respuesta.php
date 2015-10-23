@@ -29,11 +29,18 @@ class Respuesta {
     private $textoRespuesta;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="orden", type="integer", nullable=false)
+     * @ORM\Column(name="correcta", type="smallint", length=1, nullable=false)
      */
-    private $orden;
+    private $correcta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="extra", type="text", nullable=false)
+     */
+    private $extra;
 
     /**
      * @var string
@@ -166,8 +173,23 @@ class Respuesta {
     public function getPregunta() {
         return $this->pregunta;
     }
-    
-    
+
+    function getCorrecta() {
+        return $this->correcta;
+    }
+
+    function getExtra() {
+        return $this->extra;
+    }
+
+    function setCorrecta($correcta) {
+        $this->correcta = $correcta;
+    }
+
+    function setExtra($extra) {
+        $this->extra = $extra;
+    }
+
     public function __toString() {
         return $this->textoRespuesta;
     }
