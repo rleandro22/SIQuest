@@ -14,10 +14,10 @@ class RespuestaType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('correcta', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es correcta? ', 'multiple' => false, 'expanded' => false))
-                ->add('textoRespuesta', 'textarea', array("label" => "Respuesta: ", "required" => true, "attr" => array('class' => 'form-control')))
-                ->add('textoRetroalimentacion', 'textarea', array("label" => "Retroalimentación: ", "required" => true, "attr" => array('class' => 'form-control')))
-                ->add('extra', 'textarea', array("label" => "Extra: ", "required" => true, "attr" => array('class' => 'form-control')))
+                ->add('correcta', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es correcta? ', 'multiple' => false, 'expanded' => false, 'attr' => array('style' => 'width: 96%; margin: 2% auto;')))
+                ->add('textoRespuesta', 'textarea', array("label" => "Respuesta: ", "required" => true, "attr" => array('class' => 'form-control', 'style' => 'width: 96%; margin: 2% auto;')))
+                ->add('textoRetroalimentacion', 'textarea', array("label" => "Retroalimentación: ", "required" => true, "attr" => array('class' => 'form-control','style' => 'width: 96%; margin: 2% auto;')))
+                ->add('extra', 'textarea', array("label" => "Extra: ", "required" => true, "attr" => array('class' => 'form-control','style' => 'width: 96%; margin: 2% auto;')))
         ;
     }
 

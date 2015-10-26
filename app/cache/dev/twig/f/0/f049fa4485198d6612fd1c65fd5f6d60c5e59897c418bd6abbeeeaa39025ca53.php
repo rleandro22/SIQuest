@@ -23,34 +23,34 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_cfa283007cffaefa2991e173dcd1446696b016966008d9e3b4ec9b0fdd9acc4a = $this->env->getExtension("native_profiler");
-        $__internal_cfa283007cffaefa2991e173dcd1446696b016966008d9e3b4ec9b0fdd9acc4a->enter($__internal_cfa283007cffaefa2991e173dcd1446696b016966008d9e3b4ec9b0fdd9acc4a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaPregunta:registrarPregunta.html.twig"));
+        $__internal_c615969347220a0998a5ef6b83fceda398c06b3003cf28bae998d893662b9044 = $this->env->getExtension("native_profiler");
+        $__internal_c615969347220a0998a5ef6b83fceda398c06b3003cf28bae998d893662b9044->enter($__internal_c615969347220a0998a5ef6b83fceda398c06b3003cf28bae998d893662b9044_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaPregunta:registrarPregunta.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_cfa283007cffaefa2991e173dcd1446696b016966008d9e3b4ec9b0fdd9acc4a->leave($__internal_cfa283007cffaefa2991e173dcd1446696b016966008d9e3b4ec9b0fdd9acc4a_prof);
+        $__internal_c615969347220a0998a5ef6b83fceda398c06b3003cf28bae998d893662b9044->leave($__internal_c615969347220a0998a5ef6b83fceda398c06b3003cf28bae998d893662b9044_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_51bc9ce392a616f7f56ba33c82d3f79a6e6911eb9275c026b9a2faf196d6a729 = $this->env->getExtension("native_profiler");
-        $__internal_51bc9ce392a616f7f56ba33c82d3f79a6e6911eb9275c026b9a2faf196d6a729->enter($__internal_51bc9ce392a616f7f56ba33c82d3f79a6e6911eb9275c026b9a2faf196d6a729_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_7b4cd2c663b7caac6f73a6c93d0a1e5de078c8b49538a6b25907b140584d76e8 = $this->env->getExtension("native_profiler");
+        $__internal_7b4cd2c663b7caac6f73a6c93d0a1e5de078c8b49538a6b25907b140584d76e8->enter($__internal_7b4cd2c663b7caac6f73a6c93d0a1e5de078c8b49538a6b25907b140584d76e8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_51bc9ce392a616f7f56ba33c82d3f79a6e6911eb9275c026b9a2faf196d6a729->leave($__internal_51bc9ce392a616f7f56ba33c82d3f79a6e6911eb9275c026b9a2faf196d6a729_prof);
+        $__internal_7b4cd2c663b7caac6f73a6c93d0a1e5de078c8b49538a6b25907b140584d76e8->leave($__internal_7b4cd2c663b7caac6f73a6c93d0a1e5de078c8b49538a6b25907b140584d76e8_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_64ef9a6ac709a04b207680955b9eb2ea9434aa4f67f14046c74bb56e1b1379ec = $this->env->getExtension("native_profiler");
-        $__internal_64ef9a6ac709a04b207680955b9eb2ea9434aa4f67f14046c74bb56e1b1379ec->enter($__internal_64ef9a6ac709a04b207680955b9eb2ea9434aa4f67f14046c74bb56e1b1379ec_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_b16d99b624ca517546be85ad50696eef9d1ea4dcbc19c7fd1e4f439cfc034324 = $this->env->getExtension("native_profiler");
+        $__internal_b16d99b624ca517546be85ad50696eef9d1ea4dcbc19c7fd1e4f439cfc034324->enter($__internal_b16d99b624ca517546be85ad50696eef9d1ea4dcbc19c7fd1e4f439cfc034324_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -177,7 +177,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                                     </div>
                                 </div>
                                 <br>
-                                <h3>Respuestas</h3>
+                                <h3>Respuestas</h3><br>
                                 <div class=\"respuestas\" data-prototype=\"";
         // line 84
         echo twig_escape_filter($this->env, $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "respuesta", array()), "vars", array()), "prototype", array()), 'widget'));
@@ -244,15 +244,15 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
 
 ";
         
-        $__internal_64ef9a6ac709a04b207680955b9eb2ea9434aa4f67f14046c74bb56e1b1379ec->leave($__internal_64ef9a6ac709a04b207680955b9eb2ea9434aa4f67f14046c74bb56e1b1379ec_prof);
+        $__internal_b16d99b624ca517546be85ad50696eef9d1ea4dcbc19c7fd1e4f439cfc034324->leave($__internal_b16d99b624ca517546be85ad50696eef9d1ea4dcbc19c7fd1e4f439cfc034324_prof);
 
     }
 
     // line 128
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_ca43d3e02fdfa16558752b5fe28c85471d7f87e8038a6f436eae8523a90d0671 = $this->env->getExtension("native_profiler");
-        $__internal_ca43d3e02fdfa16558752b5fe28c85471d7f87e8038a6f436eae8523a90d0671->enter($__internal_ca43d3e02fdfa16558752b5fe28c85471d7f87e8038a6f436eae8523a90d0671_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_414d7ca414b346728894a3ee07ac7c2f6f1d207305d630e271771428f1f6c503 = $this->env->getExtension("native_profiler");
+        $__internal_414d7ca414b346728894a3ee07ac7c2f6f1d207305d630e271771428f1f6c503->enter($__internal_414d7ca414b346728894a3ee07ac7c2f6f1d207305d630e271771428f1f6c503_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 129
         echo "    ";
@@ -275,13 +275,13 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
 
             // Replace '__name__' in the prototype's HTML to
             // instead be a number based on how many items we have
-            var newForm = prototype.replace(/__name__/g, index);
+            var newForm = prototype.replace(/__name__/g, 'Respesta' + index);
 
             // increase the index with one for the next item
             \$collectionHolder.data('index', index + 1);
 
             // Display the form in the page in an li, before the \"Add a tag\" link li
-            var \$newFormLi = \$('<div></div>').append(newForm);
+            var \$newFormLi = \$('<div style=\"background-color:#F6F6F6; border-radius:10px; border: 0px black solid;\"></div><br>').append(newForm);
             \$newLinkLi.before(\$newFormLi);
         }
 
@@ -337,7 +337,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
     </script>
 ";
         
-        $__internal_ca43d3e02fdfa16558752b5fe28c85471d7f87e8038a6f436eae8523a90d0671->leave($__internal_ca43d3e02fdfa16558752b5fe28c85471d7f87e8038a6f436eae8523a90d0671_prof);
+        $__internal_414d7ca414b346728894a3ee07ac7c2f6f1d207305d630e271771428f1f6c503->leave($__internal_414d7ca414b346728894a3ee07ac7c2f6f1d207305d630e271771428f1f6c503_prof);
 
     }
 

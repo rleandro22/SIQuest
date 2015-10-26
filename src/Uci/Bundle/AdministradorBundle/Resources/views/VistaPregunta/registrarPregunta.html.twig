@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <h3>Respuestas</h3>
+                                <h3>Respuestas</h3><br>
                                 <div class="respuestas" data-prototype="{{ form_widget(form.respuesta.vars.prototype)|e }}">
                                     {# iterate over each existing tag and render its only field: name #}
                                     {% for respuesta in form.respuesta %}
@@ -144,13 +144,13 @@
 
             // Replace '__name__' in the prototype's HTML to
             // instead be a number based on how many items we have
-            var newForm = prototype.replace(/__name__/g, index);
+            var newForm = prototype.replace(/__name__/g, 'Respesta' + index);
 
             // increase the index with one for the next item
             $collectionHolder.data('index', index + 1);
 
             // Display the form in the page in an li, before the "Add a tag" link li
-            var $newFormLi = $('<div></div>').append(newForm);
+            var $newFormLi = $('<div style="background-color:#F6F6F6; border-radius:10px; border: 0px black solid;"></div><br>').append(newForm);
             $newLinkLi.before($newFormLi);
         }
 
