@@ -49,11 +49,7 @@ class PreguntaController extends Controller {
         if ($request->getMethod() == 'POST') {
             $error = $form->getErrors();
             if ($form->isValid()) {
-//                $em->persist($entity);
-                $tiporespuestamultiple=$form["tiporespuestamultiple"]->getData();
-                foreach ($form["tiporespuestamultiple"]->getData() as $respuestamultiple) {
-                    $prueba = $respuestamultiple;
-                }
+              $respuesta = $form;
 //                $em->flush();
                 return $this->redirectToRoute('uci_administrador_indicepreguntas');
             }

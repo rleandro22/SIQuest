@@ -24,14 +24,12 @@ class PreguntaType extends AbstractType {
                 ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('respuesta', 'collection', array(
                     'type' => new RespuestaType(),
+                    'prototype' => true,
+                    'allow_add' => true,
                     'by_reference' => false,
                     'allow_delete' => true,
-                    'allow_add' => true,
-                    'prototype' => true,
-                    'label' => ' ',
-                    'mapped' => false
-                ))
-        ;
+                    'label' => ' '
+        ));
     }
 
     /**

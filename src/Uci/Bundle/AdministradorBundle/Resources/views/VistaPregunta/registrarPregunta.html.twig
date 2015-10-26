@@ -26,19 +26,18 @@
                 </header>
                 <br>
                 <!-- /Aquí va el contenido -->
-
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <h3 class="thin text-center">Registrar una nueva pregunta {{ tipoRespuesta.nombre }}</h3>
-                            <p class="text-center text-muted">{{ tipoRespuesta.explicacion }}</p>
-                            <hr>
+                            <form action="{{ path('uci_administrador_registrarPregunta', { 'idTipoRespuesta': tipoRespuesta.id }) }}" name="formulario" method="POST" enctype="multipart/form-data">             
+                                <h3 class="thin text-center">Registrar una nueva pregunta {{ tipoRespuesta.nombre }}</h3>
+                                <p class="text-center text-muted">{{ tipoRespuesta.explicacion }}</p>
+                                <hr>
 
-                            {% if error %}
-                                <div style="color:red">{{ error }}</div>
-                            {% endif %}
+                                {% if error %}
+                                    <div style="color:red">{{ error }}</div>
+                                {% endif %}
 
-                            <form action="{{ path('uci_administrador_registrarPregunta', { 'idTipoRespuesta': tipoRespuesta.id }) }}" method="POST" enctype="multipart/form-data">
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.titulo) }}
@@ -80,6 +79,7 @@
                                     </div>
                                 </div>
                                 <br>
+                                <hr>
                                 <h3>Respuestas</h3><br>
                                 <div class="respuestas" data-prototype="{{ form_widget(form.respuesta.vars.prototype)|e }}">
                                     {# iterate over each existing tag and render its only field: name #}
@@ -89,14 +89,9 @@
                                                 {{ form_row(respuesta.correcta) }}
                                             </div>
                                         </div>
-                                        <div class="row top-margin">
-                                            <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                                {{ form_row(respuesta.porcentajeCorreccion) }}
-                                            </div>
-                                        </div> 
                                     {% endfor %}
                                 </div>
-                                <hr>
+                                <br><br>
                                 <div class="row">
                                     <div class="col-lg-8">                     
                                     </div>
@@ -106,20 +101,19 @@
                                 </div>
                                 {{ form_rest(form) }}
                             </form>
-
                         </div>
                     </div>
-
                 </div>
-
-                <div id="myModal" class="modal fade" role="dialog">
-
-                </div>
-
-
                 <!-- /Aquí acaba el contenido --> 
             </article>
             <!-- /Article -->
+        </div>
+
+        <div class="row">
+
+        </div>
+        <div id="myModal" class="modal fade" role="dialog">
+
         </div>
     </div>	<!-- /container -->
 
@@ -144,13 +138,13 @@
 
             // Replace '__name__' in the prototype's HTML to
             // instead be a number based on how many items we have
-            var newForm = prototype.replace(/__name__/g, 'Respesta' + index);
+            var newForm = prototype.replace(/__name__/g, 'Respuesta' + index);
 
             // increase the index with one for the next item
-            $collectionHolder.data('index', index + 1);
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
             // Display the form in the page in an li, before the "Add a tag" link li
-            var $newFormLi = $('<div style="background-color:#F6F6F6; border-radius:10px; border: 0px black solid;"></div><br>').append(newForm);
+            var $newFormLi = $('<div style="background-color:#F6F6F6; border-radius:10px;padding: 25px;border: 5px solid #003c70;margin: 5px;"></div><br>').append(newForm);
             $newLinkLi.before($newFormLi);
         }
 

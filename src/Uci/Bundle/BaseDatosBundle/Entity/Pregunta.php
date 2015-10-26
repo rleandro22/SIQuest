@@ -155,6 +155,14 @@ class Pregunta {
         return $this->respuesta;
     }
 
+    function setRespuesta(\Doctrine\Common\Collections\Collection $respuesta) {
+        $this->respuesta = $respuesta;
+    }
+
+    function setTipoPrueba(\Doctrine\Common\Collections\Collection $tipoPrueba) {
+        $this->tipoPrueba = $tipoPrueba;
+    }
+
     /**
      * Get id
      *
