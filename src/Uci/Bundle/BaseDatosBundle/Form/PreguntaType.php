@@ -27,7 +27,6 @@ class PreguntaType extends AbstractType {
                     'prototype' => true,
                     'allow_add' => true,
                     'by_reference' => false,
-                    'allow_delete' => true,
                     'label' => ' '
         ));
     }
