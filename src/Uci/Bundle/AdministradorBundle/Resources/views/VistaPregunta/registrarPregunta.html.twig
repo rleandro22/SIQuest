@@ -167,20 +167,21 @@
             $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
                 quitarAnterior();
             });
-            
-            $(":button").focus(function () {
+
+            $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
                 quitarAnterior();
             });
+
         }
 
         document.ready = function () {
 
             siSaleEsGuaba();
 
-            /*$("#selector :input:not(:button, :hidden)").each(function (i) { // do something
-             area1.removeInstance('uci_bundle_basedatosbundle_pregunta_titulo');
-             });*/
-
+            $("#enviar").mouseover(function (e) {
+                e.preventDefault();
+                quitarAnterior();
+            });
 
             $('#prueba').submit(function () {
                 area1.removeInstance('uci_bundle_basedatosbundle_pregunta_titulo');
