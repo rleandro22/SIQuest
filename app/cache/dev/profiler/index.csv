@@ -1392,3 +1392,7 @@ c23884,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,144607
 d4d1c1,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446072887,,302
 245a80,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446072888,,200
 0ae5d1,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446072944,,200
+232870,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446073142,,200
+99cbc8,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446073193,,200
+5f3a25,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446073296,,200
+78ca36,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446073317,,200

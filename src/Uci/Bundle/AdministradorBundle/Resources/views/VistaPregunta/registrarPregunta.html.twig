@@ -156,7 +156,15 @@
 
         function siSaleEsGuaba() {
 
-            $(":input[type=text], textarea").focus(function () {
+            $(":input[type=text], textarea").mouseenter(function () {
+                quitarAnterior();
+                var nombre = $(this).attr("name").replace(/\[/g, '_');
+                nombre = nombre.replace(/\]/g, '');
+                areaPrevia = nombre;
+                area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
+            });
+            
+            $(":input[type=text], textarea").mouseenter(function () {
                 quitarAnterior();
                 var nombre = $(this).attr("name").replace(/\[/g, '_');
                 nombre = nombre.replace(/\]/g, '');
@@ -178,7 +186,7 @@
 
             siSaleEsGuaba();
 
-            $("#enviar").mouseover(function (e) {
+            $("#respuestas").mouseleave(function (e) {
                 e.preventDefault();
                 quitarAnterior();
             });
