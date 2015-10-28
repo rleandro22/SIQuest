@@ -114,7 +114,7 @@
     padding:3px;
 }
 
-#respuestas div:not(.form-group) {
+#respuestas div[id^="uci_bundle_basedatosbundle_pregunta"] {  
     border-radius:10px;
     padding: 25px;
     border: 5px solid #003c70;

@@ -19,12 +19,6 @@ class RespuestaType extends AbstractType {
                 ->add('textoRetroalimentacion', 'textarea', array("label" => "Retroalimentación: ", "required" => TRUE, "attr" => array('class' => 'form-control','style' => 'width: 96%; margin: 2% auto;')))
                 ->add('extra', 'textarea', array("label" => "Extra: ", "required" => TRUE, "attr" => array('class' => 'form-control','style' => 'width: 96%; margin: 2% auto;')))
         ;
-//        $builder
-//                ->add('correcta')
-//                ->add('textoRespuesta')
-//                ->add('textoRetroalimentacion')
-//                ->add('extra')
-//        ;
     }
 
     /**

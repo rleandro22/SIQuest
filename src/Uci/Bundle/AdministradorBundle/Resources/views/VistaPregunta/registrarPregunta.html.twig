@@ -13,7 +13,7 @@
             <li><a href="{{ path('uci_administrador_indicepreguntas') }}">Listado de Preguntas</a></li>
             <li class="active">Registrar pregunta</li>
         </ol>
-        <form action="{{ path('uci_administrador_registrarPregunta', { 'idTipoRespuesta': tipoRespuesta.id }) }}" name="formulario" method="POST" enctype="multipart/form-data">             
+        <form id="prueba" action="{{ path('uci_administrador_registrarPregunta', { 'idTipoRespuesta': tipoRespuesta.id }) }}" name="formulario" method="POST" enctype="multipart/form-data">             
 
             <div class="row">
                 <!-- Sidebar -->
@@ -38,6 +38,8 @@
                                 {% if error %}
                                     <div style="color:red">{{ error }}</div>
                                 {% endif %}
+
+                                <div id="myNicPanel" style="width: 525px;"></div>
 
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
@@ -106,7 +108,7 @@
                 <div class="col-lg-8">                     
                 </div>
                 <div class="col-lg-4 text-right">
-                    <button class="btn btn-action" type="submit">Registrar</button>
+                    <button class="btn btn-action" id="enviar" type="submit">Registrar</button>
                 </div>
             </div>
             {{ form_rest(form) }}
@@ -123,6 +125,8 @@
     {{ parent() }}
     <script type="text/javascript">
 
+        var area1;
+        var areaPrevia;
 
         function addRespuesta() {
             var collectionHolder = $('#respuestas');
@@ -133,6 +137,8 @@
             newLi.append(form);
             newLi.append(removeFormA);
             collectionHolder.append(newLi);
+            siSaleEsGuaba();
+            return prototype;
         }
 
         function addTagFormDeleteLink(e, elemento) {
@@ -141,10 +147,50 @@
             removeFormA.remove();
         }
 
+        function quitarAnterior() {
+            if (area1) {
+                area1.removeInstance(areaPrevia);
+                area1 = null;
+            }
+        }
+
+        function siSaleEsGuaba() {
+
+            $(":input[type=text], textarea").focus(function () {
+                quitarAnterior();
+                var nombre = $(this).attr("name").replace(/\[/g, '_');
+                nombre = nombre.replace(/\]/g, '');
+                areaPrevia = nombre;
+                area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
+            });
+
+            $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
+                quitarAnterior();
+            });
+            
+            $(":button").focus(function () {
+                quitarAnterior();
+            });
+        }
+
         document.ready = function () {
+
+            siSaleEsGuaba();
+
+            /*$("#selector :input:not(:button, :hidden)").each(function (i) { // do something
+             area1.removeInstance('uci_bundle_basedatosbundle_pregunta_titulo');
+             });*/
+
+
+            $('#prueba').submit(function () {
+                area1.removeInstance('uci_bundle_basedatosbundle_pregunta_titulo');
+                return true;
+            });
+
             $('#respuesta_link').on('click', function (e) {
                 e.preventDefault();
                 addRespuesta();
+
             });
 
             $('table').footable().on('click', '.row-delete', function (e) {
