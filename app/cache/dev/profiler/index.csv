@@ -97,3 +97,6 @@ cae164,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1446
 8e7829,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/3/registrar_pregunta,1446154041,,200
 016f8f,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/3/registrar_pregunta,1446154070,,302
 47f08f,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1446154070,,200
+9bd526,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446154207,,200
+5179ea,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446154209,,302
+e75c79,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446154210,,200
