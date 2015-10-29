@@ -30,7 +30,7 @@
                     <!-- /Aquí va el contenido -->
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-body" id="areaSalida">
+                            <div class="panel-body">
                                 <h3 class="thin text-center">Registrar una nueva pregunta {{ tipoRespuesta.nombre }}</h3>
                                 <p class="text-center text-muted">{{ tipoRespuesta.explicacion }}</p>
                                 <hr>
@@ -102,7 +102,7 @@
                 <br><br>
 
             </div>
-            <div class="row">
+            <div class="row" id="areaSalida">
                 <div class="col-lg-8">                     
                 </div>
                 <div class="col-lg-4 text-right">
@@ -173,16 +173,10 @@
 
             siSaleEsGuaba();
 
-            $("#respuestas").mouseleave(function (e) {
+            $("#areaSalida").mouseenter(function (e) {
                 e.preventDefault();
                 quitarAnterior();
             });
-            
-            $("#areaSalida").mouseleave(function (e) {
-                e.preventDefault();
-                quitarAnterior();
-            });
-
             $('#prueba').submit(function () {
                 area1.removeInstance('uci_bundle_basedatosbundle_pregunta_titulo');
                 return true;
