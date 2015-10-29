@@ -49,9 +49,17 @@ class PreguntaController extends Controller {
         if ($request->getMethod() == 'POST') {
             $error = $form->getErrors();
             if ($form->isValid()) {
-                $respuesta = $entity->getRespuesta();
-//                $em->flush();
-                return $this->redirectToRoute('uci_administrador_indicepreguntas');
+                $em->getConnection()->beginTransaction();
+                try {
+                    $this->guardarRespuestas($em, $entity);
+                    $em->persist($entity);
+                    $em->flush();
+                    $em->commit();
+                    return $this->redirectToRoute('uci_administrador_indicepreguntas');
+                } catch (Exception $e) {
+                    $em->getConnection()->rollback();
+                    $error = $e;
+                }
             }
         }
         return $this->render('UciAdministradorBundle:VistaPregunta:registrarPregunta.html.twig', array(
@@ -135,6 +143,14 @@ class PreguntaController extends Controller {
             $preguntas = $qb->getQuery()->getResult();
         }
         return $preguntas;
+    }
+
+    private function guardarRespuestas($em, &$pregunta) {
+        $respuestas = $pregunta->getRespuesta();
+        foreach ($respuestas as $respuesta) {
+            $em->persist($respuesta);
+            $em->clear($respuesta);
+        }
     }
 
 }

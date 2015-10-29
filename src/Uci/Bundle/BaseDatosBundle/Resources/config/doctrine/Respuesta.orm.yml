@@ -47,5 +47,4 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
             inversedBy: null
             joinTable: null
             orderBy: null
-            onDelete: "CASCADE"
     lifecycleCallbacks: {  }

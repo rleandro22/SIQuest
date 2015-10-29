@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tipo_prueba")
  * @ORM\Entity
  */
-class TipoPrueba
-{
+class TipoPrueba {
+
     /**
      * @var integer
      *
@@ -38,19 +38,16 @@ class TipoPrueba
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->pregunta = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -60,8 +57,7 @@ class TipoPrueba
      * @param string $nombreTipo
      * @return TipoPrueba
      */
-    public function setNombreTipo($nombreTipo)
-    {
+    public function setNombreTipo($nombreTipo) {
         $this->nombreTipo = $nombreTipo;
 
         return $this;
@@ -72,8 +68,7 @@ class TipoPrueba
      *
      * @return string 
      */
-    public function getNombreTipo()
-    {
+    public function getNombreTipo() {
         return $this->nombreTipo;
     }
 
@@ -83,8 +78,7 @@ class TipoPrueba
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
      * @return TipoPrueba
      */
-    public function addPreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta)
-    {
+    public function addPreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
         $this->pregunta[] = $pregunta;
 
         return $this;
@@ -95,8 +89,7 @@ class TipoPrueba
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
      */
-    public function removePreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta)
-    {
+    public function removePreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
         $this->pregunta->removeElement($pregunta);
     }
 
@@ -105,11 +98,10 @@ class TipoPrueba
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPregunta()
-    {
+    public function getPregunta() {
         return $this->pregunta;
     }
-    
+
     public function __toString() {
         return $this->nombreTipo;
     }

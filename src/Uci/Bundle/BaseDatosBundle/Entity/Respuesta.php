@@ -52,15 +52,7 @@ class Respuesta {
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pregunta", inversedBy="respuesta", cascade="delete")
-     * @ORM\JoinTable(name="pregunta_tiene_respuesta",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="respuesta_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pregunta", mappedBy="respuesta")
      */
     private $pregunta;
 
@@ -147,11 +139,11 @@ class Respuesta {
      * Add pregunta
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
-     * @return Respuesta
+     * @return TipoPrueba
      */
-    public function addPregunta(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
+    public function addPreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
         $this->pregunta[] = $pregunta;
-        $pregunta->addRespuesta($this);
+
         return $this;
     }
 
@@ -160,9 +152,8 @@ class Respuesta {
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
      */
-    public function removePregunta(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
+    public function removePreguntum(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
         $this->pregunta->removeElement($pregunta);
-        $pregunta->removeRespuesta($this);
     }
 
     /**

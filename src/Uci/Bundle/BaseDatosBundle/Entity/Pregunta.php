@@ -28,12 +28,6 @@ class Pregunta {
      */
     private $titulo;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Respuesta", mappedBy="pregunta")
-     */
-    private $respuesta;
 
     /**
      * @var integer
@@ -106,6 +100,21 @@ class Pregunta {
      * )
      */
     private $tipoPrueba;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Respuesta", inversedBy="pregunta")
+     * @ORM\JoinTable(name="pregunta_tiene_respuesta",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="respuesta_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $respuesta;
 
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta
@@ -155,12 +164,46 @@ class Pregunta {
         return $this->respuesta;
     }
 
-    function setRespuesta(\Doctrine\Common\Collections\Collection $respuesta) {
+    public function setRespuesta(\Doctrine\Common\Collections\Collection $respuesta) {
         $this->respuesta = $respuesta;
+    }
+    
+    public function resetearRespuestas(){
+        $this->respuesta = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     function setTipoPrueba(\Doctrine\Common\Collections\Collection $tipoPrueba) {
         $this->tipoPrueba = $tipoPrueba;
+    }
+    
+      /**
+     * Add tipoPrueba
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba
+     * @return Pregunta
+     */
+    public function addTipoPrueba(\Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba) {
+        $this->tipoPrueba[] = $tipoPrueba;
+
+        return $this;
+    }
+    
+     /**
+     * Remove tipoPrueba
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba
+     */
+    public function removeTipoPrueba(\Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba) {
+        $this->tipoPrueba->removeElement($tipoPrueba);
+    }
+
+    /**
+     * Get tipoPrueba
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTipoPrueba() {
+        return $this->tipoPrueba;
     }
 
     /**
@@ -298,35 +341,7 @@ class Pregunta {
         return $this->grupoProcesos;
     }
 
-    /**
-     * Add tipoPrueba
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba
-     * @return Pregunta
-     */
-    public function addTipoPrueba(\Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba) {
-        $this->tipoPrueba[] = $tipoPrueba;
-
-        return $this;
-    }
-
-    /**
-     * Remove tipoPrueba
-     *
-     * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba
-     */
-    public function removeTipoPrueba(\Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba) {
-        $this->tipoPrueba->removeElement($tipoPrueba);
-    }
-
-    /**
-     * Get tipoPrueba
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTipoPrueba() {
-        return $this->tipoPrueba;
-    }
+  
 
     /**
      * Set tipoRespuesta
