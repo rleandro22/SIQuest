@@ -30,7 +30,7 @@
                     <!-- /Aquí va el contenido -->
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-body">
+                            <div class="panel-body" id="areaSalida">
                                 <h3 class="thin text-center">Registrar una nueva pregunta {{ tipoRespuesta.nombre }}</h3>
                                 <p class="text-center text-muted">{{ tipoRespuesta.explicacion }}</p>
                                 <hr>
@@ -38,8 +38,6 @@
                                 {% if error %}
                                     <div style="color:red">{{ error }}</div>
                                 {% endif %}
-
-                                <div id="myNicPanel" style="width: 525px;"></div>
 
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
@@ -162,18 +160,7 @@
                 nombre = nombre.replace(/\]/g, '');
                 areaPrevia = nombre;
                 area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
-            });
-            
-            $(":input[type=text], textarea").mouseenter(function () {
-                quitarAnterior();
-                var nombre = $(this).attr("name").replace(/\[/g, '_');
-                nombre = nombre.replace(/\]/g, '');
-                areaPrevia = nombre;
-                area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
-            });
-
-            $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
-                quitarAnterior();
+                $(".nicEdit-main").focus();
             });
 
             $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
@@ -187,6 +174,11 @@
             siSaleEsGuaba();
 
             $("#respuestas").mouseleave(function (e) {
+                e.preventDefault();
+                quitarAnterior();
+            });
+            
+            $("#areaSalida").mouseleave(function (e) {
                 e.preventDefault();
                 quitarAnterior();
             });
