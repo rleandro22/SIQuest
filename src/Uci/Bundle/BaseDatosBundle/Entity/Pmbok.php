@@ -65,7 +65,24 @@ class Pmbok {
         $this->grupoProcesos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->trianguloTalento = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    function setId($id) {
+        $this->id = $id;
+    }
 
+    function setAreaConocimiento(\Doctrine\Common\Collections\Collection $areaConocimiento) {
+        $this->areaConocimiento = $areaConocimiento;
+    }
+
+    function setTrianguloTalento(\Doctrine\Common\Collections\Collection $trianguloTalento) {
+        $this->trianguloTalento = $trianguloTalento;
+    }
+
+    function setGrupoProcesos(\Doctrine\Common\Collections\Collection $grupoProcesos) {
+        $this->grupoProcesos = $grupoProcesos;
+    }
+
+    
     /**
      * Get id
      *

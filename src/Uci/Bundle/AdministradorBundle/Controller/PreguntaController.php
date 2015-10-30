@@ -46,7 +46,11 @@ class PreguntaController extends Controller {
         $error = '';
         $form = $this->createForm(new PreguntaType(), $entity);
         $form->handleRequest($request);
-        if ($request->getMethod() == 'POST') {
+        if(strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest')==0){
+            $capitulos=$entity->getLibro()->getCapitulos();
+            echo '';
+            return new JsonResponse(array('capitulos' => $entity->getLibro()->getCapitulos()), 200);
+        } else if ($request->getMethod() == 'POST') {
             $error = $form->getErrors();
             if ($form->isValid()) {
                 $em->getConnection()->beginTransaction();

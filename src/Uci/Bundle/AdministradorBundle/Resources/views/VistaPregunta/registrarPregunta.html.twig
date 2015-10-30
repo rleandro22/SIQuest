@@ -13,7 +13,7 @@
             <li><a href="{{ path('uci_administrador_indicepreguntas') }}">Listado de Preguntas</a></li>
             <li class="active">Registrar pregunta</li>
         </ol>
-        <form id="prueba" action="{{ path('uci_administrador_registrarPregunta', { 'idTipoRespuesta': tipoRespuesta.id }) }}" name="formulario" method="POST" enctype="multipart/form-data">             
+        <form id="formularioPrincipal" action="{{ path('uci_administrador_registrarPregunta', { 'idTipoRespuesta': tipoRespuesta.id }) }}" name="formulario" method="POST" enctype="multipart/form-data">             
 
             <div class="row">
                 <!-- Sidebar -->
@@ -46,6 +46,11 @@
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.libro) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.numeroPagina) }}
                                     </div>
                                 </div>
@@ -72,11 +77,6 @@
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.tipoPrueba) }}
-                                    </div>
-                                </div>
-                                <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_row(form.libro) }}
                                     </div>
                                 </div>
                                 <br>
@@ -177,10 +177,39 @@
                 e.preventDefault();
                 quitarAnterior();
             });
-            $('#prueba').submit(function () {
-                area1.removeInstance('uci_bundle_basedatosbundle_pregunta_titulo');
-                return true;
+
+
+            $("#uci_bundle_basedatosbundle_pregunta_libro").change(function () {
+                var data = {
+                    idTipoRespuesta: $(this).val()
+                };
+
+                $.ajax({
+                    type: $("#formularioPrincipal").attr('method'),
+                    url: $("#formularioPrincipal").attr('action'),
+                    data: $("#formularioPrincipal").serialize()
+                })
+                        .done(function (data) {
+                            if (typeof data.capitulos !== 'undefined') {
+                                alert(data.capitulos);
+                            }
+                        })
+                        .fail(function (jqXHR, textStatus, errorThrown) {
+                            if (typeof jqXHR.responseJSON !== 'undefined') {
+                                if (jqXHR.responseJSON.hasOwnProperty('form')) {
+                                    $('#form_body').html(jqXHR.responseJSON.form);
+                                }
+
+                                $('.form_error').html(jqXHR.responseJSON.message);
+
+                            } else {
+                                alert(errorThrown);
+                            }
+
+                        });
             });
+
+
 
             $('#respuesta_link').on('click', function (e) {
                 e.preventDefault();

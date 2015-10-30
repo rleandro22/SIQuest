@@ -176,6 +176,50 @@ class Pmbok extends \Uci\Bundle\BaseDatosBundle\Entity\Pmbok implements \Doctrin
     /**
      * {@inheritDoc}
      */
+    public function setId($id)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', array($id));
+
+        return parent::setId($id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAreaConocimiento(\Doctrine\Common\Collections\Collection $areaConocimiento)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAreaConocimiento', array($areaConocimiento));
+
+        return parent::setAreaConocimiento($areaConocimiento);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setTrianguloTalento(\Doctrine\Common\Collections\Collection $trianguloTalento)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrianguloTalento', array($trianguloTalento));
+
+        return parent::setTrianguloTalento($trianguloTalento);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setGrupoProcesos(\Doctrine\Common\Collections\Collection $grupoProcesos)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGrupoProcesos', array($grupoProcesos));
+
+        return parent::setGrupoProcesos($grupoProcesos);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
