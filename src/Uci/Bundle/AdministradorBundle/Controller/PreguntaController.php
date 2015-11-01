@@ -5,6 +5,7 @@ namespace Uci\Bundle\AdministradorBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Form\PreguntaIndiceType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use \Uci\Bundle\BaseDatosBundle\Entity\Pregunta;
 use Uci\Bundle\BaseDatosBundle\Form\EligeTipoType;
 use Uci\Bundle\BaseDatosBundle\Form\PreguntaType;
@@ -46,10 +47,8 @@ class PreguntaController extends Controller {
         $error = '';
         $form = $this->createForm(new PreguntaType(), $entity);
         $form->handleRequest($request);
-        if(strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest')==0){
-            $capitulos=$entity->getLibro()->getCapitulos();
-            echo '';
-            return new JsonResponse(array('capitulos' => $entity->getLibro()->getCapitulos()), 200);
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            return $this->aObtenerDatosLibro($entity->getLibro());
         } else if ($request->getMethod() == 'POST') {
             $error = $form->getErrors();
             if ($form->isValid()) {
@@ -72,6 +71,46 @@ class PreguntaController extends Controller {
                     'tipoRespuesta' => $tipoRespuesta,
                     'error' => $error,
         ));
+    }
+
+    private function aObtenerDatosLibro($libro) {
+        $idLibro = ($libro) ? $libro->getId() : 0;
+        $idPmbok = ($libro) ? $idPmbok = ($libro->getEsPmbok() == 1) ? $libro->getPmbok()->getId() : 0 : 0;
+        $esPmbok = ($libro) ? $libro->getEsPmbok() : 0;
+        $em = $this->getDoctrine()->getManager();
+        $response = new JsonResponse();
+        $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
+                        ->innerJoin('u.libro', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $idLibro)
+                        ->orderBy('u.nombreCapitulo', 'ASC')
+                        ->getQuery()->getArrayResult();
+        $areas = $em->getRepository('UciBaseDatosBundle:AreaConocimiento')->createQueryBuilder('u')
+                        ->innerJoin('u.pmbok', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $idPmbok)
+                        ->orderBy('u.nombreArea', 'ASC')
+                        ->getQuery()->getArrayResult();
+        $grupos = $em->getRepository('UciBaseDatosBundle:GrupoProcesos')->createQueryBuilder('u')
+                        ->innerJoin('u.pmbok', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $idPmbok)
+                        ->orderBy('u.nombreGrupo', 'ASC')
+                        ->getQuery()->getArrayResult();
+        $triangulos = $em->getRepository('UciBaseDatosBundle:TrianguloTalento')->createQueryBuilder('u')
+                        ->innerJoin('u.pmbok', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $idPmbok)
+                        ->orderBy('u.nombreTalento', 'ASC')
+                        ->getQuery()->getArrayResult();
+        $response_array = array();
+        $response_array['capitulos'] = (empty($capitulos)) ? array('id' => 0) : $capitulos;
+        $response_array['areas'] = (empty($areas)) ? array('id' => 0) : $areas;
+        $response_array['grupos'] = (empty($grupos)) ? array('id' => 0) : $grupos;
+        $response_array['triangulos'] = (empty($triangulos)) ? array('id' => 0) : $triangulos;
+        $response_array['esPmbok'] = $esPmbok;
+        $response->setContent(json_encode($response_array));
+        return $response;
     }
 
     public function aElegirTipoAction(Request $request) {

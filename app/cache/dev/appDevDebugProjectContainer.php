@@ -122,6 +122,7 @@ class appDevDebugProjectContainer extends Container
             'fragment.renderer.hinclude' => 'getFragment_Renderer_HincludeService',
             'fragment.renderer.inline' => 'getFragment_Renderer_InlineService',
             'fragment.renderer.ssi' => 'getFragment_Renderer_SsiService',
+            'get_set_method_normalizer' => 'getGetSetMethodNormalizerService',
             'http_kernel' => 'getHttpKernelService',
             'kernel' => 'getKernelService',
             'locale_listener' => 'getLocaleListenerService',
@@ -181,6 +182,9 @@ class appDevDebugProjectContainer extends Container
             'sensio_framework_extra.security.listener' => 'getSensioFrameworkExtra_Security_ListenerService',
             'sensio_framework_extra.view.guesser' => 'getSensioFrameworkExtra_View_GuesserService',
             'sensio_framework_extra.view.listener' => 'getSensioFrameworkExtra_View_ListenerService',
+            'serializer' => 'getSerializerService',
+            'serializer.encoder.json' => 'getSerializer_Encoder_JsonService',
+            'serializer.method' => 'getSerializer_MethodService',
             'service_container' => 'getServiceContainerService',
             'session' => 'getSessionService',
             'session.save_listener' => 'getSession_SaveListenerService',
@@ -1446,6 +1450,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'get_set_method_normalizer' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer A Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer instance.
+     */
+    protected function getGetSetMethodNormalizerService()
+    {
+        return $this->services['get_set_method_normalizer'] = new \Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer();
+    }
+
+    /**
      * Gets the 'http_kernel' service.
      *
      * This service is shared.
@@ -2044,7 +2061,11 @@ class appDevDebugProjectContainer extends Container
         $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $l, array(), $a);
         $o->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
+<<<<<<< HEAD
         return $this->services['security.firewall.map.context.secured_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('security.user.provider.concrete.user_db')), 'secured_area', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $l, 'secured_area', $n, $o, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, NULL), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '563579cc0f05f7.61775049', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'secured_area', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, '/login', false), NULL, NULL, $a, false));
+=======
+        return $this->services['security.firewall.map.context.secured_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('security.user.provider.concrete.user_db')), 'secured_area', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $l, 'secured_area', $n, $o, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, NULL), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '56357705790e20.12006914', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'secured_area', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, '/login', false), NULL, NULL, $a, false));
+>>>>>>> d671686f5ac93e485bbb1702dd91ca1ea7fd73dc
     }
 
     /**
@@ -2276,6 +2297,45 @@ class appDevDebugProjectContainer extends Container
     protected function getSensioFrameworkExtra_View_ListenerService()
     {
         return $this->services['sensio_framework_extra.view.listener'] = new \Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener($this);
+    }
+
+    /**
+     * Gets the 'serializer' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Symfony\Component\Serializer\Serializer A Symfony\Component\Serializer\Serializer instance.
+     */
+    protected function getSerializerService()
+    {
+        return $this->services['serializer'] = new \Symfony\Component\Serializer\Serializer(array(0 => $this->get('get_set_method_normalizer'), 1 => new \Symfony\Component\Serializer\Normalizer\ObjectNormalizer(new \Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory(new \Symfony\Component\Serializer\Mapping\Loader\LoaderChain(array()), NULL), NULL, $this->get('property_accessor'))), array(0 => new \Symfony\Component\Serializer\Encoder\XmlEncoder()));
+    }
+
+    /**
+     * Gets the 'serializer.encoder.json' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Symfony\Component\Serializer\Encoder\JsonEncoder A Symfony\Component\Serializer\Encoder\JsonEncoder instance.
+     */
+    protected function getSerializer_Encoder_JsonService()
+    {
+        return $this->services['serializer.encoder.json'] = new \Symfony\Component\Serializer\Encoder\JsonEncoder();
+    }
+
+    /**
+     * Gets the 'serializer.method' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer A Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer instance.
+     */
+    protected function getSerializer_MethodService()
+    {
+        return $this->services['serializer.method'] = new \Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer();
     }
 
     /**
@@ -3411,7 +3471,11 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
+<<<<<<< HEAD
         $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.user_db'), new \Symfony\Component\Security\Core\User\UserChecker(), 'secured_area', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('563579cc0f05f7.61775049')), true);
+=======
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.user_db'), new \Symfony\Component\Security\Core\User\UserChecker(), 'secured_area', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('56357705790e20.12006914')), true);
+>>>>>>> d671686f5ac93e485bbb1702dd91ca1ea7fd73dc
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -3809,6 +3873,10 @@ class appDevDebugProjectContainer extends Container
             'annotations.reader.class' => 'Doctrine\\Common\\Annotations\\AnnotationReader',
             'annotations.cached_reader.class' => 'Doctrine\\Common\\Annotations\\CachedReader',
             'annotations.file_cache_reader.class' => 'Doctrine\\Common\\Annotations\\FileCacheReader',
+            'serializer.class' => 'Symfony\\Component\\Serializer\\Serializer',
+            'serializer.encoder.xml.class' => 'Symfony\\Component\\Serializer\\Encoder\\XmlEncoder',
+            'serializer.encoder.json.class' => 'Symfony\\Component\\Serializer\\Encoder\\JsonEncoder',
+            'serializer.mapping.cache.prefix' => '',
             'debug.debug_handlers_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\DebugHandlersListener',
             'debug.stopwatch.class' => 'Symfony\\Component\\Stopwatch\\Stopwatch',
             'debug.error_handler.throw_at' => -1,

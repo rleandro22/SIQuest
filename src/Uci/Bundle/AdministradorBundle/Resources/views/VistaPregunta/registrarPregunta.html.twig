@@ -56,21 +56,21 @@
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_row(form.areaConocimiento) }}
-                                    </div>
-                                </div>
-                                <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.capitulo) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden" id="filaArea">
+                                        {{ form_row(form.areaConocimiento) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden" id="filaGrupo">
                                         {{ form_row(form.grupoProcesos) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden" id="filaTriangulo">
                                         {{ form_row(form.trianguloTalento) }}
                                     </div>
                                 </div>
@@ -125,6 +125,10 @@
 
         var area1;
         var areaPrevia;
+        var $capitulo_selector = $('#uci_bundle_basedatosbundle_pregunta_capitulo');
+        var $area_selector = $('#uci_bundle_basedatosbundle_pregunta_areaConocimiento');
+        var $grupo_selector = $('#uci_bundle_basedatosbundle_pregunta_grupoProcesos');
+        var $triangulo_selector = $('#uci_bundle_basedatosbundle_pregunta_trianguloTalento');
 
         function addRespuesta() {
             var collectionHolder = $('#respuestas');
@@ -166,67 +170,83 @@
             $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
                 quitarAnterior();
             });
+        }
 
+        function mostrarAtrPmbok(esPmbok) {
+            if (esPmbok == 1) {
+                $("#filaArea").removeClass('hidden');
+                $("#filaGrupo").removeClass('hidden');
+                $("#filaTriangulo").removeClass('hidden');
+            } else {
+                $("#filaArea").addClass('hidden');
+                $("#filaGrupo").addClass('hidden');
+                $("#filaTriangulo").addClass('hidden');
+            }
         }
 
         document.ready = function () {
 
             siSaleEsGuaba();
-
             $("#areaSalida").mouseenter(function (e) {
                 e.preventDefault();
                 quitarAnterior();
             });
-
-
             $("#uci_bundle_basedatosbundle_pregunta_libro").change(function () {
-                var data = {
-                    idTipoRespuesta: $(this).val()
-                };
-
+                $capitulo_selector.html('<option>Buscando capitulos...</option>');
+                $area_selector.html('<option>Buscando areas...</option>');
+                $grupo_selector.html('<option>Buscando grupos...</option>');
+                $triangulo_selector.html('<option>Buscando triangulo...</option>');
                 $.ajax({
                     type: $("#formularioPrincipal").attr('method'),
                     url: $("#formularioPrincipal").attr('action'),
-                    data: $("#formularioPrincipal").serialize()
-                })
-                        .done(function (data) {
-                            if (typeof data.capitulos !== 'undefined') {
-                                alert(data.capitulos);
+                    data: $("#formularioPrincipal").serialize(),
+                    //contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    // traditional: true,
+                    success: function (data) {
+                        mostrarAtrPmbok(data.esPmbok);
+                        $capitulo_selector.html('<option>Capitulo</option>');
+                        if (data.capitulos[0].id > 0) {
+                            for (var i = 0, total = data.capitulos.length; i < total; i++) {
+                                $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].nombreCapitulo + '</option>');
                             }
-                        })
-                        .fail(function (jqXHR, textStatus, errorThrown) {
-                            if (typeof jqXHR.responseJSON !== 'undefined') {
-                                if (jqXHR.responseJSON.hasOwnProperty('form')) {
-                                    $('#form_body').html(jqXHR.responseJSON.form);
-                                }
-
-                                $('.form_error').html(jqXHR.responseJSON.message);
-
-                            } else {
-                                alert(errorThrown);
+                        }
+                        $area_selector.html('<option>A. Conocimiento</option>');
+                        if (data.areas[0].id > 0) {
+                            for (var i = 0, total = data.areas.length; i < total; i++) {
+                                $area_selector.append('<option value="' + data.areas[i].id + '">' + data.areas[i].nombreArea + '</option>');
                             }
-
-                        });
+                        }
+                        $grupo_selector.html('<option>G. Procesos</option>');
+                        if (data.grupos[0].id > 0) {
+                            for (var i = 0, total = data.grupos.length; i < total; i++) {
+                                $grupo_selector.append('<option value="' + data.grupos[i].id + '">' + data.grupos[i].nombreGrupo + '</option>');
+                            }
+                        }
+                        $triangulo_selector.html('<option>T. talentos</option>');
+                        if (data.triangulos[0].id > 0) {
+                            for (var i = 0, total = data.triangulos.length; i < total; i++) {
+                                $triangulo_selector.append('<option value="' + data.triangulos[i].id + '">' + data.triangulos[i].nombreTalento + '</option>');
+                            }
+                        }
+                    },
+                    error: function () {
+                        alert("Ocurrio un error.");
+                    }
+                });
             });
-
-
-
             $('#respuesta_link').on('click', function (e) {
                 e.preventDefault();
                 addRespuesta();
-
             });
-
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
             }
             );
-
             $('body').on('hidden.bs.modal', '.modal', function () {
                 $('.modal-content', this).empty();
                 $(this).removeData('bs.modal');
             });
-
             var handleSpeedBump = function (e) {
                 e.preventDefault();
                 var href = this.getAttribute("data-href");
