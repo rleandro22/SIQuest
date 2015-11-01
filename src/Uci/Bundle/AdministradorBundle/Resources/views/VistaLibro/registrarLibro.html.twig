@@ -77,19 +77,14 @@
                                 <hr>
                                 <!-- /Aquí inicia capitulo --> 
 
-                                <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.capitulos) }}
-                                        {{form_widget(form.capitulos)}}
-                                        {{ form_errors(form.capitulos) }}
-
-                                    </div>
-                                </div>
-                                <!-- /Fin Nuevo capitulo -->
-                                <br>
+                              <h3>Capitulos</h3><br>
                                 <!-- /Tabla capitulos -->
 
-                                <table class="table demo table-bordered" id="tabla" data-filter="#filter">
+                                <table class="table demo table-bordered" id="tabla" data-filter="#filter" 
+                                       data-prototype="
+                                       {% filter escape %}
+                                           {{ include('UciAdministradorBundle:VistaLibro:prototipoCapitulo.html.twig', { 'form': form.capitulos.vars.prototype }) }}
+                                       {% endfilter %}">
                                     <thead>
                                         <tr>
 
@@ -110,16 +105,12 @@
 
                                                 <td>{{capitulo.numeroCapitulo}}</td>
                                                 <td>{{capitulo.nombreCapitulo}}</td>
-                                                <td>
-                                                    <ul>
-
-
-                                                    </ul>
-                                                </td>
+                                                <td></td>
                                             </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
+                                    <a href="#" id="capitulo_link">Añadir capitulo</a>
                                 <!-- /Aquí acaba el contenido de capitulo--> 
                                 <hr>
 
@@ -143,7 +134,7 @@
                                         <button class="btn btn-action" type="submit">Registrar</button>
                                     </div>
                                 </div>
-                                {{ form_rest(form) }}
+                              
                             </form>
                         </div>
                     </div>
@@ -160,3 +151,131 @@
 {% endblock %}
 
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+        var area1;
+        var areaPrevia;
+
+        function addCapitulo() {
+            var collectionHolder = $('#tabla');
+            var prototype = collectionHolder.attr('data-prototype');
+            var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
+            var removeFormA = $('<td href="#" onclick="addTagFormDeleteLink(event, this); "><span class="navigationSpace glyphicon glyphicon-remove" style="color: red; font-size:180%" ></span></td>');
+            var newTr = $('<tr></tr>');
+            newTr.append(form);
+            newTr.append(removeFormA);
+            collectionHolder.append(newTr);
+            siSaleEsGuaba();
+            return prototype;
+        }
+
+        function addTagFormDeleteLink(e, elemento) {
+            e.preventDefault();
+            var removeFormA = elemento.parentNode;
+            removeFormA.remove();
+        }
+
+        function quitarAnterior() {
+            if (area1) {
+                area1.removeInstance(areaPrevia);
+                area1 = null;
+            }
+        }
+
+        function siSaleEsGuaba() {
+
+            $(":input[type=text], textarea").mouseenter(function () {
+                quitarAnterior();
+                var nombre = $(this).attr("name").replace(/\[/g, '_');
+                nombre = nombre.replace(/\]/g, '');
+                areaPrevia = nombre;
+                area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
+                $(".nicEdit-main").focus();
+            });
+
+            $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
+                quitarAnterior();
+            });
+
+        }
+
+        document.ready = function () {
+
+            siSaleEsGuaba();
+
+            $("#areaSalida").mouseenter(function (e) {
+                e.preventDefault();
+                quitarAnterior();
+            });
+
+
+            $("#uci_bundle_basedatosbundle_pregunta_libro").change(function () {
+                var data = {
+                    idTipoRespuesta: $(this).val()
+                };
+
+                $.ajax({
+                    type: $("#formularioPrincipal").attr('method'),
+                    url: $("#formularioPrincipal").attr('action'),
+                    data: $("#formularioPrincipal").serialize()
+                })
+                        .done(function (data) {
+                            if (typeof data.capitulos !== 'undefined') {
+                                alert(data.capitulos);
+                            }
+                        })
+                        .fail(function (jqXHR, textStatus, errorThrown) {
+                            if (typeof jqXHR.responseJSON !== 'undefined') {
+                                if (jqXHR.responseJSON.hasOwnProperty('form')) {
+                                    $('#form_body').html(jqXHR.responseJSON.form);
+                                }
+
+                                $('.form_error').html(jqXHR.responseJSON.message);
+
+                            } else {
+                                alert(errorThrown);
+                            }
+
+                        });
+            });
+
+
+
+            $('#capitulo_link').on('click', function (e) {
+                e.preventDefault();
+                addCapitulo();
+
+            });
+
+            $('table').footable().on('click', '.row-delete', function (e) {
+                e.preventDefault();
+            }
+            );
+
+            $('body').on('hidden.bs.modal', '.modal', function () {
+                $('.modal-content', this).empty();
+                $(this).removeData('bs.modal');
+            });
+
+            var handleSpeedBump = function (e) {
+                e.preventDefault();
+                var href = this.getAttribute("data-href");
+                var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación no es reversible)");
+                if (!sure)
+                    return;
+                document.location = href;
+            };
+            $("a.speedbump")
+                    .click(handleSpeedBump)
+                    .bind("contextmenu", handleSpeedBump)
+                    .dblclick(handleSpeedBump)
+                    .each(function () {
+                        var href = this.href;
+                        this.setAttribute("data-href", href);
+                        this.href = "javascript:void('Navigate to " + href.replace("'", "") + "')";
+                    });
+        };
+    </script>
+{% endblock %}

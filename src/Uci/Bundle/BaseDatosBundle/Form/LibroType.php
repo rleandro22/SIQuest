@@ -32,7 +32,8 @@ class LibroType extends AbstractType {
                 'by_reference'   => false,
                 'allow_delete'   => true,
                 'allow_add'      => true,
-                'prototype'      => true))
+                'prototype'      => true,
+                'label'          => ''))
         ;
     }
 
