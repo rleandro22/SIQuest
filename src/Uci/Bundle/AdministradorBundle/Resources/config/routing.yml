@@ -81,6 +81,10 @@ uci_administrador_eligeTipoPregunta:
 uci_administrador_registrarPregunta:
     pattern:  /admin/{idTipoRespuesta}/registrar_pregunta
     defaults: { _controller: UciAdministradorBundle:Pregunta:aRegistrarPregunta }
+    
+#uci_administrador_obtenerDatosLibro:
+ #   pattern:  /admin/datos_libro
+  #  defaults: { _controller: UciAdministradorBundle:Pregunta:aObtenerDatosLibro }
 
 #---------------------Routing Libro---------------------------------------------
 uci_administrador_libro:
