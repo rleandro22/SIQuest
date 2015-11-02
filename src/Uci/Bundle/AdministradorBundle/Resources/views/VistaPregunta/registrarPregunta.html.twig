@@ -140,6 +140,7 @@
             newLi.append(removeFormA);
             collectionHolder.append(newLi);
             ponerPaneles();
+            agregarExlusores();
             return prototype;
         }
 
@@ -173,7 +174,7 @@
 
         function mostrarAtrPmbok(esPmbok) {
             if (esPmbok == 1) {
-                esPmbok=true;
+                esPmbok = true;
                 $("#filaArea").removeClass('hidden');
                 $("#filaGrupo").removeClass('hidden');
                 $("#filaTriangulo").removeClass('hidden');
@@ -184,6 +185,17 @@
             }
         }
 
+        //Este metodo hace que no haya 2 o más respuestas correctas
+        function agregarExlusores() {
+            $("select[id$='correcta']").change(function () {
+                if ($(this).val() == 1) {
+                    var id = $(this).attr("id");
+                    $("select[id$='correcta']").not("#" + id).val(0);
+                    ;
+                }
+            });
+        }
+
         document.ready = function () {
 
             ponerPaneles();
@@ -191,6 +203,8 @@
                 e.preventDefault();
                 quitarAnterior();
             });
+
+
             $("#uci_bundle_basedatosbundle_pregunta_libro").change(function () {
                 $capitulo_selector.html('<option>Buscando capitulos...</option>');
                 $area_selector.html('<option>Buscando areas...</option>');

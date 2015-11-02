@@ -45,7 +45,7 @@ class PreguntaController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $tipoRespuesta = $em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($idTipoRespuesta);
         $error = '';
-        $form = $this->createForm(new PreguntaType(), $entity);
+        $form = $this->createForm(new PreguntaType($idTipoRespuesta), $entity);
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             return $this->aObtenerDatosLibro($entity->getLibro());

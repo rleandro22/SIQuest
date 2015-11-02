@@ -9,6 +9,12 @@ use Symfony\Component\Validator\Constraints\Regex;
 
 class PreguntaType extends AbstractType {
 
+    private $idTipoRespuesta;
+
+    public function __construct($idTipoRespuesta) {
+        $this->idTipoRespuesta= $idTipoRespuesta;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -27,7 +33,7 @@ class PreguntaType extends AbstractType {
                 ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('tipoPrueba', 'entity', array('class' => 'UciBaseDatosBundle:TipoPrueba', 'expanded' => true, 'multiple' => true, 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('respuesta', 'collection', array(
-                    'type' => new RespuestaType(),
+                    'type' => new RespuestaType($this->idTipoRespuesta),
                     'prototype' => true,
                     'allow_add' => true,
                     'by_reference' => false,

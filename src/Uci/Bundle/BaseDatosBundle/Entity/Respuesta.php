@@ -31,7 +31,7 @@ class Respuesta {
     /**
      * @var string
      *
-     * @ORM\Column(name="correcta", type="smallint", length=1, nullable=false)
+     * @ORM\Column(name="correcta", type="smallint", length=1, nullable=true)
      */
     private $correcta;
 

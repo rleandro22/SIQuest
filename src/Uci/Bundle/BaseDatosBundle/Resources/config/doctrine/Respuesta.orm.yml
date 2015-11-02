@@ -27,7 +27,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
             column: texto_retroalimentacion
         correcta:
             type: smallint
-            nullable: false
+            nullable: true
             length: 1
             fixed: false
             comment: ''
