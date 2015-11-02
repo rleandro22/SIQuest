@@ -32,7 +32,7 @@ class Pregunta {
     /**
      * @var integer
      *
-     * @ORM\Column(name="numero_pagina", type="integer", nullable=false)
+     * @ORM\Column(name="numero_pagina", type="integer", nullable=true)
      */
     private $numeroPagina;
 

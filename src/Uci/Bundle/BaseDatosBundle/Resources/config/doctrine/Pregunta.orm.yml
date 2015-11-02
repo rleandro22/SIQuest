@@ -39,7 +39,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
             column: titulo
         numeroPagina:
             type: integer
-            nullable: false
+            nullable: true
             unsigned: false
             comment: ''
             column: numero_pagina

@@ -139,7 +139,7 @@
             newLi.append(form);
             newLi.append(removeFormA);
             collectionHolder.append(newLi);
-            siSaleEsGuaba();
+            ponerPaneles();
             return prototype;
         }
 
@@ -156,7 +156,7 @@
             }
         }
 
-        function siSaleEsGuaba() {
+        function ponerPaneles() {
 
             $(":input[type=text], textarea").mouseenter(function () {
                 quitarAnterior();
@@ -164,7 +164,6 @@
                 nombre = nombre.replace(/\]/g, '');
                 areaPrevia = nombre;
                 area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
-                $(".nicEdit-main").focus();
             });
 
             $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
@@ -174,6 +173,7 @@
 
         function mostrarAtrPmbok(esPmbok) {
             if (esPmbok == 1) {
+                esPmbok=true;
                 $("#filaArea").removeClass('hidden');
                 $("#filaGrupo").removeClass('hidden');
                 $("#filaTriangulo").removeClass('hidden');
@@ -186,7 +186,7 @@
 
         document.ready = function () {
 
-            siSaleEsGuaba();
+            ponerPaneles();
             $("#areaSalida").mouseenter(function (e) {
                 e.preventDefault();
                 quitarAnterior();
@@ -200,9 +200,7 @@
                     type: $("#formularioPrincipal").attr('method'),
                     url: $("#formularioPrincipal").attr('action'),
                     data: $("#formularioPrincipal").serialize(),
-                    //contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    // traditional: true,
                     success: function (data) {
                         mostrarAtrPmbok(data.esPmbok);
                         $capitulo_selector.html('<option>Capitulo</option>');
