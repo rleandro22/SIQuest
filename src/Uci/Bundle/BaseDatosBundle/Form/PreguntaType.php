@@ -36,8 +36,10 @@ class PreguntaType extends AbstractType {
                     'type' => new RespuestaType($this->idTipoRespuesta),
                     'prototype' => true,
                     'allow_add' => true,
+                    'allow_delete' => TRUE,
                     'by_reference' => false,
-                    'label' => ' '
+                    'label' => ' ',
+                    'options' => array('label' => false)
         ));
     }
 

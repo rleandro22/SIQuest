@@ -75,8 +75,12 @@ class RespuestaType extends AbstractType {
             $this->labelCorrecta = '¿Es la respuesta correcta? ';
             $this->labelTextoRespuesta = 'Enunciado de la respuesta: ';
         }
+        if ($this->idTipoRespuesta == 4) {
+            $this->labelCorrecta = '¿Es verdadera? ';
+            $this->labelTextoRespuesta = 'Enunciado de la respuesta: ';
+        }
         if ($this->idTipoRespuesta == 6) {
-            $this->labelCorrecta = '¿Es la respuesta válida? ';
+            $this->labelCorrecta = '¿Es una respuesta válida? ';
             $this->labelTextoRespuesta = 'Palabra de la respuesta: ';
         }
         if ($this->idTipoRespuesta == 8) {

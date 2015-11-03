@@ -15,9 +15,9 @@ class PmbokType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('edicion','integer', array("label" => "Edición: "))
-                ->add('areaConocimiento', 'entity', array("label" => "Área de Conocimiento: ",'class' => 'UciBaseDatosBundle:AreaConocimiento', 'required' => false,'expanded' => true, 'multiple' => true, 'attr' => array('style' => 'width: 100%')))
-                ->add('grupoProcesos', 'entity', array("label" => "Grupo de Proceso: ",'class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false,'expanded' => true, 'multiple' => true, 'attr' => array('style' => 'width: 100%')))
-                ->add('trianguloTalento', 'entity', array("label" => "Triángulo de Talento: ",'class' => 'UciBaseDatosBundle:TrianguloTalento', 'required' => false,'expanded' => true, 'multiple' => true, 'attr' => array('style' => 'width: 100%')))
+                ->add('areaConocimiento', 'entity', array("label" => "Área de Conocimiento: ",'class' => 'UciBaseDatosBundle:AreaConocimiento', 'required' => false,'expanded' => false, 'multiple' => true, 'attr' => array('style' => 'width: 100%')))
+                ->add('grupoProcesos', 'entity', array("label" => "Grupo de Proceso: ",'class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false,'expanded' => false, 'multiple' => true, 'attr' => array('style' => 'width: 100%')))
+                ->add('trianguloTalento', 'entity', array("label" => "Triángulo de Talento: ",'class' => 'UciBaseDatosBundle:TrianguloTalento', 'required' => false,'expanded' => false, 'multiple' => true, 'attr' => array('style' => 'width: 100%')))
 
         ;
     }

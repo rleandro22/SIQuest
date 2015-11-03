@@ -40,7 +40,7 @@ class PreguntaController extends Controller {
         ));
     }
 
-    public function aRegistrarPreguntaAction(Request $request, $idTipoRespuesta) {
+    public function aRegistrarPreguntaAction(Request $request, $idTipoRespuesta , $idTipoRespuesta) {
         $entity = new Pregunta();
         $em = $this->getDoctrine()->getManager();
         $entity->setTipoRespuesta($em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($idTipoRespuesta));
@@ -70,6 +70,35 @@ class PreguntaController extends Controller {
                     'form' => $form->createView(),
                     'error' => $error,
         ));
+    }
+
+    public function aEditarPreguntaAction(Request $request, $idPregunta) {
+        $em = $this->getDoctrine()->getManager();
+        $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunta);
+        $error = '';
+        if (!$pregunta) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $form = $this->createForm(new PreguntaType($pregunta->getTipoRespuesta()->getId()), $pregunta);
+        $form->handleRequest($request);
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            return $this->aObtenerDatosLibro($pregunta->getLibro());
+        }else if ($request->getMethod() == 'POST') {
+            $error = $form->getErrors();
+            if ($form->isValid()) {
+                $em->flush();
+            }
+            return $this->redirectToRoute('uci_administrador_indicepreguntas');
+        }
+        return $this->render('UciAdministradorBundle:VistaPregunta:editarPregunta.html.twig', array(
+                    'entity' => $pregunta,
+                    'error' => $error,
+                    'form' => $form->createView()
+        ));
+    }
+    
+    private function verificarSiRespuestaBorrada(){
+        
     }
 
     private function aObtenerDatosLibro($libro) {

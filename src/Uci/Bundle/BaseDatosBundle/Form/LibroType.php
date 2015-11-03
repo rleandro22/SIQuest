@@ -7,11 +7,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class LibroType extends AbstractType {
-    
+
     private $edita;
 
     public function __construct($edita) {
-        $this->edita= $edita;
+        $this->edita = $edita;
     }
 
     /**
@@ -24,15 +24,15 @@ class LibroType extends AbstractType {
                 ->add('anio', 'integer', array("label" => "Año: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('numeroPaginas', 'integer', array("label" => "Páginas: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ', 'mapped' => false, 'multiple' => false, 'expanded' => true, 'data' => $this->edita))
-                ->add('idiomas','entity', array('class' => 'UciBaseDatosBundle:Idiomas', 'required' => true))
-                ->add('pmbok',new PmbokType())
+                ->add('idiomas', 'entity', array('class' => 'UciBaseDatosBundle:Idiomas', 'required' => true))
+                ->add('pmbok', new PmbokType())
                 ->add('capitulos', 'collection', array(
-                'type' => new CapituloType(),
-                'by_reference'   => false,
-                'allow_delete'   => true,
-                'allow_add'      => true,
-                'prototype'      => true,
-                'label'          => ''))
+                    'type' => new CapituloType(),
+                    'by_reference' => false,
+                    'allow_delete' => true,
+                    'allow_add' => true,
+                    'prototype' => true,
+                    'label' => ''))
         ;
     }
 
