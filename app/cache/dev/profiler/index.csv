@@ -11,3 +11,6 @@ fba378,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/4/registrar_pregun
 62892c,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446582178,,200
 c1c25f,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446582181,,302
 55cb22,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446582181,,200
+b260f1,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1446582234,,200
+ca611a,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/lista_libros,1446582236,,200
+6f30de,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1446582238,,200
