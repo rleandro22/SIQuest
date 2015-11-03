@@ -15,8 +15,8 @@ class __TwigTemplate_98c610971ad8fa5373ba85e25e9ef1774716d74c1c179af0f49e722ccdc
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e01201f63a9e90213eee17125f6de35e20fed295b4758a22723caa986a3d0759 = $this->env->getExtension("native_profiler");
-        $__internal_e01201f63a9e90213eee17125f6de35e20fed295b4758a22723caa986a3d0759->enter($__internal_e01201f63a9e90213eee17125f6de35e20fed295b4758a22723caa986a3d0759_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaPregunta:elegirTipoPregunta.html.twig"));
+        $__internal_2a52e2e15bf61d9b20043e0d417f636b135cab8a4a210367644d06fe09f71df5 = $this->env->getExtension("native_profiler");
+        $__internal_2a52e2e15bf61d9b20043e0d417f636b135cab8a4a210367644d06fe09f71df5->enter($__internal_2a52e2e15bf61d9b20043e0d417f636b135cab8a4a210367644d06fe09f71df5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaPregunta:elegirTipoPregunta.html.twig"));
 
         // line 1
         echo "
@@ -83,7 +83,7 @@ class __TwigTemplate_98c610971ad8fa5373ba85e25e9ef1774716d74c1c179af0f49e722ccdc
 </div>
 ";
         
-        $__internal_e01201f63a9e90213eee17125f6de35e20fed295b4758a22723caa986a3d0759->leave($__internal_e01201f63a9e90213eee17125f6de35e20fed295b4758a22723caa986a3d0759_prof);
+        $__internal_2a52e2e15bf61d9b20043e0d417f636b135cab8a4a210367644d06fe09f71df5->leave($__internal_2a52e2e15bf61d9b20043e0d417f636b135cab8a4a210367644d06fe09f71df5_prof);
 
     }
 

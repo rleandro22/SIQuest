@@ -15,8 +15,8 @@ class __TwigTemplate_c79f94bff499b2038b0df767ca9f9493403da5ad7c4fda2a293407eebef
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_72b15f9b00ef6a13aa33e612fd129b642c414d463c173bdcaf6365674f6dcbb3 = $this->env->getExtension("native_profiler");
-        $__internal_72b15f9b00ef6a13aa33e612fd129b642c414d463c173bdcaf6365674f6dcbb3->enter($__internal_72b15f9b00ef6a13aa33e612fd129b642c414d463c173bdcaf6365674f6dcbb3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoLibro.html.twig"));
+        $__internal_9031512adc2e2f2368874087124c17873f0dfaf008c18cde95f04c7e99600bdb = $this->env->getExtension("native_profiler");
+        $__internal_9031512adc2e2f2368874087124c17873f0dfaf008c18cde95f04c7e99600bdb->enter($__internal_9031512adc2e2f2368874087124c17873f0dfaf008c18cde95f04c7e99600bdb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoLibro.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -42,7 +42,7 @@ class __TwigTemplate_c79f94bff499b2038b0df767ca9f9493403da5ad7c4fda2a293407eebef
 </div>
 ";
         
-        $__internal_72b15f9b00ef6a13aa33e612fd129b642c414d463c173bdcaf6365674f6dcbb3->leave($__internal_72b15f9b00ef6a13aa33e612fd129b642c414d463c173bdcaf6365674f6dcbb3_prof);
+        $__internal_9031512adc2e2f2368874087124c17873f0dfaf008c18cde95f04c7e99600bdb->leave($__internal_9031512adc2e2f2368874087124c17873f0dfaf008c18cde95f04c7e99600bdb_prof);
 
     }
 

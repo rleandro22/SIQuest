@@ -25,8 +25,7 @@ class LibroType extends AbstractType {
                 ->add('numeroPaginas', 'integer', array("label" => "Páginas: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ', 'mapped' => false, 'multiple' => false, 'expanded' => true, 'data' => $this->edita))
                 ->add('idiomas','entity', array('class' => 'UciBaseDatosBundle:Idiomas', 'required' => true))
-              //  ->add('capitulos','entity', array('class' => 'UciBaseDatosBundle:Capitulo','multiple'=>true,'mapped'=>false, 'required' => false))
-                ->add('pmbok','entity', array('class' => 'UciBaseDatosBundle:Pmbok', 'required' => false))
+                ->add('pmbok',new PmbokType())
                 ->add('capitulos', 'collection', array(
                 'type' => new CapituloType(),
                 'by_reference'   => false,

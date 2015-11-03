@@ -452,3 +452,8 @@ a8258c,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/9/registrar_pregun
 a983b7,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/9/registrar_pregunta,1446576260,,500
 e15205,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/9/registrar_pregunta,1446576400,,302
 59465f,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1446576401,,200
+8a11d6,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1446576673,,200
+1629e5,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1446576676,,200
+9f3b24,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446576678,,200
+ffd979,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446576685,,302
+26a87d,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/4/registrar_pregunta,1446576686,,200
