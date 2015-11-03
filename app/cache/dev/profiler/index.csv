@@ -3,3 +3,11 @@ e7f208,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1446
 0c23ae,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446576903,,200
 d00b29,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446576906,,302
 2f669e,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446576907,,200
+8d7241,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1446582163,,200
+b0ff47,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1446582165,,200
+838a63,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446582167,,200
+a6cc71,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446582169,,302
+fba378,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/4/registrar_pregunta,1446582170,,200
+62892c,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446582178,,200
+c1c25f,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1446582181,,302
+55cb22,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/2/registrar_pregunta,1446582181,,200
