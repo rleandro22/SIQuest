@@ -23,34 +23,34 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0ede79afbc4b0e353a3d0f433a96e27bcb0814152823de459208d8e2c266f691 = $this->env->getExtension("native_profiler");
-        $__internal_0ede79afbc4b0e353a3d0f433a96e27bcb0814152823de459208d8e2c266f691->enter($__internal_0ede79afbc4b0e353a3d0f433a96e27bcb0814152823de459208d8e2c266f691_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaPregunta:registrarPregunta.html.twig"));
+        $__internal_1db975b1c6b23e1de769bafa10e19a0958256030479e36d61990537cc9ab0872 = $this->env->getExtension("native_profiler");
+        $__internal_1db975b1c6b23e1de769bafa10e19a0958256030479e36d61990537cc9ab0872->enter($__internal_1db975b1c6b23e1de769bafa10e19a0958256030479e36d61990537cc9ab0872_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaPregunta:registrarPregunta.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_0ede79afbc4b0e353a3d0f433a96e27bcb0814152823de459208d8e2c266f691->leave($__internal_0ede79afbc4b0e353a3d0f433a96e27bcb0814152823de459208d8e2c266f691_prof);
+        $__internal_1db975b1c6b23e1de769bafa10e19a0958256030479e36d61990537cc9ab0872->leave($__internal_1db975b1c6b23e1de769bafa10e19a0958256030479e36d61990537cc9ab0872_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_1e9508c04ccd92cbefa3684c392814086bac055125f5860a81e7677e7bf8842a = $this->env->getExtension("native_profiler");
-        $__internal_1e9508c04ccd92cbefa3684c392814086bac055125f5860a81e7677e7bf8842a->enter($__internal_1e9508c04ccd92cbefa3684c392814086bac055125f5860a81e7677e7bf8842a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_f5d57c406d855c166545f5f04b8f556967f211b2b3695e86fd55385a54e4cc54 = $this->env->getExtension("native_profiler");
+        $__internal_f5d57c406d855c166545f5f04b8f556967f211b2b3695e86fd55385a54e4cc54->enter($__internal_f5d57c406d855c166545f5f04b8f556967f211b2b3695e86fd55385a54e4cc54_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_1e9508c04ccd92cbefa3684c392814086bac055125f5860a81e7677e7bf8842a->leave($__internal_1e9508c04ccd92cbefa3684c392814086bac055125f5860a81e7677e7bf8842a_prof);
+        $__internal_f5d57c406d855c166545f5f04b8f556967f211b2b3695e86fd55385a54e4cc54->leave($__internal_f5d57c406d855c166545f5f04b8f556967f211b2b3695e86fd55385a54e4cc54_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_303d1019e64bf816cd521bc8e4254c176e8397b08827963f64730ea02c9d96ed = $this->env->getExtension("native_profiler");
-        $__internal_303d1019e64bf816cd521bc8e4254c176e8397b08827963f64730ea02c9d96ed->enter($__internal_303d1019e64bf816cd521bc8e4254c176e8397b08827963f64730ea02c9d96ed_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_9a10e1b742d9b19bb98001fb64f910597ee5253b4c577c8971b3829ee81fb67d = $this->env->getExtension("native_profiler");
+        $__internal_9a10e1b742d9b19bb98001fb64f910597ee5253b4c577c8971b3829ee81fb67d->enter($__internal_9a10e1b742d9b19bb98001fb64f910597ee5253b4c577c8971b3829ee81fb67d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -69,7 +69,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
         </ol>
         <form id=\"formularioPrincipal\" action=\"";
         // line 16
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_registrarPregunta", array("idTipoRespuesta" => $this->getAttribute((isset($context["tipoRespuesta"]) ? $context["tipoRespuesta"] : $this->getContext($context, "tipoRespuesta")), "id", array()))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_registrarPregunta", array("idTipoRespuesta" => $this->getAttribute($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "tipoRespuesta", array()), "id", array()))), "html", null, true);
         echo "\" name=\"formulario\" method=\"POST\" enctype=\"multipart/form-data\">             
 
             <div class=\"row\">
@@ -93,29 +93,25 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                             <div class=\"panel-body\">
                                 <h3 class=\"thin text-center\">Registrar una nueva pregunta ";
         // line 34
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["tipoRespuesta"]) ? $context["tipoRespuesta"] : $this->getContext($context, "tipoRespuesta")), "nombre", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "tipoRespuesta", array()), "nombre", array()), "html", null, true);
         echo "</h3>
-                                <p class=\"text-center text-muted\">";
-        // line 35
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["tipoRespuesta"]) ? $context["tipoRespuesta"] : $this->getContext($context, "tipoRespuesta")), "explicacion", array()), "html", null, true);
-        echo "</p>
                                 <hr>
 
                                 ";
-        // line 38
+        // line 37
         if ((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error"))) {
-            // line 39
+            // line 38
             echo "                                    <div style=\"color:red\">";
             echo twig_escape_filter($this->env, (isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "html", null, true);
             echo "</div>
                                 ";
         }
-        // line 41
+        // line 40
         echo "
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
-        // line 44
+        // line 43
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "titulo", array()), 'row');
         echo "
                                     </div>
@@ -123,7 +119,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
-        // line 49
+        // line 48
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "libro", array()), 'row');
         echo "
                                     </div>
@@ -131,7 +127,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
-        // line 54
+        // line 53
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "numeroPagina", array()), 'row');
         echo "
                                     </div>
@@ -139,7 +135,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
-        // line 59
+        // line 58
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "capitulo", array()), 'row');
         echo "
                                     </div>
@@ -147,7 +143,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden\" id=\"filaArea\">
                                         ";
-        // line 64
+        // line 63
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "areaConocimiento", array()), 'row');
         echo "
                                     </div>
@@ -155,7 +151,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden\" id=\"filaGrupo\">
                                         ";
-        // line 69
+        // line 68
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "grupoProcesos", array()), 'row');
         echo "
                                     </div>
@@ -163,7 +159,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden\" id=\"filaTriangulo\">
                                         ";
-        // line 74
+        // line 73
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "trianguloTalento", array()), 'row');
         echo "
                                     </div>
@@ -171,7 +167,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                                 <div class=\"row top-margin\">
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
                                         ";
-        // line 79
+        // line 78
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "tipoPrueba", array()), 'row');
         echo "
                                     </div>
@@ -187,8 +183,12 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                 <!-- /Article -->
             </div>
 
-            <div class=\"row\">
-                <h3>Respuestas</h3><br>
+            <div class=\"row\" id=\"panelRespuestas\">
+                <h3><a id=\"linkTextoResp\" href=\"#\" style=\"text-decoration: none;\">Respuestas</a></h3><hr>
+                <div id=\"explicacionRespuesta\" style=\"display: none;\"><p class=\"text-warning\">";
+        // line 94
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "tipoRespuesta", array()), "explicacion", array()), "html", null, true);
+        echo "</p><hr></div>
                 <ul id=\"respuestas\" data-prototype=\"";
         // line 95
         echo twig_escape_filter($this->env, $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "respuesta", array()), "vars", array()), "prototype", array()), 'widget'));
@@ -211,9 +211,10 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
         echo "                </ul>
                 <br><br>
                 <a href=\"#\" id=\"respuesta_link\">Añadir respuesta</a>
-                <br><br>
+                <br>
 
             </div>
+            <br>
             <div class=\"row\" id=\"areaSalida\">
                 <div class=\"col-lg-8\">                     
                 </div>
@@ -222,7 +223,7 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
                 </div>
             </div>
             ";
-        // line 112
+        // line 113
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
         </form>
@@ -234,180 +235,211 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
 
 ";
         
-        $__internal_303d1019e64bf816cd521bc8e4254c176e8397b08827963f64730ea02c9d96ed->leave($__internal_303d1019e64bf816cd521bc8e4254c176e8397b08827963f64730ea02c9d96ed_prof);
+        $__internal_9a10e1b742d9b19bb98001fb64f910597ee5253b4c577c8971b3829ee81fb67d->leave($__internal_9a10e1b742d9b19bb98001fb64f910597ee5253b4c577c8971b3829ee81fb67d_prof);
 
     }
 
-    // line 122
+    // line 123
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_3c4e379d6e7ad001738a53ddceb87019f1df9f7bac073e2e6f2e452736bc06a0 = $this->env->getExtension("native_profiler");
-        $__internal_3c4e379d6e7ad001738a53ddceb87019f1df9f7bac073e2e6f2e452736bc06a0->enter($__internal_3c4e379d6e7ad001738a53ddceb87019f1df9f7bac073e2e6f2e452736bc06a0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_494b5c7bc26711a9732d4fe183b261bf96bc9aa1a0ef440e25f79e8897c84b33 = $this->env->getExtension("native_profiler");
+        $__internal_494b5c7bc26711a9732d4fe183b261bf96bc9aa1a0ef440e25f79e8897c84b33->enter($__internal_494b5c7bc26711a9732d4fe183b261bf96bc9aa1a0ef440e25f79e8897c84b33_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 123
+        // line 124
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script type=\"text/javascript\">
 
         var area1;
-        var areaPrevia;
-        var \$capitulo_selector = \$('#uci_bundle_basedatosbundle_pregunta_capitulo');
-        var \$area_selector = \$('#uci_bundle_basedatosbundle_pregunta_areaConocimiento');
-        var \$grupo_selector = \$('#uci_bundle_basedatosbundle_pregunta_grupoProcesos');
-        var \$triangulo_selector = \$('#uci_bundle_basedatosbundle_pregunta_trianguloTalento');
+                var areaPrevia;
+                var \$capitulo_selector = \$('#uci_bundle_basedatosbundle_pregunta_capitulo');
+                var \$area_selector = \$('#uci_bundle_basedatosbundle_pregunta_areaConocimiento');
+                var \$grupo_selector = \$('#uci_bundle_basedatosbundle_pregunta_grupoProcesos');
+                var \$triangulo_selector = \$('#uci_bundle_basedatosbundle_pregunta_trianguloTalento');
+                function addRespuesta() {
+                var idTipoRespuesta = ";
+        // line 134
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "tipoRespuesta", array()), "id", array()), "html", null, true);
+        echo ";
+                        if (idTipoRespuesta == 2) {
+                if (\$(\"#respuestas li\").length < 1){
+                agregarPrototipo();
+                } else{
+                alert('Esta tipo de preguntas solo tiene una respuesta');
+                }
+                } else{
+                agregarPrototipo();
+                }
+                }
 
-        function addRespuesta() {
-            var collectionHolder = \$('#respuestas');
-            var prototype = collectionHolder.attr('data-prototype');
-            var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
-            var removeFormA = \$('<a href=\"#\" onclick=\"addTagFormDeleteLink(event, this);\">Borrar</a>');
-            var newLi = \$('<li></li>');
-            newLi.append(form);
-            newLi.append(removeFormA);
-            collectionHolder.append(newLi);
-            ponerPaneles();
-            agregarExlusores();
-            return prototype;
+        function agregarPrototipo(){
+        var collectionHolder = \$('#respuestas');
+                var prototype = collectionHolder.attr('data-prototype');
+                var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
+                var removeFormA = \$('<a href=\"#\" onclick=\"addTagFormDeleteLink(event, this);\">Borrar</a>');
+                var newLi = \$('<li></li>');
+                newLi.append(form);
+                newLi.append(removeFormA);
+                collectionHolder.append(newLi);
+                ponerPaneles();
+                if(";
+        // line 156
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "tipoRespuesta", array()), "id", array()), "html", null, true);
+        echo "!=4 && ";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "tipoRespuesta", array()), "id", array()), "html", null, true);
+        echo "!=6){
+                agregarExlusores();
+            }
+                return prototype;
         }
 
         function addTagFormDeleteLink(e, elemento) {
-            e.preventDefault();
-            var removeFormA = elemento.parentNode;
-            removeFormA.remove();
+        e.preventDefault();
+                var removeFormA = elemento.parentNode;
+                removeFormA.remove();
         }
 
         function quitarAnterior() {
-            if (area1) {
-                area1.removeInstance(areaPrevia);
+        if (area1) {
+        area1.removeInstance(areaPrevia);
                 area1 = null;
-            }
+        }
         }
 
         function ponerPaneles() {
 
-            \$(\":input[type=text], textarea\").mouseenter(function () {
-                quitarAnterior();
+        \$(\":input[type=text], textarea\").mouseenter(function () {
+        quitarAnterior();
                 var nombre = \$(this).attr(\"name\").replace(/\\[/g, '_');
                 nombre = nombre.replace(/\\]/g, '');
                 areaPrevia = nombre;
                 area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
-            });
-
-            \$(\":input:not(input[type=text], textarea):not(:button)\").focus(function () {
-                quitarAnterior();
-            });
+        });
+                \$(\":input:not(input[type=text], textarea):not(:button)\").focus(function () {
+        quitarAnterior();
+        });
         }
 
         function mostrarAtrPmbok(esPmbok) {
-            if (esPmbok == 1) {
-                esPmbok = true;
+        if (esPmbok == 1) {
+        esPmbok = true;
                 \$(\"#filaArea\").removeClass('hidden');
                 \$(\"#filaGrupo\").removeClass('hidden');
                 \$(\"#filaTriangulo\").removeClass('hidden');
-            } else {
-                \$(\"#filaArea\").addClass('hidden');
+        } else {
+        \$(\"#filaArea\").addClass('hidden');
                 \$(\"#filaGrupo\").addClass('hidden');
                 \$(\"#filaTriangulo\").addClass('hidden');
-            }
+        }
         }
 
         //Este metodo hace que no haya 2 o más respuestas correctas
         function agregarExlusores() {
-            \$(\"select[id\$='correcta']\").change(function () {
-                if (\$(this).val() == 1) {
-                    var id = \$(this).attr(\"id\");
-                    \$(\"select[id\$='correcta']\").not(\"#\" + id).val(0);
-                    ;
-                }
-            });
+        \$(\"select[id\$='correcta']\").change(function () {
+        if (\$(this).val() == 1) {
+        var id = \$(this).attr(\"id\");
+                \$(\"select[id\$='correcta']\").not(\"#\" + id).val(0);
+        }
+        });
         }
 
         document.ready = function () {
 
-            ponerPaneles();
-            \$(\"#areaSalida\").mouseenter(function (e) {
-                e.preventDefault();
+        if ((";
+        // line 214
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "tipoRespuesta", array()), "id", array()), "html", null, true);
+        echo " == 5) || (";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "tipoRespuesta", array()), "id", array()), "html", null, true);
+        echo " == 7)) {
+        \$('#panelRespuestas').hide();
+        }
+
+        ponerPaneles();
+                \$(\"#areaSalida\").mouseenter(function (e) {
+        e.preventDefault();
                 quitarAnterior();
-            });
-
-
-            \$(\"#uci_bundle_basedatosbundle_pregunta_libro\").change(function () {
-                \$capitulo_selector.html('<option>Buscando capitulos...</option>');
+        });
+                \$(\"#uci_bundle_basedatosbundle_pregunta_libro\").change(function () {
+        \$capitulo_selector.html('<option>Buscando capitulos...</option>');
                 \$area_selector.html('<option>Buscando areas...</option>');
                 \$grupo_selector.html('<option>Buscando grupos...</option>');
                 \$triangulo_selector.html('<option>Buscando triangulo...</option>');
                 \$.ajax({
-                    type: \$(\"#formularioPrincipal\").attr('method'),
-                    url: \$(\"#formularioPrincipal\").attr('action'),
-                    data: \$(\"#formularioPrincipal\").serialize(),
-                    dataType: \"json\",
-                    success: function (data) {
+                type: \$(\"#formularioPrincipal\").attr('method'),
+                        url: \$(\"#formularioPrincipal\").attr('action'),
+                        data: \$(\"#formularioPrincipal\").serialize(),
+                        dataType: \"json\",
+                        success: function (data) {
                         mostrarAtrPmbok(data.esPmbok);
-                        \$capitulo_selector.html('<option>Capitulo</option>');
-                        if (data.capitulos[0].id > 0) {
-                            for (var i = 0, total = data.capitulos.length; i < total; i++) {
-                                \$capitulo_selector.append('<option value=\"' + data.capitulos[i].id + '\">' + data.capitulos[i].nombreCapitulo + '</option>');
-                            }
+                                \$capitulo_selector.html('<option>Capitulo</option>');
+                                if (data.capitulos[0].id > 0) {
+                        for (var i = 0, total = data.capitulos.length; i < total; i++) {
+                        \$capitulo_selector.append('<option value=\"' + data.capitulos[i].id + '\">' + data.capitulos[i].nombreCapitulo + '</option>');
+                        }
                         }
                         \$area_selector.html('<option>A. Conocimiento</option>');
-                        if (data.areas[0].id > 0) {
-                            for (var i = 0, total = data.areas.length; i < total; i++) {
-                                \$area_selector.append('<option value=\"' + data.areas[i].id + '\">' + data.areas[i].nombreArea + '</option>');
-                            }
+                                if (data.areas[0].id > 0) {
+                        for (var i = 0, total = data.areas.length; i < total; i++) {
+                        \$area_selector.append('<option value=\"' + data.areas[i].id + '\">' + data.areas[i].nombreArea + '</option>');
+                        }
                         }
                         \$grupo_selector.html('<option>G. Procesos</option>');
-                        if (data.grupos[0].id > 0) {
-                            for (var i = 0, total = data.grupos.length; i < total; i++) {
-                                \$grupo_selector.append('<option value=\"' + data.grupos[i].id + '\">' + data.grupos[i].nombreGrupo + '</option>');
-                            }
+                                if (data.grupos[0].id > 0) {
+                        for (var i = 0, total = data.grupos.length; i < total; i++) {
+                        \$grupo_selector.append('<option value=\"' + data.grupos[i].id + '\">' + data.grupos[i].nombreGrupo + '</option>');
+                        }
                         }
                         \$triangulo_selector.html('<option>T. talentos</option>');
-                        if (data.triangulos[0].id > 0) {
-                            for (var i = 0, total = data.triangulos.length; i < total; i++) {
-                                \$triangulo_selector.append('<option value=\"' + data.triangulos[i].id + '\">' + data.triangulos[i].nombreTalento + '</option>');
-                            }
+                                if (data.triangulos[0].id > 0) {
+                        for (var i = 0, total = data.triangulos.length; i < total; i++) {
+                        \$triangulo_selector.append('<option value=\"' + data.triangulos[i].id + '\">' + data.triangulos[i].nombreTalento + '</option>');
                         }
-                    },
-                    error: function () {
+                        }
+                        },
+                        error: function () {
                         alert(\"Ocurrio un error.\");
-                    }
+                        }
                 });
-            });
-            \$('#respuesta_link').on('click', function (e) {
-                e.preventDefault();
+        });
+                \$('#respuesta_link').on('click', function (e) {
+        e.preventDefault();
                 addRespuesta();
-            });
-            \$('table').footable().on('click', '.row-delete', function (e) {
-                e.preventDefault();
-            }
-            );
-            \$('body').on('hidden.bs.modal', '.modal', function () {
-                \$('.modal-content', this).empty();
+        });
+                \$('#linkTextoResp').on('click', function (e) {
+        e.preventDefault();
+                \$('#explicacionRespuesta').toggle(\"fast\");
+        });
+                \$('table').footable().on('click', '.row-delete', function (e) {
+        e.preventDefault();
+        }
+        );
+                \$('body').on('hidden.bs.modal', '.modal', function () {
+        \$('.modal-content', this).empty();
                 \$(this).removeData('bs.modal');
-            });
-            var handleSpeedBump = function (e) {
+        });
+                var handleSpeedBump = function (e) {
                 e.preventDefault();
-                var href = this.getAttribute(\"data-href\");
-                var sure = confirm(\"¿Esta seguro que desea realizar el borrado?\\n (Esta operación no es reversible)\");
-                if (!sure)
-                    return;
-                document.location = href;
-            };
-            \$(\"a.speedbump\")
-                    .click(handleSpeedBump)
-                    .bind(\"contextmenu\", handleSpeedBump)
-                    .dblclick(handleSpeedBump)
-                    .each(function () {
-                        var href = this.href;
+                        var href = this.getAttribute(\"data-href\");
+                        var sure = confirm(\"¿Esta seguro que desea realizar el borrado?\\n (Esta operación no es reversible)\");
+                        if (!sure)
+                        return;
+                        document.location = href;
+                };
+                \$(\"a.speedbump\")
+                .click(handleSpeedBump)
+                .bind(\"contextmenu\", handleSpeedBump)
+                .dblclick(handleSpeedBump)
+                .each(function () {
+                var href = this.href;
                         this.setAttribute(\"data-href\", href);
                         this.href = \"javascript:void('Navigate to \" + href.replace(\"'\", \"\") + \"')\";
-                    });
+                });
         };
     </script>
 ";
         
-        $__internal_3c4e379d6e7ad001738a53ddceb87019f1df9f7bac073e2e6f2e452736bc06a0->leave($__internal_3c4e379d6e7ad001738a53ddceb87019f1df9f7bac073e2e6f2e452736bc06a0_prof);
+        $__internal_494b5c7bc26711a9732d4fe183b261bf96bc9aa1a0ef440e25f79e8897c84b33->leave($__internal_494b5c7bc26711a9732d4fe183b261bf96bc9aa1a0ef440e25f79e8897c84b33_prof);
 
     }
 
@@ -423,6 +455,6 @@ class __TwigTemplate_f049fa4485198d6612fd1c65fd5f6d60c5e59897c418bd6abbeeeaa3902
 
     public function getDebugInfo()
     {
-        return array (  248 => 123,  242 => 122,  226 => 112,  211 => 99,  202 => 97,  198 => 96,  194 => 95,  175 => 79,  167 => 74,  159 => 69,  151 => 64,  143 => 59,  135 => 54,  127 => 49,  119 => 44,  114 => 41,  108 => 39,  106 => 38,  100 => 35,  96 => 34,  82 => 22,  80 => 21,  72 => 16,  66 => 13,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  351 => 214,  288 => 156,  263 => 134,  249 => 124,  243 => 123,  227 => 113,  211 => 99,  202 => 97,  198 => 96,  194 => 95,  190 => 94,  171 => 78,  163 => 73,  155 => 68,  147 => 63,  139 => 58,  131 => 53,  123 => 48,  115 => 43,  110 => 40,  104 => 38,  102 => 37,  96 => 34,  82 => 22,  80 => 21,  72 => 16,  66 => 13,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 }

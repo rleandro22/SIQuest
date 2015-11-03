@@ -43,7 +43,7 @@ class PreguntaController extends Controller {
     public function aRegistrarPreguntaAction(Request $request, $idTipoRespuesta) {
         $entity = new Pregunta();
         $em = $this->getDoctrine()->getManager();
-        $tipoRespuesta = $em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($idTipoRespuesta);
+        $entity->setTipoRespuesta($em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($idTipoRespuesta));
         $error = '';
         $form = $this->createForm(new PreguntaType($idTipoRespuesta), $entity);
         $form->handleRequest($request);
@@ -68,7 +68,6 @@ class PreguntaController extends Controller {
         return $this->render('UciAdministradorBundle:VistaPregunta:registrarPregunta.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
-                    'tipoRespuesta' => $tipoRespuesta,
                     'error' => $error,
         ));
     }
