@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Entity\Libro;
 use Uci\Bundle\BaseDatosBundle\Form\LibroType;
 use Uci\Bundle\BaseDatosBundle\Entity\Capitulo;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 /**
@@ -23,38 +24,31 @@ class LibroController extends Controller
         ));
     }
     
-    public function obtenerCapitulosAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery
-        (
-            'SELECT p.nombreCapitulo,p.numeroCapitulo,c.id as libro,c.titulo as titulo
-               FROM UciBaseDatosBundle:Capitulo p
-               JOIN UciBaseDatosBundle:Libro c WITH c.id =p.libro
-               '
-        );
-         
-        $datos = $query->getResult();
-        //print_r($datos);exit;
-        return $this->render('UciAdministradorBundle:VistaLibro:index.html.twig',compact("datos"));
-    }
-    
+     
     public function aRegistrarLibroAction(Request $request) {
         $entity = new Libro();
-        $capitulo = new Capitulo();
-        //$emc = $this->getDoctrine()->getManager();
-        //$capitulo = $emc->getRepository('UciBaseDatosBundle:Capitulo')->find(1);
-        $entity->addCapitulo($capitulo);
+        $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(new LibroType(0), $entity);
         $form->handleRequest($request);
         $error = '';
         if ($request->getMethod() == 'POST') {
             $error = $form->getErrors();
             if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($entity);
-                $em->flush();
-                return $this->redirectToRoute('uci_administrador_indicelibro');
+                $em->getConnection()->beginTransaction();
+                try {
+                    
+                    $em->persist($entity);
+                    $this->guardarCapitulos($em, $entity);
+                    if($entity->getEsPmbok()==1){
+                        $this->guardarPmbok($em, $entity);
+                    }
+                    $em->flush();
+                    $em->commit();
+                    return $this->redirectToRoute('uci_administrador_indicelibro');
+                } catch (Exception $e) {
+                    $em->getConnection()->rollback();
+                    $error = $e;
+                }
             }
         }
         return $this->render('UciAdministradorBundle:VistaLibro:registrarLibro.html.twig', array(
@@ -62,6 +56,43 @@ class LibroController extends Controller
                     'form' => $form->createView(),
                     'error' => $error,
         ));
+    }
+    
+     private function guardarCapitulos($em, &$libro) {
+        $capitulos = $libro->getCapitulos();
+        foreach ($capitulos as $capitulo) {
+            $capitulo->setLibro($libro);
+            $em->persist($capitulo);
+            $em->clear($capitulo);
+        }
+    }
+    
+    private function guardarPmbok($em, &$libro) {
+        $pmbok =$libro->getPmbok();
+        
+        $em->persist($pmbok);
+        
+        $areas = $pmbok->getAreaConocimiento();
+        $grupos = $pmbok->getGrupoProcesos();
+        $triangulos = $pmbok->getTrianguloTalento();
+        
+        foreach ($areas as $area) {
+            $area->addPmbok($pmbok);
+            $em->persist($area);
+            $em->clear($area);
+        }
+        
+        foreach ($grupos as $grupo) {
+            $grupo->addPmbok($pmbok);
+            $em->persist($grupo);
+            $em->clear($grupo);
+        }
+        
+        foreach ($triangulos as $triangulo) {
+            $triangulo->addPmbok($pmbok);
+            $em->persist($triangulo);
+            $em->clear($triangulo);
+        }
     }
     
    

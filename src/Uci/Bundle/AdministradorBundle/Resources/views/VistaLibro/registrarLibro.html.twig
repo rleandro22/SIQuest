@@ -100,14 +100,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for capitulo in entity.capitulos %}
-                                            <tr>
-
-                                                <td>{{capitulo.numeroCapitulo}}</td>
-                                                <td>{{capitulo.nombreCapitulo}}</td>
-                                                <td></td>
-                                            </tr>
-                                        {% endfor %}
+                                       
                                     </tbody>
                                 </table>
                                     <a href="#" id="capitulo_link">Añadir capítulo</a>
@@ -134,7 +127,7 @@
                                 </div>
                                     
                                 <hr>
-                               
+                                        {{ form_rest(form) }}
                                 <div class="row">
                                     <div class="col-lg-8">                     
                                     </div>

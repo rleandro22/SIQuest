@@ -5,6 +5,8 @@ namespace Uci\Bundle\BaseDatosBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\Regex;
+
 
 class LibroType extends AbstractType {
 
@@ -22,10 +24,14 @@ class LibroType extends AbstractType {
         $builder
                 ->add('titulo', 'text', array("label" => "Titulo: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('anio', 'integer', array("label" => "Año: ", "required" => true, "attr" => array('class' => 'form-control')))
-                ->add('numeroPaginas', 'integer', array("label" => "Páginas: ", "required" => true, "attr" => array('class' => 'form-control')))
-                ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ', 'mapped' => false, 'multiple' => false, 'expanded' => true, 'data' => $this->edita))
+                ->add('numeroPaginas', 'integer', array("label" => "Páginas: ", "required" => true, "attr" => array('class' => 'form-control'),'precision' => 0, 'constraints' => array(
+                        new Regex(array(
+                            'pattern' => '/^[0-9]\d*$/',
+                            'message' => 'Use solo números positivos.'
+                        )))))
+                ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ',  'multiple' => false, 'expanded' => true, 'data' => $this->edita))
                 ->add('idiomas', 'entity', array('class' => 'UciBaseDatosBundle:Idiomas', 'required' => true))
-                ->add('pmbok', new PmbokType())
+                ->add('pmbok', new PmbokType(),array('required' => false))
                 ->add('capitulos', 'collection', array(
                     'type' => new CapituloType(),
                     'by_reference' => false,
