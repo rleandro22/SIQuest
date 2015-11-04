@@ -127,6 +127,24 @@ class PreguntaController extends Controller {
         }
     }
 
+    public function aBorrarPreguntaAction(Request $request, $idPregunta) {
+        $em = $this->getDoctrine()->getManager();
+        $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunta);
+        if (!$pregunta) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $em->getConnection()->beginTransaction();
+        try {
+            $this->borrarRespuestas($em, $pregunta);
+            $em->remove($pregunta);
+            $em->flush();
+            $em->commit();
+        } catch (Exception $e) {
+            $em->getConnection()->rollback();
+        }
+        return $this->redirectToRoute('uci_administrador_indicepreguntas');
+    }
+
     private function aObtenerDatosLibro($libro) {
         $idLibro = ($libro) ? $libro->getId() : 0;
         $idPmbok = ($libro) ? $idPmbok = ($libro->getEsPmbok() == 1) ? $libro->getPmbok()->getId() : 0 : 0;
@@ -212,11 +230,7 @@ class PreguntaController extends Controller {
         } else {
             $repository = $this->getDoctrine()->getRepository('UciBaseDatosBundle:Pregunta');
             $qb = $repository->createQueryBuilder('p');
-            
-            
-            
-            
-            
+
             if (!empty($idLibro)) {
                 $qb->innerJoin('p.libro', 'l');
                 $qb->where('l.id= :idLibro')
@@ -245,6 +259,14 @@ class PreguntaController extends Controller {
             $preguntas = $qb->getQuery()->getResult();
         }
         return $preguntas;
+    }
+
+    private function borrarRespuestas($em, &$pregunta) {
+        $respuestas = $pregunta->getRespuesta();
+        foreach ($respuestas as $respuesta) {
+            $em->remove($respuesta);
+            $em->clear($respuesta);
+        }
     }
 
     private function guardarRespuestas($em, &$pregunta) {

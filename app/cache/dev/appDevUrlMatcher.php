@@ -1647,6 +1647,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aBorrarRespuestaAction',  '_route' => 'uci_administrador_borrarRespuesta',);
             }
 
+            // uci_administrador_borrarPregunta
+            if (preg_match('#^/admin/(?P<idPregunta>[^/]++)/borrar_pregunta$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_borrarPregunta')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aBorrarPreguntaAction',));
+            }
+
             if (0 === strpos($pathinfo, '/admin/libro')) {
                 // uci_administrador_indicelibro
                 if ($pathinfo === '/admin/libro/lista_libros') {

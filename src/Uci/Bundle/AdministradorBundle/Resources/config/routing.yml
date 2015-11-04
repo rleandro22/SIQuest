@@ -90,6 +90,10 @@ uci_administrador_borrarRespuesta:
     pattern:  /admin/borrar_respuesta
     defaults: { _controller: UciAdministradorBundle:Pregunta:aBorrarRespuesta }
 
+uci_administrador_borrarPregunta:
+    pattern:  /admin/{idPregunta}/borrar_pregunta
+    defaults: { _controller: UciAdministradorBundle:Pregunta:aBorrarPregunta }
+    
 #---------------------Routing Libro---------------------------------------------
 uci_administrador_libro:
     resource: "@UciAdministradorBundle/Resources/config/routing/libro.yml"
