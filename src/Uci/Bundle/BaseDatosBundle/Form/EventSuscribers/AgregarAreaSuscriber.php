@@ -28,7 +28,7 @@ class AgregarAreaSuscriber implements EventSubscriberInterface {
         $form->add($this->factory->createNamed('areaConocimiento', 'entity', null, array(
                     'auto_initialize' => false,
                     'class' => 'UciBaseDatosBundle:AreaConocimiento',
-                    'empty_value' => 'A. Conocimiento',
+                    'empty_value' => '',
                     'query_builder' => function (EntityRepository $repository) use ($pmbok) {
                         $qb = $repository->createQueryBuilder('u')
                                 ->innerJoin('u.pmbok', 'g');

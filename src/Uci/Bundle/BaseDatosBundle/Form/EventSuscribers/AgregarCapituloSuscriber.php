@@ -27,8 +27,9 @@ class AgregarCapituloSuscriber implements EventSubscriberInterface {
     private function agregarLibroForm($form, $libro) {
         $form->add($this->factory->createNamed('capitulo', 'entity', null, array(
                     'auto_initialize' => false,
+                    'required' => false,
                     'class' => 'UciBaseDatosBundle:Capitulo',
-                    'empty_value' => 'Capitulo',
+                    //'empty_value' => 'Capitulo',
                     'query_builder' => function (EntityRepository $repository) use ($libro) {
                         $qb = $repository->createQueryBuilder('capitulo')
                                 ->innerJoin('capitulo.libro', 'libro');

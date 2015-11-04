@@ -28,7 +28,7 @@ class AgregarTrianguloSuscriber implements EventSubscriberInterface {
         $form->add($this->factory->createNamed('trianguloTalento', 'entity', null, array(
                     'auto_initialize' => false,
                     'class' => 'UciBaseDatosBundle:TrianguloTalento',
-                    'empty_value' => 'T. Talento',
+                    'empty_value' => '',
                     'query_builder' => function (EntityRepository $repository) use ($pmbok) {
                         $qb = $repository->createQueryBuilder('u')
                                 ->innerJoin('u.pmbok', 'g');
