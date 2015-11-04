@@ -92,7 +92,7 @@ class PreguntaController extends Controller {
                     $em->persist($pregunta);
                     $em->flush();
                     $em->commit();
-                    } catch (Exception $e) {
+                } catch (Exception $e) {
                     $em->getConnection()->rollback();
                     $error = $e;
                 }
@@ -212,28 +212,33 @@ class PreguntaController extends Controller {
         } else {
             $repository = $this->getDoctrine()->getRepository('UciBaseDatosBundle:Pregunta');
             $qb = $repository->createQueryBuilder('p');
-            $qb->innerJoin('p.libro', 'l');
-            $qb->innerJoin('p.capitulo', 'c');
-            $qb->innerJoin('p.areaConocimiento', 'a');
-            $qb->innerJoin('p.grupoProcesos', 'g');
-            $qb->innerJoin('p.trianguloTalento', 't');
+            
+            
+            
+            
+            
             if (!empty($idLibro)) {
+                $qb->innerJoin('p.libro', 'l');
                 $qb->where('l.id= :idLibro')
                         ->setParameter('idLibro', $idLibro);
             }
             if (!empty($idCapitulo)) {
+                $qb->innerJoin('p.capitulo', 'c');
                 $qb->andWhere('c.id= :idCapitulo')
                         ->setParameter('idCapitulo', $idCapitulo);
             }
             if (!empty($idGrupoProcesos)) {
+                $qb->innerJoin('p.grupoProcesos', 'g');
                 $qb->andWhere('g.id= :idGrupoProcesos')
                         ->setParameter('idGrupoProcesos', $idGrupoProcesos);
             }
             if (!empty($idAreaConocimiento)) {
+                $qb->innerJoin('p.areaConocimiento', 'a');
                 $qb->andWhere('a.id= :idAreaConocimiento')
                         ->setParameter('idAreaConocimiento', $idAreaConocimiento);
             }
             if (!empty($idTrianguloTalento)) {
+                $qb->innerJoin('p.trianguloTalento', 't');
                 $qb->andWhere('a.id= :idTrianguloTalento')
                         ->setParameter('idTrianguloTalento', $idTrianguloTalento);
             }
