@@ -6,8 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Entity\Libro;
 use Uci\Bundle\BaseDatosBundle\Form\LibroType;
-use Uci\Bundle\BaseDatosBundle\Entity\Capitulo;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 /**
