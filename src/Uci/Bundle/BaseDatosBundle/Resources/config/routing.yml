@@ -67,10 +67,6 @@ uci_base_datos_curso:
     resource: "@UciBaseDatosBundle/Resources/config/routing/curso.yml"
     prefix:   /curso
 
-uci_base_datos_cuestionariotienepreguntas:
-    resource: "@UciBaseDatosBundle/Resources/config/routing/cuestionariotienepreguntas.yml"
-    prefix:   /cuestionariotienepreguntas
-
 uci_base_datos_cuestionarioasignadoausuario:
     resource: "@UciBaseDatosBundle/Resources/config/routing/cuestionarioasignadoausuario.yml"
     prefix:   /cuestionarioasignadoausuario

@@ -132,4 +132,11 @@ Uci\Bundle\BaseDatosBundle\Entity\Pregunta:
                         name: respuesta_id
                         referencedColumnName: id
             orderBy: null
+        cuestionario:
+            targetEntity: Cuestionario
+            cascade: {  }
+            mappedBy: pregunta
+            inversedBy: null
+            joinTable: null
+            orderBy: null
     lifecycleCallbacks: {  }

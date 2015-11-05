@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Cuestionario
  *
- * @ORM\Table(name="cuestionario", indexes={@ORM\Index(name="fk_cuestionario_curso1_idx", columns={"curso_id"})})
+ * @ORM\Table(name="cuestionario", uniqueConstraints={@ORM\UniqueConstraint(name="cuestionarioname_UNIQUE", columns={"cuestionarioname"})}, indexes={@ORM\Index(name="fk_cuestionario_curso1_idx", columns={"curso_id"})})
  * @ORM\Entity
  */
-class Cuestionario
-{
+class Cuestionario {
+
     /**
      * @var integer
      *
@@ -29,13 +29,6 @@ class Cuestionario
     private $pruebaNumero;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fecha", type="date", nullable=false)
-     */
-    private $fecha;
-
-    /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Curso
      *
      * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Curso")
@@ -45,16 +38,50 @@ class Cuestionario
      */
     private $curso;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=200, nullable=false)
+     */
+    private $cuestionarioname;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pregunta", inversedBy="cuestionario")
+     * @ORM\JoinTable(name="cuestionario_tiene_preguntas",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="cuestionario_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $pregunta;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->pregunta = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
+    }
+
+    function getCuestionarioname() {
+        return $this->cuestionarioname;
+    }
+
+    function setCuestionarioname($cuestionarioname) {
+        $this->cuestionarioname = $cuestionarioname;
     }
 
     /**
@@ -63,8 +90,7 @@ class Cuestionario
      * @param integer $pruebaNumero
      * @return Cuestionario
      */
-    public function setPruebaNumero($pruebaNumero)
-    {
+    public function setPruebaNumero($pruebaNumero) {
         $this->pruebaNumero = $pruebaNumero;
 
         return $this;
@@ -75,32 +101,8 @@ class Cuestionario
      *
      * @return integer 
      */
-    public function getPruebaNumero()
-    {
+    public function getPruebaNumero() {
         return $this->pruebaNumero;
-    }
-
-    /**
-     * Set fecha
-     *
-     * @param \DateTime $fecha
-     * @return Cuestionario
-     */
-    public function setFecha($fecha)
-    {
-        $this->fecha = $fecha;
-
-        return $this;
-    }
-
-    /**
-     * Get fecha
-     *
-     * @return \DateTime 
-     */
-    public function getFecha()
-    {
-        return $this->fecha;
     }
 
     /**
@@ -109,8 +111,7 @@ class Cuestionario
      * @param \Uci\Bundle\BaseDatosBundle\Entity\Curso $curso
      * @return Cuestionario
      */
-    public function setCurso(\Uci\Bundle\BaseDatosBundle\Entity\Curso $curso = null)
-    {
+    public function setCurso(\Uci\Bundle\BaseDatosBundle\Entity\Curso $curso = null) {
         $this->curso = $curso;
 
         return $this;
@@ -121,8 +122,47 @@ class Cuestionario
      *
      * @return \Uci\Bundle\BaseDatosBundle\Entity\Curso 
      */
-    public function getCurso()
-    {
+    public function getCurso() {
         return $this->curso;
     }
+
+    /**
+     * Add pregunta
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
+     * @return Pregunta
+     */
+    public function addPregunta(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
+        $this->pregunta[] = $pregunta;
+
+        return $this;
+    }
+
+    /**
+     * Remove pregunta
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta
+     */
+    public function removePregunta(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
+        $this->pregunta->removeElement($pregunta);
+    }
+
+    /**
+     * Get pregunta
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPregunta() {
+        return $this->pregunta;
+    }
+
+    public function setPregunta(\Doctrine\Common\Collections\Collection $pregunta) {
+        $this->pregunta = $pregunta;
+    }
+    
+    public function __toString() {
+        return $this->cuestionarioname;
+    }
+
+
 }

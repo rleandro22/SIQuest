@@ -39,24 +39,34 @@ uci_administrador_addcategoria:
 uci_administrador_deletecategoria:
     pattern:  /admin/{id}/borrar_categoria
     defaults: { _controller: UciAdministradorBundle:Categoria:aBorrarCategoria }
-    
-# ------------------------------CURSO--------------------------------------------
 
-uci_administrador_indicecurso:
-    pattern:  /admin/{id}/cursos_categoria
-    defaults: { _controller: UciAdministradorBundle:Categoria:aIndiceCursos }
+# ------------------------------CATEGORIA--------------------------------------------
     
-uci_administrador_addcurso:
-    pattern:  /admin/{idGeneracion}/registrar_curso
-    defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarCurso }
+uci_administrador_indicecategoria:
+    pattern:  /admin/lista_categorias
+    defaults: { _controller: UciAdministradorBundle:Categoria:aIndiceCategoria }
     
-uci_administrador_editcurso:
-    pattern:  /admin/{idGeneracion}/editar_curso/{id}
-    defaults: { _controller: UciAdministradorBundle:Categoria:aEditarCurso }
+uci_administrador_addcategoria:
+    pattern:  /admin/ingresar_generacion
+    defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarGeneracion }
     
-uci_administrador_deletecurso:
-    pattern:  /admin/{idGeneracion}/borrar_curso/{id}
-    defaults: { _controller: UciAdministradorBundle:Categoria:aBorrarCurso }
+uci_administrador_editcategoria:
+    pattern:  /admin/{id}/editar_categoria
+    defaults: { _controller: UciAdministradorBundle:Categoria:aEditarCategoria }
+
+uci_administrador_addcategoria:
+    pattern:  /admin/registrar_generacion
+    defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarGeneracion }
+    
+uci_administrador_deletecategoria:
+    pattern:  /admin/{id}/borrar_categoria
+    defaults: { _controller: UciAdministradorBundle:Categoria:aBorrarCategoria }
+    
+# ------------------------------CUESTIONARIO--------------------------------------------
+
+uci_administrador_indicecuestionario:
+    pattern:  /admin/indice_cuestionario
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aIndiceCuestionario }
     
 #---------------------MATRICULAR USUARIO----------------------------------------
 

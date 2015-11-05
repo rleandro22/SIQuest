@@ -1102,66 +1102,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
 
                 if (0 === strpos($pathinfo, '/cuestionario')) {
-                    if (0 === strpos($pathinfo, '/cuestionariotienepreguntas')) {
-                        // cuestionariotienepreguntas
-                        if (rtrim($pathinfo, '/') === '/cuestionariotienepreguntas') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'cuestionariotienepreguntas');
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::indexAction',  '_route' => 'cuestionariotienepreguntas',);
-                        }
-
-                        // cuestionariotienepreguntas_show
-                        if (preg_match('#^/cuestionariotienepreguntas/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionariotienepreguntas_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::showAction',));
-                        }
-
-                        // cuestionariotienepreguntas_new
-                        if ($pathinfo === '/cuestionariotienepreguntas/new') {
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::newAction',  '_route' => 'cuestionariotienepreguntas_new',);
-                        }
-
-                        // cuestionariotienepreguntas_create
-                        if ($pathinfo === '/cuestionariotienepreguntas/create') {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_cuestionariotienepreguntas_create;
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::createAction',  '_route' => 'cuestionariotienepreguntas_create',);
-                        }
-                        not_cuestionariotienepreguntas_create:
-
-                        // cuestionariotienepreguntas_edit
-                        if (preg_match('#^/cuestionariotienepreguntas/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionariotienepreguntas_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::editAction',));
-                        }
-
-                        // cuestionariotienepreguntas_update
-                        if (preg_match('#^/cuestionariotienepreguntas/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                                $allow = array_merge($allow, array('POST', 'PUT'));
-                                goto not_cuestionariotienepreguntas_update;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionariotienepreguntas_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::updateAction',));
-                        }
-                        not_cuestionariotienepreguntas_update:
-
-                        // cuestionariotienepreguntas_delete
-                        if (preg_match('#^/cuestionariotienepreguntas/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                                $allow = array_merge($allow, array('POST', 'DELETE'));
-                                goto not_cuestionariotienepreguntas_delete;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionariotienepreguntas_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioTienePreguntasController::deleteAction',));
-                        }
-                        not_cuestionariotienepreguntas_delete:
-
-                    }
-
                     if (0 === strpos($pathinfo, '/cuestionarioasignadoausuario')) {
                         // cuestionarioasignadoausuario
                         if (rtrim($pathinfo, '/') === '/cuestionarioasignadoausuario') {
@@ -1592,24 +1532,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletecategoria')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aBorrarCategoriaAction',));
             }
 
-            // uci_administrador_indicecurso
-            if (preg_match('#^/admin/(?P<id>[^/]++)/cursos_categoria$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_indicecurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aIndiceCursosAction',));
-            }
-
-            // uci_administrador_addcurso
-            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/registrar_curso$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_addcurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aIngresarCursoAction',));
-            }
-
-            // uci_administrador_editcurso
-            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/editar_curso/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_editcurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aEditarCursoAction',));
-            }
-
-            // uci_administrador_deletecurso
-            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/borrar_curso/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletecurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aBorrarCursoAction',));
+            // uci_administrador_indicecuestionario
+            if ($pathinfo === '/admin/indice_cuestionario') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aIndiceCuestionarioAction',  '_route' => 'uci_administrador_indicecuestionario',);
             }
 
             // uci_administrador_matricularusuario

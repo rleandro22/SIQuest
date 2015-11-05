@@ -5,6 +5,12 @@ Uci\Bundle\BaseDatosBundle\Entity\Cuestionario:
         fk_cuestionario_curso1_idx:
             columns:
                 - curso_id
+  
+    uniqueConstraints:
+        cuestionarioname_UNIQUE:
+            columns:
+                - cuestionarioname
+                
     id:
         id:
             type: integer
@@ -15,16 +21,18 @@ Uci\Bundle\BaseDatosBundle\Entity\Cuestionario:
             generator:
                 strategy: IDENTITY
     fields:
+        cuestionarioname:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
         pruebaNumero:
             type: integer
             nullable: false
             unsigned: false
             comment: ''
             column: prueba_numero
-        fecha:
-            type: date
-            nullable: false
-            comment: ''
     manyToOne:
         curso:
             targetEntity: Curso
@@ -35,4 +43,22 @@ Uci\Bundle\BaseDatosBundle\Entity\Cuestionario:
                 curso_id:
                     referencedColumnName: id
             orphanRemoval: false
+    manyToMany:
+        pregunta:
+            targetEntity: Pregunta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: cuestionario
+            joinTable:
+                name: cuestionario_tiene_preguntas
+                joinColumns:
+                    -
+                        name: cuestionario_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: pregunta_id
+                        referencedColumnName: id
+            orderBy: null
     lifecycleCallbacks: {  }

@@ -28,7 +28,6 @@ class Pregunta {
      */
     private $titulo;
 
-
     /**
      * @var integer
      *
@@ -100,7 +99,7 @@ class Pregunta {
      * )
      */
     private $tipoPrueba;
-    
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -115,6 +114,13 @@ class Pregunta {
      * )
      */
     private $respuesta;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Cuestionario", mappedBy="pregunta")
+     */
+    private $cuestionario;
 
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\TipoRespuesta
@@ -132,6 +138,7 @@ class Pregunta {
     public function __construct() {
         $this->tipoPrueba = new \Doctrine\Common\Collections\ArrayCollection();
         $this->respuesta = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cuestionario = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -167,16 +174,16 @@ class Pregunta {
     public function setRespuesta(\Doctrine\Common\Collections\Collection $respuesta) {
         $this->respuesta = $respuesta;
     }
-    
-    public function resetearRespuestas(){
+
+    public function resetearRespuestas() {
         $this->respuesta = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     function setTipoPrueba(\Doctrine\Common\Collections\Collection $tipoPrueba) {
         $this->tipoPrueba = $tipoPrueba;
     }
-    
-      /**
+
+    /**
      * Add tipoPrueba
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba
@@ -187,8 +194,8 @@ class Pregunta {
 
         return $this;
     }
-    
-     /**
+
+    /**
      * Remove tipoPrueba
      *
      * @param \Uci\Bundle\BaseDatosBundle\Entity\TipoPrueba $tipoPrueba
@@ -341,8 +348,6 @@ class Pregunta {
         return $this->grupoProcesos;
     }
 
-  
-
     /**
      * Set tipoRespuesta
      *
@@ -370,6 +375,36 @@ class Pregunta {
 
     function setNumeroPagina($numeroPagina) {
         $this->numeroPagina = $numeroPagina;
+    }
+
+    /**
+     * Add cuestionario
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario
+     * @return TipoPrueba
+     */
+    public function addCuestionarium(\Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario) {
+        $this->cuestionario[] = $cuestionario;
+
+        return $this;
+    }
+
+    /**
+     * Remove cuestionario
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario
+     */
+    public function removeCuestionarium(\Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario) {
+        $this->cuestionario->removeElement($cuestionario);
+    }
+
+    /**
+     * Get cuestionario
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCuestionario() {
+        return $this->cuestionario;
     }
 
     public function __toString() {

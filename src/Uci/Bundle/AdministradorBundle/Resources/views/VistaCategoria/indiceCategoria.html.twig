@@ -10,18 +10,18 @@
 
         <ol class="breadcrumb">
             <li><a href="{{ path('uci_administrador_homepage') }}">Inicio</a></li>
-            <li class="active">Listado de Generaciones</li>
+            <li class="active">Listado de Cuestionarios</li>
         </ol>
         <div class="row">
             <!-- Sidebar -->
             <aside class="col-md-4 sidebar sidebar-left">
-                {% include 'UciAdministradorBundle:Menus:mantenimientoCategoria.html.twig' %}
+                {% include 'UciAdministradorBundle:Menus:mantenimientoCuestionario.html.twig' %}
             </aside>
             <!-- /Sidebar -->
             <!-- Article main content -->
             <article class="col-sm-8 maincontent">
                 <header class="page-header">
-                    <h1 class="page-title">Lista de generaciones</h1>
+                    <h1 class="page-title">Lista de cuestionarios</h1>
                 </header>
                 <br>
 
@@ -31,14 +31,14 @@
                         <div class="thumbnail">
                             <div class="row">
                                 <div class="col-md-6"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal">
-                                        <p>{{ entity.generacion }}</p>
+                                        <p>{{ entity.cuestionarioname }}</p>
                                     </a></div>
                                 <div class="col-md-6"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
                                     <a href="{{ path('uci_administrador_deletecategoria', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
                             </div>
 
                             <a href="{{ path('uci_administrador_indicecurso', { 'id': entity.id }) }}">
-                                <img class="img-responsive" src="{{asset('images/categoria.png')}}" alt="">
+                                <img class="img-responsive" src="{{asset('images/img_test.png')}}" alt="">
                             </a>
                         </div>
                     </div>
