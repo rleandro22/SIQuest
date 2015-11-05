@@ -59,17 +59,17 @@
                                     </div>
                                 </div>
                                 <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden" id="filaArea">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.areaConocimiento) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden" id="filaGrupo">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.grupoProcesos) }}
                                     </div>
                                 </div>
                                 <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 hidden" id="filaTriangulo">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.trianguloTalento) }}
                                     </div>
                                 </div>
@@ -232,11 +232,7 @@
                 });
         }
 
-        document.ready = function () {
-            
-        if (({{ esPmbok }} == 1)) {
-                mostrarAtrPmbok(1);
-        }
+        document.ready = function () {  
 
         if (({{ entity.tipoRespuesta.id }} == 5) || ({{ entity.tipoRespuesta.id }} == 7)) {
                 $('#panelRespuestas').hide();
@@ -260,35 +256,31 @@
                         data: $("#formularioPrincipal").serialize(),
                         dataType: "json",
                         success: function (data) {
-                        mostrarAtrPmbok(data.esPmbok);
                         
                         $capitulo_selector.html('<option></option>');
-                        if(data.estaVacio==0){
-                            if (data.capitulos[0].id > 0) {
-                                  for (var i = 0, total = data.capitulos.length; i < total; i++) {
-                                  $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].nombreCapitulo + '</option>');
-                                  }
-                            }
-                        }
-                        if(data.esPmbok==1){
-                            $area_selector.html('<option></option>');
-                            if (data.areas[0].id > 0) {
-                                for (var i = 0, total = data.areas.length; i < total; i++) {
-                                $area_selector.append('<option value="' + data.areas[i].id + '">' + data.areas[i].nombreArea + '</option>');
-                                }
-                            }
-                            $grupo_selector.html('<option></option>');
-                            if (data.grupos[0].id > 0) {
-                                for (var i = 0, total = data.grupos.length; i < total; i++) {
-                                $grupo_selector.append('<option value="' + data.grupos[i].id + '">' + data.grupos[i].nombreGrupo + '</option>');
-                                }
-                            }
-                            $triangulo_selector.html('<option></option>');
-                            if (data.triangulos[0].id > 0) {
-                                for (var i = 0, total = data.triangulos.length; i < total; i++) {
-                                $triangulo_selector.append('<option value="' + data.triangulos[i].id + '">' + data.triangulos[i].nombreTalento + '</option>');
-                                }
-                            }
+                         if (data.capitulos.id != "0") {
+                for (var i = 0, total = data.capitulos.length; i < total; i++) {
+                    $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].nombreCapitulo + '</option>');
+                }
+            }
+            $area_selector.html('<option></option>');
+            if (data.areas.id != "0") {
+                for (var i = 0, total = data.areas.length; i < total; i++) {
+                    $area_selector.append('<option value="' + data.areas[i].id + '">' + data.areas[i].nombreArea + '</option>');
+                }
+            }
+            $grupo_selector.html('<option></option>');
+            if (data.grupos.id != "0") {
+                for (var i = 0, total = data.grupos.length; i < total; i++) {
+                    $grupo_selector.append('<option value="' + data.grupos[i].id + '">' + data.grupos[i].nombreGrupo + '</option>');
+                }
+            }
+            $triangulo_selector.html('<option></option>');
+            if (data.triangulos.id != "0") {
+                for (var i = 0, total = data.triangulos.length; i < total; i++) {
+                    $triangulo_selector.append('<option value="' + data.triangulos[i].id + '">' + data.triangulos[i].nombreTalento + '</option>');
+                }
+            }
                         }
                         $('.imagenCargando').html('');
                         },

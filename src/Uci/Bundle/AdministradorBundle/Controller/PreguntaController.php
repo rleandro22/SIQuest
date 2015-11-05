@@ -147,41 +147,48 @@ class PreguntaController extends Controller {
 
     private function aObtenerDatosLibro($libro) {
         $idLibro = ($libro) ? $libro->getId() : 0;
-        $idPmbok = ($libro) ? $idPmbok = ($libro->getEsPmbok() == 1) ? $libro->getPmbok()->getId() : 0 : 0;
-        $esPmbok = ($libro) ? $libro->getEsPmbok() : 0;
         $em = $this->getDoctrine()->getManager();
+        $idPmbok = ($libro) ? $idPmbok = ($libro->getEsPmbok() == 1) ? $libro->getPmbok()->getId() : 0 : 0;
         $response = new JsonResponse();
+
         $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
                         ->innerJoin('u.libro', 'g')
                         ->where('g.id = :id')
                         ->setParameter('id', $idLibro)
                         ->orderBy('u.nombreCapitulo', 'ASC')
                         ->getQuery()->getArrayResult();
-        $areas = $em->getRepository('UciBaseDatosBundle:AreaConocimiento')->createQueryBuilder('u')
-                        ->innerJoin('u.pmbok', 'g')
-                        ->where('g.id = :id')
-                        ->setParameter('id', $idPmbok)
-                        ->orderBy('u.nombreArea', 'ASC')
-                        ->getQuery()->getArrayResult();
-        $grupos = $em->getRepository('UciBaseDatosBundle:GrupoProcesos')->createQueryBuilder('u')
-                        ->innerJoin('u.pmbok', 'g')
-                        ->where('g.id = :id')
-                        ->setParameter('id', $idPmbok)
-                        ->orderBy('u.nombreGrupo', 'ASC')
-                        ->getQuery()->getArrayResult();
-        $triangulos = $em->getRepository('UciBaseDatosBundle:TrianguloTalento')->createQueryBuilder('u')
-                        ->innerJoin('u.pmbok', 'g')
-                        ->where('g.id = :id')
-                        ->setParameter('id', $idPmbok)
-                        ->orderBy('u.nombreTalento', 'ASC')
-                        ->getQuery()->getArrayResult();
+        if ($idLibro == 0) {
+            $qb1 = $em->getRepository('UciBaseDatosBundle:AreaConocimiento')->createQueryBuilder('a');
+            $areas = $qb1->getQuery()->getArrayResult();
+            $qb2 = $em->getRepository('UciBaseDatosBundle:GrupoProcesos')->createQueryBuilder('g');
+            $grupos = $qb2->getQuery()->getArrayResult();
+            $qb3 = $em->getRepository('UciBaseDatosBundle:TrianguloTalento')->createQueryBuilder('t');
+            $triangulos = $qb3->getQuery()->getArrayResult();
+        } else {
+            $areas = $em->getRepository('UciBaseDatosBundle:AreaConocimiento')->createQueryBuilder('u')
+                            ->innerJoin('u.pmbok', 'g')
+                            ->where('g.id = :id')
+                            ->setParameter('id', $idPmbok)
+                            ->orderBy('u.nombreArea', 'ASC')
+                            ->getQuery()->getArrayResult();
+            $grupos = $em->getRepository('UciBaseDatosBundle:GrupoProcesos')->createQueryBuilder('u')
+                            ->innerJoin('u.pmbok', 'g')
+                            ->where('g.id = :id')
+                            ->setParameter('id', $idPmbok)
+                            ->orderBy('u.nombreGrupo', 'ASC')
+                            ->getQuery()->getArrayResult();
+            $triangulos = $em->getRepository('UciBaseDatosBundle:TrianguloTalento')->createQueryBuilder('u')
+                            ->innerJoin('u.pmbok', 'g')
+                            ->where('g.id = :id')
+                            ->setParameter('id', $idPmbok)
+                            ->orderBy('u.nombreTalento', 'ASC')
+                            ->getQuery()->getArrayResult();
+        }
         $response_array = array();
-        $response_array['capitulos'] = (empty($capitulos)) ? array('id' => 0) : $capitulos;
-        $response_array['areas'] = (empty($areas)) ? array('id' => 0) : $areas;
-        $response_array['grupos'] = (empty($grupos)) ? array('id' => 0) : $grupos;
-        $response_array['triangulos'] = (empty($triangulos)) ? array('id' => 0) : $triangulos;
-        $response_array['esPmbok'] = $esPmbok;
-        $response_array['estaVacio'] = (empty($capitulos)) ? 1 : 0;
+        $response_array['capitulos'] = (empty($capitulos)) ? array('id' => '0') : $capitulos;
+        $response_array['areas'] = (empty($areas)) ? array('id' => '0') : $areas;
+        $response_array['grupos'] = (empty($grupos)) ? array('id' => '0') : $grupos;
+        $response_array['triangulos'] = (empty($triangulos)) ? array('id' => '0') : $triangulos;
         $response->setContent(json_encode($response_array));
         return $response;
     }
@@ -225,7 +232,7 @@ class PreguntaController extends Controller {
 
     private function aSortearPreguntas($idLibro = '', $idCapitulo = '', $idGrupoProcesos = '', $idAreaConocimiento = '', $idTrianguloTalento = '') {
         $em = $this->getDoctrine()->getManager();
-        if (empty($idLibro)) {
+        if (empty($idLibro) && empty($idCapitulo) && empty($idGrupoProcesos) && empty($idAreaConocimiento) && empty($idTrianguloTalento)) {
             $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findBy(array(), array('titulo' => 'ASC'));
         } else {
             $repository = $this->getDoctrine()->getRepository('UciBaseDatosBundle:Pregunta');
@@ -253,7 +260,7 @@ class PreguntaController extends Controller {
             }
             if (!empty($idTrianguloTalento)) {
                 $qb->innerJoin('p.trianguloTalento', 't');
-                $qb->andWhere('a.id= :idTrianguloTalento')
+                $qb->andWhere('t.id= :idTrianguloTalento')
                         ->setParameter('idTrianguloTalento', $idTrianguloTalento);
             }
             $preguntas = $qb->getQuery()->getResult();

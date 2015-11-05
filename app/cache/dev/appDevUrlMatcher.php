@@ -1532,9 +1532,34 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletecategoria')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aBorrarCategoriaAction',));
             }
 
+            // uci_administrador_indicecurso
+            if (preg_match('#^/admin/(?P<id>[^/]++)/cursos_categoria$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_indicecurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aIndiceCursosAction',));
+            }
+
+            // uci_administrador_addcurso
+            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/registrar_curso$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_addcurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aIngresarCursoAction',));
+            }
+
+            // uci_administrador_editcurso
+            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/editar_curso/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_editcurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aEditarCursoAction',));
+            }
+
+            // uci_administrador_deletecurso
+            if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/borrar_curso/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletecurso')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aBorrarCursoAction',));
+            }
+
             // uci_administrador_indicecuestionario
             if ($pathinfo === '/admin/indice_cuestionario') {
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aIndiceCuestionarioAction',  '_route' => 'uci_administrador_indicecuestionario',);
+            }
+
+            // uci_administrador_registrarcuestionario
+            if ($pathinfo === '/admin/construir_cuestionario') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aConstruirCuestionarioAction',  '_route' => 'uci_administrador_registrarcuestionario',);
             }
 
             // uci_administrador_matricularusuario

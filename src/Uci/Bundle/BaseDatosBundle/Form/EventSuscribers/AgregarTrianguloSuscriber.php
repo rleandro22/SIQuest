@@ -30,17 +30,11 @@ class AgregarTrianguloSuscriber implements EventSubscriberInterface {
                     'class' => 'UciBaseDatosBundle:TrianguloTalento',
                     'empty_value' => '',
                     'query_builder' => function (EntityRepository $repository) use ($pmbok) {
-                        $qb = $repository->createQueryBuilder('u')
-                                ->innerJoin('u.pmbok', 'g');
-                        if ($pmbok instanceof Pmbok) {
-                            $qb->where('g.id = :pmbok')
-                                    ->setParameter('pmbok', $pmbok->getId());
-                        } elseif (is_numeric($pmbok)) {
-                            $qb->where('g.id = :pmbok')
-                                    ->setParameter('pmbok', $pmbok);
+                        if ($pmbok->getId() > 0) {
+                            $qb = $repository->createQueryBuilder('u')->innerJoin('u.pmbok', 'g');
+                            $qb->where('g.id = :pmbok')->setParameter('pmbok', $pmbok);
                         } else {
-                            $qb->where('g.id = :pmbok')
-                                    ->setParameter('pmbok', null);
+                            $qb = $repository->createQueryBuilder('u');
                         }
                         return $qb;
                     }
@@ -56,12 +50,14 @@ class AgregarTrianguloSuscriber implements EventSubscriberInterface {
         }
         $libro = ($data->getLibro()) ? $data->getLibro() : null;
         if (null === $libro) {
-            return;
+            $pmbok = new Pmbok();
+            $pmbok->setId(0);
         } else {
             if ($libro->getEsPmbok() == 1) {
                 $pmbok = $data->getLibro()->getPmbok();
             } else {
-                return;
+                $pmbok = new Pmbok();
+                $pmbok->setId(0);
             }
         }
         $this->agregarTrianguloForm($form, $pmbok);
@@ -76,12 +72,14 @@ class AgregarTrianguloSuscriber implements EventSubscriberInterface {
         }
         $libro = array_key_exists('libro', $data) ? $data['libro'] : null;
         if (null === $libro) {
-            return;
+            $pmbok = new Pmbok();
+            $pmbok->setId(0);
         } else {
             if ($libro->getEsPmbok() == 1) {
                 $pmbok = $data->getLibro()->getPmbok();
             } else {
-                return;
+                $pmbok = new Pmbok();
+                $pmbok->setId(0);
             }
         }
         $this->agregarTrianguloForm($form, $pmbok);
