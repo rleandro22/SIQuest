@@ -15,8 +15,13 @@ class __TwigTemplate_f021a017e2b6c2ceba3be359873af274fe61ba105091e7cf6f21c826e9e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+<<<<<<< HEAD:app/cache/dev/twig/f/0/f021a017e2b6c2ceba3be359873af274fe61ba105091e7cf6f21c826e9e9c79d.php
         $__internal_202925f368365c6e6ea2589ce9ef373e7df14b47242b149a3a1a88c2693efedd = $this->env->getExtension("native_profiler");
         $__internal_202925f368365c6e6ea2589ce9ef373e7df14b47242b149a3a1a88c2693efedd->enter($__internal_202925f368365c6e6ea2589ce9ef373e7df14b47242b149a3a1a88c2693efedd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:toolbar_item.html.twig"));
+=======
+        $__internal_da77bdb49fe9c6637d432cd7f3e01ed1d673dc8c8a662d9c8c96fd7749e9bf9c = $this->env->getExtension("native_profiler");
+        $__internal_da77bdb49fe9c6637d432cd7f3e01ed1d673dc8c8a662d9c8c96fd7749e9bf9c->enter($__internal_da77bdb49fe9c6637d432cd7f3e01ed1d673dc8c8a662d9c8c96fd7749e9bf9c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:toolbar_item.html.twig"));
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/d/3/d3d98f2500f7846823cf8d20523ae8639606da13cb9d76223a253a9e34e41b0a.php
 
         // line 1
         if ((isset($context["link"]) ? $context["link"] : $this->getContext($context, "link"))) {
@@ -45,7 +50,11 @@ class __TwigTemplate_f021a017e2b6c2ceba3be359873af274fe61ba105091e7cf6f21c826e9e
 </div>
 ";
         
+<<<<<<< HEAD:app/cache/dev/twig/f/0/f021a017e2b6c2ceba3be359873af274fe61ba105091e7cf6f21c826e9e9c79d.php
         $__internal_202925f368365c6e6ea2589ce9ef373e7df14b47242b149a3a1a88c2693efedd->leave($__internal_202925f368365c6e6ea2589ce9ef373e7df14b47242b149a3a1a88c2693efedd_prof);
+=======
+        $__internal_da77bdb49fe9c6637d432cd7f3e01ed1d673dc8c8a662d9c8c96fd7749e9bf9c->leave($__internal_da77bdb49fe9c6637d432cd7f3e01ed1d673dc8c8a662d9c8c96fd7749e9bf9c_prof);
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/d/3/d3d98f2500f7846823cf8d20523ae8639606da13cb9d76223a253a9e34e41b0a.php
 
     }
 

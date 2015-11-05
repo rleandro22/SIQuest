@@ -15,8 +15,13 @@ class __TwigTemplate_2370dc687d514a7fb24ce645c98b5f5a00dabc5e0af3a8f0c176ea4eb95
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+<<<<<<< HEAD:app/cache/dev/twig/2/3/2370dc687d514a7fb24ce645c98b5f5a00dabc5e0af3a8f0c176ea4eb9565a93.php
         $__internal_3049544744aefdfe762a07088d621fe0eb99b89143e99c294acd9bea4609b93e = $this->env->getExtension("native_profiler");
         $__internal_3049544744aefdfe762a07088d621fe0eb99b89143e99c294acd9bea4609b93e->enter($__internal_3049544744aefdfe762a07088d621fe0eb99b89143e99c294acd9bea4609b93e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/toolbar.css.twig"));
+=======
+        $__internal_7f682461a569e4d33145f998dfcefaf7a337d26319629212a418bcd2956dfb9f = $this->env->getExtension("native_profiler");
+        $__internal_7f682461a569e4d33145f998dfcefaf7a337d26319629212a418bcd2956dfb9f->enter($__internal_7f682461a569e4d33145f998dfcefaf7a337d26319629212a418bcd2956dfb9f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/toolbar.css.twig"));
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/3/e/3ee744e326e1da8a23cae411a2611eca09f23260e434996b94c6a7ec0989e0fa.php
 
         // line 1
         echo ".sf-minitoolbar {
@@ -475,7 +480,11 @@ class __TwigTemplate_2370dc687d514a7fb24ce645c98b5f5a00dabc5e0af3a8f0c176ea4eb95
 }
 ";
         
+<<<<<<< HEAD:app/cache/dev/twig/2/3/2370dc687d514a7fb24ce645c98b5f5a00dabc5e0af3a8f0c176ea4eb9565a93.php
         $__internal_3049544744aefdfe762a07088d621fe0eb99b89143e99c294acd9bea4609b93e->leave($__internal_3049544744aefdfe762a07088d621fe0eb99b89143e99c294acd9bea4609b93e_prof);
+=======
+        $__internal_7f682461a569e4d33145f998dfcefaf7a337d26319629212a418bcd2956dfb9f->leave($__internal_7f682461a569e4d33145f998dfcefaf7a337d26319629212a418bcd2956dfb9f_prof);
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/3/e/3ee744e326e1da8a23cae411a2611eca09f23260e434996b94c6a7ec0989e0fa.php
 
     }
 

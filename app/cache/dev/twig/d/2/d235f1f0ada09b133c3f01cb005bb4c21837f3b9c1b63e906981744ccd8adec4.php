@@ -15,8 +15,13 @@ class __TwigTemplate_d235f1f0ada09b133c3f01cb005bb4c21837f3b9c1b63e906981744ccd8
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+<<<<<<< HEAD:app/cache/dev/twig/d/2/d235f1f0ada09b133c3f01cb005bb4c21837f3b9c1b63e906981744ccd8adec4.php
         $__internal_c857bfe2873cb6d6def8881272cedf97697f5d0f83eabc16f8eeb1fb7ce41bbc = $this->env->getExtension("native_profiler");
         $__internal_c857bfe2873cb6d6def8881272cedf97697f5d0f83eabc16f8eeb1fb7ce41bbc->enter($__internal_c857bfe2873cb6d6def8881272cedf97697f5d0f83eabc16f8eeb1fb7ce41bbc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/toolbar_js.html.twig"));
+=======
+        $__internal_b094f902c9b210b8e0dde2d4fa0d888a6f61f5405a7e9ee9cd07201b5ae0fa0c = $this->env->getExtension("native_profiler");
+        $__internal_b094f902c9b210b8e0dde2d4fa0d888a6f61f5405a7e9ee9cd07201b5ae0fa0c->enter($__internal_b094f902c9b210b8e0dde2d4fa0d888a6f61f5405a7e9ee9cd07201b5ae0fa0c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/toolbar_js.html.twig"));
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/9/d/9d6503390754ff70616c520bc8da943a930dc82cac0b8fd71b21aaa3a97f6980.php
 
         // line 1
         echo "<div id=\"sfwdt";
@@ -127,7 +132,11 @@ class __TwigTemplate_d235f1f0ada09b133c3f01cb005bb4c21837f3b9c1b63e906981744ccd8
 /*]]>*/</script>
 ";
         
+<<<<<<< HEAD:app/cache/dev/twig/d/2/d235f1f0ada09b133c3f01cb005bb4c21837f3b9c1b63e906981744ccd8adec4.php
         $__internal_c857bfe2873cb6d6def8881272cedf97697f5d0f83eabc16f8eeb1fb7ce41bbc->leave($__internal_c857bfe2873cb6d6def8881272cedf97697f5d0f83eabc16f8eeb1fb7ce41bbc_prof);
+=======
+        $__internal_b094f902c9b210b8e0dde2d4fa0d888a6f61f5405a7e9ee9cd07201b5ae0fa0c->leave($__internal_b094f902c9b210b8e0dde2d4fa0d888a6f61f5405a7e9ee9cd07201b5ae0fa0c_prof);
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/9/d/9d6503390754ff70616c520bc8da943a930dc82cac0b8fd71b21aaa3a97f6980.php
 
     }
 

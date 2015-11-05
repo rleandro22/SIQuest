@@ -11,7 +11,7 @@
         <ol class="breadcrumb">
             <li><a href="{{ path('uci_administrador_homepage') }}">Inicio</a></li>
             <li><a href="{{ path('uci_administrador_indicepreguntas') }}">Listado de Preguntas</a></li>
-            <li class="active">Registrar pregunta</li>
+            <li class="active">Editar pregunta</li>
         </ol>
         <form id="formularioPrincipal" action="{{ path('uci_administrador_editarPregunta', { 'idPregunta': entity.id }) }}" name="formulario" method="POST" enctype="multipart/form-data">             
 
@@ -24,14 +24,14 @@
                 <!-- Article main content -->
                 <article class="col-sm-8 maincontent">
                     <header class="page-header">
-                        <h1 class="page-title">Nueva pregunta</h1>
+                        <h1 class="page-title">Editar pregunta</h1>
                     </header>
                     <br>
                     <!-- /Aquí va el contenido -->
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h3 class="thin text-center">Registrar una nueva pregunta {{ entity.tipoRespuesta.nombre }}</h3>
+                                <h3 class="thin text-center">Editar una pregunta {{ entity.tipoRespuesta.nombre }}</h3>
                                 <hr>
 
                                 {% if error %}
@@ -46,7 +46,7 @@
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_row(form.libro) }}
-                                    </div>
+                                    </div><div class="imagenCargando"></div>
                                 </div>
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
@@ -96,7 +96,7 @@
                     {% spaceless %}
                         {% for respuesta in form.respuesta %}
                             <li> {{ form_row(respuesta) }}
-                                <a href="#" onclick="addTagFormDeleteLink(event, this);">Borrar</a>
+                                <a href="#" onclick="addTagFormDeleteLink(event, this, {{ respuesta.vars.value.id }});">Borrar</a>
                             </li>
                         {% endfor %}
                     {% endspaceless %}
@@ -111,7 +111,7 @@
                 <div class="col-lg-8">                     
                 </div>
                 <div class="col-lg-4 text-right">
-                    <button class="btn btn-action" id="enviar" type="submit">Editar</button>
+                    <button class="btn btn-action" id="enviar" type="submit">Actualizar</button>
                 </div>
             </div>
             {{ form_rest(form) }}
@@ -148,87 +148,112 @@
                 }
 
         function agregarPrototipo(){
-        var collectionHolder = $('#respuestas');
+            var collectionHolder = $('#respuestas');
                 var prototype = collectionHolder.attr('data-prototype');
                 var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
-                var removeFormA = $('<a href="#" onclick="addTagFormDeleteLink(event, this);">Borrar</a>');
+                var removeFormA = $('<a href="#" onclick="addTagFormDeleteLink(event, this, 0);">Borrar</a>');
                 var newLi = $('<li></li>');
                 newLi.append(form);
                 newLi.append(removeFormA);
                 collectionHolder.append(newLi);
                 ponerPaneles();
                 if ({{ entity.tipoRespuesta.id }} != 4 && {{ entity.tipoRespuesta.id }}!= 6){
-        agregarExlusores();
-        }
-        return prototype;
+                agregarExlusores();
+                }
+                return prototype;
         }
 
-        function addTagFormDeleteLink(e, elemento) {
-        e.preventDefault();
-                var removeFormA = elemento.parentNode;
-                removeFormA.remove();
+        function addTagFormDeleteLink(e, elemento, idRespuesta) {
+                e.preventDefault();
+                var idRespuesta=idRespuesta;
+                var idPregunta={{ entity.id }};
+                if(idRespuesta!=0){
+                    $.ajax({
+                            url: "{{path('uci_administrador_borrarRespuesta')}}",
+                            type: "POST",
+                            data: {idRespuesta: idRespuesta, idPregunta: idPregunta},
+                            success: function( data ) {
+                            var removeFormA = elemento.parentNode;
+                            removeFormA.remove();
+                            alert(data.mensaje);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert('Ocurrio un error');
+                        }
+                    });
+                }else{
+                    var removeFormA = elemento.parentNode;
+                    removeFormA.remove();
+                }
+                
         }
 
         function quitarAnterior() {
-        if (area1) {
-        area1.removeInstance(areaPrevia);
-                area1 = null;
-        }
+                if (area1) {
+                area1.removeInstance(areaPrevia);
+                        area1 = null;
+                }
         }
 
         function ponerPaneles() {
 
-        $(":input[type=text], textarea").mouseenter(function () {
-        quitarAnterior();
-                var nombre = $(this).attr("name").replace(/\[/g, '_');
-                nombre = nombre.replace(/\]/g, '');
-                areaPrevia = nombre;
-                area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
-        });
-                $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
-        quitarAnterior();
-        });
+                $(":input[type=text], textarea").mouseenter(function () {
+                quitarAnterior();
+                        var nombre = $(this).attr("name").replace(/\[/g, '_');
+                        nombre = nombre.replace(/\]/g, '');
+                        areaPrevia = nombre;
+                        area1 = new nicEditor({fullPanel: true}).panelInstance(nombre, {hasPanel: true});
+                });
+                        $(":input:not(input[type=text], textarea):not(:button)").focus(function () {
+                quitarAnterior();
+                });
         }
 
         function mostrarAtrPmbok(esPmbok) {
-        if (esPmbok == 1) {
-        esPmbok = true;
-                $("#filaArea").removeClass('hidden');
-                $("#filaGrupo").removeClass('hidden');
-                $("#filaTriangulo").removeClass('hidden');
-        } else {
-        $("#filaArea").addClass('hidden');
-                $("#filaGrupo").addClass('hidden');
-                $("#filaTriangulo").addClass('hidden');
-        }
+                if (esPmbok == 1) {
+                esPmbok = true;
+                        $("#filaArea").removeClass('hidden');
+                        $("#filaGrupo").removeClass('hidden');
+                        $("#filaTriangulo").removeClass('hidden');
+                } else {
+                $("#filaArea").addClass('hidden');
+                        $("#filaGrupo").addClass('hidden');
+                        $("#filaTriangulo").addClass('hidden');
+                }
         }
 
         //Este metodo hace que no haya 2 o más respuestas correctas
         function agregarExlusores() {
-        $("select[id$='correcta']").change(function () {
-        if ($(this).val() == 1) {
-        var id = $(this).attr("id");
-                $("select[id$='correcta']").not("#" + id).val(0);
-        }
-        });
+                $("select[id$='correcta']").change(function () {
+                if ($(this).val() == 1) {
+                var id = $(this).attr("id");
+                        $("select[id$='correcta']").not("#" + id).val(0);
+                }
+                });
         }
 
         document.ready = function () {
+            
+        if (({{ esPmbok }} == 1)) {
+                mostrarAtrPmbok(1);
+        }
 
         if (({{ entity.tipoRespuesta.id }} == 5) || ({{ entity.tipoRespuesta.id }} == 7)) {
-        $('#panelRespuestas').hide();
+                $('#panelRespuestas').hide();
         }
 
         ponerPaneles();
                 $("#areaSalida").mouseenter(function (e) {
-        e.preventDefault();
-                quitarAnterior();
-        });
+                     e.preventDefault();
+                     quitarAnterior();
+                });
+                
                 $("#uci_bundle_basedatosbundle_pregunta_libro").change(function () {
-                $capitulo_selector.html('<option>Buscando capitulos...</option>');
-                $area_selector.html('<option>Buscando areas...</option>');
-                $grupo_selector.html('<option>Buscando grupos...</option>');
-                $triangulo_selector.html('<option>Buscando triangulo...</option>');
+                $('.imagenCargando').html('<img src="{{asset('images/ajax-loader.gif')}}"/>');
+                $capitulo_selector.html('<option></option>');
+                $area_selector.html('<option></option>');
+                $grupo_selector.html('<option></option>');
+                $triangulo_selector.html('<option></option>');
                 $.ajax({
                 type: $("#formularioPrincipal").attr('method'),
                         url: $("#formularioPrincipal").attr('action'),
@@ -236,33 +261,40 @@
                         dataType: "json",
                         success: function (data) {
                         mostrarAtrPmbok(data.esPmbok);
-                                $capitulo_selector.html('<option>Capitulo</option>');
-                                if (data.capitulos[0].id > 0) {
-                        for (var i = 0, total = data.capitulos.length; i < total; i++) {
-                        $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].nombreCapitulo + '</option>');
+                        
+                        $capitulo_selector.html('<option></option>');
+                        if(data.estaVacio==0){
+                            if (data.capitulos[0].id > 0) {
+                                  for (var i = 0, total = data.capitulos.length; i < total; i++) {
+                                  $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].nombreCapitulo + '</option>');
+                                  }
+                            }
                         }
+                        if(data.esPmbok==1){
+                            $area_selector.html('<option></option>');
+                            if (data.areas[0].id > 0) {
+                                for (var i = 0, total = data.areas.length; i < total; i++) {
+                                $area_selector.append('<option value="' + data.areas[i].id + '">' + data.areas[i].nombreArea + '</option>');
+                                }
+                            }
+                            $grupo_selector.html('<option></option>');
+                            if (data.grupos[0].id > 0) {
+                                for (var i = 0, total = data.grupos.length; i < total; i++) {
+                                $grupo_selector.append('<option value="' + data.grupos[i].id + '">' + data.grupos[i].nombreGrupo + '</option>');
+                                }
+                            }
+                            $triangulo_selector.html('<option></option>');
+                            if (data.triangulos[0].id > 0) {
+                                for (var i = 0, total = data.triangulos.length; i < total; i++) {
+                                $triangulo_selector.append('<option value="' + data.triangulos[i].id + '">' + data.triangulos[i].nombreTalento + '</option>');
+                                }
+                            }
                         }
-                        $area_selector.html('<option>A. Conocimiento</option>');
-                                if (data.areas[0].id > 0) {
-                        for (var i = 0, total = data.areas.length; i < total; i++) {
-                        $area_selector.append('<option value="' + data.areas[i].id + '">' + data.areas[i].nombreArea + '</option>');
-                        }
-                        }
-                        $grupo_selector.html('<option>G. Procesos</option>');
-                                if (data.grupos[0].id > 0) {
-                        for (var i = 0, total = data.grupos.length; i < total; i++) {
-                        $grupo_selector.append('<option value="' + data.grupos[i].id + '">' + data.grupos[i].nombreGrupo + '</option>');
-                        }
-                        }
-                        $triangulo_selector.html('<option>T. talentos</option>');
-                                if (data.triangulos[0].id > 0) {
-                        for (var i = 0, total = data.triangulos.length; i < total; i++) {
-                        $triangulo_selector.append('<option value="' + data.triangulos[i].id + '">' + data.triangulos[i].nombreTalento + '</option>');
-                        }
-                        }
+                        $('.imagenCargando').html('');
                         },
                         error: function () {
-                        alert("Ocurrio un error.");
+                             $('.imagenCargando').html('');
+                            alert("Ocurrio un error.");
                         }
                 });
         });

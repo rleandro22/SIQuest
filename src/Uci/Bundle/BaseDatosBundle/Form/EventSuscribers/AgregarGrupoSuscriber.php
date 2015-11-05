@@ -28,7 +28,7 @@ class AgregarGrupoSuscriber implements EventSubscriberInterface {
         $form->add($this->factory->createNamed('grupoProcesos', 'entity', null, array(
                     'auto_initialize' => false,
                     'class' => 'UciBaseDatosBundle:GrupoProcesos',
-                    'empty_value' => 'G. Procesos',
+                    'empty_value' => '',
                     'query_builder' => function (EntityRepository $repository) use ($pmbok) {
                         $qb = $repository->createQueryBuilder('u')
                                 ->innerJoin('u.pmbok', 'g');

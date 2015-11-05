@@ -15,8 +15,13 @@ class __TwigTemplate_8bab0fca83b07da3f9d4f939292e6fb6d256263aacd2d1b27f111682eae
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+<<<<<<< HEAD:app/cache/dev/twig/8/b/8bab0fca83b07da3f9d4f939292e6fb6d256263aacd2d1b27f111682eae730af.php
         $__internal_e207128a0b9482aaca727e7c7179ad1cbe9a63b142cd68ff6e4d641f2c5637cf = $this->env->getExtension("native_profiler");
         $__internal_e207128a0b9482aaca727e7c7179ad1cbe9a63b142cd68ff6e4d641f2c5637cf->enter($__internal_e207128a0b9482aaca727e7c7179ad1cbe9a63b142cd68ff6e4d641f2c5637cf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/base_js.html.twig"));
+=======
+        $__internal_36a8ae91ca737078173b1cf050910c81d2c330da7fdfefff80c654100a78400b = $this->env->getExtension("native_profiler");
+        $__internal_36a8ae91ca737078173b1cf050910c81d2c330da7fdfefff80c654100a78400b->enter($__internal_36a8ae91ca737078173b1cf050910c81d2c330da7fdfefff80c654100a78400b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/base_js.html.twig"));
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/0/a/0acc91d9dcfa3fe7d0cd5143c9f62a40c25555e19ea38d0779ac52cbd272eee7.php
 
         // line 1
         echo "<script>/*<![CDATA[*/
@@ -351,7 +356,11 @@ class __TwigTemplate_8bab0fca83b07da3f9d4f939292e6fb6d256263aacd2d1b27f111682eae
 /*]]>*/</script>
 ";
         
+<<<<<<< HEAD:app/cache/dev/twig/8/b/8bab0fca83b07da3f9d4f939292e6fb6d256263aacd2d1b27f111682eae730af.php
         $__internal_e207128a0b9482aaca727e7c7179ad1cbe9a63b142cd68ff6e4d641f2c5637cf->leave($__internal_e207128a0b9482aaca727e7c7179ad1cbe9a63b142cd68ff6e4d641f2c5637cf_prof);
+=======
+        $__internal_36a8ae91ca737078173b1cf050910c81d2c330da7fdfefff80c654100a78400b->leave($__internal_36a8ae91ca737078173b1cf050910c81d2c330da7fdfefff80c654100a78400b_prof);
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/0/a/0acc91d9dcfa3fe7d0cd5143c9f62a40c25555e19ea38d0779ac52cbd272eee7.php
 
     }
 

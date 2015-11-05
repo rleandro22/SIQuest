@@ -15,8 +15,13 @@ class __TwigTemplate_f96cd2d1de61247e37e819310a58480b1c01fa4dc223282357c689d41cf
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+<<<<<<< HEAD:app/cache/dev/twig/f/9/f96cd2d1de61247e37e819310a58480b1c01fa4dc223282357c689d41cf124a7.php
         $__internal_39cfca43a235a3156e48d754e08a430b177f237ab7ae8da94e2bdca2c18ce409 = $this->env->getExtension("native_profiler");
         $__internal_39cfca43a235a3156e48d754e08a430b177f237ab7ae8da94e2bdca2c18ce409->enter($__internal_39cfca43a235a3156e48d754e08a430b177f237ab7ae8da94e2bdca2c18ce409_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/toolbar.html.twig"));
+=======
+        $__internal_ebffc748b52660b9417bb123b260257cbfc099a7bf365abb5d219d615dd547c7 = $this->env->getExtension("native_profiler");
+        $__internal_ebffc748b52660b9417bb123b260257cbfc099a7bf365abb5d219d615dd547c7->enter($__internal_ebffc748b52660b9417bb123b260257cbfc099a7bf365abb5d219d615dd547c7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/toolbar.html.twig"));
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/0/7/074493bf4644c04960aa7f14dafc7bca7cc9ea06e41dca80b410af0aaf835f4d.php
 
         // line 1
         echo "<!-- START of Symfony Web Debug Toolbar -->
@@ -116,7 +121,11 @@ $context["name"])), "method"), "html", null, true);
 <!-- END of Symfony Web Debug Toolbar -->
 ";
         
+<<<<<<< HEAD:app/cache/dev/twig/f/9/f96cd2d1de61247e37e819310a58480b1c01fa4dc223282357c689d41cf124a7.php
         $__internal_39cfca43a235a3156e48d754e08a430b177f237ab7ae8da94e2bdca2c18ce409->leave($__internal_39cfca43a235a3156e48d754e08a430b177f237ab7ae8da94e2bdca2c18ce409_prof);
+=======
+        $__internal_ebffc748b52660b9417bb123b260257cbfc099a7bf365abb5d219d615dd547c7->leave($__internal_ebffc748b52660b9417bb123b260257cbfc099a7bf365abb5d219d615dd547c7_prof);
+>>>>>>> 7a75af69fb7ef3a814aed720af09e56539709404:app/cache/dev/twig/0/7/074493bf4644c04960aa7f14dafc7bca7cc9ea06e41dca80b410af0aaf835f4d.php
 
     }
 

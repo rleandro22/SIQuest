@@ -40,7 +40,7 @@ class PreguntaController extends Controller {
         ));
     }
 
-    public function aRegistrarPreguntaAction(Request $request, $idTipoRespuesta , $idTipoRespuesta) {
+    public function aRegistrarPreguntaAction(Request $request, $idTipoRespuesta, $idTipoRespuesta) {
         $entity = new Pregunta();
         $em = $this->getDoctrine()->getManager();
         $entity->setTipoRespuesta($em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($idTipoRespuesta));
@@ -83,22 +83,66 @@ class PreguntaController extends Controller {
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             return $this->aObtenerDatosLibro($pregunta->getLibro());
-        }else if ($request->getMethod() == 'POST') {
+        } else if ($request->getMethod() == 'POST') {
             $error = $form->getErrors();
             if ($form->isValid()) {
-                $em->flush();
+                $em->getConnection()->beginTransaction();
+                try {
+                    $this->guardarRespuestas($em, $pregunta);
+                    $em->persist($pregunta);
+                    $em->flush();
+                    $em->commit();
+                } catch (Exception $e) {
+                    $em->getConnection()->rollback();
+                    $error = $e;
+                }
             }
-            return $this->redirectToRoute('uci_administrador_indicepreguntas');
+            return $this->redirect($this->generateUrl("uci_administrador_editarPregunta", array("idPregunta" => $idPregunta)));
         }
         return $this->render('UciAdministradorBundle:VistaPregunta:editarPregunta.html.twig', array(
                     'entity' => $pregunta,
                     'error' => $error,
+                    'esPmbok' => ($pregunta->getLibro()) ? $pregunta->getLibro()->getEsPmbok() : 0,
                     'form' => $form->createView()
         ));
     }
-    
-    private function verificarSiRespuestaBorrada(){
-        
+
+    public function aBorrarRespuestaAction(Request $request) {
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            $idRespuesta = $request->get('idRespuesta');
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('UciBaseDatosBundle:Respuesta')->find($idRespuesta);
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Usuario entity.');
+            }
+            try {
+                $em->remove($entity);
+                $em->flush();
+                $mensaje = 'Borrado exitoso';
+            } catch (Exception $e) {
+                $em->getConnection()->rollback();
+                $mensaje = 'Ocurrio un error';
+            }
+            return new JsonResponse(array('mensaje' => $mensaje));
+        }
+    }
+
+    public function aBorrarPreguntaAction(Request $request, $idPregunta) {
+        $em = $this->getDoctrine()->getManager();
+        $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunta);
+        if (!$pregunta) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $em->getConnection()->beginTransaction();
+        try {
+            $this->borrarRespuestas($em, $pregunta);
+            $em->remove($pregunta);
+            $em->flush();
+            $em->commit();
+        } catch (Exception $e) {
+            $em->getConnection()->rollback();
+        }
+        return $this->redirectToRoute('uci_administrador_indicepreguntas');
     }
 
     private function aObtenerDatosLibro($libro) {
@@ -137,6 +181,7 @@ class PreguntaController extends Controller {
         $response_array['grupos'] = (empty($grupos)) ? array('id' => 0) : $grupos;
         $response_array['triangulos'] = (empty($triangulos)) ? array('id' => 0) : $triangulos;
         $response_array['esPmbok'] = $esPmbok;
+        $response_array['estaVacio'] = (empty($capitulos)) ? 1 : 0;
         $response->setContent(json_encode($response_array));
         return $response;
     }
@@ -183,37 +228,45 @@ class PreguntaController extends Controller {
         if (empty($idLibro)) {
             $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findBy(array(), array('titulo' => 'ASC'));
         } else {
-            $repository = $this->getDoctrine()
-                    ->getRepository('UciBaseDatosBundle:Pregunta');
+            $repository = $this->getDoctrine()->getRepository('UciBaseDatosBundle:Pregunta');
             $qb = $repository->createQueryBuilder('p');
-            $qb->innerJoin('p.libro', 'l');
-            $qb->innerJoin('p.capitulo', 'c');
-            $qb->innerJoin('p.areaConocimiento', 'a');
-            $qb->innerJoin('p.grupoProcesos', 'g');
-            $qb->innerJoin('p.trianguloTalento', 't');
+
             if (!empty($idLibro)) {
+                $qb->innerJoin('p.libro', 'l');
                 $qb->where('l.id= :idLibro')
                         ->setParameter('idLibro', $idLibro);
             }
             if (!empty($idCapitulo)) {
+                $qb->innerJoin('p.capitulo', 'c');
                 $qb->andWhere('c.id= :idCapitulo')
                         ->setParameter('idCapitulo', $idCapitulo);
             }
             if (!empty($idGrupoProcesos)) {
+                $qb->innerJoin('p.grupoProcesos', 'g');
                 $qb->andWhere('g.id= :idGrupoProcesos')
                         ->setParameter('idGrupoProcesos', $idGrupoProcesos);
             }
             if (!empty($idAreaConocimiento)) {
+                $qb->innerJoin('p.areaConocimiento', 'a');
                 $qb->andWhere('a.id= :idAreaConocimiento')
                         ->setParameter('idAreaConocimiento', $idAreaConocimiento);
             }
             if (!empty($idTrianguloTalento)) {
+                $qb->innerJoin('p.trianguloTalento', 't');
                 $qb->andWhere('a.id= :idTrianguloTalento')
                         ->setParameter('idTrianguloTalento', $idTrianguloTalento);
             }
             $preguntas = $qb->getQuery()->getResult();
         }
         return $preguntas;
+    }
+
+    private function borrarRespuestas($em, &$pregunta) {
+        $respuestas = $pregunta->getRespuesta();
+        foreach ($respuestas as $respuesta) {
+            $em->remove($respuesta);
+            $em->clear($respuesta);
+        }
     }
 
     private function guardarRespuestas($em, &$pregunta) {

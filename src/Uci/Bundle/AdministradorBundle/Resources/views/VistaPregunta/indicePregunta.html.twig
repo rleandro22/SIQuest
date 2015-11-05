@@ -116,8 +116,8 @@
                         {% for entity in entities %}
                             <tr>
                                 <td style="border-right:0;" class="primera-columna">{{ entity.titulo|striptags }} </td>
-                                <td><a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                <td width='5%'><a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="{{ path('uci_administrador_borrarPregunta', { 'idPregunta': entity.id }) }}" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -135,7 +135,6 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-
 
         document.ready = function () {
 
