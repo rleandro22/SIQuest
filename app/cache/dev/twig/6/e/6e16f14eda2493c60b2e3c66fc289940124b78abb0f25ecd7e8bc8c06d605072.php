@@ -15,8 +15,8 @@ class __TwigTemplate_6e16f14eda2493c60b2e3c66fc289940124b78abb0f25ecd7e8bc8c06d6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_384835bad7adce4bad147512e922a34fb0e0dc799d599f6e8d208c6e36f187de = $this->env->getExtension("native_profiler");
-        $__internal_384835bad7adce4bad147512e922a34fb0e0dc799d599f6e8d208c6e36f187de->enter($__internal_384835bad7adce4bad147512e922a34fb0e0dc799d599f6e8d208c6e36f187de_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoPregunta.html.twig"));
+        $__internal_7c778488bc4c5460916065eabb48a8177eb5802e32e27687ef4cc51dd74d606e = $this->env->getExtension("native_profiler");
+        $__internal_7c778488bc4c5460916065eabb48a8177eb5802e32e27687ef4cc51dd74d606e->enter($__internal_7c778488bc4c5460916065eabb48a8177eb5802e32e27687ef4cc51dd74d606e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoPregunta.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -32,22 +32,17 @@ class __TwigTemplate_6e16f14eda2493c60b2e3c66fc289940124b78abb0f25ecd7e8bc8c06d6
         // line 10
         echo $this->env->getExtension('routing')->getPath("uci_administrador_indicepreguntas");
         echo "'><span>Lista de preguntas</span></a></li>
-                <li class='active has-sub'><a href='#'><span>Nueva pregunta</span></a>
-                    <ul>
-                        <li><a data-toggle=\"modal\" href=\"";
-        // line 13
+                <li><a data-toggle=\"modal\" href=\"";
+        // line 11
         echo $this->env->getExtension('routing')->getPath("uci_administrador_eligeTipoPregunta");
-        echo "\" data-target=\"#myModal\">PMBok</a></li>
-                        <li class='last'><a href='#'><span>Otro</span></a></li>
-                    </ul>
-                </li>
+        echo "\" data-target=\"#myModal\"><span>Nueva pregunta</span></a></li>
             </ul>
         </div>
     </div>
 </div>
 ";
         
-        $__internal_384835bad7adce4bad147512e922a34fb0e0dc799d599f6e8d208c6e36f187de->leave($__internal_384835bad7adce4bad147512e922a34fb0e0dc799d599f6e8d208c6e36f187de_prof);
+        $__internal_7c778488bc4c5460916065eabb48a8177eb5802e32e27687ef4cc51dd74d606e->leave($__internal_7c778488bc4c5460916065eabb48a8177eb5802e32e27687ef4cc51dd74d606e_prof);
 
     }
 
@@ -63,6 +58,6 @@ class __TwigTemplate_6e16f14eda2493c60b2e3c66fc289940124b78abb0f25ecd7e8bc8c06d6
 
     public function getDebugInfo()
     {
-        return array (  39 => 13,  33 => 10,  22 => 1,);
+        return array (  37 => 11,  33 => 10,  22 => 1,);
     }
 }
