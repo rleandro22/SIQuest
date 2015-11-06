@@ -68,6 +68,10 @@ uci_administrador_registrarcuestionario:
     pattern:  /admin/construir_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aConstruirCuestionario }
     
+uci_administrador_listadoCuestionarios:
+    pattern:  /admin/listado_cuestionarioos
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aRetornarCuestionarios }
+    
 #---------------------MATRICULAR USUARIO----------------------------------------
 
 uci_administrador_matricularusuario:

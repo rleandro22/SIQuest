@@ -23,34 +23,34 @@ class __TwigTemplate_ebd3912ca34d72abc278e9cdaa1d8ed1783ddbd627e68fef2bd0cccf54a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_71bd6f0f914682d5298256d30bc640a8e8c3bae7acae45085942d4e3f4fee8c1 = $this->env->getExtension("native_profiler");
-        $__internal_71bd6f0f914682d5298256d30bc640a8e8c3bae7acae45085942d4e3f4fee8c1->enter($__internal_71bd6f0f914682d5298256d30bc640a8e8c3bae7acae45085942d4e3f4fee8c1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCuestionario:indiceCuestionario.html.twig"));
+        $__internal_37b88a329e65f4ed03c609e4b643485fb1285e2f720b58b2faf67bf753c94c69 = $this->env->getExtension("native_profiler");
+        $__internal_37b88a329e65f4ed03c609e4b643485fb1285e2f720b58b2faf67bf753c94c69->enter($__internal_37b88a329e65f4ed03c609e4b643485fb1285e2f720b58b2faf67bf753c94c69_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaCuestionario:indiceCuestionario.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_71bd6f0f914682d5298256d30bc640a8e8c3bae7acae45085942d4e3f4fee8c1->leave($__internal_71bd6f0f914682d5298256d30bc640a8e8c3bae7acae45085942d4e3f4fee8c1_prof);
+        $__internal_37b88a329e65f4ed03c609e4b643485fb1285e2f720b58b2faf67bf753c94c69->leave($__internal_37b88a329e65f4ed03c609e4b643485fb1285e2f720b58b2faf67bf753c94c69_prof);
 
     }
 
     // line 3
     public function block_header($context, array $blocks = array())
     {
-        $__internal_3fb1d77e9593730434542a1345631f5be89c15abe980b0f29b4b3fe6bdcf5e0c = $this->env->getExtension("native_profiler");
-        $__internal_3fb1d77e9593730434542a1345631f5be89c15abe980b0f29b4b3fe6bdcf5e0c->enter($__internal_3fb1d77e9593730434542a1345631f5be89c15abe980b0f29b4b3fe6bdcf5e0c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_539b5b0740206dae1c8f6b334744c6c1ef624950aa219392342f6447e25b1b7a = $this->env->getExtension("native_profiler");
+        $__internal_539b5b0740206dae1c8f6b334744c6c1ef624950aa219392342f6447e25b1b7a->enter($__internal_539b5b0740206dae1c8f6b334744c6c1ef624950aa219392342f6447e25b1b7a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 4
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_3fb1d77e9593730434542a1345631f5be89c15abe980b0f29b4b3fe6bdcf5e0c->leave($__internal_3fb1d77e9593730434542a1345631f5be89c15abe980b0f29b4b3fe6bdcf5e0c_prof);
+        $__internal_539b5b0740206dae1c8f6b334744c6c1ef624950aa219392342f6447e25b1b7a->leave($__internal_539b5b0740206dae1c8f6b334744c6c1ef624950aa219392342f6447e25b1b7a_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_307625893d2011040d0f8d6d817542813b59bc4565bea03b70c070f5c0eddb7a = $this->env->getExtension("native_profiler");
-        $__internal_307625893d2011040d0f8d6d817542813b59bc4565bea03b70c070f5c0eddb7a->enter($__internal_307625893d2011040d0f8d6d817542813b59bc4565bea03b70c070f5c0eddb7a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_7ba163016f22d57135fd81c70f01494b83ea093bff4cb4e6407c55c24493496c = $this->env->getExtension("native_profiler");
+        $__internal_7ba163016f22d57135fd81c70f01494b83ea093bff4cb4e6407c55c24493496c->enter($__internal_7ba163016f22d57135fd81c70f01494b83ea093bff4cb4e6407c55c24493496c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- container -->
@@ -75,60 +75,37 @@ class __TwigTemplate_ebd3912ca34d72abc278e9cdaa1d8ed1783ddbd627e68fef2bd0cccf54a
             <!-- Article main content -->
             <article class=\"col-sm-8 maincontent\">
                 <header class=\"page-header\">
-                    <h1 class=\"page-title\">Lista de cuestionarios</h1>
+                    <h1 class=\"page-title\">Filtrar cuestionarios</h1>
                 </header>
                 <br>
-
-                <br><br>
-                ";
-        // line 29
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
-        foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 30
-            echo "                    <div class=\"col-lg-3 col-md-4 col-xs-6 thumb\">
-                        <div class=\"thumbnail\">
-                            <a data-toggle=\"modal\" href=\"";
-            // line 32
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_editcategoria", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
-            echo "\" data-target=\"#myModal\">
-                                <p>";
-            // line 33
-            echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "cuestionarioname", array()), "html", null, true);
-            echo "</p>
-                            </a>
-
-                            <a href=\"";
-            // line 36
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_indicecurso", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
-            echo "\">
-                                <img class=\"img-responsive\" src=\"";
-            // line 37
-            echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/img_test_1.png"), "html", null, true);
-            echo "\" alt=\"\">
-                            </a>
-                            <br>
-                            <div class=\"row\">
-                                <div class=\"col-md-6\"></div>
-                                <div class=\"col-md-6\"><span class=\"pull-right\"><a data-toggle=\"modal\" href=\"";
-            // line 42
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_editcategoria", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
-            echo "\" data-target=\"#myModal\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
-                                        <a href=\"";
-            // line 43
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_deletecategoria", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
-            echo "\" class=\"speedbump\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a></div>
-                            </div>
-                            
+                <form action=\"";
+        // line 27
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_indicecuestionario");
+        echo "\" method=\"POST\" enctype=\"multipart/form-data\">
+                    <div class=\"row top-margin\">
+                        <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
+                            ";
+        // line 30
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "curso", array()), 'label');
+        echo "
+                            ";
+        // line 31
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "curso", array()), 'errors');
+        echo "
+                            ";
+        // line 32
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "curso", array()), 'widget');
+        echo "
                         </div>
                     </div>
-                ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 49
-        echo "                <!-- /Aquí acaba el contenido --> 
+                    ";
+        // line 35
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
+        echo "
+                </form>
+                <br><br>
+
+                <!-- /Aquí acaba el contenido --> 
 
                 <div id=\"myModal\" class=\"modal fade\" role=\"dialog\">
 
@@ -139,26 +116,56 @@ class __TwigTemplate_ebd3912ca34d72abc278e9cdaa1d8ed1783ddbd627e68fef2bd0cccf54a
             </article>
             <!-- /Article -->
         </div>
+
+
+        <br><br>
+        <div class=\"row top-space\">
+
+            <div class=\"row\">
+                <div class=\"col-sm-4\">
+                    <input id=\"filter\" class=\"form-control\" type=\"text\" placeholder=\"Buscar\">
+                </div>
+            </div>
+            <br><br>
+            <div id=\"tablaCuestionarios\">
+                ";
+        // line 62
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("UciAdministradorBundle:Cuestionario:aRetornarCuestionarios"));
+        echo "
+            </div>
+            </br></br>
+
+        </div>
+
     </div>\t<!-- /container -->
 
 ";
         
-        $__internal_307625893d2011040d0f8d6d817542813b59bc4565bea03b70c070f5c0eddb7a->leave($__internal_307625893d2011040d0f8d6d817542813b59bc4565bea03b70c070f5c0eddb7a_prof);
+        $__internal_7ba163016f22d57135fd81c70f01494b83ea093bff4cb4e6407c55c24493496c->leave($__internal_7ba163016f22d57135fd81c70f01494b83ea093bff4cb4e6407c55c24493496c_prof);
 
     }
 
-    // line 64
+    // line 72
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_0b37abb3c8fdb970ec7d3741fd9626ab33fe941fb3ffdf33869367e0fc9dac7a = $this->env->getExtension("native_profiler");
-        $__internal_0b37abb3c8fdb970ec7d3741fd9626ab33fe941fb3ffdf33869367e0fc9dac7a->enter($__internal_0b37abb3c8fdb970ec7d3741fd9626ab33fe941fb3ffdf33869367e0fc9dac7a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_5a80706edd442209ffcf6fa44112fa03f6f26c3bce012466322e1fa26d2fd625 = $this->env->getExtension("native_profiler");
+        $__internal_5a80706edd442209ffcf6fa44112fa03f6f26c3bce012466322e1fa26d2fd625->enter($__internal_5a80706edd442209ffcf6fa44112fa03f6f26c3bce012466322e1fa26d2fd625_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 65
+        // line 73
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script type=\"text/javascript\">
         document.ready = function () {
+            
+            \$(\"#uci_bundle_basedatosbundle_filtracuestionario_curso\").change(function () {
+                var idCurso = \$(this).val();
+                var nombreCuestionario =  \$(\"#filter\").val();
+                \$( \"#tablaCuestionarios\" ).load('";
+        // line 80
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_listadoCuestionarios");
+        echo "'); 
+            });
 
             \$('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
@@ -191,7 +198,7 @@ class __TwigTemplate_ebd3912ca34d72abc278e9cdaa1d8ed1783ddbd627e68fef2bd0cccf54a
     </script>
 ";
         
-        $__internal_0b37abb3c8fdb970ec7d3741fd9626ab33fe941fb3ffdf33869367e0fc9dac7a->leave($__internal_0b37abb3c8fdb970ec7d3741fd9626ab33fe941fb3ffdf33869367e0fc9dac7a_prof);
+        $__internal_5a80706edd442209ffcf6fa44112fa03f6f26c3bce012466322e1fa26d2fd625->leave($__internal_5a80706edd442209ffcf6fa44112fa03f6f26c3bce012466322e1fa26d2fd625_prof);
 
     }
 
@@ -207,6 +214,6 @@ class __TwigTemplate_ebd3912ca34d72abc278e9cdaa1d8ed1783ddbd627e68fef2bd0cccf54a
 
     public function getDebugInfo()
     {
-        return array (  157 => 65,  151 => 64,  131 => 49,  119 => 43,  115 => 42,  107 => 37,  103 => 36,  97 => 33,  93 => 32,  89 => 30,  85 => 29,  73 => 19,  71 => 18,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  166 => 80,  155 => 73,  149 => 72,  133 => 62,  103 => 35,  97 => 32,  93 => 31,  89 => 30,  83 => 27,  73 => 19,  71 => 18,  62 => 12,  56 => 8,  50 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 }

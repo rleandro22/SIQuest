@@ -1562,6 +1562,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aConstruirCuestionarioAction',  '_route' => 'uci_administrador_registrarcuestionario',);
             }
 
+            // uci_administrador_listadoCuestionarios
+            if ($pathinfo === '/admin/listado_cuestionarioos') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aRetornarCuestionariosAction',  '_route' => 'uci_administrador_listadoCuestionarios',);
+            }
+
             // uci_administrador_matricularusuario
             if (preg_match('#^/admin/(?P<idGeneracion>[^/]++)/(?P<idCurso>[^/]++)/matricular_usuario/(?P<tipoUsuario>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_matricularusuario')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::matricularUsuarioAction',));

@@ -1,0 +1,19 @@
+{% for entity in entities %}
+    <div class="col-lg-2 col-md-4 col-xs-6 thumb">
+        <div class="thumbnail">
+            <a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal">
+                <p>{{ entity.cuestionarioname }}</p>
+            </a>
+
+            <a href="{{ path('uci_administrador_indicecurso', { 'id': entity.id }) }}">
+                <img class="img-responsive" src="{{asset('images/img_test_1.png')}}" alt="">
+            </a>
+            <br>
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6"><span class="pull-right"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="{{ path('uci_administrador_deletecategoria', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
