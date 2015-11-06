@@ -14,7 +14,7 @@ class FiltrarCuestionariosType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('curso', 'entity', array('class' => 'UciBaseDatosBundle:Curso', 'required' => false, 'mapped' => false));
+                ->add('curso', 'entity', array('class' => 'UciBaseDatosBundle:Curso', 'required' => false, 'mapped' => true));
                 
     }
 
@@ -23,7 +23,7 @@ class FiltrarCuestionariosType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => null
+            'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Cuestionario'
         ));
     }
 

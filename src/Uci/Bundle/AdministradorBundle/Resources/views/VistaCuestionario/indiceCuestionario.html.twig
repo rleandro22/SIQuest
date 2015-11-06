@@ -29,7 +29,7 @@
                         <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                             {{ form_label(form.curso) }}
                             {{ form_errors(form.curso) }}
-                            {{ form_widget(form.curso) }}
+                            {{ form_widget(form.curso,{'attr' : {'onChange':'this.form.submit()'} }) }}
                         </div>
                     </div>
                     {{ form_rest(form) }}
@@ -58,9 +58,25 @@
                 </div>
             </div>
             <br><br>
-            <div id="tablaCuestionarios">
-                {{ render(controller('UciAdministradorBundle:Cuestionario:aRetornarCuestionarios')) }}
-            </div>
+            {% for entity in entities %}
+                <div class="col-lg-2 col-md-4 col-xs-6 thumb" id="{{ entity.cuestionarioname|replace({' ': ''}) }}">
+                    <div class="thumbnail">
+                        <a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal">
+                            <p>{{ entity.cuestionarioname }}</p>
+                        </a>
+
+                        <a href="{{ path('uci_administrador_indicecurso', { 'id': entity.id }) }}">
+                            <img class="img-responsive" src="{{asset('images/img_test_1.png')}}" alt="">
+                        </a>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6"><span class="pull-right"><a data-toggle="modal" href="{{ path('uci_administrador_editcategoria', { 'id': entity.id }) }}" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="{{ path('uci_administrador_deletecategoria', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
             </br></br>
 
         </div>
@@ -73,11 +89,11 @@
     {{ parent() }}
     <script type="text/javascript">
         document.ready = function () {
-            
-            $("#uci_bundle_basedatosbundle_filtracuestionario_curso").change(function () {
-                var idCurso = $(this).val();
-                var nombreCuestionario =  $("#filter").val();
-                $( "#tablaCuestionarios" ).load('{{path('uci_administrador_listadoCuestionarios')}}'); 
+
+            $("#filter").on("keyup", function () {
+                var valor = $(this).val().replace(/\s/g, "");
+                $('#'+valor +'.thumb').slideToggle("fast");
+
             });
 
             $('table').footable().on('click', '.row-delete', function (e) {
