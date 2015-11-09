@@ -52,11 +52,6 @@
         <br><br>
         <div class="row top-space">
 
-            <div class="row">
-                <div class="col-sm-4">
-                    <input id="filter" class="form-control" type="text" placeholder="Buscar">
-                </div>
-            </div>
             <br><br>
             {% for entity in entities %}
                 <div class="col-lg-2 col-md-4 col-xs-6 thumb" id="{{ entity.cuestionarioname|replace({' ': ''}) }}">
@@ -89,12 +84,6 @@
     {{ parent() }}
     <script type="text/javascript">
         document.ready = function () {
-
-            $("#filter").on("keyup", function () {
-                var valor = $(this).val().replace(/\s/g, "");
-                $('#'+valor +'.thumb').slideToggle("fast");
-
-            });
 
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
