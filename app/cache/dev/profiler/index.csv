@@ -1064,3 +1064,10 @@ bf63ec,::1,POST,http://localhost/SIQuest/web/app_dev.php/login_check,1447098414,
 ad8a1a,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/editar_usuario,1447098547,8f65f6,200
 8f65f6,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/1/editar_usuario,1447098547,,404
 c3ec5b,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/registrar_libro,1447098551,,200
+bfdc1b,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1447182917,,302
+ad73a3,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1447182917,,200
+f31b66,::1,POST,http://localhost/SIQuest/web/app_dev.php/login_check,1447182924,,302
+e78872,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1447182924,,200
+309c07,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/indice_cuestionario,1447182928,,200
+30a156,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/indice_cuestionario,1447182932,,200
+fa7cfa,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1447182933,,200

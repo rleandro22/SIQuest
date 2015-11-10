@@ -15,9 +15,9 @@ class ParametroLibroType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'))
-                ->add('porcentaje', 'integer', array("label" => "Página Num.: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
+                ->add('cantidadL', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))))
-                ->add('numeroPagina', 'integer', array("label" => "Página Num.: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
+                ->add('porcentajeL', 'integer', array("label" => "% de preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))));
     }
 
@@ -34,7 +34,7 @@ class ParametroLibroType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'uci_bundle_basedatosbundle_capitulo';
+        return 'uci_bundle_basedatosbundle_parametro_libro';
     }
 
 }
