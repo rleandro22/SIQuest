@@ -13,43 +13,26 @@ class ParametroConjuntoType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder
-                ->add('areaConocimiento', 'collection', array(
-                    'type' => new ParametroAreaType(),
-                    'by_reference' => FALSE,
-                    'allow_delete' => TRUE,
-                    'allow_add' => TRUE,
-                    'prototype' => TRUE,
-                    'label' => FALSE))
-                ->add('grupoProcesos', 'collection', array(
-                    'type' => new ParametroGrupoType(),
-                    'by_reference' => FALSE,
-                    'allow_delete' => TRUE,
-                    'allow_add' => TRUE,
-                    'prototype' => TRUE,
-                    'label' => FALSE))
-                ->add('trianguloTalento', 'collection', array(
-                    'type' => new ParametroTrianguloType(),
-                    'by_reference' => FALSE,
-                    'allow_delete' => TRUE,
-                    'allow_add' => TRUE,
-                    'prototype' => TRUE,
-                    'label' => FALSE))
-                ->add('tipoPrueba', 'collection', array(
-                    'type' => new ParametroTipoPruebaType(),
-                    'by_reference' => FALSE,
-                    'allow_delete' => TRUE,
-                    'allow_add' => TRUE,
-                    'prototype' => TRUE,
-                    'label' => FALSE))
-                ->add('tipoRespuesta', 'collection', array(
-                    'type' => new ParametroTipoRespuestaType(),
-                    'by_reference' => FALSE,
-                    'allow_delete' => TRUE,
-                    'allow_add' => TRUE,
-                    'prototype' => TRUE,
-                    'label' => FALSE))
-                ;
+        $factory = $builder->getFormFactory();
+        $capituloSubscriber = new EventSuscribers\AgregarCapituloSuscriber($factory);
+        $builder->addEventSubscriber($capituloSubscriber);
+        $builder->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'))
+                ->add('numeroPaginaDe', 'integer', array("label" => "Página Num.: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
+                        new Regex(array(
+                            'pattern' => '/^[0-9]\d*$/',
+                            'message' => 'Use solo números positivos.'
+                        )))))
+                ->add('numeroPaginaHasta', 'integer', array("label" => "Página Num.: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
+                        new Regex(array(
+                            'pattern' => '/^[0-9]\d*$/',
+                            'message' => 'Use solo números positivos.'
+                        )))))
+                ->add('areaConocimiento', 'entity', array('class' => 'UciBaseDatosBundle:AreaConocimiento', 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('trianguloTalento', 'entity', array('class' => 'UciBaseDatosBundle:TrianguloTalento', 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('tipoPrueba', 'entity', array('class' => 'UciBaseDatosBundle:TipoPrueba', 'expanded' => true, 'multiple' => true, 'required' => false, 'attr' => array('style' => 'width: 100%')))
+                ->add('tipoRespuesta', 'entity', array('class' => 'UciBaseDatosBundle:TipoRespuesta', 'expanded' => true, 'multiple' => true, 'required' => false, 'attr' => array('style' => 'width: 100%')))
+        ;
     }
 
     /**

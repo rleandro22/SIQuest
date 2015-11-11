@@ -30,7 +30,6 @@ class PreguntaType extends AbstractType {
                             'pattern' => '/^[0-9]\d*$/',
                             'message' => 'Use solo números positivos.'
                         )))))
-                //->add('capitulo', 'choice', array('placeholder' => 'Capitulo', 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('areaConocimiento', 'entity', array('class' => 'UciBaseDatosBundle:AreaConocimiento', 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('trianguloTalento', 'entity', array('class' => 'UciBaseDatosBundle:TrianguloTalento', 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'attr' => array('style' => 'width: 100%')))

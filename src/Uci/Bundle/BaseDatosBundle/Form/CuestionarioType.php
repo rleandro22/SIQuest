@@ -57,6 +57,13 @@ class CuestionarioType extends AbstractType
                     'allow_add' => TRUE,
                     'prototype' => TRUE,
                     'label' => FALSE))
+                ->add('parametroConjunto', 'collection', array(
+                    'type' => new ParametroConjuntoType(),
+                    'by_reference' => FALSE,
+                    'allow_delete' => TRUE,
+                    'allow_add' => TRUE,
+                    'prototype' => TRUE,
+                    'label' => FALSE))
                 ;
     }
     
