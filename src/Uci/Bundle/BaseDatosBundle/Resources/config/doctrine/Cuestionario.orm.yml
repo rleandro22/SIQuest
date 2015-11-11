@@ -27,12 +27,12 @@ Uci\Bundle\BaseDatosBundle\Entity\Cuestionario:
             length: 200
             fixed: false
             comment: ''
-        pruebaNumero:
+        cantidadPreguntas:
             type: integer
             nullable: false
             unsigned: false
             comment: ''
-            column: prueba_numero
+            column: cantidad_preguntas
     manyToOne:
         curso:
             targetEntity: Curso

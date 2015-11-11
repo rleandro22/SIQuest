@@ -1071,3 +1071,13 @@ e78872,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1447182924,,200
 309c07,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/indice_cuestionario,1447182928,,200
 30a156,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/indice_cuestionario,1447182932,,200
 fa7cfa,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1447182933,,200
+43d72a,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1447270397,,302
+7e05d9,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1447270397,,200
+042dff,::1,POST,http://localhost/SIQuest/web/app_dev.php/login_check,1447270406,,302
+41b7c6,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1447270407,,200
+257fe6,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1447270687,,200
+ceebee,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1447270689,,200
+ada8fb,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/indice_cuestionario,1447270693,,200
+1c20db,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/elegir_tipo,1447270770,,200
+5c9752,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/indice_cuestionario,1447270773,,200
+d6fe47,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1447270814,,200

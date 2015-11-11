@@ -24,9 +24,9 @@ class Cuestionario {
     /**
      * @var integer
      *
-     * @ORM\Column(name="prueba_numero", type="integer", nullable=false)
+     * @ORM\Column(name="cantidad_preguntas", type="integer", nullable=false)
      */
-    private $pruebaNumero;
+    private $cantidadPreguntas;
 
     /**
      * @var \Uci\Bundle\BaseDatosBundle\Entity\Curso
@@ -85,24 +85,24 @@ class Cuestionario {
     }
 
     /**
-     * Set pruebaNumero
+     * Set cantidadPreguntas
      *
-     * @param integer $pruebaNumero
+     * @param integer $cantidadPreguntas
      * @return Cuestionario
      */
-    public function setPruebaNumero($pruebaNumero) {
-        $this->pruebaNumero = $pruebaNumero;
+    public function setCantidadPreguntas($cantidadPreguntas) {
+        $this->cantidadPreguntas = $cantidadPreguntas;
 
         return $this;
     }
 
     /**
-     * Get pruebaNumero
+     * Get cantidadPreguntas
      *
      * @return integer 
      */
-    public function getPruebaNumero() {
-        return $this->pruebaNumero;
+    public function getCantidadPreguntas() {
+        return $this->cantidadPreguntas;
     }
 
     /**
