@@ -1185,3 +1185,7 @@ ba836f,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/construir_cuestion
 912fea,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/construir_cuestionario,1447367008,,200
 5eabc3,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/construir_cuestionario,1447367027,,200
 11d659,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/construir_cuestionario,1447367050,,200
+a737ef,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/construir_cuestionario,1447367157,,200
+fe7a6a,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1447367832,,200
+d409f9,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/indice_cuestionario,1447367835,,200
+15b2c1,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/construir_cuestionario,1447367838,,200
