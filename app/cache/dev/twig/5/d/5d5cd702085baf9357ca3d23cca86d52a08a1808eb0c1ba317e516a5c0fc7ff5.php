@@ -15,8 +15,8 @@ class __TwigTemplate_5d5cd702085baf9357ca3d23cca86d52a08a1808eb0c1ba317e516a5c0f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_087266802665b80d6217bf3e21970395e8ffbb702c4336e5a79d9013514e6bca = $this->env->getExtension("native_profiler");
-        $__internal_087266802665b80d6217bf3e21970395e8ffbb702c4336e5a79d9013514e6bca->enter($__internal_087266802665b80d6217bf3e21970395e8ffbb702c4336e5a79d9013514e6bca_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCuestionario.html.twig"));
+        $__internal_61d101c610f26b14f005c977da53964e49a070499d1c5a830691de35021fc89a = $this->env->getExtension("native_profiler");
+        $__internal_61d101c610f26b14f005c977da53964e49a070499d1c5a830691de35021fc89a->enter($__internal_61d101c610f26b14f005c977da53964e49a070499d1c5a830691de35021fc89a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoCuestionario.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -32,17 +32,17 @@ class __TwigTemplate_5d5cd702085baf9357ca3d23cca86d52a08a1808eb0c1ba317e516a5c0f
         // line 10
         echo $this->env->getExtension('routing')->getPath("uci_administrador_indicecuestionario");
         echo "'><span>Lista de cuestionarios</span></a></li>
-                <li><a data-toggle=\"modal\" href=\"";
+                <li><a href=\"";
         // line 11
-        echo $this->env->getExtension('routing')->getPath("uci_administrador_eligeTipoPregunta");
-        echo "\" data-target=\"#myModal\"><span>Nuevo cuestionario</span></a></li>
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_registrarcuestionario");
+        echo "\"><span>Nuevo cuestionario</span></a></li>
             </ul>
         </div>
     </div>
 </div>
 ";
         
-        $__internal_087266802665b80d6217bf3e21970395e8ffbb702c4336e5a79d9013514e6bca->leave($__internal_087266802665b80d6217bf3e21970395e8ffbb702c4336e5a79d9013514e6bca_prof);
+        $__internal_61d101c610f26b14f005c977da53964e49a070499d1c5a830691de35021fc89a->leave($__internal_61d101c610f26b14f005c977da53964e49a070499d1c5a830691de35021fc89a_prof);
 
     }
 

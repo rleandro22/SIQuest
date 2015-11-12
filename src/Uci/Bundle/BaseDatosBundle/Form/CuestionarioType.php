@@ -28,6 +28,7 @@ class CuestionarioType extends AbstractType
                     'allow_delete' => TRUE,
                     'allow_add' => TRUE,
                     'prototype' => TRUE,
+                    'mapped' => FALSE,
                     'label' => FALSE))
                 ->add('grupoProcesos', 'collection', array(
                     'type' => new ParametroGrupoType(),
@@ -35,6 +36,7 @@ class CuestionarioType extends AbstractType
                     'allow_delete' => TRUE,
                     'allow_add' => TRUE,
                     'prototype' => TRUE,
+                    'mapped' => FALSE,
                     'label' => FALSE))
                 ->add('trianguloTalento', 'collection', array(
                     'type' => new ParametroTrianguloType(),
@@ -42,6 +44,7 @@ class CuestionarioType extends AbstractType
                     'allow_delete' => TRUE,
                     'allow_add' => TRUE,
                     'prototype' => TRUE,
+                    'mapped' => FALSE,
                     'label' => FALSE))
                 ->add('tipoPrueba', 'collection', array(
                     'type' => new ParametroTipoPruebaType(),
@@ -49,6 +52,7 @@ class CuestionarioType extends AbstractType
                     'allow_delete' => TRUE,
                     'allow_add' => TRUE,
                     'prototype' => TRUE,
+                    'mapped' => FALSE,
                     'label' => FALSE))
                 ->add('tipoRespuesta', 'collection', array(
                     'type' => new ParametroTipoRespuestaType(),
@@ -56,6 +60,7 @@ class CuestionarioType extends AbstractType
                     'allow_delete' => TRUE,
                     'allow_add' => TRUE,
                     'prototype' => TRUE,
+                    'mapped' => FALSE,
                     'label' => FALSE))
                 ->add('parametroConjunto', 'collection', array(
                     'type' => new ParametroConjuntoType(),
@@ -63,6 +68,7 @@ class CuestionarioType extends AbstractType
                     'allow_delete' => TRUE,
                     'allow_add' => TRUE,
                     'prototype' => TRUE,
+                    'mapped' => FALSE,
                     'label' => FALSE))
                 ;
     }

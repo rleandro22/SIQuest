@@ -4,6 +4,7 @@ namespace Uci\Bundle\AdministradorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Uci\Bundle\BaseDatosBundle\Form\CuestionarioType;
 use Uci\Bundle\BaseDatosBundle\Form\FiltrarCuestionariosType;
 use Uci\Bundle\BaseDatosBundle\Entity\Cuestionario;
 
@@ -32,6 +33,15 @@ class CuestionarioController extends Controller {
         return $this->render('UciAdministradorBundle:VistaCuestionario:indiceCuestionario.html.twig', array(
                     'form' => $form->createView(),
                     'entities' => $entities,
+        ));
+    }
+    
+    public function aConstruirCuestionarioAction(Request $request) {
+        $cuestionario = new Cuestionario();
+        $form = $this->createForm(new CuestionarioType(), $cuestionario);
+        $form->handleRequest($request);
+        return $this->render('UciAdministradorBundle:VistaCuestionario:generarCuestionario.html.twig', array(
+                    'form' => $form->createView()
         ));
     }
 

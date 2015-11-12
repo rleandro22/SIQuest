@@ -5,6 +5,7 @@ namespace Uci\Bundle\BaseDatosBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ParametroTrianguloType extends AbstractType {
 
@@ -14,7 +15,7 @@ class ParametroTrianguloType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('trianguloTalento', 'entity', array('class' => 'UciBaseDatosBundle:TrianguloTalentos', 'required' => false, 'empty_value' => 'T. Talentos:'))
+                ->add('trianguloTalento', 'entity', array('class' => 'UciBaseDatosBundle:TrianguloTalento', 'required' => false, 'empty_value' => 'T. Talentos:'))
                 ->add('cantidadA', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))))
                 ->add('porcentajeA', 'integer', array("label" => "% de preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
