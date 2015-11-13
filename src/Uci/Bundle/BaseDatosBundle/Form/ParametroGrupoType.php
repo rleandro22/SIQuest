@@ -15,11 +15,10 @@ class ParametroGrupoType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'empty_value' => 'G. Procesos:'))
-                ->add('cantidadA', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
+                ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'empty_value' => 'G. Procesos'))
+                ->add('cantidadG', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))))
-                ->add('porcentajeA', 'integer', array("label" => "% de preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
-                        new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))));
+                ->add('porcentajeG', 'percent', array("label" => "% de preguntas: ", "mapped" => false, "required" => false));
     }
 
     /**
@@ -27,7 +26,7 @@ class ParametroGrupoType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Pregunta'
+            'data_class' => null
         ));
     }
 

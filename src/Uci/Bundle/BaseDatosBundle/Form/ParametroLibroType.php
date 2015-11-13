@@ -18,8 +18,7 @@ class ParametroLibroType extends AbstractType {
                 ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'))
                 ->add('cantidadL', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))))
-                ->add('porcentajeL', 'integer', array("label" => "% de preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
-                        new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))));
+                ->add('porcentajeL', 'percent', array("label" => "% de preguntas: ", "mapped" => false, "required" => false));
     }
 
     /**
@@ -27,7 +26,7 @@ class ParametroLibroType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Pregunta'
+            'data_class' => null
         ));
     }
 

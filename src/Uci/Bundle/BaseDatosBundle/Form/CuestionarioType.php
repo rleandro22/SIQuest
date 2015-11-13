@@ -22,6 +22,14 @@ class CuestionarioType extends AbstractType
                             'pattern' => '/^[0-9]\d*$/',
                             'message' => 'Use solo números positivos.'
                         )))))
+                ->add('libro', 'collection', array(
+                    'type' => new ParametroLibroType(),
+                    'by_reference' => FALSE,
+                    'allow_delete' => TRUE,
+                    'allow_add' => TRUE,
+                    'prototype' => TRUE,
+                    'mapped' => FALSE,
+                    'label' => FALSE))
                 ->add('areaConocimiento', 'collection', array(
                     'type' => new ParametroAreaType(),
                     'by_reference' => FALSE,

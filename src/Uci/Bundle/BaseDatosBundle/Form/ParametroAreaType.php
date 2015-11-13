@@ -15,11 +15,10 @@ class ParametroAreaType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('areaConocimiento', 'entity', array('class' => 'UciBaseDatosBundle:AreaConocimiento', 'required' => false, 'empty_value' => 'A. Conocimiento:'))
+                ->add('areaConocimiento', 'entity', array('class' => 'UciBaseDatosBundle:AreaConocimiento', 'required' => false, 'empty_value' => 'A. Conocimiento'))
                 ->add('cantidadA', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))))
-                ->add('porcentajeA', 'integer', array("label" => "% de preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
-                        new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))));
+                ->add('porcentajeA', 'percent', array("label" => "% de preguntas: ", "mapped" => false, "required" => false));
     }
 
     /**
@@ -27,7 +26,7 @@ class ParametroAreaType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Pregunta'
+            'data_class' => null
         ));
     }
 

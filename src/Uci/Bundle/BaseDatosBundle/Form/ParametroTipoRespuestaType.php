@@ -15,11 +15,10 @@ class ParametroTipoRespuestaType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('tipoRespuesta', 'entity', array('class' => 'UciBaseDatosBundle:TipoRespuesta', 'required' => false, 'empty_value' => 'T. Respuesta:'))
-                ->add('cantidadA', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
+                ->add('tipoRespuesta', 'entity', array('class' => 'UciBaseDatosBundle:TipoRespuesta', 'required' => false, 'empty_value' => 'T. Respuesta'))
+                ->add('cantidadTR', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))))
-                ->add('porcentajeA', 'integer', array("label" => "% de preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
-                        new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))));
+                ->add('porcentajeTR', 'percent', array("label" => "% de preguntas: ", "mapped" => false, "required" => false));
     }
 
     /**
@@ -27,7 +26,7 @@ class ParametroTipoRespuestaType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Pregunta'
+            'data_class' => null
         ));
     }
 

@@ -35,6 +35,62 @@
                             {{ form_row(form.cantidadPreguntas) }}
                         </div>
                     </div>
+                    <h3>Parámetros</h3>
+                    <div id="libros" data-filter="#filter" data-prototype="
+                         {% filter escape %}
+                             {{ include('UciAdministradorBundle:VistaCuestionario:prototipoPLibro.html.twig', { 'form': form.libro.vars.prototype }) }}
+                         {% endfilter %}">
+                    </div>
+                    <div id="areas" data-filter="#filter" data-prototype="
+                         {% filter escape %}
+                             {{ include('UciAdministradorBundle:VistaCuestionario:prototipoPArea.html.twig', { 'form': form.areaConocimiento.vars.prototype }) }}
+                         {% endfilter %}">
+                    </div>
+                    <div id="grupos" data-filter="#filter" data-prototype="
+                         {% filter escape %}
+                             {{ include('UciAdministradorBundle:VistaCuestionario:prototipoPGrupo.html.twig', { 'form': form.grupoProcesos.vars.prototype }) }}
+                         {% endfilter %}">
+                    </div>
+                    <div id="triangulos" data-filter="#filter" data-prototype="
+                         {% filter escape %}
+                             {{ include('UciAdministradorBundle:VistaCuestionario:prototipoPTriangulo.html.twig', { 'form': form.trianguloTalento.vars.prototype }) }}
+                         {% endfilter %}">
+                    </div>
+                    <div id="tipospruebas" data-filter="#filter" data-prototype="
+                         {% filter escape %}
+                             {{ include('UciAdministradorBundle:VistaCuestionario:prototipoPTipoPrueba.html.twig', { 'form': form.tipoPrueba.vars.prototype }) }}
+                         {% endfilter %}">
+                    </div>
+                    <div id="tiposrespuestas" data-filter="#filter" data-prototype="
+                         {% filter escape %}
+                             {{ include('UciAdministradorBundle:VistaCuestionario:prototipoPTipoRespuesta.html.twig', { 'form': form.tipoRespuesta.vars.prototype }) }}
+                         {% endfilter %}">
+                    </div>
+                    <div id="conjuntos" data-filter="#filter" data-prototype="
+                         {% filter escape %}
+                             {{ include('UciAdministradorBundle:VistaCuestionario:prototipoPConjunto.html.twig', { 'form': form.parametroConjunto.vars.prototype }) }}
+                         {% endfilter %}">
+                    </div>
+                    <br>
+                    <div class="dropdown">
+                        <a data-toggle="dropdown" href="#" id="area_link">Añadir parámetro</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="agregarFormParametro(event, 5);">Libro</a></li>
+                            <li><a href="#" onclick="agregarFormParametro(event, 0);">A. Conocimiento</a></li>
+                            <li><a href="#" onclick="agregarFormParametro(event, 1);">G. Procesos</a></li>
+                            <li><a href="#" onclick="agregarFormParametro(event, 2);">T. Talento</a></li>
+                            <li><a href="#" onclick="agregarFormParametro(event, 3);">T. Prueba</a></li>
+                            <li><a href="#" onclick="agregarFormParametro(event, 4);">T. Respuesta</a></li>
+                            <li><a href="#" onclick="agregarFormParametro(event, 6);">P. Conjunto</a></li>
+                        </ul>
+                    </div>         
+                    <div class="row">
+                        <div class="col-lg-8">                     
+                        </div>
+                        <div class="col-lg-4 text-right">
+                            <button class="btn btn-action" id="enviar" type="submit">Generar</button>
+                        </div>
+                    </div>
                     {{ form_rest(form) }}
                 </form>
                 <br><br>
@@ -66,6 +122,60 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
+
+        function addParametro(tipo) {
+            var collectionHolder;
+            switch (tipo) {
+                case 0:
+                    collectionHolder = $('#areas');
+                    break;
+                case 1:
+                    collectionHolder = $('#grupos');
+                    break;
+                case 2:
+                    collectionHolder = $('#triangulos');
+                    break;
+                case 3:
+                    collectionHolder = $('#tipospruebas');
+                    break;
+                case 4:
+                    collectionHolder = $('#tiposrespuestas');
+                    break;
+                case 5:
+                    collectionHolder = $('#libros');
+                    break;
+                case 6:
+                    collectionHolder = $('#conjuntos');
+                    break;
+            }
+            var prototype = collectionHolder.attr('data-prototype');
+            var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
+            var removeFormA = $('<a href="#" onclick="addTagFormDeleteLink(event, this); "><span class="navigationSpace glyphicon glyphicon-remove" style="color: red; font-size:180%" ></span></a>');
+            var newTr = $('<div class="row top-margin"></div>');
+            newTr.append(form);
+            newTr.append(removeFormA);
+            collectionHolder.append(newTr);
+            return prototype;
+        }
+
+        function addTagFormDeleteLink(e, elemento) {
+            e.preventDefault();
+            var removeFormA = elemento.parentNode;
+            removeFormA.remove();
+        }
+
+        function agregarFormParametro(e, tipo) {
+            e.preventDefault();
+            addParametro(tipo);
+            eventoSelectLibro();
+        }
+        
+        function eventoSelectLibro(){
+            $("select[id$='libro']").change(function () {
+                $(this).closest("form").hide();
+            });
+        }
+
         document.ready = function () {
 
             $('#uci_bundle_basedatosbundle_cuestionario_cuestionarioname').keydown(function (e) {
@@ -81,10 +191,6 @@
                 $valor = $valor.replace(/\s/g, "");
                 $(this).val($valor);
             });
-
-            /*str = $('#uci_bundle_basedatosbundle_cuestionario_cuestionarioname').val();
-             str.replace(/\s/g, "");
-             $('#uci_bundle_basedatosbundle_cuestionario_cuestionarioname').val(str);*/
 
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();

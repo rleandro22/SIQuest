@@ -35,11 +35,16 @@ class CuestionarioController extends Controller {
                     'entities' => $entities,
         ));
     }
-    
+
     public function aConstruirCuestionarioAction(Request $request) {
         $cuestionario = new Cuestionario();
         $form = $this->createForm(new CuestionarioType(), $cuestionario);
         $form->handleRequest($request);
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            return $this->aObtenerDatosLibro($pregunta->getLibro());
+        } else if ($request->getMethod() == 'POST') {
+            $idLibro = '1'; //$request->request->get('PreguntaIndiceType')['libro'];
+        }
         return $this->render('UciAdministradorBundle:VistaCuestionario:generarCuestionario.html.twig', array(
                     'form' => $form->createView()
         ));
