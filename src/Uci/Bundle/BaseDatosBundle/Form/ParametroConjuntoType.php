@@ -14,9 +14,6 @@ class ParametroConjuntoType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $factory = $builder->getFormFactory();
-        $capituloSubscriber = new EventSuscribers\AgregarCapituloSuscriber($factory);
-        $builder->addEventSubscriber($capituloSubscriber);
         $builder->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'))
                 ->add('numeroPaginaDe', 'integer', array("label" => "Desde.: ", "mapped" => false, "required" => false, 'precision' => 0,'attr' => array('placeholder' => 'Desde'), 'constraints' => array(
                         new Regex(array(
@@ -28,6 +25,7 @@ class ParametroConjuntoType extends AbstractType {
                             'pattern' => '/^[0-9]\d*$/',
                             'message' => 'Use solo números positivos.'
                         )))))
+                ->add('capitulo', 'entity', array('class' => 'UciBaseDatosBundle:Capitulo', 'required' => false, 'empty_value' => 'Capitulo', 'attr' => array('style' => 'width: 100%')))
                 ->add('areaConocimiento', 'entity', array('class' => 'UciBaseDatosBundle:AreaConocimiento', 'required' => false, 'empty_value' => 'A. Conocimiento', 'attr' => array('style' => 'width: 100%')))
                 ->add('trianguloTalento', 'entity', array('class' => 'UciBaseDatosBundle:TrianguloTalento', 'required' => false, 'empty_value' => 'T. Talento', 'attr' => array('style' => 'width: 100%')))
                 ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'empty_value' => 'G. Procesos', 'attr' => array('style' => 'width: 100%')))

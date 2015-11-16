@@ -67,6 +67,10 @@ uci_administrador_indicecuestionario:
 uci_administrador_registrarcuestionario:
     pattern:  /admin/construir_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aConstruirCuestionario }
+    
+uci_administrador_setearlibroscuestionario:
+    pattern:  /admin/setear_libro_cuestionario
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aSetearLibrosCuestionario }
    
 #---------------------MATRICULAR USUARIO----------------------------------------
 
