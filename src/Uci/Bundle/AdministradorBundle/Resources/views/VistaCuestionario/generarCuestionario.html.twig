@@ -181,7 +181,6 @@
                 $triangulo_selector.html('<option></option>');
                 //var idLibro = $(this).val();
                 var idLibro = ($(this).val()) ? $(this).val() : 0;
-  
                     $.ajax({
                         url: "{{path('uci_administrador_setearlibroscuestionario')}}",
                         type: "POST",

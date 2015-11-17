@@ -15,7 +15,7 @@ class ParametroLibroType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'))
+                ->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'empty_value' => 'Libro'))
                 ->add('cantidadL', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))))
                 ->add('porcentajeL', 'percent', array("label" => "% de preguntas: ", "mapped" => false, "required" => false));
