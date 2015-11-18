@@ -62,8 +62,8 @@
                                 {% else %}
                                  <td><span class="status-metro status-active" title="Active">Si</span></td>
                                 {% endif %}
-                                <td><a href="{{ path('uci_administrador_edituser', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="{{ path('uci_administrador_deleteuser', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
+                                <td><a href="{{ path('uci_administrador_editarlibro', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="{{ path('uci_administrador_deletelibro', { 'id': entity.id }) }}"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
                                 </td>
                             </tr>
                         {% endfor %}

@@ -1618,6 +1618,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\LibroController::aRegistrarLibroAction',  '_route' => 'uci_administrador_nuevolibro',);
                 }
 
+                // uci_administrador_editarlibro
+                if ($pathinfo === '/admin/libro/editat_libro') {
+                    return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\LibroController::aEditarLibroAction',  '_route' => 'uci_administrador_editarlibro',);
+                }
+
+                // uci_administrador_deletelibro
+                if (0 === strpos($pathinfo, '/admin/libro/admin') && preg_match('#^/admin/libro/admin/(?P<id>[^/]++)/borrar_libro$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletelibro')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\LibroController::aBorrarLibroAction',));
+                }
+
             }
 
         }

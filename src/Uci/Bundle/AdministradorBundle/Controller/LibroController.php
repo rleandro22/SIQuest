@@ -32,6 +32,11 @@ class LibroController extends Controller
         if ($request->getMethod() == 'POST') {
             $error = $form->getErrors();
             if ($form->isValid()) {
+//                if($entity->getEsPmbok()==1){
+//                    $validator = $this->get('validator');
+//                    $error = $validator->validate($entity, array('registration'));
+//                    
+//                }
                 $em->getConnection()->beginTransaction();
                 try {
                     
@@ -56,6 +61,26 @@ class LibroController extends Controller
         ));
     }
     
+    public function aEditarLibroAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('UciBaseDatosBundle:Libro')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Libro entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('UciAdministradorBundle:VistaLibro:editarLibro.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
      private function guardarCapitulos($em, &$libro) {
         $capitulos = $libro->getCapitulos();
         foreach ($capitulos as $capitulo) {
@@ -77,20 +102,47 @@ class LibroController extends Controller
         foreach ($areas as $area) {
             $area->addPmbok($pmbok);
             $em->persist($area);
-            $em->clear($area);
+            
         }
-        
+        $em->clear($areas);
         foreach ($grupos as $grupo) {
             $grupo->addPmbok($pmbok);
             $em->persist($grupo);
-            $em->clear($grupo);
+           
         }
-        
+         $em->clear($grupos);
         foreach ($triangulos as $triangulo) {
             $triangulo->addPmbok($pmbok);
             $em->persist($triangulo);
-            $em->clear($triangulo);
+            
         }
+        $em->clear($triangulos);
+    }
+    
+    public function aBorrarLibroAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('UciBaseDatosBundle:Libro')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Libro entity.');
+        }
+        $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->findBy(array('libro' => $entity->getId()));
+
+        foreach ($capitulos as $capitulo) {
+            $em->remove($capitulo);
+            $em->flush();
+        }
+        
+        if($entity->getEsPmbok()==1){
+            $pmbok = $entity->getPmbok();
+            $em->remove($pmbok);
+            $em->flush();
+
+        }
+           
+        
+        $em->remove($entity);
+        $em->flush();
+        return $this->redirectToRoute('uci_administrador_indicelibro');
     }
     
    

@@ -9,4 +9,12 @@ uci_administrador_indicelibro:
 uci_administrador_nuevolibro:
     pattern:  /registrar_libro
     defaults: { _controller: UciAdministradorBundle:Libro:aRegistrarLibro }
+    
+uci_administrador_editarlibro:
+    pattern:  /editat_libro
+    defaults: { _controller: UciAdministradorBundle:Libro:aEditarLibro }
+    
+uci_administrador_deletelibro:
+    pattern:  /admin/{id}/borrar_libro
+    defaults: { _controller: UciAdministradorBundle:Libro:aBorrarLibro }
    
