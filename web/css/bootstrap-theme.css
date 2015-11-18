@@ -130,3 +130,7 @@
     top:-40px;
     left:5%;
 }
+
+.inputColoreado {
+    background-color: rgba(194, 96, 96, 0.21);
+}

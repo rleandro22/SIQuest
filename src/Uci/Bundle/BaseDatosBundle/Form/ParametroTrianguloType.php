@@ -15,10 +15,10 @@ class ParametroTrianguloType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('trianguloTalento', 'entity', array('class' => 'UciBaseDatosBundle:TrianguloTalento', 'required' => false, 'empty_value' => 'T. Talentos'))
-                ->add('cantidadT', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => false, 'precision' => 0, 'constraints' => array(
+                ->add('trianguloTalento', 'entity', array('class' => 'UciBaseDatosBundle:TrianguloTalento', 'required' => TRUE, 'empty_value' => 'T. Talentos'))
+                ->add('cantidad', 'integer', array("label" => "Cant. Preguntas: ", "mapped" => false, "required" => TRUE, 'precision' => 0, 'constraints' => array(
                         new Regex(array('pattern' => '/^[0-9]\d*$/', 'message' => 'Use solo números positivos.')))))
-                ->add('porcentajeT', 'percent', array("label" => "% de preguntas: ", "mapped" => false, "required" => false));
+                ->add('porcentaje', 'percent', array("label" => "% de preguntas: ", "mapped" => false, "required" => TRUE));
     }
 
     /**

@@ -141,6 +141,9 @@
                 }
             });
         }
+
+
+
         function addParametro(tipo) {
             var collectionHolder;
             switch (tipo) {
@@ -184,6 +187,8 @@
             e.preventDefault();
             addParametro(tipo);
             eventoSelectLibro();
+            deshabilitarNumericos();
+            noLetrasEnPorcentaje();
         }
 
         function eventoSelectLibro() {
@@ -237,6 +242,30 @@
 
             });
         }
+
+        function noLetrasEnPorcentaje() {
+            $("input[id$='porcentaje']").numeric();
+            $("input[id$='porcentaje']").keyup(function (e) {
+                if ($(this).val() > 100) {
+                    $(this).addClass('inputColoreado');
+                } else {
+                    $(this).removeClass('inputColoreado');
+                }
+            });
+        }
+
+        function deshabilitarNumericos() {
+            if ($('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() == '' || ('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() < 0) {
+                //$('.DisabledInputs').removeAttr('disabled');
+                $("input[id$='porcentaje']").attr('readonly',true);
+                $("input[id$='cantidad']").attr('readonly',true);
+            } else {
+               // $('.DisabledInputs').attr('disabled', 'disabled');
+               $("input[id$='porcentaje']").attr('readonly',false);
+                $("input[id$='cantidad']").attr('readonly',false);
+            }
+        }
+
         document.ready = function () {
             $('#uci_bundle_basedatosbundle_cuestionario_cuestionarioname').keydown(function (e) {
                 if (e.which != '8' && e.which != '46') {
