@@ -127,22 +127,10 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        function verificarParametros() {
-            $.ajax({
-                type: $("#formularioCuestionario").attr('method'),
-                url: $("#formularioCuestionario").attr('action'),
-                data: $("#formularioCuestionario").serialize(),
-                dataType: "json",
-                success: function (data) {
 
-                },
-                error: function () {
-                    alert("Ocurrio un error.");
-                }
-            });
+        function autollenado() {
+
         }
-
-
 
         function addParametro(tipo) {
             var collectionHolder;
@@ -188,7 +176,7 @@
             addParametro(tipo);
             eventoSelectLibro();
             deshabilitarNumericos();
-            noLetrasEnPorcentaje();
+            configurarCamposNumericos();
         }
 
         function eventoSelectLibro() {
@@ -202,14 +190,12 @@
                 $area_selector.html('<option></option>');
                 $grupo_selector.html('<option></option>');
                 $triangulo_selector.html('<option></option>');
-                //var idLibro = $(this).val();
                 var idLibro = ($(this).val()) ? $(this).val() : 0;
                 $.ajax({
                     url: "{{path('uci_administrador_setearlibroscuestionario')}}",
                     type: "POST",
                     data: {idLibro: idLibro},
                     success: function (data) {
-                        //alert(JSON.stringify(data));
                         $capitulo_selector.html('<option></option>');
                         if (data.capitulos.id != "0") {
                             for (var i = 0, total = data.capitulos.length; i < total; i++) {
@@ -243,19 +229,56 @@
             });
         }
 
-        function noLetrasEnPorcentaje() {
+        function configurarCamposNumericos() {
             $("input[id$='porcentaje']").numeric();
             $("input[id$='porcentaje']").keyup(function (e) {
-                if ($(this).val() > 100) {
-                    $(this).addClass('inputColoreado');
+                if ($(this).val() != '' && $(this).val() > 0) {
+                    var campoCantidad = $(this).attr('id').substring(0, $(this).attr('id').length - 11) + '_cantidad';
+                    var porcentaje = ($('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() * $(this).val()) / 100;
+                    $("#" + campoCantidad).val(porcentaje);
+                    if (Math.round(porcentaje) != porcentaje) {
+                        $("#" + campoCantidad).addClass('inputColoreado');
+                    } else {
+                        $("#" + campoCantidad).removeClass('inputColoreado');
+                    }
+                    if ($(this).val() > 100) {
+                        $(this).addClass('inputColoreado');
+                    } else {
+                        $(this).removeClass('inputColoreado');
+                    }
                 } else {
+                    $(this).removeClass('inputColoreado');
+                    var campoCantidad = $(this).attr('id').substring(0, $(this).attr('id').length - 11) + '_cantidad';
+                    $("#" + campoCantidad).val(0);
+                    $("#" + campoCantidad).removeClass('inputColoreado');
+                }
+            });
+            $("input[id$='cantidad']").bind('click keyup', function () {
+                if ($(this).val() != '' && $(this).val() > 0) {
+                    var campoPorcentaje = $(this).attr('id').substring(0, $(this).attr('id').length - 9) + '_porcentaje';
+                    var porcentaje = (100 * $(this).val()) / $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val();
+                    $("#" + campoPorcentaje).val(porcentaje);
+                    if (porcentaje > 100) {
+                        $("#" + campoPorcentaje).addClass('inputColoreado');
+                    } else {
+                        $("#" + campoPorcentaje).removeClass('inputColoreado');
+                    }
+                    if (Math.round($(this).val()) != $(this).val()) {
+                        $(this).addClass('inputColoreado');
+                    } else {
+                        $(this).removeClass('inputColoreado');
+                    }
+                } else {
+                    var campoPorcentaje = $(this).attr('id').substring(0, $(this).attr('id').length - 9) + '_porcentaje';
+                    $("#" + campoPorcentaje).val(0);
+                    $("#" + campoPorcentaje).removeClass('inputColoreado');
                     $(this).removeClass('inputColoreado');
                 }
             });
         }
 
         function deshabilitarNumericos() {
-            if ($('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() == '' || $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() < 0) {
+            if ($('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() == '' || $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() < 1) {
                 $("input[id$='porcentaje']").attr('readonly', true);
                 $("input[id$='cantidad']").attr('readonly', true);
             } else {
@@ -267,9 +290,6 @@
         document.ready = function () {
 
             $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').bind('click keyup', function () {
-                if ($('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() < 0) {
-                    $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val(0);
-                }
                 deshabilitarNumericos();
             });
 

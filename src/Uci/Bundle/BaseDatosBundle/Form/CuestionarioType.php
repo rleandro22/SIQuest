@@ -17,9 +17,9 @@ class CuestionarioType extends AbstractType
     {
         $builder
                 ->add('cuestionarioname', 'text', array("label" => "Nombre corto: ", "required" => true, "attr" => array('class' => 'form-control')))
-                ->add('cantidadPreguntas', 'integer', array("label" => "Cant. Preguntas: ", "required" => TRUE, 'precision' => 0, 'constraints' => array(
+                ->add('cantidadPreguntas', 'integer', array("label" => "Cant. Preguntas: ", 'attr' => array('min' => 1), "required" => TRUE, 'precision' => 0, 'constraints' => array(
                         new Regex(array(
-                            'pattern' => '/^[0-9]\d*$/',
+                            'pattern' => '/^[1-9]\d*$/',
                             'message' => 'Use solo números positivos.'
                         )))))
                 ->add('libro', 'collection', array(

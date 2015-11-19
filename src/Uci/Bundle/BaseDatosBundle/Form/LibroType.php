@@ -24,7 +24,7 @@ class LibroType extends AbstractType {
         $builder
                 ->add('titulo', 'text', array("label" => "Titulo: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('anio', 'integer', array("label" => "Año: ", "required" => true, "attr" => array('class' => 'form-control')))
-                ->add('numeroPaginas', 'integer', array("label" => "Páginas: ", "required" => true, "attr" => array('class' => 'form-control'),'precision' => 0, 'constraints' => array(
+                ->add('numeroPaginas', 'integer', array("label" => "Páginas: ", "required" => true, "attr" => array('min' => 1, 'class' => 'form-control'),'precision' => 0, 'constraints' => array(
                         new Regex(array(
                             'pattern' => '/^[0-9]\d*$/',
                             'message' => 'Use solo números positivos.'

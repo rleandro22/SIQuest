@@ -25,7 +25,7 @@ class PreguntaType extends AbstractType {
         $builder->addEventSubscriber($capituloSubscriber);
         $builder->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'))
                 ->add('titulo', 'textarea', array("label" => "Enunciado: ", "required" => true, "attr" => array('class' => 'form-control')))
-                ->add('numeroPagina', 'integer', array("label" => "Página Num.: ", "required" => false, 'precision' => 0, 'constraints' => array(
+                ->add('numeroPagina', 'integer', array("label" => "Página Num.: ", "required" => false, 'attr' => array('min' => 0), 'precision' => 0, 'constraints' => array(
                         new Regex(array(
                             'pattern' => '/^[0-9]\d*$/',
                             'message' => 'Use solo números positivos.'
