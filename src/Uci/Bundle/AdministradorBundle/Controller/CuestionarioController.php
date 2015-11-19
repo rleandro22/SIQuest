@@ -44,11 +44,18 @@ class CuestionarioController extends Controller {
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             return $this->aObtenerDatosLibro($pregunta->getLibro());
         } else if ($request->getMethod() == 'POST') {
-            $idLibro = '1'; //$request->request->get('PreguntaIndiceType')['libro'];
+            $this->procesarPeticionCuestionario($request);
         }
         return $this->render('UciAdministradorBundle:VistaCuestionario:generarCuestionario.html.twig', array(
                     'form' => $form->createView()
         ));
+    }
+    
+    private function procesarPeticionCuestionario($request){
+        //$request->request->get('PreguntaIndiceType')['libro'];
+         $nombreCuestionario = $request->request->get('uci_bundle_basedatosbundle_cuestionario')['cuestionarioname'];
+         $cantidadPreguntas = $request->request->get('uci_bundle_basedatosbundle_cuestionario')['cantidadPreguntas'];
+         $libro = $request->request->get('uci_bundle_basedatosbundle_cuestionario')['libro'][0]['libro'];
     }
 
     public function aSetearLibrosCuestionarioAction(Request $request) {
