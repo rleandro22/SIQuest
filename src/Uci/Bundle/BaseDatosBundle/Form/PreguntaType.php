@@ -9,10 +9,11 @@ use Symfony\Component\Validator\Constraints\Regex;
 
 class PreguntaType extends AbstractType {
 
-    private $idTipoRespuesta;
+    private $idTipoRespuesta, $esNueva;
 
-    public function __construct($idTipoRespuesta) {
+    public function __construct($idTipoRespuesta, $esNueva) {
         $this->idTipoRespuesta= $idTipoRespuesta;
+        $this->esNueva = $esNueva;
     }
 
     /**
@@ -35,7 +36,7 @@ class PreguntaType extends AbstractType {
                 ->add('grupoProcesos', 'entity', array('class' => 'UciBaseDatosBundle:GrupoProcesos', 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('tipoPrueba', 'entity', array('class' => 'UciBaseDatosBundle:TipoPrueba', 'expanded' => true, 'multiple' => true, 'required' => false, 'attr' => array('style' => 'width: 100%')))
                 ->add('respuesta', 'collection', array(
-                    'type' => new RespuestaType($this->idTipoRespuesta),
+                    'type' => new RespuestaType($this->idTipoRespuesta, $this->esNueva),
                     'prototype' => true,
                     'allow_add' => true,
                     'allow_delete' => TRUE,

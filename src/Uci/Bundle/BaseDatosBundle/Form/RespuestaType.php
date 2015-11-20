@@ -17,10 +17,11 @@ class RespuestaType extends AbstractType {
     private $incorrecta = 'No';
     private $tipoDinamico = 'textarea';
     private $requerida = FALSE;
-        
+    private $esNueva;
 
-    public function __construct($idTipoRespuesta) {
+    public function __construct($idTipoRespuesta, $esNueva) {
         $this->idTipoRespuesta = $idTipoRespuesta;
+        $this->esNueva = $esNueva;
     }
 
     /**
@@ -31,9 +32,13 @@ class RespuestaType extends AbstractType {
         $this->setCamposRespuesta();
 
         if ($this->idTipoRespuesta == 3 || $this->idTipoRespuesta == 4 || $this->idTipoRespuesta == 6) {
-            $builder->add('correcta', 'choice', array('choices' => array(1 => $this->correcta, 0 => $this->incorrecta), 'data' => 0, 'label' => $this->labelCorrecta, 'multiple' => false, 'expanded' => false));
+            if ($this->esNueva == 1) {
+                $builder->add('correcta', 'choice', array('choices' => array(1 => $this->correcta, 0 => $this->incorrecta), 'data' => 0, 'label' => $this->labelCorrecta, 'multiple' => false, 'expanded' => false));
+            } else {
+                $builder->add('correcta', 'choice', array('choices' => array(1 => $this->correcta, 0 => $this->incorrecta), 'label' => $this->labelCorrecta, 'multiple' => false, 'expanded' => false));
+            }
         }
-        
+
         if ($this->idTipoRespuesta != 5 || $this->idTipoRespuesta != 7) {
             $builder->add('textoRespuesta', $this->tipoDinamico, array("label" => $this->labelTextoRespuesta, "required" => TRUE));
         }

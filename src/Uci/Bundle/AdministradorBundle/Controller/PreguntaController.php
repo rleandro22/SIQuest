@@ -45,7 +45,7 @@ class PreguntaController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $entity->setTipoRespuesta($em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find($idTipoRespuesta));
         $error = '';
-        $form = $this->createForm(new PreguntaType($idTipoRespuesta), $entity);
+        $form = $this->createForm(new PreguntaType($idTipoRespuesta, 1), $entity);
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             return $this->aObtenerDatosLibro($entity->getLibro());
@@ -79,7 +79,7 @@ class PreguntaController extends Controller {
         if (!$pregunta) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-        $form = $this->createForm(new PreguntaType($pregunta->getTipoRespuesta()->getId()), $pregunta);
+        $form = $this->createForm(new PreguntaType($pregunta->getTipoRespuesta()->getId(), 0), $pregunta);
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             return $this->aObtenerDatosLibro($pregunta->getLibro());

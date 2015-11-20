@@ -50,12 +50,47 @@ class CuestionarioController extends Controller {
                     'form' => $form->createView()
         ));
     }
-    
-    private function procesarPeticionCuestionario($request){
-        //$request->request->get('PreguntaIndiceType')['libro'];
-         $nombreCuestionario = $request->request->get('uci_bundle_basedatosbundle_cuestionario')['cuestionarioname'];
-         $cantidadPreguntas = $request->request->get('uci_bundle_basedatosbundle_cuestionario')['cantidadPreguntas'];
-         $libro = $request->request->get('uci_bundle_basedatosbundle_cuestionario')['libro'][0]['libro'];
+
+    private function procesarPeticionCuestionario($request) {
+        $libros = null;
+        $areas = null;
+        $grupos = null;
+        $triangulos = null;
+        $tiposPrueba = null;
+        $tiposRespuesta = null;
+        $parametrosConjuntos = null;
+        $arregloParametros = $request->request->get('uci_bundle_basedatosbundle_cuestionario');
+        $nombreCuestionario = $arregloParametros['cuestionarioname'];
+        $cantidadPreguntas = $arregloParametros['cantidadPreguntas'];
+        if (array_key_exists('libro', $arregloParametros)) {
+            $libros = $arregloParametros['libro'];
+        }if (array_key_exists('areaConocimiento', $arregloParametros)) {
+            $areas = $arregloParametros['areaConocimiento'];
+        }if (array_key_exists('grupoProcesos', $arregloParametros)) {
+            $grupos = $arregloParametros['grupoProcesos'];
+        }if (array_key_exists('trianguloTalento', $arregloParametros)) {
+            $triangulos = $arregloParametros['trianguloTalento'];
+        }if (array_key_exists('tipoPrueba', $arregloParametros)) {
+            $tiposPrueba = $arregloParametros['tipoPrueba'];
+        }if (array_key_exists('tipoRespuesta', $arregloParametros)) {
+            $tiposRespuesta = $arregloParametros['tipoRespuesta'];
+        }if (array_key_exists('parametroConjunto', $arregloParametros)) {
+            $parametrosConjuntos = $arregloParametros['parametroConjunto'];
+        }
+        $this->sacarPreguntasParaCuestionario($libros, $areas, $grupos, $triangulos, $tiposPrueba, $tiposRespuesta, $parametrosConjuntos);
+    }
+
+    private function sacarPreguntasParaCuestionario($libros, $areas, $grupos, $triangulos, $tiposPrueba, $tiposRespuesta, $parametrosConjuntos) {
+        $em = $this->getDoctrine()->getManager();
+        $preguntasDeCuestionario;
+        $idsDeCondicion;
+        foreach ($libros as $libro) {
+            $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Libro')->createQueryBuilder('u')
+                            ->innerJoin('u.libro', 'g')
+                            ->where('g.id = :id')
+                            ->setParameter('id', $libro['id'])
+                            ->getQuery()->getArrayResult();
+        }
     }
 
     public function aSetearLibrosCuestionarioAction(Request $request) {
@@ -64,7 +99,7 @@ class CuestionarioController extends Controller {
             return $this->aObtenerDatosLibro($idLibro);
         }
     }
-    
+
     private function aObtenerDatosLibro($idLibrop) {
         $em = $this->getDoctrine()->getManager();
         $libro = $em->getRepository('UciBaseDatosBundle:Libro')->find($idLibrop);

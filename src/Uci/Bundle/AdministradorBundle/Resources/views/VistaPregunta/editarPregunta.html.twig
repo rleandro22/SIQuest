@@ -233,6 +233,8 @@
         }
 
         document.ready = function () {  
+            
+            agregarExlusores();
 
         if (({{ entity.tipoRespuesta.id }} == 5) || ({{ entity.tipoRespuesta.id }} == 7)) {
                 $('#panelRespuestas').hide();
