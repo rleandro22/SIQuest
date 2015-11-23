@@ -83,15 +83,29 @@ class CuestionarioController extends Controller {
     private function sacarPreguntasParaCuestionario($libros, $areas, $grupos, $triangulos, $tiposPrueba, $tiposRespuesta, $parametrosConjuntos) {
         $em = $this->getDoctrine()->getManager();
         $preguntasDeCuestionario;
-        $idsDeCondicion;
+        $idsFinales = array();
         foreach ($libros as $libro) {
-            $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
-                    ->innerJoin('u.libro', 'g')
-                    ->where('g.id = :id')
-                    ->setParameter('id', $libro['libro'])
-                    ->orderBy('u.nombreCapitulo', 'ASC')
-                    ->getQuery()->getArrayResult();
-            //->addSelect('u.id')
+            $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                            ->select('u.id')
+                            ->innerJoin('u.libro', 'g')
+                            //->where('g.id = :id')
+                            //->setParameter('id', $libro['libro'])
+                            ->getQuery()->getResult();
+            shuffle($idsDeCondicion);
+            $idsDeCondicion2 = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                            ->select('u.id')
+                            ->innerJoin('u.libro', 'g')
+                            ->where('g.id = :id')
+                            ->setParameter('id', $libro['libro'])
+                            ->getQuery()->getResult();
+            $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                            ->select('u.id')
+                            ->where('u.id IN (:miarray)')
+                            ->andWhere('u.id NOT IN (:miarray2)')
+                            ->setParameter('miarray', $idsDeCondicion2)
+                            ->setParameter('miarray2', $idsDeCondicion)
+                            ->getQuery()->getResult();
+            $idsFinales = array_merge($idsFinales, $idsDeConsulta);
         }
     }
 
