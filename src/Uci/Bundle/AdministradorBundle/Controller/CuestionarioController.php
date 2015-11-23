@@ -42,7 +42,7 @@ class CuestionarioController extends Controller {
         $form = $this->createForm(new CuestionarioType(), $cuestionario);
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
-            return $this->aObtenerDatosLibro($pregunta->getLibro());
+            //return $this->aObtenerDatosLibro($pregunta->getLibro());
         } else if ($request->getMethod() == 'POST') {
             $this->procesarPeticionCuestionario($request);
         }
@@ -85,11 +85,13 @@ class CuestionarioController extends Controller {
         $preguntasDeCuestionario;
         $idsDeCondicion;
         foreach ($libros as $libro) {
-            $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Libro')->createQueryBuilder('u')
-                            ->innerJoin('u.libro', 'g')
-                            ->where('g.id = :id')
-                            ->setParameter('id', $libro['id'])
-                            ->getQuery()->getArrayResult();
+            $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
+                    ->innerJoin('u.libro', 'g')
+                    ->where('g.id = :id')
+                    ->setParameter('id', $libro['libro'])
+                    ->orderBy('u.nombreCapitulo', 'ASC')
+                    ->getQuery()->getArrayResult();
+            //->addSelect('u.id')
         }
     }
 
