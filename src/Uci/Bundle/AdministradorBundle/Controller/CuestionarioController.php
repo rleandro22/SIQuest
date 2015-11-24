@@ -82,31 +82,185 @@ class CuestionarioController extends Controller {
 
     private function sacarPreguntasParaCuestionario($libros, $areas, $grupos, $triangulos, $tiposPrueba, $tiposRespuesta, $parametrosConjuntos) {
         $em = $this->getDoctrine()->getManager();
-        $preguntasDeCuestionario;
-        $idsFinales = array();
-        foreach ($libros as $libro) {
-            $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
-                            ->select('u.id')
-                            ->innerJoin('u.libro', 'g')
-                            //->where('g.id = :id')
-                            //->setParameter('id', $libro['libro'])
-                            ->getQuery()->getResult();
-            shuffle($idsDeCondicion);
-            $idsDeCondicion2 = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
-                            ->select('u.id')
-                            ->innerJoin('u.libro', 'g')
-                            ->where('g.id = :id')
-                            ->setParameter('id', $libro['libro'])
-                            ->getQuery()->getResult();
-            $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
-                            ->select('u.id')
-                            ->where('u.id IN (:miarray)')
-                            ->andWhere('u.id NOT IN (:miarray2)')
-                            ->setParameter('miarray', $idsDeCondicion2)
-                            ->setParameter('miarray2', $idsDeCondicion)
-                            ->getQuery()->getResult();
-            $idsFinales = array_merge($idsFinales, $idsDeConsulta);
+        $idsFinales = array(0);
+        if ($libros) {
+            foreach ($libros as $libro) {
+                $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->innerJoin('u.libro', 'g')
+                                ->where('g.id = :id')
+                                ->setParameter('id', $libro['libro'])
+                                ->getQuery()->getScalarResult();
+                shuffle($idsDeCondicion);
+                $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->where('u.id IN (:miarray)')
+                                ->andWhere('u.id NOT IN (:miarray2)')
+                                ->setParameter('miarray', $idsDeCondicion)
+                                ->setParameter('miarray2', $idsFinales)
+                                ->setMaxResults($libro['cantidad'])
+                                ->getQuery()->getResult();
+                $idsFinales = array_merge($idsFinales, $idsDeConsulta);
+            }
         }
+        if ($areas) {
+            foreach ($areas as $area) {
+                $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->innerJoin('u.areaConocimiento', 'g')
+                                ->where('g.id = :id')
+                                ->setParameter('id', $area['areaConocimiento'])
+                                ->getQuery()->getScalarResult();
+                shuffle($idsDeCondicion);
+                $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->where('u.id IN (:miarray)')
+                                ->andWhere('u.id NOT IN (:miarray2)')
+                                ->setParameter('miarray', $idsDeCondicion)
+                                ->setParameter('miarray2', $idsFinales)
+                                ->setMaxResults($area['cantidad'])
+                                ->getQuery()->getResult();
+                $idsFinales = array_merge($idsFinales, $idsDeConsulta);
+            }
+        }
+        if ($grupos) {
+            foreach ($grupos as $grupo) {
+                $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->innerJoin('u.grupoProcesos', 'g')
+                                ->where('g.id = :id')
+                                ->setParameter('id', $grupo['grupoProcesos'])
+                                ->getQuery()->getScalarResult();
+                shuffle($idsDeCondicion);
+                $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->where('u.id IN (:miarray)')
+                                ->andWhere('u.id NOT IN (:miarray2)')
+                                ->setParameter('miarray', $idsDeCondicion)
+                                ->setParameter('miarray2', $idsFinales)
+                                ->setMaxResults($grupo['cantidad'])
+                                ->getQuery()->getResult();
+                $idsFinales = array_merge($idsFinales, $idsDeConsulta);
+            }
+        }
+        if ($triangulos) {
+            foreach ($triangulos as $triangulo) {
+                $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->innerJoin('u.trianguloTalento', 'g')
+                                ->where('g.id = :id')
+                                ->setParameter('id', $triangulo['trianguloTalento'])
+                                ->getQuery()->getScalarResult();
+                shuffle($idsDeCondicion);
+                $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->where('u.id IN (:miarray)')
+                                ->andWhere('u.id NOT IN (:miarray2)')
+                                ->setParameter('miarray', $idsDeCondicion)
+                                ->setParameter('miarray2', $idsFinales)
+                                ->setMaxResults($triangulo['cantidad'])
+                                ->getQuery()->getResult();
+                $idsFinales = array_merge($idsFinales, $idsDeConsulta);
+            }
+        }
+        if ($tiposPrueba) {
+            foreach ($tiposPrueba as $tipoP) {
+                $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->innerJoin('u.tipoPrueba', 'g')
+                                ->where('g.id = :id')
+                                ->setParameter('id', $tipoP['tipoPrueba'])
+                                ->getQuery()->getScalarResult();
+                shuffle($idsDeCondicion);
+                $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->where('u.id IN (:miarray)')
+                                ->andWhere('u.id NOT IN (:miarray2)')
+                                ->setParameter('miarray', $idsDeCondicion)
+                                ->setParameter('miarray2', $idsFinales)
+                                ->setMaxResults($tipoP['cantidad'])
+                                ->getQuery()->getResult();
+                $idsFinales = array_merge($idsFinales, $idsDeConsulta);
+            }
+        }
+        if ($tiposRespuesta) {
+            foreach ($tiposRespuesta as $tipoR) {
+                $idsDeCondicion = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->innerJoin('u.tipoRespuesta', 'g')
+                                ->where('g.id = :id')
+                                ->setParameter('id', $tipoR['tipoRespuesta'])
+                                ->getQuery()->getScalarResult();
+                shuffle($idsDeCondicion);
+                $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->where('u.id IN (:miarray)')
+                                ->andWhere('u.id NOT IN (:miarray2)')
+                                ->setParameter('miarray', $idsDeCondicion)
+                                ->setParameter('miarray2', $idsFinales)
+                                ->setMaxResults($tipoR['cantidad'])
+                                ->getQuery()->getResult();
+                $idsFinales = array_merge($idsFinales, $idsDeConsulta);
+            }
+        }
+        if ($parametrosConjuntos) {
+            foreach ($parametrosConjuntos as $pConjunto) {
+                $repository = $this->getDoctrine()->getRepository('UciBaseDatosBundle:Pregunta');
+                $qb = $repository->createQueryBuilder('p')
+                        ->select('p.id');
+                if (!empty($pConjunto['libro'])) {
+                    $qb->where('p.libro= :idLibro')
+                            ->setParameter('idLibro', $pConjunto['libro']);
+                }
+                if (!empty($pConjunto['numeroPaginaDe'])) {
+                    $qb->andWhere('p.numeroPagina>= :paginaDesde')
+                            ->setParameter('paginaDesde', $pConjunto['numeroPaginaDe']);
+                }
+                if (!empty($pConjunto['numeroPaginaHasta'])) {
+                    $qb->andWhere('p.numeroPagina<= :numeroPaginaHasta')
+                            ->setParameter('numeroPaginaHasta', $pConjunto['numeroPaginaHasta']);
+                }
+                if (!empty($pConjunto['capitulo'])) {
+                    $qb->andWhere('p.capitulo= :idCapitulo')
+                            ->setParameter('idCapitulo', $pConjunto['capitulo']);
+                }
+                if (!empty($pConjunto['grupoProcesos'])) {
+                    $qb->andWhere('p.grupoProcesos= :idGrupoProcesos')
+                            ->setParameter('idGrupoProcesos', $pConjunto['grupoProcesos']);
+                }
+                if (!empty($pConjunto['areaConocimiento'])) {
+                    $qb->andWhere('p.areaConocimiento= :idAreaConocimiento')
+                            ->setParameter('idAreaConocimiento', $pConjunto['areaConocimiento']);
+                }
+                if (!empty($pConjunto['trianguloTalento'])) {
+                    $qb->andWhere('p.trianguloTalento= :idTrianguloTalento')
+                            ->setParameter('idTrianguloTalento', $pConjunto['trianguloTalento']);
+                }
+                if (!empty($pConjunto['tipoPrueba'])) {
+                    $qb->andWhere('p.tipoPrueba= :idTipoPrueba')
+                            ->setParameter('idTipoPrueba', $pConjunto['tipoPrueba']);
+                }
+                if (!empty($pConjunto['tipoRespuesta'])) {
+                    $qb->andWhere('p.tipoRespuesta= :idTipoRespuesta')
+                            ->setParameter('idTipoRespuesta', $pConjunto['tipoRespuesta']);
+                }
+
+                $idsDeCondicion = $qb->getQuery()->getScalarResult();
+                shuffle($idsDeCondicion);
+
+                $idsDeConsulta = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                                ->select('u.id')
+                                ->where('u.id IN (:miarray)')
+                                ->andWhere('u.id NOT IN (:miarray2)')
+                                ->setParameter('miarray', $idsDeCondicion)
+                                ->setParameter('miarray2', $idsFinales)
+                                ->setMaxResults($pConjunto['cantidad'])
+                                ->getQuery()->getResult();
+                $idsFinales = array_merge($idsFinales, $idsDeConsulta);
+            }
+        }
+        unset($idsFinales[0]);
+        $idsFinales = array_values($idsFinales);
     }
 
     public function aSetearLibrosCuestionarioAction(Request $request) {

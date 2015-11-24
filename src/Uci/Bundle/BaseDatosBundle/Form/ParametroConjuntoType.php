@@ -14,7 +14,7 @@ class ParametroConjuntoType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => false, 'empty_value' => 'Libro'))
+        $builder->add('libro', 'entity', array('class' => 'UciBaseDatosBundle:Libro', 'required' => TRUE, 'empty_value' => 'Libro'))
                 ->add('numeroPaginaDe', 'integer', array("label" => "Desde.: ", "mapped" => false, 'attr' => array('min' => 0), "required" => false, 'precision' => 0,'attr' => array('placeholder' => 'Desde'), 'constraints' => array(
                         new Regex(array(
                             'pattern' => '/^[0-9]\d*$/',
