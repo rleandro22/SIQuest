@@ -110,20 +110,20 @@
 
         <br><br>
         <div class="row">
-
-            <div class="row">
-                <div class="col-sm-4">
-                    <input id="filter" class="form-control" type="text" placeholder="Buscar">
-                </div>
-            </div>
             <br><br>
-            <div class="aleta">
-                <table class="table demo table-bordered" id="tabla" data-filter="#filter">
+            <table class="table demo table-bordered" id="tablaPreguntas">
 
-                </table>
+
+            </table>  
+            <br><br>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">                     
             </div>
-            </br></br>
-
+            <div class="col-lg-1 text-right"></div>
+            <div class="col-lg-2 text-right">
+                <button class="btn btn-action" id="guardar" type="button">Guardar preguntas</button>
+            </div>
         </div>
 
     </div>	<!-- /container -->
@@ -289,25 +289,65 @@
             }
         }
 
+        function editarPregunta(id) {
+            /*var url = '{ path('uci_administrador_editarPregunta', { 'idPregunta': 'idPreg' }) }}';
+             url = url.replace("idPreg", id);
+             window.open(url, '_blank', "width=500%, height=500%", 'toolbar=0,location=0,menubar=0');
+             llenarTablaPreguntas();*/
+        }
+
+        function borrarPregunta(obj, e) {
+            e.preventDefault();
+            var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación no es reversible)");
+            if (sure)
+                $(obj).parent().parent().remove();
+        }
+
+        function llenarTablaPreguntas() {
+            $.ajax({
+                type: $("#formularioCuestionario").attr('method'),
+                url: $("#formularioCuestionario").attr('action'),
+                data: $("#formularioCuestionario").serialize(),
+                dataType: "json",
+                success: function (data) {
+                    if (data.preguntas.id != "0") {
+                        var trHTML = '';
+                        for (var i = 0, total = data.preguntas.length; i < total; i++) {
+                            trHTML += '<tr><td>' + data.preguntas[i].id + '</td><td>' + data.preguntas[i].titulo + '</td><td>&nbsp;&nbsp;&nbsp;<a onclick="editarPregunta(' + data.preguntas[i].id + ')"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;<a href="" onclick="borrarPregunta(this, event);"><span class="glyphicon glyphicon-remove"></span></a></td></tr>';
+                        }
+                        $("#tablaPreguntas tr").remove();
+                        $('#tablaPreguntas').append(trHTML);
+                    }
+                },
+                error: function () {
+                    alert("Ocurrio un error.");
+                }
+            });
+        }
+
         document.ready = function () {
 
             $('#enviar').click(function (e) {
                 if ($("input[id$='porcentaje']").val() && $("input[id$='cantidad']").val() && $("select[id^='uci_bundle_basedatosbundle_cuestionario_']").val() && $("input[id$='cantidad']").val() > 0) {
-                    $.ajax({
-                        type: $("#formularioCuestionario").attr('method'),
-                        url: $("#formularioCuestionario").attr('action'),
-                        data: $("#formularioCuestionario").serialize(),
-                        dataType: "json",
-                        success: function (data) {
-                            alert(JSON.stringify(data));
-                        },
-                        error: function () {
-                            alert("Ocurrio un error.");
-                        }
-                    });
+                    llenarTablaPreguntas();
                 } else {
                     alert('Ingrese al menos 1 parametro para generar las preguntas.');
                 }
+            });
+
+            $('#guardar').click(function (e) {
+                var $rows = $("#tablaPreguntas tbody tr");
+                var data = [];
+
+                $rows.each(function (row, v) {
+                    $(this).find("td").each(function (cell, v) {
+                        if (typeof data[cell] === 'undefined') {
+                            data[cell] = [];
+                        }
+                        data[cell][row] = $(this).text();
+                    });
+                });
+                alert(JSON.stringify(data));
             });
 
             $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').bind('click keyup', function () {
