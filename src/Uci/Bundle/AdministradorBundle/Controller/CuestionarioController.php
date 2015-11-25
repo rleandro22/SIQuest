@@ -42,7 +42,7 @@ class CuestionarioController extends Controller {
         $form = $this->createForm(new CuestionarioType(), $cuestionario);
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
-            $this->procesarPeticionCuestionario($request);
+            return $this->procesarPeticionCuestionario($request);
         } else if ($request->getMethod() == 'POST') {
             //$this->procesarPeticionCuestionario($request);
         }
@@ -77,7 +77,7 @@ class CuestionarioController extends Controller {
         }if (array_key_exists('parametroConjunto', $arregloParametros)) {
             $parametrosConjuntos = $arregloParametros['parametroConjunto'];
         }
-        $this->sacarPreguntasParaCuestionario($libros, $areas, $grupos, $triangulos, $tiposPrueba, $tiposRespuesta, $parametrosConjuntos);
+        return $this->sacarPreguntasParaCuestionario($libros, $areas, $grupos, $triangulos, $tiposPrueba, $tiposRespuesta, $parametrosConjuntos);
     }
 
     private function sacarPreguntasParaCuestionario($libros, $areas, $grupos, $triangulos, $tiposPrueba, $tiposRespuesta, $parametrosConjuntos) {
