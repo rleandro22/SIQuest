@@ -118,11 +118,11 @@
             <br><br>
         </div>
         <div class="row">
-            <div class="col-lg-6">                     
+            <div class="col-lg-8">                     
             </div>
             <div class="col-lg-1 text-right"></div>
             <div class="col-lg-2 text-right">
-                <button class="btn btn-action" id="guardar" type="button">Guardar preguntas</button>
+                <button class="btn btn-action hidden" id="guardar" type="button">Guardar preguntas</button>
             </div>
         </div>
 
@@ -299,8 +299,14 @@
         function borrarPregunta(obj, e) {
             e.preventDefault();
             var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación no es reversible)");
-            if (sure)
+            if (sure) {
                 $(obj).parent().parent().remove();
+                if ($('#tablaPreguntas tr').length > 0) {
+                    $('#guardar').removeClass('hidden');
+                } else {
+                    $('#guardar').addClass('hidden');
+                }
+            }
         }
 
         function llenarTablaPreguntas() {
@@ -313,13 +319,20 @@
                     if (data.preguntas.id != "0") {
                         var trHTML = '';
                         for (var i = 0, total = data.preguntas.length; i < total; i++) {
-                            trHTML += '<tr><td>' + data.preguntas[i].id + '</td><td>' + data.preguntas[i].titulo + '</td><td>&nbsp;&nbsp;&nbsp;<a onclick="editarPregunta(' + data.preguntas[i].id + ')"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;<a href="" onclick="borrarPregunta(this, event);"><span class="glyphicon glyphicon-remove"></span></a></td></tr>';
+                            trHTML += '<tr><td class="celdaId">' + data.preguntas[i].id + '</td><td>' + data.preguntas[i].titulo + '</td><td>&nbsp;&nbsp;&nbsp;<a onclick="editarPregunta(' + data.preguntas[i].id + ')"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;<a href="" onclick="borrarPregunta(this, event);"><span class="glyphicon glyphicon-remove"></span></a></td></tr>';
                         }
                         $("#tablaPreguntas tr").remove();
                         $('#tablaPreguntas').append(trHTML);
+
+                        if ($('#tablaPreguntas tr').length > 0) {
+                            $('#guardar').removeClass('hidden');
+                        } else {
+                            $('#guardar').addClass('hidden');
+                        }
                     }
                 },
                 error: function () {
+                    $('#guardar').removeClass('hidden');
                     alert("Ocurrio un error.");
                 }
             });
@@ -336,18 +349,12 @@
             });
 
             $('#guardar').click(function (e) {
-                var $rows = $("#tablaPreguntas tbody tr");
-                var data = [];
-
-                $rows.each(function (row, v) {
-                    $(this).find("td").each(function (cell, v) {
-                        if (typeof data[cell] === 'undefined') {
-                            data[cell] = [];
-                        }
-                        data[cell][row] = $(this).text();
-                    });
-                });
-                alert(JSON.stringify(data));
+                var tbl = $('#tablaPreguntas tr').map(function () {
+                    return $(this).find('.celdaId').map(function () {
+                        return $(this).text();
+                    }).get();
+                }).get();
+                alert(JSON.stringify(tbl));
             });
 
             $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').bind('click keyup', function () {

@@ -96,8 +96,9 @@ class CuestionarioController extends Controller {
                 shuffle($idsDeCondicion);
                 $idsDeConsulta = null;
                 while ($idsDeCondicion && $indice < $libro['cantidad']) {
-                    $elemento = array_pop($idsDeCondicion);
-                    $idsDeConsulta[] = $elemento;
+                    $el = array_rand($idsDeCondicion);
+                    $idsDeConsulta[] = $idsDeCondicion[$el];
+                    array_splice($idsDeCondicion, $el, 1);
                     $indice++;
                 }
                 if ($idsDeConsulta) {
@@ -117,7 +118,9 @@ class CuestionarioController extends Controller {
                 shuffle($idsDeCondicion);
                 $idsDeConsulta = null;
                 while ($idsDeCondicion && $indice < $area['cantidad']) {
-                    $idsDeConsulta[] = array_pop($idsDeCondicion);
+                    $el = array_rand($idsDeCondicion);
+                    $idsDeConsulta[] = $idsDeCondicion[$el];
+                    array_splice($idsDeCondicion, $el, 1);
                     $indice++;
                 }
                 if ($idsDeConsulta) {
@@ -138,7 +141,9 @@ class CuestionarioController extends Controller {
                 shuffle($idsDeCondicion);
                 $idsDeConsulta = null;
                 while ($idsDeCondicion && $indice < $grupo['cantidad']) {
-                    $idsDeConsulta[] = array_pop($idsDeCondicion);
+                    $el = array_rand($idsDeCondicion);
+                    $idsDeConsulta[] = $idsDeCondicion[$el];
+                    array_splice($idsDeCondicion, $el, 1);
                     $indice++;
                 }
                 if ($idsDeConsulta) {
@@ -159,7 +164,9 @@ class CuestionarioController extends Controller {
                 shuffle($idsDeCondicion);
                 $idsDeConsulta = null;
                 while ($idsDeCondicion && $indice < $triangulo['cantidad']) {
-                    $idsDeConsulta[] = array_pop($idsDeCondicion);
+                    $el = array_rand($idsDeCondicion);
+                    $idsDeConsulta[] = $idsDeCondicion[$el];
+                    array_splice($idsDeCondicion, $el, 1);
                     $indice++;
                 }
                 if ($idsDeConsulta) {
@@ -181,7 +188,9 @@ class CuestionarioController extends Controller {
                 shuffle($idsDeCondicion);
                 $idsDeConsulta = null;
                 while ($idsDeCondicion && $indice < $tipoP['cantidad']) {
-                    $idsDeConsulta[] = array_pop($idsDeCondicion);
+                    $el = array_rand($idsDeCondicion);
+                    $idsDeConsulta[] = $idsDeCondicion[$el];
+                    array_splice($idsDeCondicion, $el, 1);
                     $indice++;
                 }
                 if ($idsDeConsulta) {
@@ -202,7 +211,9 @@ class CuestionarioController extends Controller {
                 shuffle($idsDeCondicion);
                 $idsDeConsulta = null;
                 while ($idsDeCondicion && $indice < $tipoR['cantidad']) {
-                    $idsDeConsulta[] = array_pop($idsDeCondicion);
+                    $el = array_rand($idsDeCondicion);
+                    $idsDeConsulta[] = $idsDeCondicion[$el];
+                    array_splice($idsDeCondicion, $el, 1);
                     $indice++;
                 }
                 if ($idsDeConsulta) {
@@ -260,7 +271,9 @@ class CuestionarioController extends Controller {
                 shuffle($idsDeCondicion);
                 $idsDeConsulta = null;
                 while ($idsDeCondicion && $indice < $pConjunto['cantidad']) {
-                    $idsDeConsulta[] = array_pop($idsDeCondicion);
+                    $el = array_rand($idsDeCondicion);
+                    $idsDeConsulta[] = $idsDeCondicion[$el];
+                    array_splice($idsDeCondicion, $el, 1);
                     $indice++;
                 }
                 if ($idsDeConsulta) {
