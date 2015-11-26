@@ -32,6 +32,11 @@
                     </div>
                     <div class="row">
                         <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                            {{ form_row(form.curso) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                             {{ form_row(form.cantidadPreguntas) }}
                         </div>
                     </div>
@@ -349,12 +354,24 @@
             });
 
             $('#guardar').click(function (e) {
+                var nombreCuestionario = $('#uci_bundle_basedatosbundle_cuestionario_cuestionarioname').val();
+                var curso = $('#uci_bundle_basedatosbundle_cuestionario_curso').val();
                 var tbl = $('#tablaPreguntas tr').map(function () {
                     return $(this).find('.celdaId').map(function () {
                         return $(this).text();
                     }).get();
                 }).get();
-                alert(JSON.stringify(tbl));
+                $.ajax({
+                    url: "{{path('uci_administrador_guardarcuestionario')}}",
+                    type: "POST",
+                    data: {preguntas: tbl, nombreCuestionario: nombreCuestionario, curso: curso},
+                    success: function (data) {
+                        alert('Exitoso');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Ocurrio un error');
+                    }
+                });
             });
 
             $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').bind('click keyup', function () {

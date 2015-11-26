@@ -51,6 +51,31 @@ class CuestionarioController extends Controller {
         ));
     }
 
+    public function aGuardarCuestionarioAction(Request $request) {
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            $em = $this->getDoctrine()->getManager();
+            $cuestionario = new Cuestionario();
+            $cuestionario->setCuestionarioname($request->request->get('nombreCuestionario'));
+            $curso = $em->getRepository('UciBaseDatosBundle:Curso')->find($request->request->get('curso'));
+            $cuestionario->setCurso($curso);
+            $idPreguntas = $request->request->get('preguntas');
+            $cuestionario->setCantidadPreguntas(count($idPreguntas));
+            $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('p')
+                            ->where('p.id IN (:miarray2)')
+                            ->setParameter('miarray2', $idPreguntas)
+                            ->getQuery()->getResult();   
+            try {
+                $cuestionario->setPregunta($preguntas);
+                $this->guardarPreguntas($em, $cuestionario);
+                $em->persist($cuestionario);
+                $em->flush();
+                $em->commit();
+            } catch (Exception $e) {
+                $em->getConnection()->rollback();
+            }
+        }
+    }
+
     private function procesarPeticionCuestionario($request) {
         $libros = null;
         $areas = null;
@@ -349,6 +374,14 @@ class CuestionarioController extends Controller {
         $response_array['triangulos'] = (empty($triangulos)) ? array('id' => '0') : $triangulos;
         $response->setContent(json_encode($response_array));
         return $response;
+    }
+
+    private function guardarPreguntas($em, &$cuestionario) {
+        $preguntas = $cuestionario->getPregunta();
+        foreach ($preguntas as $pregunta) {
+            $em->persist($pregunta);
+            $em->clear($pregunta);
+        }
     }
 
 }
