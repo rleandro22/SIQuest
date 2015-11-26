@@ -61,9 +61,10 @@ class CuestionarioController extends Controller {
             $idPreguntas = $request->request->get('preguntas');
             $cuestionario->setCantidadPreguntas(count($idPreguntas));
             $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('p')
-                            ->where('p.id IN (:miarray2)')
-                            ->setParameter('miarray2', $idPreguntas)
-                            ->getQuery()->getResult();   
+                    ->where('p.id IN (:miarray2)')
+                    ->setParameter('miarray2', $idPreguntas)
+                    ->getQuery()
+                    ->getResult();
             try {
                 $cuestionario->setPregunta($preguntas);
                 $this->guardarPreguntas($em, $cuestionario);
