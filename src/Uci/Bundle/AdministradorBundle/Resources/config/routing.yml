@@ -75,6 +75,14 @@ uci_administrador_setearlibroscuestionario:
 uci_administrador_guardarcuestionario:
     pattern:  /admin/guardar_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aGuardarCuestionario }
+    
+uci_administrador_ver_cuestionario:
+    pattern:  /admin/{id}/ver_cuestionario
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aVerCuestionario }
+    
+uci_administrador_generararchivocuestionario:
+    pattern:  /admin/generar_archivo_cuestionario
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aGenerarArchivoCueastionario }
    
 #---------------------MATRICULAR USUARIO----------------------------------------
 

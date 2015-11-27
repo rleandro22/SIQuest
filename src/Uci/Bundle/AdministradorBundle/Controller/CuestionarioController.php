@@ -5,9 +5,13 @@ namespace Uci\Bundle\AdministradorBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Form\CuestionarioType;
+use Uci\Bundle\BaseDatosBundle\Archivos\CrearArchivoCuestionario;
 use Uci\Bundle\BaseDatosBundle\Form\FiltrarCuestionariosType;
 use Uci\Bundle\BaseDatosBundle\Entity\Cuestionario;
+use Uci\Bundle\BaseDatosBundle\Form\VerCuestionarioType;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Doctrine\Common\Collections;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CuestionarioController extends Controller {
 
@@ -37,6 +41,22 @@ class CuestionarioController extends Controller {
         ));
     }
 
+    public function aVerCuestionarioAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+        $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($id);
+        $preguntas = $cuestionario->getPregunta();
+        $form = $this->createForm(new VerCuestionarioType(), $cuestionario);
+        $form->handleRequest($request);
+        if ($request->getMethod() == 'POST') {
+            
+        }
+        return $this->render('UciAdministradorBundle:VistaCuestionario:verCuestionario.html.twig', array(
+                    'entity' => $cuestionario,
+                    'form' => $form->createView(),
+                    'preguntas' => $preguntas,
+        ));
+    }
+
     public function aConstruirCuestionarioAction(Request $request) {
         $cuestionario = new Cuestionario();
         $form = $this->createForm(new CuestionarioType(), $cuestionario);
@@ -49,6 +69,18 @@ class CuestionarioController extends Controller {
         return $this->render('UciAdministradorBundle:VistaCuestionario:generarCuestionario.html.twig', array(
                     'form' => $form->createView()
         ));
+    }
+
+    public function aGenerarArchivoCueastionarioAction(Request $request) {
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            $idCuestionario = $request->request->get('idCuestionario');
+            $em = $this->getDoctrine()->getManager();
+            /* $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($request->request->get('idCuestionario'));
+              $crearArchivo = new CrearArchivoCuestionario($cuestionario);
+              $crearArchivo->generarArchivo(); */
+            $path = $this->get('kernel')->getRootDir().'/../web';
+            return new JsonResponse(array('resultado' => $path));
+        }
     }
 
     public function aGuardarCuestionarioAction(Request $request) {
@@ -65,14 +97,17 @@ class CuestionarioController extends Controller {
                     ->setParameter('miarray2', $idPreguntas)
                     ->getQuery()
                     ->getResult();
+            $preguntas = new Collections\ArrayCollection($preguntas);
+            $em->getConnection()->beginTransaction();
             try {
                 $cuestionario->setPregunta($preguntas);
-                $this->guardarPreguntas($em, $cuestionario);
                 $em->persist($cuestionario);
                 $em->flush();
                 $em->commit();
+                return new JsonResponse(array('resultado' => 1));
             } catch (Exception $e) {
                 $em->getConnection()->rollback();
+                return new JsonResponse(array('resultado' => 0));
             }
         }
     }
@@ -375,14 +410,6 @@ class CuestionarioController extends Controller {
         $response_array['triangulos'] = (empty($triangulos)) ? array('id' => '0') : $triangulos;
         $response->setContent(json_encode($response_array));
         return $response;
-    }
-
-    private function guardarPreguntas($em, &$cuestionario) {
-        $preguntas = $cuestionario->getPregunta();
-        foreach ($preguntas as $pregunta) {
-            $em->persist($pregunta);
-            $em->clear($pregunta);
-        }
     }
 
 }

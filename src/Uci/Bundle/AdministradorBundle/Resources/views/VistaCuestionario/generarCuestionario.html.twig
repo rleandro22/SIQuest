@@ -10,7 +10,8 @@
 
         <ol class="breadcrumb">
             <li><a href="{{ path('uci_administrador_homepage') }}">Inicio</a></li>
-            <li class="active">Listado de Cuestionarios</li>
+            <li><a href="{{ path('uci_administrador_indicecuestionario') }}">Listado de Cuestionarios</a></li>
+            <li class="active">Nuevo Cuestionario</li>
         </ol>
         <div class="row">
             <!-- Sidebar -->
@@ -232,7 +233,6 @@
                         alert('Ocurrio un error');
                     }
                 });
-
             });
         }
 
@@ -295,10 +295,10 @@
         }
 
         function editarPregunta(id) {
-            /*var url = '{ path('uci_administrador_editarPregunta', { 'idPregunta': 'idPreg' }) }}';
-             url = url.replace("idPreg", id);
-             window.open(url, '_blank', "width=500%, height=500%", 'toolbar=0,location=0,menubar=0');
-             llenarTablaPreguntas();*/
+            var url = '{{ path('uci_administrador_editarPregunta', { 'idPregunta': 'idPreg' }) }}';
+            url = url.replace("idPreg", id);
+            window.open(url, '_blank', "width=500%, height=500%", 'toolbar=0,location=0,menubar=0');
+            llenarTablaPreguntas();
         }
 
         function borrarPregunta(obj, e) {
@@ -328,7 +328,6 @@
                         }
                         $("#tablaPreguntas tr").remove();
                         $('#tablaPreguntas').append(trHTML);
-
                         if ($('#tablaPreguntas tr').length > 0) {
                             $('#guardar').removeClass('hidden');
                         } else {
@@ -352,7 +351,6 @@
                     alert('Ingrese al menos 1 parametro para generar las preguntas.');
                 }
             });
-
             $('#guardar').click(function (e) {
                 var nombreCuestionario = $('#uci_bundle_basedatosbundle_cuestionario_cuestionarioname').val();
                 var curso = $('#uci_bundle_basedatosbundle_cuestionario_curso').val();
@@ -366,18 +364,20 @@
                     type: "POST",
                     data: {preguntas: tbl, nombreCuestionario: nombreCuestionario, curso: curso},
                     success: function (data) {
-                        alert('Exitoso');
+                        if (data.resultado == 1) {
+                            window.location.href = "{{ path('uci_administrador_indicecuestionario') }}";
+                        } else {
+                            alert('Ocurrio un error');
+                        }
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         alert('Ocurrio un error');
                     }
                 });
             });
-
             $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').bind('click keyup', function () {
                 deshabilitarNumericos();
             });
-
             $('#uci_bundle_basedatosbundle_cuestionario_cuestionarioname').keydown(function (e) {
                 if (e.which != '8' && e.which != '46') {
                     str = $(this).val();
