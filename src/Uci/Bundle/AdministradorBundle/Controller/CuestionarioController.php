@@ -11,7 +11,8 @@ use Uci\Bundle\BaseDatosBundle\Entity\Cuestionario;
 use Uci\Bundle\BaseDatosBundle\Form\VerCuestionarioType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\Common\Collections;
-use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 class CuestionarioController extends Controller {
 
@@ -78,7 +79,22 @@ class CuestionarioController extends Controller {
             /* $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($request->request->get('idCuestionario'));
               $crearArchivo = new CrearArchivoCuestionario($cuestionario);
               $crearArchivo->generarArchivo(); */
-            $path = $this->get('kernel')->getRootDir().'/../web';
+            $path = $this->get('kernel')->getRootDir() . '/Resources';
+            try {
+                $fs = new Filesystem();
+                if (!$fs->exists($path . '/Archivos/')) {
+                    $fs->mkdir($path . '/Archivos/');
+                }
+                $fp = fopen($path . '/Archivos/' . "myText.txt", "wb");
+                if ($fp == false) {
+                    //do debugging or logging here
+                } else {
+                    fwrite($fp, 'SERVI');
+                    fclose($fp);
+                }
+            } catch (IOExceptionInterface $e) {
+                echo "An error occurred while creating your directory at " . $e->getPath();
+            }
             return new JsonResponse(array('resultado' => $path));
         }
     }
