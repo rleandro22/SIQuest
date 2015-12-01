@@ -1,6 +1,2 @@
-3e8e58,::1,GET,http://localhost/SIQuest/web/app_dev.php/?XDEBUG_SESSION_START=netbeans-xdebug,1449000634,,200
-3d9c16,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1449000641,,200
-25e1cc,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/importar_preguntas,1449000643,,200
-41eb0f,::1,GET,http://localhost/SIQuest/web/app_dev.php/?XDEBUG_SESSION_START=netbeans-xdebug,1449000848,,200
-3b87dd,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1449000851,,200
-5e14ec,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/importar_preguntas,1449000853,,200
+47ef2c,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1449010294,,302
+2bfc4b,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1449010295,,200

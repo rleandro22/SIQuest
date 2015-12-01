@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Uci\Bundle\ProfesorBundle\UciProfesorBundle(),
             new Uci\Bundle\AsistenteAcademicaBundle\UciAsistenteAcademicaBundle(),
             new Uci\Bundle\BaseDatosBundle\UciBaseDatosBundle(),
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
