@@ -49,10 +49,14 @@ class CrearArchivoCuestionario {
                 if ($pregunta->getTipoRespuesta()->getId() != 7) {
                     $content = $content . '\:{';
                 }
-                $content = $content . "\r\n";
+                if ($pregunta->getTipoRespuesta()->getId() != 4 && $pregunta->getTipoRespuesta()->getId() != 2) {
+                    $content = $content . "\r\n";
+                }
                 $respuestas = $pregunta->getRespuesta();
                 foreach ($respuestas as $respuesta) {
-                    $content = $content . "\t";
+                    if ($pregunta->getTipoRespuesta()->getId() != 2 && $pregunta->getTipoRespuesta()->getId() != 4) {
+                        $content = $content . "\t";
+                    }
                     if ($pregunta->getTipoRespuesta()->getId() == 1) {
                         $content = $content . '=';
                     } else if ($pregunta->getTipoRespuesta()->getId() == 2) {
@@ -85,7 +89,9 @@ class CrearArchivoCuestionario {
                         if ($pregunta->getTipoRespuesta()->getId() == 9) {
                             $content = $content . '->' . $respuesta->getExtra();
                         }
-                        $content = $content . "\r\n";
+                        if ($pregunta->getTipoRespuesta()->getId() != 2) {
+                            $content = $content . "\r\n";
+                        }
                     }
                 }
                 if ($pregunta->getTipoRespuesta()->getId() != 7) {
@@ -97,7 +103,6 @@ class CrearArchivoCuestionario {
             $response->headers->set('Content-Type', 'text/csv');
             $response->headers->set('Content-Disposition', 'attachment;filename="' . $filename);
             $response->setContent($content);
-            //register_shutdown_function('unlink', $filename);
             ignore_user_abort(true);
             if (file_exists($filename)) {
                 unlink($filename);

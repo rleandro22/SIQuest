@@ -7,14 +7,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class CuestionarioType extends AbstractType
-{
+class CuestionarioType extends AbstractType {
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('cuestionarioname', 'text', array("label" => "Nombre corto: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('curso', 'entity', array('class' => 'UciBaseDatosBundle:Curso', 'required' => true, 'empty_value' => 'Curso'))
@@ -79,14 +78,13 @@ class CuestionarioType extends AbstractType
                     'prototype' => TRUE,
                     'mapped' => FALSE,
                     'label' => FALSE))
-                ;
+        ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'Uci\Bundle\BaseDatosBundle\Entity\Cuestionario'
         ));
@@ -95,8 +93,8 @@ class CuestionarioType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'uci_bundle_basedatosbundle_cuestionario';
     }
+
 }

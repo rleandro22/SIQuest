@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use \Uci\Bundle\BaseDatosBundle\Entity\Pregunta;
 use Uci\Bundle\BaseDatosBundle\Form\EligeTipoType;
 use Uci\Bundle\BaseDatosBundle\Form\PreguntaType;
+use Uci\Bundle\BaseDatosBundle\Form\ImportarPreguntaType;
+
 
 class PreguntaController extends Controller {
 
@@ -203,6 +205,26 @@ class PreguntaController extends Controller {
             }
         }
         return $this->render('UciAdministradorBundle:VistaPregunta:elegirTipoPregunta.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+
+    public function aImportarPreguntasAction(Request $request) {
+        $form = $this->createForm(new ImportarPreguntaType());
+        $form->handleRequest($request);
+        if ($request->getMethod() == 'POST') {
+            if ($form->isValid()) {
+                $file = $form['file']->getData();
+                $extension = $file->guessExtension();
+                if ($extension == "xls") { // check if the file extension is as required; you can also check the mime type itself: $file->getMimeType()
+                    $nombreArchivo = $file->getPathname();
+                    $file_contents = fopen($nombreArchivo, "r");
+                    fclose($file_contents);
+                }
+                //return $this->redirect($this->generateUrl("uci_administrador_registrarPregunta", array("idTipoRespuesta" => $tipoRespuesta->getId())));
+            }
+        }
+        return $this->render('UciAdministradorBundle:VistaPregunta:importarPreguntas.html.twig', array(
                     'form' => $form->createView()
         ));
     }
