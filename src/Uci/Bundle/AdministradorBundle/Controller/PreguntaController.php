@@ -216,6 +216,7 @@ class PreguntaController extends Controller {
             if ($form->isValid()) {
                 $file = $form['file']->getData();
                 $extension = $file->guessExtension();
+                $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
                 if ($extension == "xls") { // check if the file extension is as required; you can also check the mime type itself: $file->getMimeType()
                     $nombreArchivo = $file->getPathname();
                     $file_contents = fopen($nombreArchivo, "r");

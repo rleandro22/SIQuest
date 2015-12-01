@@ -1,2 +1,12 @@
 47ef2c,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1449010294,,302
 2bfc4b,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1449010295,,200
+2039c0,::1,GET,http://localhost/SIQuest/web/app_dev.php/?XDEBUG_SESSION_START=netbeans-xdebug,1449010472,,302
+d84785,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1449010472,,200
+e039f1,::1,POST,http://localhost/SIQuest/web/app_dev.php/login_check,1449010479,,302
+bd4a66,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1449010480,,200
+9efce3,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/indice_cuestionario,1449010487,,200
+98aae5,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1449010491,,200
+0e6a7a,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/importar_preguntas,1449010492,,200
+f0f7f9,::1,GET,http://localhost/SIQuest/web/app_dev.php/?XDEBUG_SESSION_START=netbeans-xdebug,1449010531,,200
+87b2dd,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1449010535,,200
+c26860,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/importar_preguntas,1449010537,,200
