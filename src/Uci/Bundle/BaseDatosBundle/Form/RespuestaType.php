@@ -39,7 +39,7 @@ class RespuestaType extends AbstractType {
             }
         }
 
-        if ($this->idTipoRespuesta != 5 || $this->idTipoRespuesta != 7) {
+        if ($this->idTipoRespuesta != 5 && $this->idTipoRespuesta != 7 && $this->idTipoRespuesta != 4) {
             $builder->add('textoRespuesta', $this->tipoDinamico, array("label" => $this->labelTextoRespuesta, "required" => TRUE));
         }
 
@@ -82,7 +82,6 @@ class RespuestaType extends AbstractType {
         }
         if ($this->idTipoRespuesta == 4) {
             $this->labelCorrecta = '¿Es verdadera? ';
-            $this->labelTextoRespuesta = 'Enunciado de la respuesta: ';
         }
         if ($this->idTipoRespuesta == 6) {
             $this->labelCorrecta = '¿Es una respuesta válida? ';

@@ -136,7 +136,7 @@
                 var $triangulo_selector = $('#uci_bundle_basedatosbundle_pregunta_trianguloTalento');
                 function addRespuesta() {
                 var idTipoRespuesta = {{ entity.tipoRespuesta.id }};
-                        if (idTipoRespuesta == 2) {
+                        if (idTipoRespuesta == 2 || idTipoRespuesta == 4) {
                 if ($("#respuestas li").length < 1){
                 agregarPrototipo();
                 } else{

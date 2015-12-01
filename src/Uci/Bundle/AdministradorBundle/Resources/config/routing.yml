@@ -79,10 +79,6 @@ uci_administrador_guardarcuestionario:
 uci_administrador_ver_cuestionario:
     pattern:  /admin/{id}/ver_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aVerCuestionario }
-    
-uci_administrador_generararchivocuestionario:
-    pattern:  /admin/generar_archivo_cuestionario
-    defaults: { _controller: UciAdministradorBundle:Cuestionario:aGenerarArchivoCueastionario }
    
 #---------------------MATRICULAR USUARIO----------------------------------------
 

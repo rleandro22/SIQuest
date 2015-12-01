@@ -13,19 +13,20 @@
             <li><a href="{{ path('uci_administrador_indicecuestionario') }}">Listado de Cuestionarios</a></li>
             <li class="active">Ver Cuestionario</li>
         </ol>
-        <div class="row">
-            <!-- Sidebar -->
-            <aside class="col-md-4 sidebar sidebar-left">
-                {% include 'UciAdministradorBundle:Menus:mantenimientoCuestionario.html.twig' %}
-            </aside>
-            <!-- /Sidebar -->
-            <!-- Article main content -->
-            <article class="col-sm-8 maincontent">
-                <header class="page-header">
-                    <h1 class="page-title">Generar cuestionarios</h1>
-                </header>
-                <br>
-                <form action="{{ path('uci_administrador_ver_cuestionario', { 'id': entity.id}) }}" id="formularioCuestionario" method="POST" enctype="multipart/form-data">
+        <form action="{{ path('uci_administrador_ver_cuestionario', { 'id': entity.id}) }}" id="formularioCuestionario" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <!-- Sidebar -->
+                <aside class="col-md-4 sidebar sidebar-left">
+                    {% include 'UciAdministradorBundle:Menus:mantenimientoCuestionario.html.twig' %}
+                </aside>
+                <!-- /Sidebar -->
+                <!-- Article main content -->
+                <article class="col-sm-8 maincontent">
+                    <header class="page-header">
+                        <h1 class="page-title">Generar cuestionarios</h1>
+                    </header>
+                    <br>
+
                     <div class="row">
                         <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                             {{ form_row(form.cuestionarioname) }}
@@ -42,60 +43,51 @@
                         </div>
                     </div>
                     <br><br><br>
-                    <div class="row">
-                        <div class="col-lg-6">                     
-                        </div>
-                        <div class="col-lg-1 text-right"></div>
-                        <div class="col-lg-2 text-right">
-                            <button class="btn btn-action" id="enviar" type="button">Agregar preguntas</button>
-                        </div>
-                    </div>
-                    {{ form_rest(form) }}
-                </form>
-                <br><br>
-            </article>
-            <!-- /Article -->
-        </div>
-        <br><br>
-        <div class="row">
+                    <br><br>
+                </article>
+                <!-- /Article -->
+            </div>
+            <br><br>
             <div class="row">
-                <div class="col-sm-4">
-                    <input id="filter" class="form-control" type="text" placeholder="Buscar">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input id="filter" class="form-control" type="text" placeholder="Buscar">
+                    </div>
+                </div>
+                <br><br>
+                <table class="table demo table-bordered" id="tabla" data-filter="#filter">
+                    <thead>
+                        <tr>
+                            <th style="border-right:0;" data-toggle="true">
+                                Texto
+                            </th>
+                            <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        {% for pregunta in preguntas %}
+                            <tr>
+                                <td style="border-right:0;" class="primera-columna">{{ pregunta.titulo|striptags }} </td>
+                                <td>&nbsp;&nbsp;<a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': pregunta.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
+                                    <a href="" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+                <br><br>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">                     
+                </div>
+                <div class="col-lg-1 text-right"></div>
+                <div class="col-lg-2 text-right">
+                    <button class="btn btn-action" id="generar" type="submit">Generar</button>
                 </div>
             </div>
-            <br><br>
-            <table class="table demo table-bordered" id="tabla" data-filter="#filter">
-                <thead>
-                    <tr>
-                        <th style="border-right:0;" data-toggle="true">
-                            Texto
-                        </th>
-                        <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    {% for pregunta in preguntas %}
-                        <tr>
-                            <td style="border-right:0;" class="primera-columna">{{ pregunta.titulo|striptags }} </td>
-                            <td>&nbsp;&nbsp;<a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': pregunta.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
-                                <a href="" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-
-                </tbody>
-            </table>
-            <br><br>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">                     
-            </div>
-            <div class="col-lg-1 text-right"></div>
-            <div class="col-lg-2 text-right">
-                <button class="btn btn-action" id="generar" type="button">Generar</button>
-            </div>
-        </div>
-
+            {{ form_rest(form) }}
+        </form>
     </div>	<!-- /container -->
 
 {% endblock %}
@@ -106,21 +98,6 @@
 
         document.ready = function () {
 
-            $('#generar').click(function (e) {
-                var idCuestionario ={{ entity.id }}
-                        ;
-                        $.ajax({
-                            url: "{{path('uci_administrador_generararchivocuestionario')}}",
-                            type: "POST",
-                            data: {idCuestionario: idCuestionario},
-                            success: function (data) {
-                                alert(JSON.stringify(data.resultado));
-                            },
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                alert('Ocurrio un error');
-                            }
-                        });
-            });
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
             }
