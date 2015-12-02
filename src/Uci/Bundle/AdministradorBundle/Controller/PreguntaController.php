@@ -7,10 +7,10 @@ use Uci\Bundle\BaseDatosBundle\Form\PreguntaIndiceType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use \Uci\Bundle\BaseDatosBundle\Entity\Pregunta;
+use Uci\Bundle\BaseDatosBundle\Entity\Respuesta;
 use Uci\Bundle\BaseDatosBundle\Form\EligeTipoType;
 use Uci\Bundle\BaseDatosBundle\Form\PreguntaType;
 use Uci\Bundle\BaseDatosBundle\Form\ImportarPreguntaType;
-
 
 class PreguntaController extends Controller {
 
@@ -214,13 +214,42 @@ class PreguntaController extends Controller {
         $form->handleRequest($request);
         if ($request->getMethod() == 'POST') {
             if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
                 $file = $form['file']->getData();
                 $extension = $file->guessExtension();
-                $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
                 if ($extension == "xls") { // check if the file extension is as required; you can also check the mime type itself: $file->getMimeType()
+                    $tipoRespuesta = $em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find(3);
                     $nombreArchivo = $file->getPathname();
-                    $file_contents = fopen($nombreArchivo, "r");
-                    fclose($file_contents);
+                    $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($nombreArchivo);
+                    $objWorksheet = $phpExcelObject->setActiveSheetIndex(0);
+                    $highestRow = $objWorksheet->getHighestRow();
+                    //Se recorre toda la hoja excel desde la fila 2 y se almacenan los datos
+                    for ($row = 4; $row <= $highestRow; ++$row) {
+                        $dataRow = $objWorksheet->rangeToArray('A' . $row . ':' . 'E' . $row, null, true, true, true);
+                        if ((isset($dataRow[$row]['A'])) && ($dataRow[$row]['A'] > '')) {
+                            if (strpos($dataRow[$row]['A'], "::") === 0) {
+                                $pregunta = new Pregunta();
+                                $textoPregunta = $dataRow[$row]['C'];
+                                $pregunta->setTitulo($textoPregunta);
+                                $pregunta->setTipoRespuesta($tipoRespuesta);
+                            } else if ((strpos($dataRow[$row]['A'], "=") === 0) || (strpos($dataRow[$row]['A'], "~") === 0)) {
+                                $respuesta = new Respuesta();
+                                $textoRespuesta = $dataRow[$row]['C'];
+                                $respuesta->setTextoRespuesta($textoRespuesta);
+                                if ((isset($dataRow[$row]['E'])) && ($dataRow[$row]['E'] > '') && ($dataRow[$row]['E'] != 'Feedback')) {
+                                    $textoRetroalimentacion = $dataRow[$row]['E'];
+                                    $respuesta->setTextoRetroalimentacion($textoRetroalimentacion);
+                                }
+                                if (strpos($dataRow[$row]['A'], "=") === 0) {
+                                    $esCorrecta = 1;
+                                } else if (strpos($dataRow[$row]['A'], "~") === 0) {
+                                    $esCorrecta = 0;
+                                }
+                                $respuesta->setCorrecta($$esCorrecta);
+                                $pregunta->addRespuesta($respuesta);
+                            }
+                        } //endif
+                    }
                 }
                 //return $this->redirect($this->generateUrl("uci_administrador_registrarPregunta", array("idTipoRespuesta" => $tipoRespuesta->getId())));
             }
