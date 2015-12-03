@@ -3,8 +3,6 @@
 namespace Uci\Bundle\BaseDatosBundle\Archivos;
 
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\Response;
 
 class CrearArchivoCuestionario {

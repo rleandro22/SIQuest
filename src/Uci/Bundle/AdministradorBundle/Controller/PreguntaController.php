@@ -11,6 +11,7 @@ use Uci\Bundle\BaseDatosBundle\Entity\Respuesta;
 use Uci\Bundle\BaseDatosBundle\Form\EligeTipoType;
 use Uci\Bundle\BaseDatosBundle\Form\PreguntaType;
 use Uci\Bundle\BaseDatosBundle\Form\ImportarPreguntaType;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class PreguntaController extends Controller {
 
@@ -214,44 +215,16 @@ class PreguntaController extends Controller {
         $form->handleRequest($request);
         if ($request->getMethod() == 'POST') {
             if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
+                $arregloPreguntas = new ArrayCollection();
                 $file = $form['file']->getData();
                 $extension = $file->guessExtension();
                 if ($extension == "xls") { // check if the file extension is as required; you can also check the mime type itself: $file->getMimeType()
+                    $em = $this->getDoctrine()->getManager();
                     $tipoRespuesta = $em->getRepository('UciBaseDatosBundle:TipoRespuesta')->find(3);
                     $nombreArchivo = $file->getPathname();
-                    $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($nombreArchivo);
-                    $objWorksheet = $phpExcelObject->setActiveSheetIndex(0);
-                    $highestRow = $objWorksheet->getHighestRow();
-                    //Se recorre toda la hoja excel desde la fila 2 y se almacenan los datos
-                    for ($row = 4; $row <= $highestRow; ++$row) {
-                        $dataRow = $objWorksheet->rangeToArray('A' . $row . ':' . 'E' . $row, null, true, true, true);
-                        if ((isset($dataRow[$row]['A'])) && ($dataRow[$row]['A'] > '')) {
-                            if (strpos($dataRow[$row]['A'], "::") === 0) {
-                                $pregunta = new Pregunta();
-                                $textoPregunta = $dataRow[$row]['C'];
-                                $pregunta->setTitulo($textoPregunta);
-                                $pregunta->setTipoRespuesta($tipoRespuesta);
-                            } else if ((strpos($dataRow[$row]['A'], "=") === 0) || (strpos($dataRow[$row]['A'], "~") === 0)) {
-                                $respuesta = new Respuesta();
-                                $textoRespuesta = $dataRow[$row]['C'];
-                                $respuesta->setTextoRespuesta($textoRespuesta);
-                                if ((isset($dataRow[$row]['E'])) && ($dataRow[$row]['E'] > '') && ($dataRow[$row]['E'] != 'Feedback')) {
-                                    $textoRetroalimentacion = $dataRow[$row]['E'];
-                                    $respuesta->setTextoRetroalimentacion($textoRetroalimentacion);
-                                }
-                                if (strpos($dataRow[$row]['A'], "=") === 0) {
-                                    $esCorrecta = 1;
-                                } else if (strpos($dataRow[$row]['A'], "~") === 0) {
-                                    $esCorrecta = 0;
-                                }
-                                $respuesta->setCorrecta($$esCorrecta);
-                                $pregunta->addRespuesta($respuesta);
-                            }
-                        } //endif
-                    }
+                    $this->importarArchivo($arregloPreguntas, $tipoRespuesta, $nombreArchivo);
                 }
-                //return $this->redirect($this->generateUrl("uci_administrador_registrarPregunta", array("idTipoRespuesta" => $tipoRespuesta->getId())));
+                return $this->guardarPreguntas($arregloPreguntas);
             }
         }
         return $this->render('UciAdministradorBundle:VistaPregunta:importarPreguntas.html.twig', array(
@@ -334,6 +307,59 @@ class PreguntaController extends Controller {
             $em->persist($respuesta);
             $em->clear($respuesta);
         }
+    }
+
+    private function guardarPreguntas($arregloPreguntas) {
+        $em = $this->getDoctrine()->getManager();
+        $em->getConnection()->beginTransaction();
+        try {
+            foreach ($arregloPreguntas as $pregunta) {
+                $this->guardarRespuestas($em, $pregunta);
+                $em->persist($pregunta);
+                $em->clear($pregunta);
+            }
+            $em->flush();
+            $em->commit();
+            return $this->redirectToRoute('uci_administrador_indicepreguntas');
+        } catch (Exception $e) {
+            $em->getConnection()->rollback();
+        }
+    }
+
+    private function importarArchivo(&$arregloPreguntas, $tipoRespuesta, $ubicacion) {
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($ubicacion);
+        $objWorksheet = $phpExcelObject->setActiveSheetIndex(0);
+        $highestRow = $objWorksheet->getHighestRow();
+        //Se recorre toda la hoja excel desde la fila 2 y se almacenan los datos
+        for ($row = 4; $row <= $highestRow; ++$row) {
+            $dataRow = $objWorksheet->rangeToArray('A' . $row . ':' . 'E' . $row, null, true, true, true);
+            if ((isset($dataRow[$row]['A'])) && ($dataRow[$row]['A'] > '')) {
+                if ((strpos($dataRow[$row]['A'], "::") === 0)&&(isset($dataRow[$row]['C'])) && ($dataRow[$row]['C'] > '')) {
+                    $pregunta = new Pregunta();
+                    $textoPregunta = $dataRow[$row]['C'];
+                    $pregunta->setTitulo($textoPregunta);
+                    $pregunta->setTipoRespuesta($tipoRespuesta);
+                } else if ((strpos($dataRow[$row]['A'], "=") === 0) || (strpos($dataRow[$row]['A'], "~") === 0)) {
+                    $respuesta = new Respuesta();
+                    $textoRespuesta = $dataRow[$row]['C'];
+                    $respuesta->setTextoRespuesta($textoRespuesta);
+                    if ((isset($dataRow[$row]['E'])) && ($dataRow[$row]['E'] > '') && ($dataRow[$row]['E'] != 'Feedback')) {
+                        $textoRetroalimentacion = $dataRow[$row]['E'];
+                        $respuesta->setTextoRetroalimentacion($textoRetroalimentacion);
+                    }
+                    if (strpos($dataRow[$row]['A'], "=") === 0) {
+                        $esCorrecta = 1;
+                    } else if (strpos($dataRow[$row]['A'], "~") === 0) {
+                        $esCorrecta = 0;
+                    }
+                    $respuesta->setCorrecta($esCorrecta);
+                    $pregunta->addRespuesta($respuesta);
+                }
+                if (strpos($dataRow[$row]['A'], "}") === 0) {
+                    $arregloPreguntas[] = $pregunta;
+                }
+            } //endif
+        }//end for
     }
 
 }
