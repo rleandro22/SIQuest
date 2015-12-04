@@ -334,7 +334,7 @@ class PreguntaController extends Controller {
         for ($row = 4; $row <= $highestRow; ++$row) {
             $dataRow = $objWorksheet->rangeToArray('A' . $row . ':' . 'E' . $row, null, true, true, true);
             if ((isset($dataRow[$row]['A'])) && ($dataRow[$row]['A'] > '')) {
-                if ((strpos($dataRow[$row]['A'], "::") === 0)&&(isset($dataRow[$row]['C'])) && ($dataRow[$row]['C'] > '')) {
+                if ((strpos($dataRow[$row]['A'], "::") === 0) &&(isset($dataRow[$row]['C'])) && ($dataRow[$row]['C'] > '')) {
                     $pregunta = new Pregunta();
                     $textoPregunta = $dataRow[$row]['C'];
                     $pregunta->setTitulo($textoPregunta);

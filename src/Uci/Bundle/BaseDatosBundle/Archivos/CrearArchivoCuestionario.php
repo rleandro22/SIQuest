@@ -84,6 +84,9 @@ class CrearArchivoCuestionario {
                     }
                     if ($pregunta->getTipoRespuesta()->getId() != 4 && $pregunta->getTipoRespuesta()->getId() != 5) {
                         $content = $content . $respuesta->getTextoRespuesta();
+                        if ($respuesta->getTextoRetroalimentacion() != '') {
+                            $content = $content . ' ' . '#' . ' ' . $respuesta->getTextoRetroalimentacion();
+                        }
                         if ($pregunta->getTipoRespuesta()->getId() == 9) {
                             $content = $content . '->' . $respuesta->getExtra();
                         }
