@@ -120,6 +120,12 @@ uci_administrador_importarPreguntas:
     pattern:  /admin/importar_preguntas
     defaults: { _controller: UciAdministradorBundle:Pregunta:aImportarPreguntas }
     
+#---------------------SOLICITUD-------------------------------------------------
+
+uci_administrador_indicesolicitudes:
+    pattern:  /admin/indice_solicitudes
+    defaults: { _controller: UciAdministradorBundle:Solicitud:aIndiceSolicitud }
+    
 #---------------------Routing Libro---------------------------------------------
 uci_administrador_libro:
     resource: "@UciAdministradorBundle/Resources/config/routing/libro.yml"

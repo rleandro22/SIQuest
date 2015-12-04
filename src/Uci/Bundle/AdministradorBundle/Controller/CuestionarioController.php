@@ -64,9 +64,7 @@ class CuestionarioController extends Controller {
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             return $this->procesarPeticionCuestionario($request);
-        } else if ($request->getMethod() == 'POST') {
-            //$this->procesarPeticionCuestionario($request);
-        }
+        } 
         return $this->render('UciAdministradorBundle:VistaCuestionario:generarCuestionario.html.twig', array(
                     'form' => $form->createView()
         ));
