@@ -15,10 +15,16 @@ class SolicitudController extends Controller {
         $entities = $em->getRepository('UciBaseDatosBundle:Solicitud')->findBy(array(), array('textosolicitud' => 'ASC'));
         if ($request->getMethod() == 'POST') {
             $curso = $form['curso']->getData();
-            $entities = $em->getRepository('UciBaseDatosBundle:Solicitud')->findBy(array('curso' => $curso));
+            $entities = $em->getRepository('UciBaseDatosBundle:Solicitud')->createQueryBuilder('u')
+                            ->innerJoin('u.curso', 'g')
+                            ->where('g.id = :id')
+                            ->setParameter('id', $curso->getId())
+                            ->orderBy('u.textosolicitud', 'ASC')
+                            ->getQuery()->getResult();
         }
         return $this->render('UciAdministradorBundle:VistaSolicitud:indiceSolicitud.html.twig', array(
                     'entities' => $entities,
+                    'form' => $form->createView()
         ));
     }
 
