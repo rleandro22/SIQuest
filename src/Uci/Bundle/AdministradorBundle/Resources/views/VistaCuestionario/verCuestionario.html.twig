@@ -13,7 +13,7 @@
             <li><a href="{{ path('uci_administrador_indicecuestionario') }}">Listado de Cuestionarios</a></li>
             <li class="active">Ver Cuestionario</li>
         </ol>
-        <form action="{{ path('uci_administrador_ver_cuestionario', { 'id': entity.id}) }}" id="formularioCuestionario" method="POST" enctype="multipart/form-data">
+        <form action="{{ path('uci_administrador_ver_cuestionario', { 'id': entity.id}) }}" id="datosCuestionario" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <!-- Sidebar -->
                 <aside class="col-md-4 sidebar sidebar-left">
@@ -26,7 +26,7 @@
                         <h1 class="page-title">Generar cuestionarios</h1>
                     </header>
                     <br>
-
+                    <div id="alert_placeholder"> </div>
                     <div class="row">
                         <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                             {{ form_row(form.cuestionarioname) }}
@@ -41,6 +41,11 @@
                         <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                             {{ form_row(form.cantidadPreguntas) }}
                         </div>
+                    </div>
+                    <br><br><br>
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-action" id="actualizarDatCuest" type="button">Actualizar</button>
                     </div>
                     <br><br><br>
                     <br><br>
@@ -68,7 +73,7 @@
                         {% for pregunta in preguntas %}
                             <tr>
                                 <td style="border-right:0;" class="primera-columna">{{ pregunta.titulo|striptags }} </td>
-                                <td>&nbsp;&nbsp;<a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': pregunta.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
+                                <td>&nbsp;&nbsp;<a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': pregunta.id }) }}" target="_blank"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
                                     <a href="" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
                                 </td>
                             </tr>
@@ -96,12 +101,42 @@
     {{ parent() }}
     <script type="text/javascript">
 
+        function alertTimeout(wait) {
+            setTimeout(function () {
+                $('#alert_placeholder').children('.alert:first-child').remove();
+            }, wait);
+        }
+
         document.ready = function () {
+
+            $('#actualizarDatCuest').click(function (e) {
+                var sure = confirm("¿Esta seguro que desea actualizar?\n (Esta operación no es reversible)");
+                if (sure) {
+                    $.ajax({
+                        type: $("#datosCuestionario").attr('method'),
+                        url: $("#datosCuestionario").attr('action'),
+                        data: $("#datosCuestionario").serialize(),
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.resultado == "1") {
+                                $('#alert_placeholder').append('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Actualización exitosa</div>');
+                                alertTimeout(4000);
+                            }else{
+                                $('#alert_placeholder').append('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>' + data.resultado + '</div>');
+                                alertTimeout(4000);
+                            }
+                        },
+                        error: function (data) {
+                            $('#alert_placeholder').append('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>' + data.resultado + '</div>');
+                            alertTimeout(4000);
+                        }
+                    });
+                }
+            });
 
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
-            }
-            );
+            });
             $('body').on('hidden.bs.modal', '.modal', function () {
                 $('.modal-content', this).empty();
                 $(this).removeData('bs.modal');

@@ -41,12 +41,24 @@ class CuestionarioController extends Controller {
     }
 
     public function aVerCuestionarioAction(Request $request, $id) {
+        $mensaje = 1;
         $em = $this->getDoctrine()->getManager();
         $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($id);
         $preguntas = $cuestionario->getPregunta();
         $form = $this->createForm(new VerCuestionarioType(), $cuestionario);
         $form->handleRequest($request);
-        if ($request->getMethod() == 'POST') {
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            try {
+                $em->persist($cuestionario);
+                $em->flush();
+                return new JsonResponse(array('resultado' => $mensaje));
+            } catch (\Doctrine\DBAL\DBALException $e) {
+                if ($e->getPrevious() && 0 === strpos($e->getPrevious()->getCode(), '23')) {
+                    $mensaje = 'Este nombre corto ya existe';
+                }
+                return new JsonResponse(array('resultado' => $mensaje));
+            }
+        } else if ($request->getMethod() == 'POST') {
             $path = $this->get('kernel')->getRootDir() . '/Resources';
             $crearArchivo = new CrearArchivoCuestionario($path, $cuestionario);
             return $crearArchivo->generarArchivo();
@@ -64,7 +76,7 @@ class CuestionarioController extends Controller {
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             return $this->procesarPeticionCuestionario($request);
-        } 
+        }
         return $this->render('UciAdministradorBundle:VistaCuestionario:generarCuestionario.html.twig', array(
                     'form' => $form->createView()
         ));
@@ -108,8 +120,8 @@ class CuestionarioController extends Controller {
         $tiposRespuesta = null;
         $parametrosConjuntos = null;
         $arregloParametros = $request->request->get('uci_bundle_basedatosbundle_cuestionario');
-        $nombreCuestionario = $arregloParametros['cuestionarioname'];
-        $cantidadPreguntas = $arregloParametros['cantidadPreguntas'];
+        //$nombreCuestionario = $arregloParametros['cuestionarioname'];
+        //$cantidadPreguntas = $arregloParametros['cantidadPreguntas'];
         if (array_key_exists('libro', $arregloParametros)) {
             $libros = $arregloParametros['libro'];
         }if (array_key_exists('areaConocimiento', $arregloParametros)) {
@@ -349,7 +361,7 @@ class CuestionarioController extends Controller {
             return $this->aObtenerDatosLibro($idLibro);
         }
     }
-    
+
     public function aBorrarCuestionarioAction(Request $request, $idCuestionario) {
         $em = $this->getDoctrine()->getManager();
         $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($idCuestionario);
