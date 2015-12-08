@@ -15,10 +15,8 @@ class SolicitudType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('textosolicitud')
-            ->add('activa')
-            ->add('curso')
-            ->add('decano')
+            ->add('textosolicitud', 'textarea', array("label" => "Solicitud: ", "required" => true, "attr" => array('class' => 'form-control')))
+            ->add('curso', 'entity', array('class' => 'UciBaseDatosBundle:Curso', 'mapped'=>false, 'expanded' => false, 'multiple' => false, 'required' => true))
         ;
     }
     

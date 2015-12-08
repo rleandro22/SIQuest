@@ -1,0 +1,40 @@
+
+<div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Ingrese su solicitud</h4>
+        </div>
+        <div class="modal-body">
+            <form action="{{ path('uci_administrador_addsolicitud') }}" method="POST" enctype="multipart/form-data">
+                <div class="row top-margin">
+                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                        {{ form_label(form.curso) }}
+                        {{ form_errors(form.curso) }}
+                        {{ form_widget(form.curso) }}
+                    </div>
+                </div>
+                <div class="row top-margin">
+                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                        {{ form_label(form.textosolicitud) }}
+                        {{ form_errors(form.textosolicitud) }}
+                        {{ form_widget(form.textosolicitud) }}
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="col-lg-8 text-right">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                    </div>
+                    <div class="col-lg-4 text-right">
+                        <button id="pruebaultima" class="btn btn-action" type="submit">Registrar</button>
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+
+</div>

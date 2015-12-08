@@ -15,8 +15,8 @@ class __TwigTemplate_7feecbd53ff1c3f98c3e453387b5b3d273c056714ddd116842fb63685f9
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_30e38c7b2bbc21b6bc81ba965295e76965b49602693f65e7a723b707a0efa926 = $this->env->getExtension("native_profiler");
-        $__internal_30e38c7b2bbc21b6bc81ba965295e76965b49602693f65e7a723b707a0efa926->enter($__internal_30e38c7b2bbc21b6bc81ba965295e76965b49602693f65e7a723b707a0efa926_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoSolicitud.html.twig"));
+        $__internal_ea3c3c783f9e734f550b03601d277057fec4041ac19a0dab1add933c10bd2f5e = $this->env->getExtension("native_profiler");
+        $__internal_ea3c3c783f9e734f550b03601d277057fec4041ac19a0dab1add933c10bd2f5e->enter($__internal_ea3c3c783f9e734f550b03601d277057fec4041ac19a0dab1add933c10bd2f5e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoSolicitud.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -32,7 +32,10 @@ class __TwigTemplate_7feecbd53ff1c3f98c3e453387b5b3d273c056714ddd116842fb63685f9
         // line 10
         echo $this->env->getExtension('routing')->getPath("uci_administrador_indicesolicitudes");
         echo "'><span>Lista de solicitudes</span></a></li>
-                <li><a href=''><span>Nueva Solicitud</span></a></li>
+                <li><a data-toggle=\"modal\" href=\"";
+        // line 11
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_addsolicitud");
+        echo "\" data-target=\"#myModal\">Nueva solicitud</a></li>
             </ul>
         </div>
     </div>
@@ -40,7 +43,7 @@ class __TwigTemplate_7feecbd53ff1c3f98c3e453387b5b3d273c056714ddd116842fb63685f9
 
 ";
         
-        $__internal_30e38c7b2bbc21b6bc81ba965295e76965b49602693f65e7a723b707a0efa926->leave($__internal_30e38c7b2bbc21b6bc81ba965295e76965b49602693f65e7a723b707a0efa926_prof);
+        $__internal_ea3c3c783f9e734f550b03601d277057fec4041ac19a0dab1add933c10bd2f5e->leave($__internal_ea3c3c783f9e734f550b03601d277057fec4041ac19a0dab1add933c10bd2f5e_prof);
 
     }
 
@@ -56,6 +59,6 @@ class __TwigTemplate_7feecbd53ff1c3f98c3e453387b5b3d273c056714ddd116842fb63685f9
 
     public function getDebugInfo()
     {
-        return array (  33 => 10,  22 => 1,);
+        return array (  37 => 11,  33 => 10,  22 => 1,);
     }
 }

@@ -130,6 +130,10 @@ uci_administrador_indicesolicitudes:
     pattern:  /admin/indice_solicitudes
     defaults: { _controller: UciAdministradorBundle:Solicitud:aIndiceSolicitud }
     
+uci_administrador_addsolicitud:
+    pattern:  /admin/agregar_solicitud
+    defaults: { _controller: UciAdministradorBundle:Solicitud:aIngresarSolicitud }
+    
 #---------------------Routing Libro---------------------------------------------
 uci_administrador_libro:
     resource: "@UciAdministradorBundle/Resources/config/routing/libro.yml"

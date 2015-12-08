@@ -5,6 +5,8 @@ namespace Uci\Bundle\AdministradorBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Form\SolicitudIndiceType;
+use Uci\Bundle\BaseDatosBundle\Form\SolicitudType;
+use Uci\Bundle\BaseDatosBundle\Entity\Solicitud;
 
 class SolicitudController extends Controller {
 
@@ -25,6 +27,27 @@ class SolicitudController extends Controller {
         return $this->render('UciAdministradorBundle:VistaSolicitud:indiceSolicitud.html.twig', array(
                     'entities' => $entities,
                     'form' => $form->createView()
+        ));
+    }
+
+    public function aIngresarSolicitudAction(Request $request) {
+        $entity = new Solicitud();
+        $form = $this->createForm(new SolicitudType(), $entity);
+        $form->handleRequest($request);
+        $error = '';
+        if ($request->getMethod() == 'POST') {
+            $error = $form->getErrors();
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+                return $this->redirectToRoute('uci_administrador_indicesolicitudes');
+            }
+        }
+        return $this->render('UciAdministradorBundle:VistaSolicitud:registrarSolicitud.html.twig', array(
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                    'error' => $error,
         ));
     }
 

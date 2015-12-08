@@ -1635,6 +1635,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            // uci_administrador_addsolicitud
+            if ($pathinfo === '/admin/agregar_solicitud') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\SolicitudController::aIngresarSolicitudAction',  '_route' => 'uci_administrador_addsolicitud',);
+            }
+
             if (0 === strpos($pathinfo, '/admin/libro')) {
                 // uci_administrador_indicelibro
                 if ($pathinfo === '/admin/libro/lista_libros') {
