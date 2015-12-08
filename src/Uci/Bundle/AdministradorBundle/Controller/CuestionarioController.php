@@ -349,6 +349,23 @@ class CuestionarioController extends Controller {
             return $this->aObtenerDatosLibro($idLibro);
         }
     }
+    
+    public function aBorrarCuestionarioAction(Request $request, $idCuestionario) {
+        $em = $this->getDoctrine()->getManager();
+        $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($idCuestionario);
+        if (!$cuestionario) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $em->getConnection()->beginTransaction();
+        try {
+            $em->remove($cuestionario);
+            $em->flush();
+            $em->commit();
+        } catch (Exception $e) {
+            $em->getConnection()->rollback();
+        }
+        return $this->redirectToRoute('uci_administrador_indicecuestionario');
+    }
 
     private function aObtenerDatosLibro($idLibrop) {
         $em = $this->getDoctrine()->getManager();

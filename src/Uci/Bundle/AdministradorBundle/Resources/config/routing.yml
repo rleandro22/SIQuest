@@ -79,6 +79,10 @@ uci_administrador_guardarcuestionario:
 uci_administrador_ver_cuestionario:
     pattern:  /admin/{id}/ver_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aVerCuestionario }
+    
+uci_administrador_borrarCuestionario:
+    pattern:  /admin/{idCuestionario}/borrar_cuestionario
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aBorrarCuestionario }
    
 #---------------------MATRICULAR USUARIO----------------------------------------
 

@@ -67,7 +67,7 @@
                         <div class="row">
                             <div class="col-md-6"></div>
                             <div class="col-md-6"><span class="pull-right"><a href="{{ path('uci_administrador_ver_cuestionario', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
+                                    <a href="{{ path('uci_administrador_borrarCuestionario', { 'idCuestionario': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a></div>
                         </div>
                     </div>
                 </div>
