@@ -11,7 +11,7 @@ uci_administrador_nuevolibro:
     defaults: { _controller: UciAdministradorBundle:Libro:aRegistrarLibro }
     
 uci_administrador_editarlibro:
-    pattern:  /editat_libro
+    pattern:  /admin/{id}/editar_libro
     defaults: { _controller: UciAdministradorBundle:Libro:aEditarLibro }
     
 uci_administrador_deletelibro:

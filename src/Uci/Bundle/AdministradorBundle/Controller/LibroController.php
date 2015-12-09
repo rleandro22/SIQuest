@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Entity\Libro;
 use Uci\Bundle\BaseDatosBundle\Form\LibroType;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 
 /**
@@ -61,23 +63,55 @@ class LibroController extends Controller
         ));
     }
     
-    public function aEditarLibroAction($id)
+    public function aEditarLibroAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
+        
 
-        $entity = $em->getRepository('UciBaseDatosBundle:Libro')->find($id);
-
-        if (!$entity) {
+        $libro = $em->getRepository('UciBaseDatosBundle:Libro')->find($id);
+//        $capitulos  = $em->getRepository('UciBaseDatosBundle:Capitulo')->findBy(array('libro' => $libro->getId()));
+        $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
+                                ->innerJoin('u.libro', 'g')
+                                ->where('g.id = :id')
+                                ->setParameter('id', $id)
+                                ->orderBy('u.numeroCapitulo', 'ASC')
+                                ->getQuery()->getArrayResult();
+        
+        
+       // $libro->setCapitulos($capitulos);
+        $error = '';
+        if (!$libro) {
             throw $this->createNotFoundException('Unable to find Libro entity.');
         }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $form = $this->createForm(new LibroType(0), $libro);
+        $form->handleRequest($request);      
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            //return $this->aObtenerDatosLibro($pregunta->getLibro());
+        } else if ($request->getMethod() == 'POST') {
+            $error = $form->getErrors();
+            if ($form->isValid()) {
+                $em->getConnection()->beginTransaction();
+                try {
+                    $em->persist($libro);
+                    $this->guardarCapitulos($em, $libro);
+                    if($libro->getEsPmbok()==1){
+                        $this->guardarPmbok($em, $libro);
+                    }
+                    $em->flush();
+                    $em->commit();
+                } catch (Exception $e) {
+                    $em->getConnection()->rollback();
+                    $error = $e;
+                }
+            }
+            return $this->redirect($this->generateUrl("uci_administrador_editarLibro", array("idLibro" => $id)));
+        }
 
         return $this->render('UciAdministradorBundle:VistaLibro:editarLibro.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'entity' => $libro,
+                    'error' => $error,
+                    'esPmbok' => ($libro->getEsPmbok()) ? $libro->getEsPmbok() : 0,
+                    'form' => $form->createView()
         ));
     }
     
