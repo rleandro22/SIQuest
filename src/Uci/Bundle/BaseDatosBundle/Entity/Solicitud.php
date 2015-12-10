@@ -155,7 +155,12 @@ class Solicitud
     {
         return $this->curso;
     }
+    
+    function setCurso(\Uci\Bundle\BaseDatosBundle\Entity\Curso $curso) {
+        $this->curso[0] = $curso;
+    }
 
+    
     /**
      * Add decano
      *

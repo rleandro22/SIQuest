@@ -8,14 +8,12 @@ use Uci\Bundle\BaseDatosBundle\Entity\Libro;
 use Uci\Bundle\BaseDatosBundle\Form\LibroType;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
-
 /**
  * Libro controller.
  *
  */
-class LibroController extends Controller
-{
+class LibroController extends Controller {
+
     public function aIndiceLibroAction() {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('UciBaseDatosBundle:Libro')->findBy(array(), array('titulo' => 'ASC'));
@@ -23,8 +21,7 @@ class LibroController extends Controller
                     'entities' => $entities,
         ));
     }
-    
-     
+
     public function aRegistrarLibroAction(Request $request) {
         $entity = new Libro();
         $em = $this->getDoctrine()->getManager();
@@ -41,10 +38,10 @@ class LibroController extends Controller
 //                }
                 $em->getConnection()->beginTransaction();
                 try {
-                    
+
                     $em->persist($entity);
                     $this->guardarCapitulos($em, $entity);
-                    if($entity->getEsPmbok()==1){
+                    if ($entity->getEsPmbok() == 1) {
                         $this->guardarPmbok($em, $entity);
                     }
                     $em->flush();
@@ -62,29 +59,28 @@ class LibroController extends Controller
                     'error' => $error,
         ));
     }
-    
-    public function aEditarLibroAction(Request $request, $id)
-    {
+
+    public function aEditarLibroAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
-        
+
 
         $libro = $em->getRepository('UciBaseDatosBundle:Libro')->find($id);
 //        $capitulos  = $em->getRepository('UciBaseDatosBundle:Capitulo')->findBy(array('libro' => $libro->getId()));
         $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
-                                ->innerJoin('u.libro', 'g')
-                                ->where('g.id = :id')
-                                ->setParameter('id', $id)
-                                ->orderBy('u.numeroCapitulo', 'ASC')
-                                ->getQuery()->getArrayResult();
-        
-        
-       // $libro->setCapitulos($capitulos);
+                        ->innerJoin('u.libro', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $id)
+                        ->orderBy('u.numeroCapitulo', 'ASC')
+                        ->getQuery()->getResult();
+
+
+        $libro->setCapitulos($capitulos);
         $error = '';
         if (!$libro) {
             throw $this->createNotFoundException('Unable to find Libro entity.');
         }
         $form = $this->createForm(new LibroType(0), $libro);
-        $form->handleRequest($request);      
+        $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             //return $this->aObtenerDatosLibro($pregunta->getLibro());
         } else if ($request->getMethod() == 'POST') {
@@ -94,7 +90,7 @@ class LibroController extends Controller
                 try {
                     $em->persist($libro);
                     $this->guardarCapitulos($em, $libro);
-                    if($libro->getEsPmbok()==1){
+                    if ($libro->getEsPmbok() == 1) {
                         $this->guardarPmbok($em, $libro);
                     }
                     $em->flush();
@@ -108,14 +104,14 @@ class LibroController extends Controller
         }
 
         return $this->render('UciAdministradorBundle:VistaLibro:editarLibro.html.twig', array(
-            'entity' => $libro,
+                    'entity' => $libro,
                     'error' => $error,
                     'esPmbok' => ($libro->getEsPmbok()) ? $libro->getEsPmbok() : 0,
                     'form' => $form->createView()
         ));
     }
-    
-     private function guardarCapitulos($em, &$libro) {
+
+    private function guardarCapitulos($em, &$libro) {
         $capitulos = $libro->getCapitulos();
         foreach ($capitulos as $capitulo) {
             $capitulo->setLibro($libro);
@@ -123,36 +119,33 @@ class LibroController extends Controller
             $em->clear($capitulo);
         }
     }
-    
+
     private function guardarPmbok($em, &$libro) {
-        $pmbok =$libro->getPmbok();
-        
+        $pmbok = $libro->getPmbok();
+
         $em->persist($pmbok);
-        
+
         $areas = $pmbok->getAreaConocimiento();
         $grupos = $pmbok->getGrupoProcesos();
         $triangulos = $pmbok->getTrianguloTalento();
-        
+
         foreach ($areas as $area) {
             $area->addPmbok($pmbok);
             $em->persist($area);
-            
         }
         $em->clear($areas);
         foreach ($grupos as $grupo) {
             $grupo->addPmbok($pmbok);
             $em->persist($grupo);
-           
         }
-         $em->clear($grupos);
+        $em->clear($grupos);
         foreach ($triangulos as $triangulo) {
             $triangulo->addPmbok($pmbok);
             $em->persist($triangulo);
-            
         }
         $em->clear($triangulos);
     }
-    
+
     public function aBorrarLibroAction($id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Libro')->find($id);
@@ -165,19 +158,17 @@ class LibroController extends Controller
             $em->remove($capitulo);
             $em->flush();
         }
-        
-        if($entity->getEsPmbok()==1){
+
+        if ($entity->getEsPmbok() == 1) {
             $pmbok = $entity->getPmbok();
             $em->remove($pmbok);
             $em->flush();
-
         }
-           
-        
+
+
         $em->remove($entity);
         $em->flush();
         return $this->redirectToRoute('uci_administrador_indicelibro');
     }
-    
-   
+
 }
