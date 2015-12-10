@@ -83,7 +83,7 @@
                             {% else %}
                                 <td><span class="status-metro status-suspended" title="Active">No</span></td>
                             {% endif %}
-                            <td><a href=""><span class="glyphicon glyphicon-pencil"></span></a>
+                            <td><a data-toggle="modal" href="{{ path('uci_administrador_editsolicitud', { 'id': entity.id }) }}" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <a href="" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
                             </td>
                         </tr>
@@ -107,6 +107,7 @@
     {{ parent() }}
     <script type="text/javascript">
         document.ready = function () {
+
             $('table').footable().on('click', '.row-delete', function (e) {
                 e.preventDefault();
             }
@@ -119,14 +120,12 @@
 
             var handleSpeedBump = function (e) {
                 e.preventDefault();
-
                 var href = this.getAttribute("data-href");
                 var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación no es reversible)");
                 if (!sure)
                     return;
                 document.location = href;
             };
-
             $("a.speedbump")
                     .click(handleSpeedBump)
                     .bind("contextmenu", handleSpeedBump)

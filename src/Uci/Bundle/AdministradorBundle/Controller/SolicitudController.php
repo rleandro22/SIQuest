@@ -53,14 +53,15 @@ class SolicitudController extends Controller {
                     'error' => $error,
         ));
     }
-    
-        public function aEditarSolicitudAction(Request $request, $id) {
+
+    public function aEditarSolicitudAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Solicitud')->find($id);
+        $curso = $entity->getCurso()[0];
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-        $form = $this->createForm(new SolicitudType(), $entity);
+        $form = $this->createForm(new SolicitudType($curso), $entity);
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
@@ -68,7 +69,7 @@ class SolicitudController extends Controller {
             }
             return $this->redirectToRoute('uci_administrador_indicesolicitudes');
         }
-        return $this->render('UciAdministradorBundle:VistaCategoria:editarSolicitud.html.twig', array(
+        return $this->render('UciAdministradorBundle:VistaSolicitud:editarSolicitud.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView()
         ));
