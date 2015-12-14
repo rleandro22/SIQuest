@@ -82,6 +82,25 @@ class CuestionarioController extends Controller {
         ));
     }
 
+    public function aremoverPreguntaCuestionarioAction(Request $request, $idPregunta, $idCuestionario) {
+        $em = $this->getDoctrine()->getManager();
+        $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($idCuestionario);
+        $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunta);
+        if (!$cuestionario) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $em->getConnection()->beginTransaction();
+        try {
+            $cuestionario->removePregunta($pregunta);
+            $em->persist($cuestionario);
+            $em->flush();
+            $em->commit();
+        } catch (Exception $e) {
+            $em->getConnection()->rollback();
+        }
+        return $this->redirect($this->generateUrl("uci_administrador_ver_cuestionario", array("id" => $idCuestionario)));
+    }
+
     public function aGuardarCuestionarioAction(Request $request) {
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             $em = $this->getDoctrine()->getManager();

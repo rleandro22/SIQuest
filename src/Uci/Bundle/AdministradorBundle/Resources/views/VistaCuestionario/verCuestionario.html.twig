@@ -74,7 +74,7 @@
                             <tr>
                                 <td style="border-right:0;" class="primera-columna">{{ pregunta.titulo|striptags }} </td>
                                 <td>&nbsp;&nbsp;<a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': pregunta.id }) }}" target="_blank"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
-                                    <a href="" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
+                                    <a href="{{ path('uci_administrador_removerPreguntaCuestionario', { 'idPregunta': pregunta.id, 'idCuestionario': entity.id }) }}" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -121,7 +121,7 @@
                             if (data.resultado == "1") {
                                 $('#alert_placeholder').append('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Actualización exitosa</div>');
                                 alertTimeout(4000);
-                            }else{
+                            } else {
                                 $('#alert_placeholder').append('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>' + data.resultado + '</div>');
                                 alertTimeout(4000);
                             }
