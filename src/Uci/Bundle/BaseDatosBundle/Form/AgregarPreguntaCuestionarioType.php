@@ -30,7 +30,7 @@ class AgregarPreguntaCuestionarioType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'uci_bundle_basedatosbundle_filtracuestionario';
+        return 'uci_agregar_pregunta_cuestionario';
     }
 
 }
