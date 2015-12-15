@@ -76,6 +76,14 @@ uci_administrador_guardarcuestionario:
     pattern:  /admin/guardar_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aGuardarCuestionario }
     
+uci_administrador_guardarcuestionario:
+    pattern:  /admin/guardar_cuestionario
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aGuardarCuestionario }
+    
+uci_administrador_agregarPreguntaCuestionario:
+    pattern:  /admin/{idCuestionario}/agregar_pregunta_cuestionario
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aAgregarPreguntaCuestionario }
+    
 uci_administrador_ver_cuestionario:
     pattern:  /admin/{id}/ver_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aVerCuestionario }
@@ -86,7 +94,7 @@ uci_administrador_borrarCuestionario:
     
 uci_administrador_removerPreguntaCuestionario:
     pattern:  /admin/{idPregunta}/{idCuestionario}/remover_pregunta_cuestionario
-    defaults: { _controller: UciAdministradorBundle:Cuestionario:aremoverPreguntaCuestionario }
+    defaults: { _controller: UciAdministradorBundle:Cuestionario:aRemoverPreguntaCuestionario }
    
 #---------------------MATRICULAR USUARIO----------------------------------------
 

@@ -9,6 +9,7 @@ use Uci\Bundle\BaseDatosBundle\Archivos\CrearArchivoCuestionario;
 use Uci\Bundle\BaseDatosBundle\Form\FiltrarCuestionariosType;
 use Uci\Bundle\BaseDatosBundle\Entity\Cuestionario;
 use Uci\Bundle\BaseDatosBundle\Form\VerCuestionarioType;
+use Uci\Bundle\BaseDatosBundle\Form\AgregarPreguntaCuestionarioType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\Common\Collections;
 
@@ -82,7 +83,20 @@ class CuestionarioController extends Controller {
         ));
     }
 
-    public function aremoverPreguntaCuestionarioAction(Request $request, $idPregunta, $idCuestionario) {
+    public function aAgregarPreguntaCuestionarioAction(Request $request, $idCuestionario) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($idCuestionario);
+        $form = $this->createForm(new AgregarPreguntaCuestionarioType(), $entity);
+        if ($request->getMethod() == 'POST') {
+            
+        }
+        return $this->render('UciAdministradorBundle:VistaCuestionario:agregarPreguntaCuestionario.html.twig', array(
+                    'entity' => $entity,
+                    'form' => $form->createView()
+        ));
+    }
+
+    public function aRemoverPreguntaCuestionarioAction(Request $request, $idPregunta, $idCuestionario) {
         $em = $this->getDoctrine()->getManager();
         $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($idCuestionario);
         $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunta);

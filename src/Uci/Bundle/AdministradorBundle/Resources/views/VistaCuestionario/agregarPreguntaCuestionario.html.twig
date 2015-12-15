@@ -1,0 +1,66 @@
+{% extends 'UciAdministradorBundle::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('css/footable-demos.css')}}" type="text/css" media="all" /> 
+{% endblock %} 
+{% block barra %}{% endblock %}
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <!-- container -->
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <aside class="col-md-4 sidebar sidebar-left">
+
+            </aside>
+            <!-- /Sidebar -->
+            <!-- Article main content -->
+            <article class="col-sm-8 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Elija una pregunta</h1>
+                </header>
+                <form action="{{ path('uci_administrador_agregarPreguntaCuestionario', { 'idCuestionario': entity.id }) }}" method="POST" enctype="multipart/form-data">
+                    <div class="row top-margin">
+                        <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                            {{ form_label(form.pregunta) }}
+                            {{ form_errors(form.pregunta) }}
+                            {{ form_widget(form.pregunta) }}
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-8 text-right">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                        </div>
+                        <div class="col-lg-4 text-right">
+                            <button id="pruebaultima" class="btn btn-action" type="submit">Registrar</button>
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                </form>
+                <br><br><br>
+                <br><br>
+            </article>
+            <!-- /Article -->
+        </div>
+        <br><br>
+    </div>	<!-- /container -->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

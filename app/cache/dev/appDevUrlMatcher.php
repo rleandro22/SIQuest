@@ -1572,6 +1572,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aGuardarCuestionarioAction',  '_route' => 'uci_administrador_guardarcuestionario',);
             }
 
+            // uci_administrador_agregarPreguntaCuestionario
+            if (preg_match('#^/admin/(?P<idCuestionario>[^/]++)/agregar_pregunta_cuestionario$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_agregarPreguntaCuestionario')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aAgregarPreguntaCuestionarioAction',));
+            }
+
             // uci_administrador_ver_cuestionario
             if (preg_match('#^/admin/(?P<id>[^/]++)/ver_cuestionario$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_ver_cuestionario')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aVerCuestionarioAction',));
@@ -1584,7 +1589,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // uci_administrador_removerPreguntaCuestionario
             if (preg_match('#^/admin/(?P<idPregunta>[^/]++)/(?P<idCuestionario>[^/]++)/remover_pregunta_cuestionario$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_removerPreguntaCuestionario')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aremoverPreguntaCuestionarioAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_removerPreguntaCuestionario')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CuestionarioController::aRemoverPreguntaCuestionarioAction',));
             }
 
             // uci_administrador_matricularusuario
