@@ -86,9 +86,15 @@ class CuestionarioController extends Controller {
     public function aAgregarPreguntaCuestionarioAction(Request $request, $idCuestionario) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($idCuestionario);
-        $form = $this->createForm(new AgregarPreguntaCuestionarioType(), $entity);
-        if ($request->getMethod() == 'POST') {
-            
+        $idsPreguntasDeCuestionario = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('u')
+                        ->innerJoin('u.cuestionario', 'g')
+                        ->select('u.id')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $entity->getId())
+                        ->getQuery()->getScalarResult();
+        $form = $this->createForm(new AgregarPreguntaCuestionarioType($idsPreguntasDeCuestionario));
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            $ids = $request->request->get('ids');
         }
         return $this->render('UciAdministradorBundle:VistaCuestionario:agregarPreguntaCuestionario.html.twig', array(
                     'entity' => $entity,

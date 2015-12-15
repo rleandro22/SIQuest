@@ -8,13 +8,29 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class AgregarPreguntaCuestionarioType extends AbstractType {
 
+    private $ids;
+
+    public function __construct($ids) {
+        $this->ids = $ids;
+    }
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        $ids = $this->ids;
         $builder
-                ->add('pregunta', 'entity', array('class' => 'UciBaseDatosBundle:Pregunta', 'required' => false, 'expanded' => true, 'multiple' => false, 'mapped' => FALSE));
+                ->add('pregunta', 'entity', array(
+                    'class' => 'UciBaseDatosBundle:Pregunta',
+                    'required' => false,
+                    'expanded' => true,
+                    'multiple' => true,
+                    'mapped' => TRUE,
+                    'query_builder' => function(\Doctrine\ORM\EntityRepository $r) use($ids) {
+                        return $r->createQueryBuilder('w')
+                                ->where('w.id NOT IN (:miarray)')
+                                ->setParameter('miarray', $ids);
+                    }));
     }
 
     /**
