@@ -275,6 +275,11 @@
                     } else {
                         $(this).removeClass('inputColoreado');
                     }
+                    var sum = 0;
+                    $("input[id$='cantidad']").each(function () {
+                        sum += parseFloat($(this).val());  //Or this.innerHTML, this.innerText
+                        //SUM NO DEBE SER MAYOR A CANTIDAD, PONER UN AVISO
+                    });
                 } else {
                     var campoPorcentaje = $(this).attr('id').substring(0, $(this).attr('id').length - 9) + '_porcentaje';
                     $("#" + campoPorcentaje).val(0);
@@ -345,10 +350,18 @@
         document.ready = function () {
 
             $('#enviar').click(function (e) {
-                if ($("input[id$='porcentaje']").val() && $("input[id$='cantidad']").val() && $("select[id^='uci_bundle_basedatosbundle_cuestionario_']").val() && $("input[id$='cantidad']").val() > 0) {
-                    llenarTablaPreguntas();
+                if ($("input[id$='porcentaje']").length) {
+                    if ($("input[id$='porcentaje']").val() && $("input[id$='cantidad']").val() && $("input[id$='cantidad']").val() > 0) {
+                        llenarTablaPreguntas();
+                    } else {
+                        alert('Ingrese al menos 1 parametro para generar las preguntas.');
+                    }
                 } else {
-                    alert('Ingrese al menos 1 parametro para generar las preguntas.');
+                    if ($('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() && $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').val() > 0) {
+                        llenarTablaPreguntas();
+                    } else {
+                        alert('Cantidad de preguntas no aceptada.');
+                    }
                 }
             });
             $('#guardar').click(function (e) {
@@ -359,21 +372,26 @@
                         return $(this).text();
                     }).get();
                 }).get();
-                $.ajax({
-                    url: "{{path('uci_administrador_guardarcuestionario')}}",
-                    type: "POST",
-                    data: {preguntas: tbl, nombreCuestionario: nombreCuestionario, curso: curso},
-                    success: function (data) {
-                        if (data.resultado == 1) {
-                            window.location.href = "{{ path('uci_administrador_indicecuestionario') }}";
-                        } else {
+                $("#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas").val(tbl.length);
+                if ($("#uci_bundle_basedatosbundle_cuestionario_cuestionarioname").val() && $("#uci_bundle_basedatosbundle_cuestionario_curso").val()) {
+                    $.ajax({
+                        url: "{{path('uci_administrador_guardarcuestionario')}}",
+                        type: "POST",
+                        data: {preguntas: tbl, nombreCuestionario: nombreCuestionario, curso: curso},
+                        success: function (data) {
+                            if (data.resultado == 1) {
+                                window.location.href = "{{ path('uci_administrador_indicecuestionario') }}";
+                            } else {
+                                alert('Ocurrio un error');
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
                             alert('Ocurrio un error');
                         }
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert('Ocurrio un error');
-                    }
-                });
+                    });
+                } else {
+                    alert('Rellene todos los campos del formulario');
+                }
             });
             $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').bind('click keyup', function () {
                 deshabilitarNumericos();
