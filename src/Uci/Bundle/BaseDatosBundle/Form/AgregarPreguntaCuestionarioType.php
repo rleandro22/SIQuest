@@ -13,24 +13,37 @@ class AgregarPreguntaCuestionarioType extends AbstractType {
     public function __construct($ids) {
         $this->ids = $ids;
     }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $ids = $this->ids;
-        $builder
-                ->add('pregunta', 'entity', array(
-                    'class' => 'UciBaseDatosBundle:Pregunta',
-                    'required' => false,
-                    'expanded' => true,
-                    'multiple' => true,
-                    'mapped' => TRUE,
-                    'query_builder' => function(\Doctrine\ORM\EntityRepository $r) use($ids) {
-                        return $r->createQueryBuilder('w')
-                                ->where('w.id NOT IN (:miarray)')
-                                ->setParameter('miarray', $ids);
-                    }));
+        if (count($ids) > 0) {
+            $builder
+                    ->add('pregunta', 'entity', array(
+                        'class' => 'UciBaseDatosBundle:Pregunta',
+                        'required' => false,
+                        'expanded' => true,
+                        'multiple' => true,
+                        'mapped' => TRUE,
+                        'label' => FALSE,
+                        'query_builder' => function(\Doctrine\ORM\EntityRepository $r) use($ids) {
+                            return $r->createQueryBuilder('w')
+                                    ->where('w.id NOT IN (:miarray)')
+                                    ->setParameter('miarray', $ids);
+                        }));
+        } else {
+            $builder
+                    ->add('pregunta', 'entity', array(
+                        'class' => 'UciBaseDatosBundle:Pregunta',
+                        'required' => false,
+                        'expanded' => true,
+                        'multiple' => true,
+                        'label' => FALSE,
+                        'mapped' => TRUE));
+        }
     }
 
     /**

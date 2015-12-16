@@ -95,6 +95,25 @@ class CuestionarioController extends Controller {
         $form = $this->createForm(new AgregarPreguntaCuestionarioType($idsPreguntasDeCuestionario));
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             $ids = $request->request->get('ids');
+            $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->createQueryBuilder('p')
+                    ->where('p.id IN (:miarray2)')
+                    ->setParameter('miarray2', $ids)
+                    ->getQuery()
+                    ->getResult();
+            $preguntas = new Collections\ArrayCollection($preguntas);
+            foreach ($preguntas as $pregunta){
+                $entity->addPregunta($pregunta);
+            }
+            $em->getConnection()->beginTransaction();
+            try {
+                $em->persist($entity);
+                $em->flush();
+                $em->commit();
+                return new JsonResponse(array('resultado' => 1));
+            } catch (Exception $e) {
+                $em->getConnection()->rollback();
+                return new JsonResponse(array('resultado' => 0));
+            }
         }
         return $this->render('UciAdministradorBundle:VistaCuestionario:agregarPreguntaCuestionario.html.twig', array(
                     'entity' => $entity,

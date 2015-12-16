@@ -16,24 +16,25 @@
                 <h1 class="page-title">Elija una pregunta</h1>
             </header>
             <form action="{{ path('uci_administrador_agregarPreguntaCuestionario', { 'idCuestionario': entity.id }) }}" id="formularioCuestionario" method="POST" enctype="multipart/form-data">
-                <div class="row top-margin">
-                    <div class="cols-xs-12 col-sm-11 col-md-11 col-lg-11">
-                        {{ form_label(form.pregunta) }}
-                        {{ form_errors(form.pregunta) }}
-                        {{ form_widget(form.pregunta) }}
-                    </div>
-                </div>
 
-                <hr>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-3 text-right">
-                        <button class="btn" type="button" onclick="closeWindows();">Cerrar</button>
+                    <div class="row top-margin">
+                        <div class="cols-xs-12 col-sm-11 col-md-11 col-lg-11">
+                            {{ form_label(form.pregunta) }}
+                            {{ form_errors(form.pregunta) }}
+                            {{ form_widget(form.pregunta) }}
+                        </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-3 text-right">
-                        <button id="pruebaultima" class="btn btn-action" onclick="obtenerArreglo();" type="button">Registrar</button>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-3 text-right">
+                            <button class="btn" type="button" onclick="closeWindows();">Cerrar</button>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-3 text-right">
+                            <button id="pruebaultima" class="btn btn-action" onclick="obtenerArreglo();" type="button">Registrar</button>
+                        </div>
                     </div>
-                </div>
-                {{ form_rest(form) }}
+                    {{ form_rest(form) }}
             </form>
         </div>
         <br><br>
@@ -46,18 +47,24 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        
-        function obtenerArreglo(){
+
+        function obtenerArreglo() {
             var values = $('input:checkbox:checked').map(function () {
                 return this.value;
             }).get();
-            if(values.length > 0){
-               $.ajax({
+            if (values.length > 0) {
+                $.ajax({
                     url: $("#formularioCuestionario").attr('action'),
                     type: "POST",
                     data: {ids: values},
                     success: function (data) {
-                       
+                        if (data.resultado == 1) {
+                            window.opener.location.reload(false);
+                            window.location.href = "{{ path('uci_administrador_ver_cuestionario', { 'id': entity.id }) }}";
+                            closeWindows();
+                        } else {
+                            alert('Ocurrio un error');
+                        }
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         alert('Ocurrio un error');
@@ -66,7 +73,7 @@
             }
         }
 
-        
+
 
         function closeWindows() {
             var browserName = navigator.appName;
