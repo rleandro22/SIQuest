@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Form\SolicitudIndiceType;
 use Uci\Bundle\BaseDatosBundle\Form\SolicitudType;
+use Uci\Bundle\BaseDatosBundle\Form\SolicitudNuevaType;
 use Uci\Bundle\BaseDatosBundle\Entity\Solicitud;
 
 class SolicitudController extends Controller {
@@ -34,7 +35,7 @@ class SolicitudController extends Controller {
 
     public function aIngresarSolicitudAction(Request $request) {
         $entity = new Solicitud();
-        $form = $this->createForm(new SolicitudType(), $entity);
+        $form = $this->createForm(new SolicitudNuevaType(), $entity);
         $form->handleRequest($request);
         $error = '';
         if ($request->getMethod() == 'POST') {
