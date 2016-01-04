@@ -32,11 +32,17 @@ class UsuarioController extends Controller {
             if ($form->isValid()) {
                 $this->setSecurePassword($entity);
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($entity);
-                $rol = $entity->getRol()->getNombre();
-                $this->agregaOtrasTablas($entity, $rol, $form);
-                $em->flush();
-                return $this->redirectToRoute('uci_administrador_indiceuser');
+                try {
+                    $em->persist($entity);
+                    $rol = $entity->getRol()->getNombre();
+                    $this->agregaOtrasTablas($entity, $rol, $form);
+                    $em->flush();
+                    return $this->redirectToRoute('uci_administrador_indiceuser');
+                } catch (\Doctrine\DBAL\DBALException $e) {
+                    if ($e->getPrevious() && 0 === strpos($e->getPrevious()->getCode(), '23')) {
+                        $error = 'Este usuario ya existe';
+                    }
+                }
             }
         }
         return $this->render('UciAdministradorBundle:VistaUsuario:registrarUsuario.html.twig', array(
@@ -66,14 +72,20 @@ class UsuarioController extends Controller {
             $editForm->handleRequest($request);
             $error = $form->getErrors();
             if ($editForm->isValid()) {
-                $this->modificarOtrasTablas($entity, $rolInicial, $form);
-                if ($entity->getPassword() == null) {
-                    $entity->setPassword($claveVieja);
-                } else {
-                    $this->setSecurePassword($entity);
+                try {
+                    $this->modificarOtrasTablas($entity, $rolInicial, $form);
+                    if ($entity->getPassword() == null) {
+                        $entity->setPassword($claveVieja);
+                    } else {
+                        $this->setSecurePassword($entity);
+                    }
+                    $em->flush();
+                    return $this->redirectToRoute('uci_administrador_indiceuser');
+                } catch (\Doctrine\DBAL\DBALException $e) {
+                    if ($e->getPrevious() && 0 === strpos($e->getPrevious()->getCode(), '23')) {
+                        $error = 'Este usuario ya existe';
+                    }
                 }
-                $em->flush();
-                return $this->redirectToRoute('uci_administrador_indiceuser');
             }
         }
 
@@ -138,7 +150,7 @@ class UsuarioController extends Controller {
                 $edita = $form["editatodas"]->getData();
                 $profesor->setEditatodas($edita);
                 $em->flush();
-            } 
+            }
         }
     }
 

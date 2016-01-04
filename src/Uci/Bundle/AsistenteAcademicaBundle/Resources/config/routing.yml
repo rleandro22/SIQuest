@@ -1,3 +1,47 @@
 uci_asistente_academica_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: UciAsistenteAcademicaBundle:Default:index }
+    path:     /asistente
+    defaults: { _controller: UciAsistenteAcademicaBundle:Default:aAInicio }
+    
+uci_asistente_academica_edituser:
+    pattern:  /asistente/{id}/editar_usuario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Usuario:aEditarUsuario }
+    
+# ------------------------------CUESTIONARIO--------------------------------------------
+
+uci_asistente_academica_indicecuestionario:
+    pattern:  /asistente/indice_cuestionario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Cuestionario:aAIndiceCuestionario }
+    
+uci_asistente_academica_registrarcuestionario:
+    pattern:  /asistente/construir_cuestionario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Cuestionario:aAConstruirCuestionario }
+    
+uci_asistente_academica_setearlibroscuestionario:
+    pattern:  /asistente/setear_libro_cuestionario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Cuestionario:aASetearLibrosCuestionario }
+    
+uci_asistente_academica_guardarcuestionario:
+    pattern:  /asistente/guardar_cuestionario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Cuestionario:aAGuardarCuestionario }
+    
+uci_asistente_academica_agregarPreguntaCuestionario:
+    pattern:  /asistente/{idCuestionario}/agregar_pregunta_cuestionario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Cuestionario:aAAgregarPreguntaCuestionario }
+    
+uci_asistente_academica_ver_cuestionario:
+    pattern:  /asistente/{id}/ver_cuestionario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Cuestionario:aAVerCuestionario }
+    
+uci_asistente_academica_borrarCuestionario:
+    pattern:  /asistente/{idCuestionario}/borrar_cuestionario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Cuestionario:aABorrarCuestionario }
+    
+uci_asistente_academica_removerPreguntaCuestionario:
+    pattern:  /asistente/{idPregunta}/{idCuestionario}/remover_pregunta_cuestionario
+    defaults: { _controller: UciAsistenteAcademicaBundle:Cuestionario:aARemoverPreguntaCuestionario }
+
+#-------------------------------------PREGUNTA----------------------------------------------
+
+uci_asistente_academica_verPregunta:
+    pattern:  /asistente/{idPregunta}/ver_pregunta
+    defaults: { _controller:  UciAsistenteAcademicaBundle:Pregunta:aAVerPregunta }

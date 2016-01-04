@@ -125,6 +125,9 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
+        $(document).ready(function () {
+            quitarcomboProfe($('#uci_bundle_basedatosbundle_usuario_rol').val());
+        });
         function quitarcomboProfe(valor) {
             if (valor == 3) {
                 $("#filaPuededitar").removeClass('hidden');

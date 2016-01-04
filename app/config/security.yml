@@ -42,6 +42,7 @@ security:
 
     access_control:
       - { path: ^/admin, roles: ROLE_ADMINISTRADOR }
+      - { path: ^/asistente, roles: ROLE_ASISTENTE }
       - { path: ^/rol, roles: ROLE_ADMINISTRADOR }
       - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/, roles: IS_AUTHENTICATED_FULLY }

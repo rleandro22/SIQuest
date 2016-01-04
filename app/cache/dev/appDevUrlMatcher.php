@@ -1468,22 +1468,72 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/hello')) {
-            // uci_base_datos_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_base_datos_homepage')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\DefaultController::indexAction',));
-            }
+        // uci_base_datos_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_base_datos_homepage')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\DefaultController::indexAction',));
+        }
 
+        if (0 === strpos($pathinfo, '/asistente')) {
             // uci_asistente_academica_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_homepage')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\DefaultController::indexAction',));
+            if ($pathinfo === '/asistente') {
+                return array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\DefaultController::aAInicioAction',  '_route' => 'uci_asistente_academica_homepage',);
             }
 
-            // uci_profesor_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_profesor_homepage')), array (  '_controller' => 'Uci\\Bundle\\ProfesorBundle\\Controller\\DefaultController::indexAction',));
+            // uci_asistente_academica_edituser
+            if (preg_match('#^/asistente/(?P<id>[^/]++)/editar_usuario$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_edituser')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\UsuarioController::aEditarUsuarioAction',));
             }
 
+            // uci_asistente_academica_indicecuestionario
+            if ($pathinfo === '/asistente/indice_cuestionario') {
+                return array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aAIndiceCuestionarioAction',  '_route' => 'uci_asistente_academica_indicecuestionario',);
+            }
+
+            // uci_asistente_academica_registrarcuestionario
+            if ($pathinfo === '/asistente/construir_cuestionario') {
+                return array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aAConstruirCuestionarioAction',  '_route' => 'uci_asistente_academica_registrarcuestionario',);
+            }
+
+            // uci_asistente_academica_setearlibroscuestionario
+            if ($pathinfo === '/asistente/setear_libro_cuestionario') {
+                return array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aASetearLibrosCuestionarioAction',  '_route' => 'uci_asistente_academica_setearlibroscuestionario',);
+            }
+
+            // uci_asistente_academica_guardarcuestionario
+            if ($pathinfo === '/asistente/guardar_cuestionario') {
+                return array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aAGuardarCuestionarioAction',  '_route' => 'uci_asistente_academica_guardarcuestionario',);
+            }
+
+            // uci_asistente_academica_agregarPreguntaCuestionario
+            if (preg_match('#^/asistente/(?P<idCuestionario>[^/]++)/agregar_pregunta_cuestionario$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_agregarPreguntaCuestionario')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aAAgregarPreguntaCuestionarioAction',));
+            }
+
+            // uci_asistente_academica_ver_cuestionario
+            if (preg_match('#^/asistente/(?P<id>[^/]++)/ver_cuestionario$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_ver_cuestionario')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aAVerCuestionarioAction',));
+            }
+
+            // uci_asistente_academica_borrarCuestionario
+            if (preg_match('#^/asistente/(?P<idCuestionario>[^/]++)/borrar_cuestionario$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_borrarCuestionario')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aABorrarCuestionarioAction',));
+            }
+
+            // uci_asistente_academica_removerPreguntaCuestionario
+            if (preg_match('#^/asistente/(?P<idPregunta>[^/]++)/(?P<idCuestionario>[^/]++)/remover_pregunta_cuestionario$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_removerPreguntaCuestionario')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aARemoverPreguntaCuestionarioAction',));
+            }
+
+            // uci_asistente_academica_verPregunta
+            if (preg_match('#^/asistente/(?P<idPregunta>[^/]++)/ver_pregunta$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_verPregunta')), array (  '_controller' => 'UciAsistenteAcademicaBundle:Pregunta:aAVerPregunta',));
+            }
+
+        }
+
+        // uci_profesor_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_profesor_homepage')), array (  '_controller' => 'Uci\\Bundle\\ProfesorBundle\\Controller\\DefaultController::indexAction',));
         }
 
         if (0 === strpos($pathinfo, '/admin')) {

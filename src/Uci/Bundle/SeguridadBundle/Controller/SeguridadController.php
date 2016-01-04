@@ -9,7 +9,9 @@ class SeguridadController extends Controller {
 
     public function indexAction() {
         if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_ADMINISTRADOR')) {
-                return $this->render('UciAdministradorBundle:Vista:index.html.twig');
+            return $this->render('UciAdministradorBundle:Vista:index.html.twig');
+        } else if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_ASISTENTE')) {
+            return $this->render('UciAsistenteAcademicaBundle:Vista:index.html.twig');
         }
     }
 
@@ -17,6 +19,8 @@ class SeguridadController extends Controller {
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
             if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_ADMINISTRADOR')) {
                 return $this->render('UciAdministradorBundle:Vista:index.html.twig');
+            } else if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_ASISTENTE')) {
+                return $this->render('UciAsistenteAcademicaBundle:Vista:index.html.twig');
             }
         }
         $request = $this->getRequest();
@@ -32,7 +36,9 @@ class SeguridadController extends Controller {
                     'last_username' => $session->get(SecurityContext::LAST_USERNAME),
                     'error' => $error,
         ));
-    }//fin metodo
+    }
+
+//fin metodo
 
     public function loginCheckAction() {
         // this controller will not be executed,
