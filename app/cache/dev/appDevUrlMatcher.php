@@ -1618,7 +1618,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // uci_administrador_editarPregunta
-            if (preg_match('#^/admin/(?P<idPregunta>[^/]++)/datos_libro$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/admin/(?P<idPregunta>[^/]++)/editar_pregunta$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_editarPregunta')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\PreguntaController::aEditarPreguntaAction',));
             }
 
@@ -1653,6 +1653,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // uci_administrador_editsolicitud
             if (preg_match('#^/admin/(?P<id>[^/]++)/editar_solicitud$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_editsolicitud')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\SolicitudController::aEditarSolicitudAction',));
+            }
+
+            // uci_administrador_borrarsolicitud
+            if (preg_match('#^/admin/(?P<id>[^/]++)/borrar_solicitud$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_borrarsolicitud')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\SolicitudController::aBorrarSolicitudAction',));
             }
 
             if (0 === strpos($pathinfo, '/admin/libro')) {

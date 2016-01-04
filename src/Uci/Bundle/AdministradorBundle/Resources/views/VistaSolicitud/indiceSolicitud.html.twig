@@ -84,7 +84,7 @@
                                 <td><span class="status-metro status-suspended" title="Active">No</span></td>
                             {% endif %}
                             <td><a data-toggle="modal" href="{{ path('uci_administrador_editsolicitud', { 'id': entity.id }) }}" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <a href="" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
+                                <a href="{{ path('uci_administrador_borrarsolicitud', { 'id': entity.id }) }}" class="speedbump"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
                             </td>
                         </tr>
                     {% endfor %}

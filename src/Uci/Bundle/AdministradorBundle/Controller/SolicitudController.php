@@ -76,4 +76,14 @@ class SolicitudController extends Controller {
         ));
     }
 
+    public function aBorrarSolicitudAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+        $solicitud = $em->getRepository('UciBaseDatosBundle:Solicitud')->find($id);
+        $curso = $solicitud->getCurso()[0];
+        $solicitud->removeCurso($curso);
+        $em->remove($solicitud);
+        $em->flush();
+        return $this->redirectToRoute('uci_administrador_indicesolicitudes');
+    }
+
 }

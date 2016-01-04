@@ -76,10 +76,6 @@ uci_administrador_guardarcuestionario:
     pattern:  /admin/guardar_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aGuardarCuestionario }
     
-uci_administrador_guardarcuestionario:
-    pattern:  /admin/guardar_cuestionario
-    defaults: { _controller: UciAdministradorBundle:Cuestionario:aGuardarCuestionario }
-    
 uci_administrador_agregarPreguntaCuestionario:
     pattern:  /admin/{idCuestionario}/agregar_pregunta_cuestionario
     defaults: { _controller: UciAdministradorBundle:Cuestionario:aAgregarPreguntaCuestionario }
@@ -121,7 +117,7 @@ uci_administrador_registrarPregunta:
     defaults: { _controller: UciAdministradorBundle:Pregunta:aRegistrarPregunta }
     
 uci_administrador_editarPregunta:
-    pattern:  /admin/{idPregunta}/datos_libro
+    pattern:  /admin/{idPregunta}/editar_pregunta
     defaults: { _controller: UciAdministradorBundle:Pregunta:aEditarPregunta }
 
 uci_administrador_borrarRespuesta:
@@ -149,6 +145,10 @@ uci_administrador_addsolicitud:
 uci_administrador_editsolicitud:
     pattern:  /admin/{id}/editar_solicitud
     defaults: { _controller: UciAdministradorBundle:Solicitud:aEditarSolicitud }
+    
+uci_administrador_borrarsolicitud:
+    pattern:  /admin/{id}/borrar_solicitud
+    defaults: { _controller: UciAdministradorBundle:Solicitud:aBorrarSolicitud }
     
 #---------------------Routing Libro---------------------------------------------
 uci_administrador_libro:
