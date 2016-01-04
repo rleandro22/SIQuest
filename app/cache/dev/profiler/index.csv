@@ -1129,3 +1129,11 @@ e7aef9,::1,POST,http://localhost/siquest/web/app_dev.php/admin/1/editar_solicitu
 0903ab,::1,GET,http://localhost/siquest/web/app_dev.php/admin/indice_solicitudes,1451869858,,200
 410468,::1,POST,http://localhost/siquest/web/app_dev.php/admin/indice_solicitudes,1451869868,,200
 62ab10,::1,POST,http://localhost/siquest/web/app_dev.php/admin/indice_solicitudes,1451869877,,200
+f5fbcb,::1,POST,http://localhost/siquest/web/app_dev.php/admin/indice_solicitudes,1451873235,,302
+681768,::1,GET,http://localhost/siquest/web/app_dev.php/login,1451873237,,200
+5fae85,::1,POST,http://localhost/siquest/web/app_dev.php/login_check,1451873242,,302
+89688e,::1,GET,http://localhost/siquest/web/app_dev.php/login,1451873245,,200
+ec2985,::1,GET,http://localhost/siquest/web/app_dev.php/about.html,1451873703,2f1bdd,200
+2f1bdd,::1,GET,http://localhost/siquest/web/app_dev.php/about.html,1451873703,,404
+44f861,::1,GET,http://localhost/siquest/web/app_dev.php/admin/indice_solicitudes,1451873733,,200
+05125f,::1,GET,http://localhost/siquest/web/app_dev.php/admin/indice_solicitudes,1451873747,,200
