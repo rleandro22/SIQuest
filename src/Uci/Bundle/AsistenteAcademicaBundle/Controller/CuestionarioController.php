@@ -162,7 +162,7 @@ class CuestionarioController extends Controller {
         } catch (Exception $e) {
             $em->getConnection()->rollback();
         }
-        return $this->redirect($this->generateUrl("uci_administrador_ver_cuestionario", array("id" => $idCuestionario)));
+        return $this->redirect($this->generateUrl("uci_asistente_academica_ver_cuestionario", array("id" => $idCuestionario)));
     }
 
     public function aAGuardarCuestionarioAction(Request $request) {

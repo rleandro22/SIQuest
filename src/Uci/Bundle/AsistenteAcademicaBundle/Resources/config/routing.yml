@@ -43,5 +43,5 @@ uci_asistente_academica_removerPreguntaCuestionario:
 #-------------------------------------PREGUNTA----------------------------------------------
 
 uci_asistente_academica_verPregunta:
-    pattern:  /asistente/{idPregunta}/ver_pregunta
+    pattern:  /asistente/{idPregunta}/{idCuestionario}/ver_pregunta
     defaults: { _controller:  UciAsistenteAcademicaBundle:Pregunta:aAVerPregunta }

@@ -73,7 +73,7 @@
                         {% for pregunta in preguntas %}
                             <tr>
                                 <td style="border-right:0;" class="primera-columna">{{ pregunta.titulo|striptags }} </td>
-                                <td>&nbsp;&nbsp;<a href="#" target="_blank"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
+                                <td>&nbsp;&nbsp;<a href="{{ path('uci_asistente_academica_verPregunta', { 'idPregunta': pregunta.id, 'idCuestionario': entity.id }) }}" ><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
                                     <a href="{{ path('uci_asistente_academica_removerPreguntaCuestionario', { 'idPregunta': pregunta.id, 'idCuestionario': entity.id }) }}" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
                                 </td>
                             </tr>
