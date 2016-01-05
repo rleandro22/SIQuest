@@ -1102,66 +1102,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
 
                 if (0 === strpos($pathinfo, '/cuestionario')) {
-                    if (0 === strpos($pathinfo, '/cuestionarioasignadoausuario')) {
-                        // cuestionarioasignadoausuario
-                        if (rtrim($pathinfo, '/') === '/cuestionarioasignadoausuario') {
-                            if (substr($pathinfo, -1) !== '/') {
-                                return $this->redirect($pathinfo.'/', 'cuestionarioasignadoausuario');
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::indexAction',  '_route' => 'cuestionarioasignadoausuario',);
-                        }
-
-                        // cuestionarioasignadoausuario_show
-                        if (preg_match('#^/cuestionarioasignadoausuario/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionarioasignadoausuario_show')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::showAction',));
-                        }
-
-                        // cuestionarioasignadoausuario_new
-                        if ($pathinfo === '/cuestionarioasignadoausuario/new') {
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::newAction',  '_route' => 'cuestionarioasignadoausuario_new',);
-                        }
-
-                        // cuestionarioasignadoausuario_create
-                        if ($pathinfo === '/cuestionarioasignadoausuario/create') {
-                            if ($this->context->getMethod() != 'POST') {
-                                $allow[] = 'POST';
-                                goto not_cuestionarioasignadoausuario_create;
-                            }
-
-                            return array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::createAction',  '_route' => 'cuestionarioasignadoausuario_create',);
-                        }
-                        not_cuestionarioasignadoausuario_create:
-
-                        // cuestionarioasignadoausuario_edit
-                        if (preg_match('#^/cuestionarioasignadoausuario/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionarioasignadoausuario_edit')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::editAction',));
-                        }
-
-                        // cuestionarioasignadoausuario_update
-                        if (preg_match('#^/cuestionarioasignadoausuario/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                                $allow = array_merge($allow, array('POST', 'PUT'));
-                                goto not_cuestionarioasignadoausuario_update;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionarioasignadoausuario_update')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::updateAction',));
-                        }
-                        not_cuestionarioasignadoausuario_update:
-
-                        // cuestionarioasignadoausuario_delete
-                        if (preg_match('#^/cuestionarioasignadoausuario/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                                $allow = array_merge($allow, array('POST', 'DELETE'));
-                                goto not_cuestionarioasignadoausuario_delete;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cuestionarioasignadoausuario_delete')), array (  '_controller' => 'Uci\\Bundle\\BaseDatosBundle\\Controller\\CuestionarioAsignadoAUsuarioController::deleteAction',));
-                        }
-                        not_cuestionarioasignadoausuario_delete:
-
-                    }
-
                     // cuestionario
                     if (rtrim($pathinfo, '/') === '/cuestionario') {
                         if (substr($pathinfo, -1) !== '/') {
