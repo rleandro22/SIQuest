@@ -105,6 +105,7 @@ class CuestionarioController extends Controller {
                 $entity->addPregunta($pregunta);
             }
             $em->getConnection()->beginTransaction();
+            $entity->setCantidadPreguntas(count($entity->getPregunta()));
             try {
                 $em->persist($entity);
                 $em->flush();
@@ -131,6 +132,7 @@ class CuestionarioController extends Controller {
         $em->getConnection()->beginTransaction();
         try {
             $cuestionario->removePregunta($pregunta);
+            $cuestionario->setCantidadPreguntas(count($cuestionario->getPregunta()));
             $em->persist($cuestionario);
             $em->flush();
             $em->commit();
