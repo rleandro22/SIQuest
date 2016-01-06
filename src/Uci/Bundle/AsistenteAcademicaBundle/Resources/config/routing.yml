@@ -45,3 +45,17 @@ uci_asistente_academica_removerPreguntaCuestionario:
 uci_asistente_academica_verPregunta:
     pattern:  /asistente/{idPregunta}/{idCuestionario}/ver_pregunta
     defaults: { _controller:  UciAsistenteAcademicaBundle:Pregunta:aAVerPregunta }
+    
+#-------------------------------------Solicitud----------------------------------------------
+
+uci_asistente_academica_contarSolicitudes:
+    pattern:  /asistente/contar_solicitudes
+    defaults: { _controller: UciAsistenteAcademicaBundle:Default:aASolicitudesActivas }
+
+uci_asistente_academica_indicesolicitudes:
+    pattern:  /asistente/indice_solicitudes
+    defaults: { _controller: UciAsistenteAcademicaBundle:Solicitud:aAIndiceSolicitud }
+    
+uci_asistente_academica_editsolicitud:
+    pattern:  /asistente/editar_solicitud
+    defaults: { _controller: UciAsistenteAcademicaBundle:Solicitud:aAEditarSolicitud }

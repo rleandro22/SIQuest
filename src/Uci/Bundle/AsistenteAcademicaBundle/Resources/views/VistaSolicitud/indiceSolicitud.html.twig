@@ -1,0 +1,152 @@
+{% extends 'UciAsistenteAcademicaBundle::base.html.twig' %}
+
+{% block header %}
+    <header id="head" class="secondary"></header>
+    {% endblock %}
+
+{% block body %}
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="{{ path('uci_asistente_academica_homepage') }}">Inicio</a></li>
+            <li class="active">Listado de Solicitudes</li>
+        </ol>
+        <div class="row">
+            <!-- Sidebar -->
+            <aside class="col-md-4 sidebar sidebar-left">
+                {% include 'UciAsistenteAcademicaBundle:Menus:mantenimientoInicio.html.twig' %}
+            </aside>
+            <!-- /Sidebar -->
+            <!-- Article main content -->
+            <article class="col-sm-8 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Ver solicitudes</h1>
+                </header>
+                <br>
+                <!-- /Aquí va el contenido -->
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="{{ path('uci_asistente_academica_indicesolicitudes') }}" method="POST" enctype="multipart/form-data">
+                            <div class="col-sm-12">
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        <label>{{ form_label(form.curso) }}</label><br>
+                                        {{ form_errors(form.curso) }}
+                                        {{ form_widget(form.curso,{'attr' : {'onChange':'this.form.submit()'} }) }}
+                                    </div>
+                                </div>
+                                <br><br>
+                            </div>
+                            {{ form_rest(form) }}
+                        </form>
+                    </div>
+                </div>
+
+                <!-- /Aquí acaba el contenido --> 
+            </article>
+            <!-- /Article -->
+        </div>
+        <br><br><br><br>
+
+        <div class="row">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <input id="filter" class="form-control" type="text" placeholder="Buscar">
+                </div>
+            </div>
+            <br>
+            <table class="table demo table-bordered" id="tabla" data-filter="#filter">
+                <thead>
+                    <tr>
+                        <th data-hide="phone">
+                            Num.
+                        </th>
+                        <th data-toggle="true">
+                            Texto
+                        </th>
+                        <th data-hide="phone">
+                            Activa
+                        </th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.id }}</td>
+                            <td>{{ entity.textosolicitud }}</td>
+                            {% if entity.activa == '1' %}
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch-input" id="{{ entity.id }}" checked>
+                                        <span class="switch-label" data-on="Si" data-off="No"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </td>
+                            {% else %}
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch-input" id="{{ entity.id }}">
+                                        <span class="switch-label" data-on="Si" data-off="No"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <br><br>
+
+        </div>
+
+    </div>	<!-- /container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        document.ready = function () {
+
+            $('table').footable().on('click', '.row-delete', function (e) {
+                e.preventDefault();
+            });
+
+            $(':checkbox').change(function () {
+                var idSolicitud = $(this).attr("id");
+                if ($(this).is(":checked")) {
+                    var estado = 1;
+                } else {
+                    var estado = 0;
+                }
+                $.ajax({
+                    url: "{{path('uci_asistente_academica_editsolicitud')}}",
+                    type: "POST",
+                    data: {idSolicitud: idSolicitud, estado: estado},
+                    success: function (data) {
+                        if (!isNaN(data.resultado)) {
+                            if (data.resultado == "0") {
+                                $("#notification_count").fadeOut("slow");
+                                return false;
+                            } else {
+                                $("#notification_count").removeClass("hidden");
+                                document.getElementById("notification_count").innerHTML = data.resultado;
+                                return false;
+                            }
+                        } else {
+                            document.getElementById("notification_count").innerHTML = "0";
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+
+                    }
+                });
+            });
+        };
+    </script>
+{% endblock %}
+
