@@ -12,13 +12,19 @@ Uci\Bundle\BaseDatosBundle\Entity\Solicitud:
                 strategy: IDENTITY
     fields:
         textosolicitud:
-            type: string
+            type: text
             nullable: false
-            length: 45
+            length: null
             fixed: false
             comment: ''
             column: textoSolicitud
         activa:
+            type: smallint
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+        modificada:
             type: smallint
             nullable: false
             length: 1

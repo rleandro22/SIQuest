@@ -30,6 +30,13 @@ class AsistenteAcademica {
      * })
      */
     private $usuario;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tienesolicitud", type="smallint", length=1, nullable=false)
+     */
+    private $tienesolicitud = 1;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -61,7 +68,16 @@ class AsistenteAcademica {
     public function getId() {
         return $this->id;
     }
+    
+    function getTienesolicitud() {
+        return $this->tienesolicitud;
+    }
 
+    function setTienesolicitud($tienesolicitud) {
+        $this->tienesolicitud = $tienesolicitud;
+    }
+
+    
     /**
      * Set usuario
      *

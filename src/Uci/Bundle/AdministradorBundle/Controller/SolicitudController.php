@@ -33,6 +33,18 @@ class SolicitudController extends Controller {
         ));
     }
 
+    public function aSolicitudesActivasAction(Request $request) {
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            $em = $this->getDoctrine()->getManager();
+            $numeroSolicitudes = $em->getRepository('UciBaseDatosBundle:Solicitud')->createQueryBuilder('u')
+                    ->select('COUNT(u)')
+                    ->where('u.activa = 1')
+                    ->getQuery()
+                    ->getSingleScalarResult();
+            return new JsonResponse(array('numeroSolicitudes' => $numeroSolicitudes));
+        }
+    }
+
     public function aIngresarSolicitudAction(Request $request) {
         $entity = new Solicitud();
         $form = $this->createForm(new SolicitudNuevaType(), $entity);

@@ -492,12 +492,6 @@ class CuestionarioController extends Controller {
         $idPmbok = ($libro) ? $idPmbok = ($libro->getEsPmbok() == 1) ? $libro->getPmbok()->getId() : 0 : 0;
         $response = new JsonResponse();
 
-        $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
-                        ->innerJoin('u.libro', 'g')
-                        ->where('g.id = :id')
-                        ->setParameter('id', $idLibro)
-                        ->orderBy('u.nombreCapitulo', 'ASC')
-                        ->getQuery()->getArrayResult();
         if ($idLibro == 0) {
             $qb1 = $em->getRepository('UciBaseDatosBundle:AreaConocimiento')->createQueryBuilder('a');
             $areas = $qb1->getQuery()->getArrayResult();
@@ -505,7 +499,15 @@ class CuestionarioController extends Controller {
             $grupos = $qb2->getQuery()->getArrayResult();
             $qb3 = $em->getRepository('UciBaseDatosBundle:TrianguloTalento')->createQueryBuilder('t');
             $triangulos = $qb3->getQuery()->getArrayResult();
+            $qb4 = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('c');
+            $capitulos = $qb4->getQuery()->getArrayResult();
         } else {
+            $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
+                        ->innerJoin('u.libro', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $idLibro)
+                        ->orderBy('u.nombreCapitulo', 'ASC')
+                        ->getQuery()->getArrayResult();
             $areas = $em->getRepository('UciBaseDatosBundle:AreaConocimiento')->createQueryBuilder('u')
                             ->innerJoin('u.pmbok', 'g')
                             ->where('g.id = :id')

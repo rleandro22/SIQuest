@@ -24,7 +24,7 @@ class Solicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="textoSolicitud", type="string", length=45, nullable=false)
+     * @ORM\Column(name="textoSolicitud", type="text", nullable=false)
      */
     private $textosolicitud;
 
@@ -34,6 +34,13 @@ class Solicitud
      * @ORM\Column(name="activa", type="smallint", length=1, nullable=false)
      */
     private $activa;
+   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="modificada", type="smallint", length=1, nullable=false)
+     */
+    private $modificada = 0;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -76,7 +83,16 @@ class Solicitud
     {
         return $this->id;
     }
+    
+    function getModificada() {
+        return $this->modificada;
+    }
 
+    function setModificada($modificada) {
+        $this->modificada = $modificada;
+    }
+
+    
     /**
      * Set textosolicitud
      *

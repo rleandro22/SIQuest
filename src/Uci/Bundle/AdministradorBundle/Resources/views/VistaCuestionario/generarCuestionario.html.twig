@@ -204,25 +204,25 @@
                     type: "POST",
                     data: {idLibro: idLibro},
                     success: function (data) {
-                        $capitulo_selector.html('<option></option>');
+                        $capitulo_selector.html('<option value="0">Capitulos</option>');
                         if (data.capitulos.id != "0") {
                             for (var i = 0, total = data.capitulos.length; i < total; i++) {
-                                $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].nombreCapitulo + '</option>');
+                                $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].numeroCapitulo+ '-' + data.capitulos[i].nombreCapitulo + '</option>');
                             }
                         }
-                        $area_selector.html('<option></option>');
+                        $area_selector.html('<option value="0">A. Conocimiento</option>');
                         if (data.areas.id != "0") {
                             for (var i = 0, total = data.areas.length; i < total; i++) {
                                 $area_selector.append('<option value="' + data.areas[i].id + '">' + data.areas[i].nombreArea + '</option>');
                             }
                         }
-                        $grupo_selector.html('<option></option>');
+                        $grupo_selector.html('<option value="0">G. Procesos</option>');
                         if (data.grupos.id != "0") {
                             for (var i = 0, total = data.grupos.length; i < total; i++) {
                                 $grupo_selector.append('<option value="' + data.grupos[i].id + '">' + data.grupos[i].nombreGrupo + '</option>');
                             }
                         }
-                        $triangulo_selector.html('<option></option>');
+                        $triangulo_selector.html('<option value="0">T. Talento</option>');
                         if (data.triangulos.id != "0") {
                             for (var i = 0, total = data.triangulos.length; i < total; i++) {
                                 $triangulo_selector.append('<option value="' + data.triangulos[i].id + '">' + data.triangulos[i].nombreTalento + '</option>');
