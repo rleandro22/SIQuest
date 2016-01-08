@@ -227,6 +227,6 @@ class Curso {
     }
 
     public function __toString() {
-        return $this->nombrecurso;
+        return $this->generacion[0]."-".$this->nombrecurso;
     }
 }
