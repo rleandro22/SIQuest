@@ -300,8 +300,9 @@
         }
 
         function editarPregunta(id) {
-            var url = '{{ path('uci_administrador_editarPregunta', { 'idPregunta': 'idPreg' }) }}';
+            var url = '{{ path('uci_asistente_academica_verPreguntaPop', { 'idPregunta': 'idPreg' }) }}';
             url = url.replace("idPreg", id);
+            url = url.replace("idCuest", '0');
             window.open(url, '_blank', "width=500%, height=500%", 'toolbar=0,location=0,menubar=0');
             llenarTablaPreguntas();
         }

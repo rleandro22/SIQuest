@@ -22,5 +22,19 @@ class PreguntaController extends Controller {
                     'form' => $form->createView()
         ));
     }
+    
+    public function aAVerPreguntaPopAction(Request $request, $idPregunta) {
+        $em = $this->getDoctrine()->getManager();
+        $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunta);
+        if (!$pregunta) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $form = $this->createForm(new PreguntaType($pregunta->getTipoRespuesta()->getId(), 0), $pregunta);
+        return $this->render('UciAsistenteAcademicaBundle:VistaPregunta:verPreguntaPop.html.twig', array(
+                    'entity' => $pregunta,
+                    'esPmbok' => ($pregunta->getLibro()) ? $pregunta->getLibro()->getEsPmbok() : 0,
+                    'form' => $form->createView()
+        ));
+    }
 
 }

@@ -83,7 +83,7 @@
                                 <table class="table demo table-bordered" id="tabla" data-filter="#filter" 
                                        data-prototype="
                                        {% filter escape %}
-                                           {{ include('UciAdministradorBundle:VistaLibro:prototipoCapitulo.html.twig', { 'form': form.capitulos.vars.prototype }) }}
+                                           {{ include('UciAdministradorBundle:VistaLibro:prototipoCapitulo.html.twig', { 'form': form.capitulos.vars.prototype|e }) }}
                                        {% endfilter %}">
                                     <thead>
                                         <tr>

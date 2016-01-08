@@ -24,7 +24,7 @@ class Respuesta {
     /**
      * @var string
      *
-     * @ORM\Column(name="texto_respuesta", type="text", nullable=false)
+     * @ORM\Column(name="texto_respuesta", type="text", nullable=true)
      */
     private $textoRespuesta;
 

@@ -46,6 +46,10 @@ uci_asistente_academica_verPregunta:
     pattern:  /asistente/{idPregunta}/{idCuestionario}/ver_pregunta
     defaults: { _controller:  UciAsistenteAcademicaBundle:Pregunta:aAVerPregunta }
     
+uci_asistente_academica_verPreguntaPop:
+    pattern:  /asistente/{idPregunta}/ver_pregunta
+    defaults: { _controller:  UciAsistenteAcademicaBundle:Pregunta:aAVerPreguntaPop }
+    
 #-------------------------------------Solicitud----------------------------------------------
 
 uci_asistente_academica_contarSolicitudes:

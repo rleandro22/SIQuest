@@ -1469,6 +1469,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_verPregunta')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\PreguntaController::aAVerPreguntaAction',));
             }
 
+            // uci_asistente_academica_verPreguntaPop
+            if (preg_match('#^/asistente/(?P<idPregunta>[^/]++)/ver_pregunta$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_verPreguntaPop')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\PreguntaController::aAVerPreguntaPopAction',));
+            }
+
             // uci_asistente_academica_contarSolicitudes
             if ($pathinfo === '/asistente/contar_solicitudes') {
                 return array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\DefaultController::aASolicitudesActivasAction',  '_route' => 'uci_asistente_academica_contarSolicitudes',);
