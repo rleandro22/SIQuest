@@ -17,4 +17,7 @@ uci_administrador_editarlibro:
 uci_administrador_deletelibro:
     pattern:  /admin/{id}/borrar_libro
     defaults: { _controller: UciAdministradorBundle:Libro:aBorrarLibro }
-   
+
+uci_administrador_agregarCapituloLibro:
+    pattern:  /admin/{id}/agregar_capitulo_libro
+    defaults: { _controller: UciAdministradorBundle:Libro:aAgregarCapituloLibro }

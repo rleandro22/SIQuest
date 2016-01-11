@@ -34,7 +34,7 @@ class LibroType extends AbstractType {
                 ->add('pmbok', new PmbokType(),array('required' => false))
                 ->add('capitulos', 'collection', array(
                     'type' => new CapituloType(),
-                    'by_reference' => false,
+                    'by_reference' => true,
                     'allow_delete' => true,
                     'allow_add' => true,
                     'prototype' => true,

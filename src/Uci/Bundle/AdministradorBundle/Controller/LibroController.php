@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Entity\Libro;
 use Uci\Bundle\BaseDatosBundle\Form\LibroType;
-use Doctrine\Common\Collections\ArrayCollection;
+use Uci\Bundle\BaseDatosBundle\Form\EditarLibroType;
 
 /**
  * Libro controller.
@@ -74,12 +74,12 @@ class LibroController extends Controller {
                         ->getQuery()->getResult();
 
 
-        $libro->setCapitulos($capitulos);
+        // $libro->setCapitulos($capitulos);
         $error = '';
         if (!$libro) {
             throw $this->createNotFoundException('Unable to find Libro entity.');
         }
-        $form = $this->createForm(new LibroType(0), $libro);
+        $form = $this->createForm(new EditarLibroType(), $libro);
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             //return $this->aObtenerDatosLibro($pregunta->getLibro());
@@ -106,7 +106,7 @@ class LibroController extends Controller {
         return $this->render('UciAdministradorBundle:VistaLibro:editarLibro.html.twig', array(
                     'entity' => $libro,
                     'error' => $error,
-                    'esPmbok' => ($libro->getEsPmbok()) ? $libro->getEsPmbok() : 0,
+                    'capitulos' => $capitulos,
                     'form' => $form->createView()
         ));
     }
@@ -169,6 +169,24 @@ class LibroController extends Controller {
         $em->remove($entity);
         $em->flush();
         return $this->redirectToRoute('uci_administrador_indicelibro');
+    }
+
+    public function aAgregarCapituloLibroAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+       
+       $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
+                        ->innerJoin('u.libro', 'g')
+                        ->where('g.id = :id')
+                        ->setParameter('id', $id)
+                        ->orderBy('u.numeroCapitulo', 'ASC')
+                        ->getQuery()->getResult();
+       
+      
+        
+        return $this->render('UciAdministradorBundle:VistaLibro:agregarCapituloLibro.html.twig', array(
+                    'capitulos' => $capitulos,
+                    'id'=>$id
+        ));
     }
 
 }

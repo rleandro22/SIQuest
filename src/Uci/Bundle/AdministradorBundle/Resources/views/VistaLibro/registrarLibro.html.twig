@@ -80,22 +80,19 @@
                               <h3>Capítulos</h3><br>
                                 <!-- /Tabla capitulos -->
 
-                                <table class="table demo table-bordered" id="tabla" data-filter="#filter" 
+                                <table class="table demo table-bordered" id="tablaCapitulos" data-filter="#filter" 
                                        data-prototype="
                                        {% filter escape %}
                                            {{ include('UciAdministradorBundle:VistaLibro:prototipoCapitulo.html.twig', { 'form': form.capitulos.vars.prototype }) }}
                                        {% endfilter %}">
                                     <thead>
                                         <tr>
-
                                             <th data-hide="phone">
                                                 Numero 
                                             </th>
                                             <th data-hide="phone">
                                                 Nombre
                                             </th>
-
-
                                             <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
                                         </tr>
                                     </thead>
@@ -160,7 +157,7 @@
         
 
         function addCapitulo() {
-            var collectionHolder = $('#tabla');
+            var collectionHolder = $('#tablaCapitulos');
             var prototype = collectionHolder.attr('data-prototype');
             var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
             var removeFormA = $('<td href="#" onclick="addTagFormDeleteLink(event, this); "><span class="navigationSpace glyphicon glyphicon-remove" style="color: red; font-size:180%" ></span></td>');
@@ -176,10 +173,6 @@
             var removeFormA = elemento.parentNode;
             removeFormA.remove();
         }
-
-       
-
-
 
             $('#capitulo_link').on('click', function (e) {
                 e.preventDefault();
@@ -197,5 +190,13 @@
                 cont=0;
             }
         };
+        
+        function redirigirAgregarCapitulo(id) {
+            var url = '{{ path('uci_administrador_agregarPreguntaCuestionario', { 'idCuestionario':  'idCtnr'}) }}';
+            url = url.replace("idCtnr", id);
+            window.open(url, '_blank', 'top=0,scrollbars=1,toolbar=0,location=0,menubar=0');
+        }
+        
+        
     </script>
 {% endblock %}
