@@ -16,7 +16,7 @@ class TrianguloTalentoType extends AbstractType
     {
         $builder
             ->add('nombreTalento')
-            ->add('pmbok')
+            //->add('pmbok')
         ;
     }
     

@@ -29,13 +29,6 @@ class GrupoProcesos
     private $nombreGrupo;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="porcentaje", type="decimal", precision=10, scale=2, nullable=false)
-     */
-    private $porcentaje;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Pmbok", mappedBy="grupoProcesos")
@@ -82,29 +75,6 @@ class GrupoProcesos
     public function getNombreGrupo()
     {
         return $this->nombreGrupo;
-    }
-
-    /**
-     * Set porcentaje
-     *
-     * @param string $porcentaje
-     * @return GrupoProcesos
-     */
-    public function setPorcentaje($porcentaje)
-    {
-        $this->porcentaje = $porcentaje;
-
-        return $this;
-    }
-
-    /**
-     * Get porcentaje
-     *
-     * @return string 
-     */
-    public function getPorcentaje()
-    {
-        return $this->porcentaje;
     }
 
     /**

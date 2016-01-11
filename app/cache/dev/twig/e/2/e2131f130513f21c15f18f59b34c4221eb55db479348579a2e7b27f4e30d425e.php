@@ -15,8 +15,8 @@ class __TwigTemplate_e2131f130513f21c15f18f59b34c4221eb55db479348579a2e7b27f4e30
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_8d2100260a95e64cb1bfa7d8cd4028a2e7a3c9c41a2c113f5fd17f0c99f3a21e = $this->env->getExtension("native_profiler");
-        $__internal_8d2100260a95e64cb1bfa7d8cd4028a2e7a3c9c41a2c113f5fd17f0c99f3a21e->enter($__internal_8d2100260a95e64cb1bfa7d8cd4028a2e7a3c9c41a2c113f5fd17f0c99f3a21e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoLibro.html.twig"));
+        $__internal_2f2ab747adfdd29c548225553db99d66a5ca7769643dad83c1759771338a031f = $this->env->getExtension("native_profiler");
+        $__internal_2f2ab747adfdd29c548225553db99d66a5ca7769643dad83c1759771338a031f->enter($__internal_2f2ab747adfdd29c548225553db99d66a5ca7769643dad83c1759771338a031f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:Menus:mantenimientoLibro.html.twig"));
 
         // line 1
         echo "<div class=\"row widget\">
@@ -36,13 +36,17 @@ class __TwigTemplate_e2131f130513f21c15f18f59b34c4221eb55db479348579a2e7b27f4e30
         // line 11
         echo $this->env->getExtension('routing')->getPath("uci_administrador_nuevolibro");
         echo "'><span>Nuevo libro</span></a></li>
-               </ul>
+                <li><a href=\"";
+        // line 12
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_indiceatrpmbok");
+        echo "\">Atributos PMBok</a></li>
+            </ul>
         </div>
     </div>
 </div>
 ";
         
-        $__internal_8d2100260a95e64cb1bfa7d8cd4028a2e7a3c9c41a2c113f5fd17f0c99f3a21e->leave($__internal_8d2100260a95e64cb1bfa7d8cd4028a2e7a3c9c41a2c113f5fd17f0c99f3a21e_prof);
+        $__internal_2f2ab747adfdd29c548225553db99d66a5ca7769643dad83c1759771338a031f->leave($__internal_2f2ab747adfdd29c548225553db99d66a5ca7769643dad83c1759771338a031f_prof);
 
     }
 
@@ -58,6 +62,6 @@ class __TwigTemplate_e2131f130513f21c15f18f59b34c4221eb55db479348579a2e7b27f4e30
 
     public function getDebugInfo()
     {
-        return array (  37 => 11,  33 => 10,  22 => 1,);
+        return array (  41 => 12,  37 => 11,  33 => 10,  22 => 1,);
     }
 }

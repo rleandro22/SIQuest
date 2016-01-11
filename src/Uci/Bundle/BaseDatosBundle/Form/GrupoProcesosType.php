@@ -16,8 +16,8 @@ class GrupoProcesosType extends AbstractType
     {
         $builder
             ->add('nombreGrupo')
-            ->add('porcentaje')
-            ->add('pmbok')
+            //->add('porcentaje')
+            //->add('pmbok')
         ;
     }
     

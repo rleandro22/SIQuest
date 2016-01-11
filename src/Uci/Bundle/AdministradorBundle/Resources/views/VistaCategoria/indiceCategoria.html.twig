@@ -76,7 +76,7 @@
             var handleSpeedBump = function (e) {
                 e.preventDefault();
                 var href = this.getAttribute("data-href");
-                var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación no es reversible)");
+                var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación borrará todos los cursos de la generación y no es reversible)");
                 if (!sure)
                     return;
                 document.location = href;

@@ -18,12 +18,6 @@ Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos:
             fixed: false
             comment: ''
             column: nombre_grupo
-        porcentaje:
-            type: decimal
-            nullable: false
-            precision: 10
-            scale: 2
-            comment: ''
     manyToMany:
         pmbok:
             targetEntity: Pmbok

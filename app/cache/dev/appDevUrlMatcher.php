@@ -1522,6 +1522,56 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deleteuser')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\UsuarioController::aBorrarUsuarioAction',));
             }
 
+            // uci_administrador_indiceatrpmbok
+            if ($pathinfo === '/admin/lista_atrpmbok') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aIndiceAtributosPmbokAction',  '_route' => 'uci_administrador_indiceatrpmbok',);
+            }
+
+            // uci_administrador_addarea
+            if ($pathinfo === '/admin/ingresar_area') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aIngresarAreaAction',  '_route' => 'uci_administrador_addarea',);
+            }
+
+            // uci_administrador_editarea
+            if (preg_match('#^/admin/(?P<id>[^/]++)/editar_area$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_editarea')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aEditarAreaAction',));
+            }
+
+            // uci_administrador_deletearea
+            if (preg_match('#^/admin/(?P<id>[^/]++)/borrar_area$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletearea')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aBorrarAreaAction',));
+            }
+
+            // uci_administrador_addgrupo
+            if ($pathinfo === '/admin/ingresar_grupo') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aIngresarGrupoAction',  '_route' => 'uci_administrador_addgrupo',);
+            }
+
+            // uci_administrador_editgrupo
+            if (preg_match('#^/admin/(?P<id>[^/]++)/editar_grupo$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_editgrupo')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aEditarGrupoAction',));
+            }
+
+            // uci_administrador_deletegrupo
+            if (preg_match('#^/admin/(?P<id>[^/]++)/borrar_grupo$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletegrupo')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aBorrarGrupoAction',));
+            }
+
+            // uci_administrador_addtriangulo
+            if ($pathinfo === '/admin/ingresar_triangulo') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aIngresarTrianguloAction',  '_route' => 'uci_administrador_addtriangulo',);
+            }
+
+            // uci_administrador_edittriangulo
+            if (preg_match('#^/admin/(?P<id>[^/]++)/editar_triangulo$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_edittriangulo')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aEditarTrianguloAction',));
+            }
+
+            // uci_administrador_deletetriangulo
+            if (preg_match('#^/admin/(?P<id>[^/]++)/borrar_triangulo$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletetriangulo')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aBorrarTrianguloAction',));
+            }
+
             // uci_administrador_indicecategoria
             if ($pathinfo === '/admin/lista_categorias') {
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\CategoriaController::aIndiceCategoriaAction',  '_route' => 'uci_administrador_indicecategoria',);

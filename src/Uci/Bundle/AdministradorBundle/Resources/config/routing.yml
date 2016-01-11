@@ -18,6 +18,48 @@ uci_administrador_deleteuser:
     pattern:  /admin/{id}/borrar_usuario
     defaults: { _controller: UciAdministradorBundle:Usuario:aBorrarUsuario }
     
+# ------------------------------ATRIBUTOS PMBOK--------------------------------------------
+    
+uci_administrador_indiceatrpmbok:
+    pattern:  /admin/lista_atrpmbok
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aIndiceAtributosPmbok }
+    
+uci_administrador_addarea:
+    pattern:  /admin/ingresar_area
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aIngresarArea }
+
+uci_administrador_editarea:
+    pattern:  /admin/{id}/editar_area
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aEditarArea }
+    
+uci_administrador_deletearea:
+    pattern:  /admin/{id}/borrar_area
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aBorrarArea }
+    
+uci_administrador_addgrupo:
+    pattern:  /admin/ingresar_grupo
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aIngresarGrupo }
+
+uci_administrador_editgrupo:
+    pattern:  /admin/{id}/editar_grupo
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aEditarGrupo }
+    
+uci_administrador_deletegrupo:
+    pattern:  /admin/{id}/borrar_grupo
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aBorrarGrupo }
+    
+uci_administrador_addtriangulo:
+    pattern:  /admin/ingresar_triangulo
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aIngresarTriangulo }
+
+uci_administrador_edittriangulo:
+    pattern:  /admin/{id}/editar_triangulo
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aEditarTriangulo }
+    
+uci_administrador_deletetriangulo:
+    pattern:  /admin/{id}/borrar_triangulo
+    defaults: { _controller: UciAdministradorBundle:AtributosPmbok:aBorrarTriangulo }
+    
 # ------------------------------CATEGORIA--------------------------------------------
     
 uci_administrador_indicecategoria:
@@ -31,10 +73,6 @@ uci_administrador_addcategoria:
 uci_administrador_editcategoria:
     pattern:  /admin/{id}/editar_categoria
     defaults: { _controller: UciAdministradorBundle:Categoria:aEditarCategoria }
-
-uci_administrador_addcategoria:
-    pattern:  /admin/registrar_generacion
-    defaults: { _controller: UciAdministradorBundle:Categoria:aIngresarGeneracion }
     
 uci_administrador_deletecategoria:
     pattern:  /admin/{id}/borrar_categoria

@@ -16,7 +16,7 @@ class AreaConocimientoType extends AbstractType
     {
         $builder
             ->add('nombreArea')
-            ->add('pmbok')
+            //->add('pmbok')
         ;
     }
     

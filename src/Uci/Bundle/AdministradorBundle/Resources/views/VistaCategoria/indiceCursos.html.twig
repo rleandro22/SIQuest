@@ -137,7 +137,7 @@
             var handleSpeedBump = function (e) {
                 e.preventDefault();
                 var href = this.getAttribute("data-href");
-                var sure = confirm("¿Esta seguro que desea desmatricular a este usuario?\n (Esta operación no es reversible)");
+                var sure = confirm("¿Esta seguro que desea realizar el borrado?\n (Esta operación borrara los cuestionarios de curso y no es reversible)");
                 if (!sure)
                     return;
                 document.location = href;
