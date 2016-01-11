@@ -156,8 +156,8 @@ class CategoriaController extends Controller {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($entity);
                 $em->flush();
-                return $this->redirectToRoute('uci_administrador_indicecategoria');
             }
+            return $this->redirectToRoute('uci_administrador_indicecategoria');
         }
         return $this->render('UciAdministradorBundle:VistaCategoria:registrarCategoria.html.twig', array(
                     'entity' => $entity,
