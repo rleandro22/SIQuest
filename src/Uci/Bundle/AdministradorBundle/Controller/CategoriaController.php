@@ -92,10 +92,10 @@ class CategoriaController extends Controller {
     public function aDesmatricularUsuarioAction($idGeneracion, $idCurso, $tipoUsuario, $idUsuario) {
         $em = $this->getDoctrine()->getManager();
         $curso = $em->getRepository('UciBaseDatosBundle:Curso')->find($idCurso);
-        if($tipoUsuario==1){
-           $usuario = $em->getRepository('UciBaseDatosBundle:Profesor')->find($idUsuario); 
-        }else{
-            $usuario = $em->getRepository('UciBaseDatosBundle:AsistenteAcademica')->find($idUsuario); 
+        if ($tipoUsuario == 1) {
+            $usuario = $em->getRepository('UciBaseDatosBundle:Profesor')->find($idUsuario);
+        } else {
+            $usuario = $em->getRepository('UciBaseDatosBundle:AsistenteAcademica')->find($idUsuario);
         }
         $usuario->removeCurso($curso);
         $em->persist($usuario);
@@ -172,20 +172,51 @@ class CategoriaController extends Controller {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-        $em->remove($entity);
-        $em->flush();
+        try {
+            $cursos = $em->getRepository('UciBaseDatosBundle:Curso')->createQueryBuilder('u')
+                            ->innerJoin('u.generacion', 'g')
+                            ->where('g.id = :id')
+                            ->setParameter('id', $entity->getId())
+                            ->getQuery()->getResult();
+            foreach ($cursos as $curso) {
+                $this->borrarCurso($curso->getId());
+            }
+            $em->remove($entity);
+            $em->flush();
+        } catch (Exception $e) {
+            $em->getConnection()->rollback();
+        }
         return $this->redirectToRoute('uci_administrador_indicecategoria');
     }
 
     public function aBorrarCursoAction($idGeneracion, $id) {
+        $this->borrarCurso($id);
+        return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
+    }
+
+    private function borrarCurso($idCurso) {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('UciBaseDatosBundle:Curso')->find($id);
-        if (!$entity) {
+        $curso = $em->getRepository('UciBaseDatosBundle:Curso')->find($idCurso);
+        if (!$curso) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-        $em->remove($entity);
-        $em->flush();
-        return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
+        $em->getConnection()->beginTransaction();
+        try {
+            $cuestionarios = $em->getRepository('UciBaseDatosBundle:Cuestionario')->createQueryBuilder('u')
+                            ->innerJoin('u.curso', 'g')
+                            ->where('g.id = :id')
+                            ->setParameter('id', $idCurso)
+                            ->getQuery()->getResult();
+            foreach ($cuestionarios as $cuestionario) {
+                $em->remove($cuestionario);
+                $em->clear($cuestionario);
+            }
+            $em->remove($curso);
+            $em->flush();
+            $em->commit();
+        } catch (Exception $e) {
+            $em->getConnection()->rollback();
+        }
     }
 
     private function setTodasLasPropiedades(&$entityp) {

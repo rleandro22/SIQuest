@@ -160,6 +160,10 @@ class Cuestionario {
         $this->pregunta = $pregunta;
     }
     
+    public function borrarPreguntas(){
+        $this->pregunta = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     public function __toString() {
         return $this->cuestionarioname;
     }
