@@ -13,7 +13,7 @@ Uci\Bundle\BaseDatosBundle\Entity\Respuesta:
     fields:
         textoRespuesta:
             type: text
-            nullable: false
+            nullable: true
             length: null
             fixed: false
             comment: ''
