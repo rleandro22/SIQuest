@@ -64,10 +64,10 @@ class GrupoProcesos extends \Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos imp
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'id', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'nombreGrupo', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'porcentaje', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'pmbok');
+            return array('__isInitialized__', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'id', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'nombreGrupo', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'pmbok');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'id', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'nombreGrupo', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'porcentaje', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'pmbok');
+        return array('__isInitialized__', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'id', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'nombreGrupo', '' . "\0" . 'Uci\\Bundle\\BaseDatosBundle\\Entity\\GrupoProcesos' . "\0" . 'pmbok');
     }
 
     /**
@@ -208,28 +208,6 @@ class GrupoProcesos extends \Uci\Bundle\BaseDatosBundle\Entity\GrupoProcesos imp
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNombreGrupo', array());
 
         return parent::getNombreGrupo();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setPorcentaje($porcentaje)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPorcentaje', array($porcentaje));
-
-        return parent::setPorcentaje($porcentaje);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPorcentaje()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPorcentaje', array());
-
-        return parent::getPorcentaje();
     }
 
     /**

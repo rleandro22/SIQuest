@@ -326,7 +326,10 @@ class PreguntaController extends Controller {
         }
     }
 
+    //Método para importar el archivo excel
     private function importarArchivo(&$arregloPreguntas, $tipoRespuesta, $ubicacion) {
+        $em = $this->getDoctrine()->getManager();
+        $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findAll();
         $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($ubicacion);
         $objWorksheet = $phpExcelObject->setActiveSheetIndex(0);
         $highestRow = $objWorksheet->getHighestRow();
@@ -336,15 +339,15 @@ class PreguntaController extends Controller {
             if ((isset($dataRow[$row]['A'])) && ($dataRow[$row]['A'] > '')) {
                 if ((strpos($dataRow[$row]['A'], "::") === 0) &&(isset($dataRow[$row]['C'])) && ($dataRow[$row]['C'] > '')) {
                     $pregunta = new Pregunta();
-                    $textoPregunta = $dataRow[$row]['C'];
+                    $textoPregunta = trim($dataRow[$row]['C']);
                     $pregunta->setTitulo($textoPregunta);
                     $pregunta->setTipoRespuesta($tipoRespuesta);
                 } else if ((strpos($dataRow[$row]['A'], "=") === 0) || (strpos($dataRow[$row]['A'], "~") === 0)) {
                     $respuesta = new Respuesta();
-                    $textoRespuesta = $dataRow[$row]['C'];
+                    $textoRespuesta = trim($dataRow[$row]['C']);
                     $respuesta->setTextoRespuesta($textoRespuesta);
                     if ((isset($dataRow[$row]['E'])) && ($dataRow[$row]['E'] > '') && ($dataRow[$row]['E'] != 'Feedback')) {
-                        $textoRetroalimentacion = $dataRow[$row]['E'];
+                        $textoRetroalimentacion = trim($dataRow[$row]['E']);
                         $respuesta->setTextoRetroalimentacion($textoRetroalimentacion);
                     }
                     if (strpos($dataRow[$row]['A'], "=") === 0) {
@@ -355,11 +358,20 @@ class PreguntaController extends Controller {
                     $respuesta->setCorrecta($esCorrecta);
                     $pregunta->addRespuesta($respuesta);
                 }
-                if (strpos($dataRow[$row]['A'], "}") === 0) {
+                if (strpos($dataRow[$row]['A'], "}") === 0 && !$this->existePregunta($pregunta, $preguntas)) {
                     $arregloPreguntas[] = $pregunta;
                 }
             } //endif
         }//end for
+    }
+    
+    private function existePregunta($pregunta, $preguntas){
+        foreach ($preguntas as $preguntaActual){
+            if($pregunta->equals($preguntaActual)){
+                return TRUE;
+            }
+        }
+        return FALSE;
     }
 
 }

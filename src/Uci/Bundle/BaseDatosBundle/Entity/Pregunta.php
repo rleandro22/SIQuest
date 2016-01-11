@@ -411,4 +411,31 @@ class Pregunta {
         return $this->titulo;
     }
 
+    public function equals(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
+        if (strcasecmp($this->titulo, $pregunta->getTitulo()) == 0) {
+            $respuestasParametro = $pregunta->getRespuesta();
+            if (count($this->respuesta) > 0) {
+                if (count($this->respuesta) == count($respuestasParametro)) {
+                    foreach ($this->respuesta as $respuestActual) {
+                        $esIgual = FALSE;
+                        foreach ($respuestasParametro as $respuestParametro) {
+                            if ($respuestActual->getTextoRespuesta() == $respuestParametro->getTextoRespuesta()) {
+                                $esIgual = TRUE;
+                            }
+                        }
+                        if ($esIgual == FALSE) {
+                            break;
+                        }
+                    }
+                } else {
+                    $esIgual = FALSE;
+                }
+            }else{
+                $esIgual=TRUE;
+            }
+        } else {
+            $esIgual = FALSE;
+        }
+    }
+
 }
