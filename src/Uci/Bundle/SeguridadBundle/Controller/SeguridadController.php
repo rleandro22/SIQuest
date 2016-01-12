@@ -12,6 +12,8 @@ class SeguridadController extends Controller {
             return $this->render('UciAdministradorBundle:Vista:index.html.twig');
         } else if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_ASISTENTE')) {
             return $this->render('UciAsistenteAcademicaBundle:Vista:index.html.twig');
+        } else if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_PROFESOR')) {
+            return $this->render('UciProfesorBundle:Vista:index.html.twig');
         }
     }
 
@@ -21,6 +23,8 @@ class SeguridadController extends Controller {
                 return $this->render('UciAdministradorBundle:Vista:index.html.twig');
             } else if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_ASISTENTE')) {
                 return $this->render('UciAsistenteAcademicaBundle:Vista:index.html.twig');
+            } else if (TRUE === $this->get('security.authorization_checker')->isGranted('ROLE_PROFESOR')) {
+                return $this->render('UciProfesorBundle:Vista:index.html.twig');
             }
         }
         $request = $this->getRequest();

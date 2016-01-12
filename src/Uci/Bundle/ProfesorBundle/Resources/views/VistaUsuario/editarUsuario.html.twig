@@ -1,0 +1,114 @@
+{% extends 'UciAsistenteAcademicaBundle::base.html.twig' %}
+
+{% block header %}
+    <header id="head" class="secondary"></header>
+    {% endblock %}
+
+{% block body %}
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="{{ path('uci_asistente_academica_homepage') }}">Inicio</a></li>
+            <li class="active">Editar Usuario</li>
+        </ol>
+        <div class="row">
+            <!-- Sidebar -->
+            <aside class="col-md-4 sidebar sidebar-left">
+
+            </aside>
+            <!-- /Sidebar -->
+            <!-- Article main content -->
+            <article class="col-sm-8 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Edición de usuario</h1>
+                </header>
+                <br>
+                <!-- /Aquí va el contenido -->
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="thin text-center">Editar usuario</h3>
+                            <p class="text-center text-muted">Todos los campos son requeridos. </p>
+                            <hr>
+
+                            {% if error %}
+                                <div style="color:red">{{ error }}</div>
+                            {% endif %}
+                            <div id="alert_placeholder"> </div>
+
+                            <form action="{{ path('uci_asistente_academica_edituser', { 'id': entity.id }) }}" method="POST" enctype="multipart/form-data">
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.nombre) }}
+                                        {{ form_errors(form.nombre) }}
+                                        {{ form_widget(form.nombre) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.apellidos) }}
+                                        {{ form_errors(form.apellidos) }}
+                                        {{ form_widget(form.apellidos) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.email) }}
+                                        {{ form_errors(form.email) }}
+                                        {{ form_widget(form.email) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.username) }}
+                                        {{ form_errors(form.username) }}
+                                        {{ form_widget(form.username) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.password.first) }}
+                                        {{ form_errors(form.password.first) }}
+                                        {{ form_widget(form.password.first) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.password.second) }}
+                                        {{ form_errors(form.password.second) }}
+                                        {{ form_widget(form.password.second) }}
+                                    </div>
+                                </div>
+                                <br>
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-8">                     
+                                    </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" type="submit">Actualizar</button>
+                                    </div>
+                                </div>
+                                {{ form_rest(form) }}
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- /Aquí acaba el contenido --> 
+            </article>
+            <!-- /Article -->
+        </div>
+    </div>	<!-- /container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+{% endblock %}
+

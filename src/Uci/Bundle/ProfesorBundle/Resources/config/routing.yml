@@ -1,3 +1,7 @@
 uci_profesor_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: UciProfesorBundle:Default:index }
+    path:     /profesor
+    defaults: { _controller: UciProfesorBundle:Default:pInicio }
+    
+uci_profesor_edituser:
+    pattern:  /profesor/{id}/editar_usuario
+    defaults: { _controller: UciProfesorBundle:Usuario:pEditarUsuario }

@@ -1,7 +1,3 @@
-uci_base_datos:
-    resource: "@UciBaseDatosBundle/Resources/config/routing.yml"
-    prefix:   /
-
 uci_asistente_academica:
     resource: "@UciAsistenteAcademicaBundle/Resources/config/routing.yml"
     prefix:   /

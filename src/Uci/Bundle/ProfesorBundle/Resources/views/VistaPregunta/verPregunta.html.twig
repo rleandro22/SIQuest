@@ -1,0 +1,127 @@
+{% extends 'UciAdministradorBundle::base.html.twig' %}
+
+{% block header %}
+    <header id="head" class="secondary"></header>
+    {% endblock %}
+
+{% block body %}
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="{{ path('uci_asistente_academica_homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('uci_asistente_academica_indicecuestionario') }}">Listado de Cuestionarios</a></li>
+            <li><a href="{{ path('uci_asistente_academica_ver_cuestionario', { 'id': idCuestionario }) }}">Ver cuestionario</a></li>
+            <li class="active">Ver Pregunta</li>
+        </ol>
+        <form>             
+
+            <div class="row">
+                <!-- Sidebar -->
+                <aside class="col-md-4 sidebar sidebar-left">
+                    {% include 'UciAsistenteAcademicaBundle:Menus:mantenimientoCuestionario.html.twig' %}
+                </aside>
+                <!-- /Sidebar -->
+                <!-- Article main content -->
+                <article class="col-sm-8 maincontent">
+                    <header class="page-header">
+                        <h1 class="page-title">Ver pregunta</h1>
+                    </header>
+                    <br>
+                    <!-- /Aquí va el contenido -->
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3 class="thin text-center">Detalles de pregunta {{ entity.tipoRespuesta.nombre }}</h3>
+                                <hr>
+
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.titulo) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.libro) }}
+                                    </div><div class="imagenCargando"></div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.numeroPagina) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.capitulo) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.areaConocimiento) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.grupoProcesos) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.trianguloTalento) }}
+                                    </div>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_row(form.tipoPrueba) }}
+                                    </div>
+                                </div>
+                                <br>
+                                <hr>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Aquí acaba el contenido --> 
+                </article>
+                <!-- /Article -->
+            </div>
+
+            <div class="row" id="panelRespuestas">
+                <h3><a id="linkTextoResp" href="#" style="text-decoration: none;">Respuestas</a></h3><hr>
+                <div id="explicacionRespuesta" style="display: none;"><p class="text-warning">{{ entity.tipoRespuesta.explicacion }}</p><hr></div>
+                <ul id="respuestas" data-prototype="{{ form_widget(form.respuesta.vars.prototype)|escape }}">
+                    {% spaceless %}
+                        {% for respuesta in form.respuesta %}
+                            <li> {{ form_row(respuesta) }}
+                            </li>
+                        {% endfor %}
+                    {% endspaceless %}
+                </ul>
+                <br><br>
+
+            </div>
+            <br>
+            {{ form_rest(form) }}
+        </form>
+    </div>	<!-- /container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+        document.ready = function () {
+            nicEditors.allTextAreas();
+            jQuery('.nicEdit-main').attr('contenteditable', 'false');
+            jQuery('.nicEdit-panel').hide();
+            $('input[type="text"], input[type="checkbox"], input[type="number"], select').prop("disabled", true);
+            $('#linkTextoResp').on('click', function (e) {
+                e.preventDefault();
+                $('#explicacionRespuesta').toggle("fast");
+            });
+        };
+    </script>
+{% endblock %}
+
+
