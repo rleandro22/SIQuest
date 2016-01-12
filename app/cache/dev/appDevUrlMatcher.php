@@ -221,6 +221,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Uci\\Bundle\\ProfesorBundle\\Controller\\CuestionarioController::pIndiceCuestionarioAction',  '_route' => 'uci_profesor_indicecuestionario',);
             }
 
+            // uci_profesor_ver_cuestionario
+            if (preg_match('#^/profesor/(?P<id>[^/]++)/ver_cuestionario$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_profesor_ver_cuestionario')), array (  '_controller' => 'Uci\\Bundle\\ProfesorBundle\\Controller\\CuestionarioController::pVerCuestionarioAction',));
+            }
+
+            // uci_profesor_agregarComentarios
+            if ($pathinfo === '/profesor/agregar_comentario') {
+                return array (  '_controller' => 'Uci\\Bundle\\ProfesorBundle\\Controller\\CuestionarioController::pAgregarComentarioCuestionarioAction',  '_route' => 'uci_profesor_agregarComentarios',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/admin')) {

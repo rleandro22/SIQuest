@@ -111,7 +111,7 @@ class CuestionarioController extends Controller {
                 $em->flush();
                 $em->commit();
                 return new JsonResponse(array('resultado' => 1));
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 $em->getConnection()->rollback();
                 return new JsonResponse(array('resultado' => 0));
             }
@@ -136,7 +136,7 @@ class CuestionarioController extends Controller {
             $em->persist($cuestionario);
             $em->flush();
             $em->commit();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $em->getConnection()->rollback();
         }
         return $this->redirect($this->generateUrl("uci_administrador_ver_cuestionario", array("id" => $idCuestionario)));
@@ -164,7 +164,7 @@ class CuestionarioController extends Controller {
                 $em->flush();
                 $em->commit();
                 return new JsonResponse(array('resultado' => 1));
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 $em->getConnection()->rollback();
                 return new JsonResponse(array('resultado' => 0));
             }
@@ -466,7 +466,7 @@ class CuestionarioController extends Controller {
             $em->remove($cuestionario);
             $em->flush();
             $em->commit();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $em->getConnection()->rollback();
         }
         return $this->redirectToRoute('uci_administrador_indicecuestionario');

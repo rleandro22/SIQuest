@@ -25,7 +25,7 @@ class UsuarioType extends AbstractType {
                 ->add('password', 'repeated', array('type' => 'password', 'invalid_message' => 'Las contraseñas no son iguales, repitelo', 'required' => false, 'first_options' => array('label' => 'Contraseña: ', "attr" => array('class' => 'form-control')), 'second_options' => array('label' => 'Repetir contraseña: ', "attr" => array('class' => 'form-control'))))
                 ->add('email', 'email', array("label" => "Correo electronico: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('rol', 'entity', array('class' => 'UciBaseDatosBundle:Rol', 'required' => true, 'attr' => array('style' => 'width: 100%;')))
-                ->add('editatodas', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Puede el profesor editar todas las preguntas? ', 'mapped' => false, 'multiple' => false, 'expanded' => true, 'data' => $this->edita));
+                ->add('editatodas', 'choice', array('choices' => array(2 => 'Todas',1 => 'Propias', 0 => 'Ninguna'), 'label' => '¿Puede el profesor editar todas las preguntas? ', 'mapped' => false, 'multiple' => false, 'expanded' => true, 'data' => $this->edita));
     }
 
     /**

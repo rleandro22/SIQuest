@@ -11,3 +11,11 @@ uci_profesor_edituser:
 uci_profesor_indicecuestionario:
     pattern:  /profesor/indice_cuestionario
     defaults: { _controller: UciProfesorBundle:Cuestionario:pIndiceCuestionario }
+    
+uci_profesor_ver_cuestionario:
+    pattern:  /profesor/{id}/ver_cuestionario
+    defaults: { _controller: UciProfesorBundle:Cuestionario:pVerCuestionario }
+    
+uci_profesor_agregarComentarios:
+    pattern:  /profesor/agregar_comentario
+    defaults: { _controller: UciProfesorBundle:Cuestionario:pAgregarComentarioCuestionario }

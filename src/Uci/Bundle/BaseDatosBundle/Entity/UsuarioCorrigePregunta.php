@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UsuarioCorrigePregunta
  *
- * @ORM\Table(name="usuario_corrige_pregunta", indexes={@ORM\Index(name="fk_usuario_corrige_pregunta_usuario1_idx", columns={"usuario_id"}), @ORM\Index(name="fk_usuario_corrige_pregunta_pregunta1_idx", columns={"pregunta_id"})})
+ * @ORM\Table(name="usuario_corrige_pregunta", indexes={@ORM\Index(name="fk_usuario_corrige_pregunta_usuario1_idx", columns={"usuario_id"}), @ORM\Index(name="fk_usuario_corrige_pregunta_pregunta1_idx", columns={"pregunta_id"}), @ORM\Index(name="fk_usuario_corrige_pregunta_cuestionario1_idx", columns={"cuestionario_id"})})
  * @ORM\Entity
  */
 class UsuarioCorrigePregunta
@@ -54,6 +54,16 @@ class UsuarioCorrigePregunta
      * })
      */
     private $usuario;
+    
+    /**
+     * @var \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario
+     *
+     * @ORM\ManyToOne(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\Cuestionario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cuestionario_id", referencedColumnName="id")
+     * })
+     */
+    private $cuestionario;
 
 
 
@@ -65,6 +75,27 @@ class UsuarioCorrigePregunta
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Set cuestionario
+     *
+     * @param \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario
+     * @return UsuarioCorrigePregunta
+     */
+    public function setCuestionario(\Uci\Bundle\BaseDatosBundle\Entity\Cuestionario $cuestionario = null) {
+        $this->cuestionario = $cuestionario;
+
+        return $this;
+    }
+
+    /**
+     * Get cuestionario
+     *
+     * @return \Uci\Bundle\BaseDatosBundle\Entity\Cuestionario
+     */
+    public function getCuestionario() {
+        return $this->cuestionario;
     }
 
     /**

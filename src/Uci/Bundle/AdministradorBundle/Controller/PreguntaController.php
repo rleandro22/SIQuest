@@ -95,7 +95,7 @@ class PreguntaController extends Controller {
                     $em->persist($pregunta);
                     $em->flush();
                     $em->commit();
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
                     $em->getConnection()->rollback();
                     $error = $e;
                 }
@@ -142,7 +142,7 @@ class PreguntaController extends Controller {
             $em->remove($pregunta);
             $em->flush();
             $em->commit();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $em->getConnection()->rollback();
         }
         return $this->redirectToRoute('uci_administrador_indicepreguntas');
@@ -321,7 +321,7 @@ class PreguntaController extends Controller {
             $em->flush();
             $em->commit();
             return $this->redirectToRoute('uci_administrador_indicepreguntas');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $em->getConnection()->rollback();
         }
     }
