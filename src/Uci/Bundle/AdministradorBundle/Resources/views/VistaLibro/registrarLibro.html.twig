@@ -77,7 +77,7 @@
                                 <hr>
                                 <!-- /Aquí inicia capitulo --> 
 
-                              <h3>Capítulos</h3><br>
+                                <h3>Capítulos</h3><br>
                                 <!-- /Tabla capitulos -->
 
                                 <table class="table demo table-bordered" id="tablaCapitulos" data-filter="#filter" 
@@ -97,10 +97,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+
                                     </tbody>
                                 </table>
-                                    <a href="#" id="capitulo_link">Añadir capítulo</a>
+                                <a href="#" id="capitulo_link">Añadir capítulo</a>
                                 <!-- /Acaba el contenido de capitulo--> 
                                 <hr>
 
@@ -113,18 +113,18 @@
                                         {{ form_widget(form.esPmbok, {'attr' : {'onChange':'ocultarPmbok()'} }) }}
                                     </div>
                                 </div>
-                                
+
                                 <div class="row top-margin hidden"  id="ocultarPmbok" >
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 " >
-                                         <h3>Pmbok</h3><br>
-                                       
+                                        <h3>Pmbok</h3><br>
+
                                         {{ form_errors(form.pmbok) }}
                                         {{ form_widget(form.pmbok) }}
                                     </div>
                                 </div>
-                                    
+
                                 <hr>
-                                        {{ form_rest(form) }}
+                                {{ form_rest(form) }}
                                 <div class="row">
                                     <div class="col-lg-8">                     
                                     </div>
@@ -132,7 +132,7 @@
                                         <button class="btn btn-action" type="submit">Registrar</button>
                                     </div>
                                 </div>
-                              
+
                             </form>
                         </div>
                     </div>
@@ -153,18 +153,23 @@
     {{ parent() }}
     <script type="text/javascript">
 
-        var cont=0;
-        
+        var cont = 0;
+
 
         function addCapitulo() {
+            var index = $('table tbody tr').length;
+            var row = $('script[type="text/html"]').text().replace(/\$\$name\$\$/g, index);
+            $('table tbody').append(row);
+            alert(index +' Prueba 12');
             var collectionHolder = $('#tablaCapitulos');
             var prototype = collectionHolder.attr('data-prototype');
-            var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
+            var form = prototype.replace(/__name__/g, index); //importante
             var removeFormA = $('<td href="#" onclick="addTagFormDeleteLink(event, this); "><span class="navigationSpace glyphicon glyphicon-remove" style="color: red; font-size:180%" ></span></td>');
             var newTr = $('<tr></tr>');
             newTr.append(form);
             newTr.append(removeFormA);
             collectionHolder.append(newTr);
+            alert(collectionHolder.children().length + ' Prueba 1');
             return prototype;
         }
 
@@ -174,29 +179,30 @@
             removeFormA.remove();
         }
 
-            $('#capitulo_link').on('click', function (e) {
-                e.preventDefault();
-                addCapitulo();
+        $('#capitulo_link').on('click', function (e) {
+            e.preventDefault();
+            addCapitulo();
 
-            });
+        });
 
-         
-         function ocultarPmbok() {
-            if (cont ===0 ) {
+
+        function ocultarPmbok() {
+            if (cont === 0) {
                 $("#ocultarPmbok").removeClass('hidden');
-                cont=1;
-            } else{
+                cont = 1;
+            } else {
                 $("#ocultarPmbok").addClass('hidden');
-                cont=0;
+                cont = 0;
             }
-        };
-        
+        }
+        ;
+
         function redirigirAgregarCapitulo(id) {
             var url = '{{ path('uci_administrador_agregarPreguntaCuestionario', { 'idCuestionario':  'idCtnr'}) }}';
             url = url.replace("idCtnr", id);
             window.open(url, '_blank', 'top=0,scrollbars=1,toolbar=0,location=0,menubar=0');
         }
-        
-        
+
+
     </script>
 {% endblock %}
