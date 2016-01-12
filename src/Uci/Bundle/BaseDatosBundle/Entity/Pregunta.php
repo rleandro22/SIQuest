@@ -412,6 +412,7 @@ class Pregunta {
     }
 
     public function equals(\Uci\Bundle\BaseDatosBundle\Entity\Pregunta $pregunta) {
+        $esIgual = FALSE;
         if (strcasecmp($this->titulo, $pregunta->getTitulo()) == 0) {
             $respuestasParametro = $pregunta->getRespuesta();
             if (count($this->respuesta) > 0) {
@@ -430,12 +431,13 @@ class Pregunta {
                 } else {
                     $esIgual = FALSE;
                 }
-            }else{
-                $esIgual=TRUE;
+            } else {
+                $esIgual = TRUE;
             }
         } else {
             $esIgual = FALSE;
         }
+        return $esIgual;
     }
 
 }

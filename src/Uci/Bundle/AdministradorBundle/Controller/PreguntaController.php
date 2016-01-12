@@ -329,7 +329,7 @@ class PreguntaController extends Controller {
     //Método para importar el archivo excel
     private function importarArchivo(&$arregloPreguntas, $tipoRespuesta, $ubicacion) {
         $em = $this->getDoctrine()->getManager();
-        $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findAll();
+        $preguntasParametro = $em->getRepository('UciBaseDatosBundle:Pregunta')->findAll();
         $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($ubicacion);
         $objWorksheet = $phpExcelObject->setActiveSheetIndex(0);
         $highestRow = $objWorksheet->getHighestRow();
@@ -358,7 +358,7 @@ class PreguntaController extends Controller {
                     $respuesta->setCorrecta($esCorrecta);
                     $pregunta->addRespuesta($respuesta);
                 }
-                if (strpos($dataRow[$row]['A'], "}") === 0 && !$this->existePregunta($pregunta, $preguntas)) {
+                if (strpos($dataRow[$row]['A'], "}") === 0 && $this->existePregunta($pregunta, $preguntasParametro) == FALSE) {
                     $arregloPreguntas[] = $pregunta;
                 }
             } //endif
@@ -367,7 +367,8 @@ class PreguntaController extends Controller {
     
     private function existePregunta($pregunta, $preguntas){
         foreach ($preguntas as $preguntaActual){
-            if($pregunta->equals($preguntaActual)){
+            $existe = $pregunta->equals($preguntaActual);
+            if($existe == TRUE){
                 return TRUE;
             }
         }
