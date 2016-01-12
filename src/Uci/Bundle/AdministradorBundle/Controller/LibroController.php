@@ -65,16 +65,12 @@ class LibroController extends Controller {
 
 
         $libro = $em->getRepository('UciBaseDatosBundle:Libro')->find($id);
-//        $capitulos  = $em->getRepository('UciBaseDatosBundle:Capitulo')->findBy(array('libro' => $libro->getId()));
         $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
                         ->innerJoin('u.libro', 'g')
                         ->where('g.id = :id')
                         ->setParameter('id', $id)
                         ->orderBy('u.numeroCapitulo', 'ASC')
                         ->getQuery()->getResult();
-
-
-        // $libro->setCapitulos($capitulos);
         $error = '';
         if (!$libro) {
             throw $this->createNotFoundException('Unable to find Libro entity.');
@@ -89,7 +85,7 @@ class LibroController extends Controller {
                 $em->getConnection()->beginTransaction();
                 try {
                     $em->persist($libro);
-                    $this->guardarCapitulos($em, $libro);
+                   // $this->guardarCapitulos($em, $libro);
                     if ($libro->getEsPmbok() == 1) {
                         $this->guardarPmbok($em, $libro);
                     }
@@ -100,7 +96,7 @@ class LibroController extends Controller {
                     $error = $e;
                 }
             }
-            return $this->redirect($this->generateUrl("uci_administrador_editarLibro", array("idLibro" => $id)));
+            return $this->redirectToRoute('uci_administrador_indicelibro');
         }
 
         return $this->render('UciAdministradorBundle:VistaLibro:editarLibro.html.twig', array(

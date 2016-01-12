@@ -1742,11 +1742,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deletelibro')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\LibroController::aBorrarLibroAction',));
                     }
 
-                    // uci_administrador_agregarCapituloLibro
-                    if (preg_match('#^/admin/libro/admin/(?P<id>[^/]++)/agregar_capitulo_libro$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_agregarCapituloLibro')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\LibroController::aAgregarCapituloLibroAction',));
-                    }
-
                 }
 
             }

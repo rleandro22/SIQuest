@@ -39,7 +39,7 @@
                                 <div style="color:red">{{ error }}</div>
                             {% endif %}
 
-                            <form action="{{ path('uci_administrador_nuevolibro') }}" method="POST" {{form_enctype(form)}}>
+                            <form action="{{ path('uci_administrador_editarlibro', { 'id': entity.id }) }}" method="POST" {{form_enctype(form)}}>
 
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
@@ -80,7 +80,7 @@
                                 <h3>Capítulos</h3><br>
                                 <!-- /Tabla capitulos -->
 
-                                <table class="table demo table-bordered" id="tabla" >
+                                  <table class="table demo table-bordered" id="tablaCapitulos" data-filter="#filter">
                                     <thead>
                                         <tr>
                                             <th data-hide="phone">
@@ -108,9 +108,7 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                <div class="col-lg-2 col-sm-4 text-right">
-                                    <button class="btn btn-action" onclick="redirigirAgregarCapitulo({{entity.id}});" type="button">Agregar Capitulo</button>
-                                </div>
+                                <a href="#" id="capitulo_link">Añadir capítulo</a>
                                 <!-- /Acaba el contenido de capitulo--> 
                                 <hr>
 
@@ -133,7 +131,7 @@
                                     <div class="col-lg-8">                     
                                     </div>
                                     <div class="col-lg-4 text-right">
-                                        <button class="btn btn-action" type="submit">Registrar</button>
+                                        <button class="btn btn-action" type="submit">Guardar</button>
                                     </div>
                                 </div>
 
@@ -161,14 +159,19 @@
 
 
         function addCapitulo() {
-            var collectionHolder = $('#tabla');
+            var index = $('table tbody tr').length;
+            var row = $('script[type="text/html"]').text().replace(/\$\$name\$\$/g, index);
+            $('table tbody').append(row);
+           
+            var collectionHolder = $('#tablaCapitulos');
             var prototype = collectionHolder.attr('data-prototype');
-            var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
+            var form = prototype.replace(/__name__/g, index); //importante
             var removeFormA = $('<td href="#" onclick="addTagFormDeleteLink(event, this); "><span class="navigationSpace glyphicon glyphicon-remove" style="color: red; font-size:180%" ></span></td>');
             var newTr = $('<tr></tr>');
             newTr.append(form);
             newTr.append(removeFormA);
             collectionHolder.append(newTr);
+           
             return prototype;
         }
 
@@ -178,33 +181,12 @@
             removeFormA.remove();
         }
 
-
-
-
-
         $('#capitulo_link').on('click', function (e) {
             e.preventDefault();
             addCapitulo();
 
         });
 
-
-        function ocultarPmbok() {
-            if (cont === 0) {
-                $("#ocultarPmbok").removeClass('hidden');
-                cont = 1;
-            } else {
-                $("#ocultarPmbok").addClass('hidden');
-                cont = 0;
-            }
-        }
-        ;
-        
-        
-        function redirigirAgregarCapitulo(id) {
-            var url = '{{ path('uci_administrador_agregarCapituloLibro', { 'id':  'idCtnr'}) }}';
-            url = url.replace("idCtnr", id);
-            window.open(url, '_blank', 'top=0,scrollbars=1,toolbar=0,location=0,menubar=0');
-        }
+       
     </script>
 {% endblock %}

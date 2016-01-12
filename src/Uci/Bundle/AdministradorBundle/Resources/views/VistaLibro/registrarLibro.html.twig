@@ -160,7 +160,6 @@
             var index = $('table tbody tr').length;
             var row = $('script[type="text/html"]').text().replace(/\$\$name\$\$/g, index);
             $('table tbody').append(row);
-            alert(index +' Prueba 12');
             var collectionHolder = $('#tablaCapitulos');
             var prototype = collectionHolder.attr('data-prototype');
             var form = prototype.replace(/__name__/g, index); //importante
@@ -169,7 +168,6 @@
             newTr.append(form);
             newTr.append(removeFormA);
             collectionHolder.append(newTr);
-            alert(collectionHolder.children().length + ' Prueba 1');
             return prototype;
         }
 
