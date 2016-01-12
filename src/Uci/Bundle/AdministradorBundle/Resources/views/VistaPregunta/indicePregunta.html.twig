@@ -104,6 +104,7 @@
                 <table class="table demo table-bordered" id="tabla" data-filter="#filter">
                     <thead>
                         <tr>
+                            <!--<th data-hide="phone"></th>-->
                             <th style="border-right:0;" data-toggle="true">
                                 Texto
                             </th>
@@ -113,6 +114,7 @@
                     <tbody> 
                         {% for entity in entities %}
                             <tr>
+                                <!--<td><input type="checkbox" name="name1" /></td>-->
                                 <td style="border-right:0;" class="primera-columna">{{ entity.titulo|striptags }} </td>
                                 <td>&nbsp;&nbsp;<a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
                                     <a href="{{ path('uci_administrador_borrarPregunta', { 'idPregunta': entity.id }) }}" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>

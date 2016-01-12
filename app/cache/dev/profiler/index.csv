@@ -1468,3 +1468,11 @@ e3a5a9,::1,POST,http://localhost/SIQuest/web/app_dev.php/admin/importar_pregunta
 9457be,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1452611968,,200
 ce1714,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/222/borrar_pregunta,1452611973,,302
 62df2b,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1452611974,,200
+65345a,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1452614258,,302
+59c6fc,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1452614258,,200
+a282cd,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1452614890,,302
+a9dc16,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1452614890,,200
+0dfc76,::1,POST,http://localhost/SIQuest/web/app_dev.php/login_check,1452614900,,302
+65245b,::1,GET,http://localhost/SIQuest/web/app_dev.php/login,1452614900,,200
+31389c,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1452614903,,200
+0e261c,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/ver_preguntas,1452615176,,200
