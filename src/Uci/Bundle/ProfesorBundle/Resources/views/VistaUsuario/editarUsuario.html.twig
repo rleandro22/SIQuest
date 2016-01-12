@@ -1,4 +1,4 @@
-{% extends 'UciAsistenteAcademicaBundle::base.html.twig' %}
+{% extends 'UciProfesorBundle::base.html.twig' %}
 
 {% block header %}
     <header id="head" class="secondary"></header>
@@ -9,7 +9,7 @@
     <div class="container">
 
         <ol class="breadcrumb">
-            <li><a href="{{ path('uci_asistente_academica_homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('uci_profesor_homepage') }}">Inicio</a></li>
             <li class="active">Editar Usuario</li>
         </ol>
         <div class="row">
@@ -38,7 +38,7 @@
                             {% endif %}
                             <div id="alert_placeholder"> </div>
 
-                            <form action="{{ path('uci_asistente_academica_edituser', { 'id': entity.id }) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ path('uci_profesor_edituser', { 'id': entity.id }) }}" method="POST" enctype="multipart/form-data">
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
                                         {{ form_label(form.nombre) }}

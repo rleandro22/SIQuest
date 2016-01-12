@@ -1,12 +1,12 @@
 <?php
 
-namespace Uci\Bundle\AsistenteAcademicaBundle\Controller;
+namespace Uci\Bundle\ProfesorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Uci\Bundle\BaseDatosBundle\Form\CuestionarioAsistenteType;
 use Uci\Bundle\BaseDatosBundle\Archivos\CrearArchivoCuestionario;
-use Uci\Bundle\BaseDatosBundle\Form\FiltrarCuestionariosAsistenteType;
+use Uci\Bundle\BaseDatosBundle\Form\FiltrarCuestionariosProfesorType;
 use Uci\Bundle\BaseDatosBundle\Entity\Cuestionario;
 use Uci\Bundle\BaseDatosBundle\Form\VerCuestionarioAsistenteType;
 use Uci\Bundle\BaseDatosBundle\Form\AgregarPreguntaCuestionarioType;
@@ -15,45 +15,45 @@ use Doctrine\Common\Collections;
 
 class CuestionarioController extends Controller {
 
-    public function aAIndiceCuestionarioAction(Request $request) {
+    public function pIndiceCuestionarioAction(Request $request) {
         $user = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $asistente = $em->getRepository('UciBaseDatosBundle:AsistenteAcademica')->findBy(array('usuario' => $user->getId()));
-        $idAsistente = $asistente[0]->getId();
+        $profesor = $em->getRepository('UciBaseDatosBundle:Profesor')->findBy(array('usuario' => $user->getId()));
+        $idProfesor = $profesor[0]->getId();
         $cuestionario = new Cuestionario();
-        $form = $this->createForm(new FiltrarCuestionariosAsistenteType($idAsistente), $cuestionario);
+        $form = $this->createForm(new FiltrarCuestionariosProfesorType($idProfesor), $cuestionario);
         $form->handleRequest($request);
         if ($request->getMethod() == 'POST') {
             if ($cuestionario->getCurso()) {
                 $idCurso = $cuestionario->getCurso()->getId();
                 $entities = $em->getRepository('UciBaseDatosBundle:Cuestionario')->createQueryBuilder('u')
                                 ->innerJoin('u.curso', 'g')
-                                ->innerJoin('g.asistenteAcademica', 'a')
+                                ->innerJoin('g.profesor', 'a')
                                 ->where('g.id = :id')
-                                ->andWhere('a.id = :idAsist')
-                                ->setParameter('idAsist', $idAsistente)
+                                ->andWhere('a.id = :idProf')
+                                ->setParameter('idProf', $idProfesor)
                                 ->setParameter('id', $idCurso)
                                 ->orderBy('u.cuestionarioname', 'ASC')
                                 ->getQuery()->getArrayResult();
             } else {
                 $entities = $em->getRepository('UciBaseDatosBundle:Cuestionario')->createQueryBuilder('u')
                                 ->innerJoin('u.curso', 'g')
-                                ->innerJoin('g.asistenteAcademica', 'a')
-                                ->where('a.id = :idAsist')
-                                ->setParameter('idAsist', 6)
+                                ->innerJoin('g.profesor', 'a')
+                                ->where('a.id = :idProf')
+                                ->setParameter('idProf', $idProfesor)
                                 ->orderBy('u.cuestionarioname', 'ASC')
                                 ->getQuery()->getArrayResult();
             }
         } else {
             $entities = $em->getRepository('UciBaseDatosBundle:Cuestionario')->createQueryBuilder('u')
                             ->innerJoin('u.curso', 'g')
-                            ->innerJoin('g.asistenteAcademica', 'a')
-                            ->where('a.id = :idAsist')
-                            ->setParameter('idAsist', 6)
+                            ->innerJoin('g.profesor', 'a')
+                            ->where('a.id = :idProf')
+                            ->setParameter('idProf', $idProfesor)
                             ->orderBy('u.cuestionarioname', 'ASC')
                             ->getQuery()->getArrayResult();
         }
-        return $this->render('UciAsistenteAcademicaBundle:VistaCuestionario:indiceCuestionario.html.twig', array(
+        return $this->render('UciProfesorBundle:VistaCuestionario:indiceCuestionario.html.twig', array(
                     'form' => $form->createView(),
                     'entities' => $entities,
         ));

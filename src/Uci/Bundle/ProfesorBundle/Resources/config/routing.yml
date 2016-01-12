@@ -5,3 +5,9 @@ uci_profesor_homepage:
 uci_profesor_edituser:
     pattern:  /profesor/{id}/editar_usuario
     defaults: { _controller: UciProfesorBundle:Usuario:pEditarUsuario }
+    
+# ------------------------------CUESTIONARIO--------------------------------------------
+
+uci_profesor_indicecuestionario:
+    pattern:  /profesor/indice_cuestionario
+    defaults: { _controller: UciProfesorBundle:Cuestionario:pIndiceCuestionario }

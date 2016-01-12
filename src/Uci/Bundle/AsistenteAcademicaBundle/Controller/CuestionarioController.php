@@ -40,7 +40,7 @@ class CuestionarioController extends Controller {
                                 ->innerJoin('u.curso', 'g')
                                 ->innerJoin('g.asistenteAcademica', 'a')
                                 ->where('a.id = :idAsist')
-                                ->setParameter('idAsist', 6)
+                                ->setParameter('idAsist', $idAsistente)
                                 ->orderBy('u.cuestionarioname', 'ASC')
                                 ->getQuery()->getArrayResult();
             }
@@ -49,7 +49,7 @@ class CuestionarioController extends Controller {
                             ->innerJoin('u.curso', 'g')
                             ->innerJoin('g.asistenteAcademica', 'a')
                             ->where('a.id = :idAsist')
-                            ->setParameter('idAsist', 6)
+                            ->setParameter('idAsist', $idAsistente)
                             ->orderBy('u.cuestionarioname', 'ASC')
                             ->getQuery()->getArrayResult();
         }

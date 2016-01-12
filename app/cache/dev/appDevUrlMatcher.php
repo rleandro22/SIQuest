@@ -216,6 +216,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_profesor_edituser')), array (  '_controller' => 'Uci\\Bundle\\ProfesorBundle\\Controller\\UsuarioController::pEditarUsuarioAction',));
             }
 
+            // uci_profesor_indicecuestionario
+            if ($pathinfo === '/profesor/indice_cuestionario') {
+                return array (  '_controller' => 'Uci\\Bundle\\ProfesorBundle\\Controller\\CuestionarioController::pIndiceCuestionarioAction',  '_route' => 'uci_profesor_indicecuestionario',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/admin')) {

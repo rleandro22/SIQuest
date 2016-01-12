@@ -75,8 +75,12 @@ class CategoriaController extends Controller {
                 $usuario = $form["usuario"]->getData();
                 $em = $this->getDoctrine()->getManager();
                 $usuario->addCurso($em->getRepository('UciBaseDatosBundle:Curso')->find($idCurso));
+                try{
                 $em->persist($usuario);
                 $em->flush();
+                }  catch (\Exception $e){
+                    return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
+                }
             }
             return $this->redirect($this->generateUrl("uci_administrador_indicecurso", array("id" => $idGeneracion)));
         }
