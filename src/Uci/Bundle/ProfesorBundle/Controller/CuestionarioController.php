@@ -78,7 +78,6 @@ class CuestionarioController extends Controller {
 
     public function pAgregarComentarioCuestionarioAction(Request $request) {
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
-            $fechaActual = date("d/m/Y");
             $user = $this->get('security.context')->getToken()->getUser();
             $em = $this->getDoctrine()->getManager();
             $idCuestionario = $request->request->get('idCuestionario');
@@ -95,7 +94,6 @@ class CuestionarioController extends Controller {
                     $usuarioCorrige->setComentario($texto);
                     $usuarioCorrige->setCuestionario($cuestionario);
                     $usuarioCorrige->setPregunta($pregunta);
-                    $usuarioCorrige->setFechaCorreccion($fechaActual);
                     $usuarioCorrige->setUsuario($usuario);
                     $em->persist($usuarioCorrige);
                     $em->clear($usuarioCorrige);
@@ -103,7 +101,7 @@ class CuestionarioController extends Controller {
                 $em->flush();
                 $em->commit();
                 return new JsonResponse(array('resultado' => 1));
-            } catch (\Doctrine\DBAL\DBALException $e) {
+            } catch (\Doctrine\ORM\ORMException $e) {
                 $em->getConnection()->rollback();
                 return new JsonResponse(array('resultado' => 0));
             } catch (\Exception $e) {

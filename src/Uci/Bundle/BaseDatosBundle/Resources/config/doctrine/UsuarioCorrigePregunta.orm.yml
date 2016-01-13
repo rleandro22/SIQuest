@@ -21,11 +21,6 @@ Uci\Bundle\BaseDatosBundle\Entity\UsuarioCorrigePregunta:
             generator:
                 strategy: IDENTITY
     fields:
-        fechaCorreccion:
-            type: date
-            nullable: false
-            comment: ''
-            column: fecha_correccion
         comentario:
             type: text
             nullable: false

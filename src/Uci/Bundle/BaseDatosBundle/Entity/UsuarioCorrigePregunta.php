@@ -22,13 +22,6 @@ class UsuarioCorrigePregunta
     private $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fecha_correccion", type="date", nullable=false)
-     */
-    private $fechaCorreccion;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="comentario", type="text", nullable=false)
@@ -96,29 +89,6 @@ class UsuarioCorrigePregunta
      */
     public function getCuestionario() {
         return $this->cuestionario;
-    }
-
-    /**
-     * Set fechaCorreccion
-     *
-     * @param \DateTime $fechaCorreccion
-     * @return UsuarioCorrigePregunta
-     */
-    public function setFechaCorreccion($fechaCorreccion)
-    {
-        $this->fechaCorreccion = $fechaCorreccion;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaCorreccion
-     *
-     * @return \DateTime 
-     */
-    public function getFechaCorreccion()
-    {
-        return $this->fechaCorreccion;
     }
 
     /**
