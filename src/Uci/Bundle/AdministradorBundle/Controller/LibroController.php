@@ -84,9 +84,12 @@ class LibroController extends Controller {
             if ($form->isValid()) {
                 $em->getConnection()->beginTransaction();
                 try {
+                   
+
                     $em->persist($libro);
-                   // $this->guardarCapitulos($em, $libro);
+                    // $this->guardarCapitulos($em, $libro);
                     if ($libro->getEsPmbok() == 1) {
+                        $this->eliminarPmbok($em, $libro);
                         $this->guardarPmbok($em, $libro);
                     }
                     $em->flush();
@@ -103,6 +106,7 @@ class LibroController extends Controller {
                     'entity' => $libro,
                     'error' => $error,
                     'capitulos' => $capitulos,
+                    'esPmbok' => $libro->getEsPmbok(),
                     'form' => $form->createView()
         ));
     }
@@ -115,7 +119,31 @@ class LibroController extends Controller {
             $em->clear($capitulo);
         }
     }
+private function eliminarPmbok($em, &$libro) {
+        $pmbok = $libro->getPmbok();
 
+       // $em->persist($pmbok);
+
+        $areas = $pmbok->getAreaConocimiento();
+        $grupos = $pmbok->getGrupoProcesos();
+        $triangulos = $pmbok->getTrianguloTalento();
+
+        foreach ($areas as $area) {
+            $area->addPmbok($pmbok);
+            $em->remove($area);
+        }
+        $em->clear($areas);
+        foreach ($grupos as $grupo) {
+            $grupo->addPmbok($pmbok);
+            $em->remove($grupo);
+        }
+        $em->clear($grupos);
+        foreach ($triangulos as $triangulo) {
+            $triangulo->addPmbok($pmbok);
+            $em->remove($triangulo);
+        }
+        $em->clear($triangulos);
+    }
     private function guardarPmbok($em, &$libro) {
         $pmbok = $libro->getPmbok();
 
@@ -169,19 +197,19 @@ class LibroController extends Controller {
 
     public function aAgregarCapituloLibroAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
-       
-       $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
+
+        $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
                         ->innerJoin('u.libro', 'g')
                         ->where('g.id = :id')
                         ->setParameter('id', $id)
                         ->orderBy('u.numeroCapitulo', 'ASC')
                         ->getQuery()->getResult();
-       
-      
-        
+
+
+
         return $this->render('UciAdministradorBundle:VistaLibro:agregarCapituloLibro.html.twig', array(
                     'capitulos' => $capitulos,
-                    'id'=>$id
+                    'id' => $id
         ));
     }
 
