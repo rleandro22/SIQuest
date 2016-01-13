@@ -67,17 +67,17 @@
                     </tr>
                 </thead>
                 <tbody> 
-                    {% for pregunta in preguntas %}
+                    {% for preguntaComentario in preguntasComentario %}
                         <tr>
-                            <td style="border-right:0;" class="primera-columna"><b>Pregunta: </b>{{ pregunta.titulo|striptags }} </td>
+                            <td style="border-right:0;" class="primera-columna"><b>Pregunta: </b>{{ preguntaComentario.pregunta.titulo|striptags }} </td>
                             <td>&nbsp;&nbsp;<a href="" ><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
                                 <a href="" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                {% if pregunta.respuesta is not empty %}
-                                    {% for respuesta in pregunta.respuesta %}
+                                {% if preguntaComentario.pregunta.respuesta is not empty %}
+                                    {% for respuesta in preguntaComentario.pregunta.respuesta %}
                                         {% if respuesta.textoRespuesta is not empty %}
                                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ respuesta.textoRespuesta|striptags }}<br>
                                         {% else %}
@@ -95,7 +95,7 @@
                                     <br>
                                 {% endif %}
                                 <br><br>
-                                <input type="text" id="{{ pregunta.id }}" class="form-control" placeholder="Comentario para la asistente" rows="3">
+                                <input type="text" id="{{ preguntaComentario.pregunta.id }}" value="{{ preguntaComentario.comentario }}" class="form-control" placeholder="Comentario para la asistente" rows="3">
                                 <br><br>
                             </td>
                         </tr>
@@ -109,7 +109,7 @@
             </div>
             <div class="col-lg-1 text-right"></div>
             <div class="col-lg-2 col-sm-4 text-right">
-                <button class="btn btn-action" id="enviarObs" type="button">Enviar Observación</button>
+                <button class="btn btn-action" id="enviarObs" type="button">Enviar Observación</button> 
             </div>
         </div>
     </form>
@@ -130,13 +130,12 @@
         document.ready = function () {
 
             $('#enviarObs').click(function (e) {
-                var idCuest
-                = {{ entity.id }};
-                        var commentArray = [];
+                var idCuest = {{ entity.id }};
+                var commentArray = [];
                 $("input:text").each(function () {
                     if ($(this).val()) {
                         var comentario = {id: $(this).attr('id'), texto: $(this).val()};
-                        commentArray.push(comentario);
+                        commentArray.push({id:comentario});
                     }
                 });
                 if (commentArray.length > 0) {
@@ -146,10 +145,7 @@
                         data: {comentarios: commentArray, idCuestionario: idCuest},
                         success: function (data) {
                             if (data.resultado == 1) {
-                                alert('Funciona');
-                                /*window.opener.location.reload(false);
-                                window.location.href = "{ path('uci_administrador_ver_cuestionario', { 'id': entity.id }) }}";
-                                closeWindows();*/
+                                alert('Sus observaciones se enviaron correctamente.');
                             } else {
                                 alert('Ocurrio un error');
                             }

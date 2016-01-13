@@ -9,7 +9,6 @@ use Uci\Bundle\BaseDatosBundle\Entity\Cuestionario;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Uci\Bundle\BaseDatosBundle\Entity\UsuarioCorrigePregunta;
 
-
 class CuestionarioController extends Controller {
 
     public function pIndiceCuestionarioAction(Request $request) {
@@ -70,9 +69,32 @@ class CuestionarioController extends Controller {
                         ->setParameter('id', $id)
                         ->getQuery()->getSingleResult();
         $preguntas = $cuestionario->getPregunta();
+        $idCuestionario = $cuestionario->getId();
+        $idUsuario = $user->getId();
+        foreach ($preguntas as $pregunta) {
+            $usuarioCorrige = $em->getRepository('UciBaseDatosBundle:UsuarioCorrigePregunta')->createQueryBuilder('u')
+                            ->innerJoin('u.cuestionario', 'c')
+                            ->innerJoin('u.usuario', 'p')
+                            ->innerJoin('u.pregunta', 'r')
+                            ->where('c.id = :idCuest')
+                            ->andWhere('p.id = :idUser')
+                            ->andWhere('r.id = :idPreg')
+                            ->setParameter('idCuest', $idCuestionario)
+                            ->setParameter('idUser', $idUsuario)
+                            ->setParameter('idPreg', $pregunta->getId())
+                            ->getQuery()->getResult();
+            if ($usuarioCorrige == null) {
+                $usuarioCorrige = new UsuarioCorrigePregunta();
+                $usuarioCorrige->setComentario('');
+                $usuarioCorrige->setPregunta($pregunta);
+            } else {
+                $usuarioCorrige = $usuarioCorrige[0];
+            }
+            $preguntasComentario[] = $usuarioCorrige;
+        }
         return $this->render('UciProfesorBundle:VistaCuestionario:verCuestionario.html.twig', array(
                     'entity' => $cuestionario,
-                    'preguntas' => $preguntas,
+                    'preguntasComentario' => $preguntasComentario,
         ));
     }
 
@@ -83,18 +105,35 @@ class CuestionarioController extends Controller {
             $idCuestionario = $request->request->get('idCuestionario');
             $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($idCuestionario);
             $usuario = $em->getRepository('UciBaseDatosBundle:Usuario')->find($user);
+            $idUsuario = $usuario->getId();
             $comentarios = $request->request->get('comentarios');
             $em->getConnection()->beginTransaction();
             try {
                 foreach ($comentarios as $comentario) {
                     $usuarioCorrige = new UsuarioCorrigePregunta();
                     $idPregunda = $comentario['id'];
-                    $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunda);
                     $texto = $comentario['texto'];
-                    $usuarioCorrige->setComentario($texto);
-                    $usuarioCorrige->setCuestionario($cuestionario);
-                    $usuarioCorrige->setPregunta($pregunta);
-                    $usuarioCorrige->setUsuario($usuario);
+                    $usuarioCorrigeExistente = $em->getRepository('UciBaseDatosBundle:UsuarioCorrigePregunta')->createQueryBuilder('u')
+                                    ->innerJoin('u.cuestionario', 'c')
+                                    ->innerJoin('u.usuario', 'p')
+                                    ->innerJoin('u.pregunta', 'r')
+                                    ->where('c.id = :idCuest')
+                                    ->andWhere('p.id = :idUser')
+                                    ->andWhere('r.id = :idPreg')
+                                    ->setParameter('idCuest', $idCuestionario)
+                                    ->setParameter('idUser', $idUsuario)
+                                    ->setParameter('idPreg', $idPregunda)
+                                    ->getQuery()->getResult();
+                    if ($usuarioCorrigeExistente == null) {
+                        $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunda);
+                        $usuarioCorrige->setComentario($texto);
+                        $usuarioCorrige->setCuestionario($cuestionario);
+                        $usuarioCorrige->setPregunta($pregunta);
+                        $usuarioCorrige->setUsuario($usuario);
+                    } else {
+                        $usuarioCorrige = $usuarioCorrigeExistente[0];
+                        $usuarioCorrige->setComentario($texto);
+                    }
                     $em->persist($usuarioCorrige);
                     $em->clear($usuarioCorrige);
                 }

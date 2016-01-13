@@ -207,7 +207,7 @@
                         $capitulo_selector.html('<option value="0">Capitulos</option>');
                         if (data.capitulos.id != "0") {
                             for (var i = 0, total = data.capitulos.length; i < total; i++) {
-                                $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].numeroCapitulo+ '-' + data.capitulos[i].nombreCapitulo + '</option>');
+                                $capitulo_selector.append('<option value="' + data.capitulos[i].id + '">' + data.capitulos[i].numeroCapitulo + '-' + data.capitulos[i].nombreCapitulo + '</option>');
                             }
                         }
                         $area_selector.html('<option value="0">A. Conocimiento</option>');
@@ -374,24 +374,28 @@
                     }).get();
                 }).get();
                 $("#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas").val(tbl.length);
-                if ($("#uci_bundle_basedatosbundle_cuestionario_cuestionarioname").val() && $("#uci_bundle_basedatosbundle_cuestionario_curso").val()) {
-                    $.ajax({
-                        url: "{{path('uci_asistente_academica_guardarcuestionario')}}",
-                        type: "POST",
-                        data: {preguntas: tbl, nombreCuestionario: nombreCuestionario, curso: curso},
-                        success: function (data) {
-                            if (data.resultado == 1) {
-                                window.location.href = "{{ path('uci_asistente_academica_indicecuestionario') }}";
-                            } else {
+                if (tbl.length > 0) {
+                    if ($("#uci_bundle_basedatosbundle_cuestionario_cuestionarioname").val() && $("#uci_bundle_basedatosbundle_cuestionario_curso").val()) {
+                        $.ajax({
+                            url: "{{path('uci_asistente_academica_guardarcuestionario')}}",
+                            type: "POST",
+                            data: {preguntas: tbl, nombreCuestionario: nombreCuestionario, curso: curso},
+                            success: function (data) {
+                                if (data.resultado == 1) {
+                                    window.location.href = "{{ path('uci_asistente_academica_indicecuestionario') }}";
+                                } else {
+                                    alert('Ocurrio un error');
+                                }
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
                                 alert('Ocurrio un error');
                             }
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            alert('Ocurrio un error');
-                        }
-                    });
+                        });
+                    } else {
+                        alert('Rellene todos los campos del formulario');
+                    }
                 } else {
-                    alert('Rellene todos los campos del formulario');
+                    alert('No se puede guardar un cuestionario vacío');
                 }
             });
             $('#uci_bundle_basedatosbundle_cuestionario_cantidadPreguntas').bind('click keyup', function () {
