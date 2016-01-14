@@ -17,6 +17,20 @@ uci_administrador_edituser:
 uci_administrador_deleteuser:
     pattern:  /admin/{id}/borrar_usuario
     defaults: { _controller: UciAdministradorBundle:Usuario:aBorrarUsuario }
+
+# ------------------------------OBSERVACIONES--------------------------------------------
+    
+uci_administrador_indiceobservaciones:
+    pattern:  /admin/indices_observaciones
+    defaults: { _controller: UciAdministradorBundle:Observaciones:aIndiceCuestionarioObservados }
+    
+uci_administrador_verObservacion:
+    pattern:  /admin/{id}/ver_observacion
+    defaults: { _controller: UciAdministradorBundle:Observaciones:aVerCuestionarioObservado }
+
+uci_administrador_borrarObservacion:
+    pattern:  /admin/{id}/borrar_observaciones
+    defaults: { _controller: UciAdministradorBundle:Observaciones:aBorrarCuestionarioObservado }
     
 # ------------------------------ATRIBUTOS PMBOK--------------------------------------------
     
