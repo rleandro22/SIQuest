@@ -9,10 +9,10 @@ use Symfony\Component\Validator\Constraints\Regex;
 
 class EditarLibroType extends AbstractType {
 
-    private $edita;
+    private $esPmbok;
 
-    public function __construct($edita) {
-        $this->edita = $edita;
+    public function __construct($esPmbok) {
+        $this->esPmbok = $esPmbok;
     }
 
     /**
@@ -28,9 +28,8 @@ class EditarLibroType extends AbstractType {
                             'pattern' => '/^[0-9]\d*$/',
                             'message' => 'Use solo números positivos.'
                         )))))
-                ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ', 'multiple' => false, 'expanded' => true, 'data' => $this->edita))
+                //->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ', 'multiple' => false, 'expanded' => true, 'data' => $this->edita))
                 ->add('idiomas', 'entity', array('class' => 'UciBaseDatosBundle:Idiomas', 'required' => true))
-                ->add('pmbok', new PmbokType(), array('required' => false))
                 ->add('capitulos', 'collection', array(
                     'type' => new CapituloType(),
                     'by_reference' => true,
@@ -38,9 +37,10 @@ class EditarLibroType extends AbstractType {
                     'allow_add' => true,
                     'prototype' => true,
                     'label' => FALSE,
-                    'options' => array('label' => false)))
-
-        ;
+                    'options' => array('label' => false)));
+        if ($this->esPmbok == 1) {
+            $builder->add('pmbok', new PmbokType(), array('required' => false, 'label' => FALSE));
+        }
     }
 
     /**

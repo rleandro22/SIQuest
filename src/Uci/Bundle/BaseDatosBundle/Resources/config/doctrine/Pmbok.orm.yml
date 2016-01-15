@@ -20,16 +20,34 @@ Uci\Bundle\BaseDatosBundle\Entity\Pmbok:
         areaConocimiento:
             targetEntity: AreaConocimiento
             cascade: {  }
-            mappedBy: pmbok
-            inversedBy: null
-            joinTable: null
+            mappedBy: null
+            inversedBy: pmbok
+            joinTable:
+                name: pmbok_tiene_areas_conocimiento
+                joinColumns:
+                    -
+                        name: pmbok_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: area_conocimiento_id
+                        referencedColumnName: id
             orderBy: null
         trianguloTalento:
             targetEntity: TrianguloTalento
             cascade: {  }
-            mappedBy: pmbok
-            inversedBy: null
-            joinTable: null
+            mappedBy: null
+            inversedBy: pmbok
+            joinTable:
+                name: pmbok_tiene_triangulos_talento
+                joinColumns:
+                    -
+                        name: pmbok_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: triangulo_talento_id
+                        referencedColumnName: id
             orderBy: null
         grupoProcesos:
             targetEntity: GrupoProcesos

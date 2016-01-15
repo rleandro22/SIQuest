@@ -39,7 +39,7 @@
                                 <div style="color:red">{{ error }}</div>
                             {% endif %}
 
-                            <form action="{{ path('uci_administrador_nuevolibro') }}" method="POST" {{form_enctype(form)}}>
+                            <form action="{{ path('uci_administrador_editarlibro', { 'id': entity.id }) }}" method="POST" {{form_enctype(form)}}>
 
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
@@ -79,17 +79,15 @@
 
                                 <h3>Capítulos</h3><br>
                                 <!-- /Tabla capitulos -->
-   
-                                <ul id="respuestas" data-prototype="{{ form_widget(form.capitulos.vars.prototype)|escape }}">
+
+                                <ul id="caps" data-prototype="{{ form_widget(form.capitulos.vars.prototype)|escape }}">
                                     {% spaceless %}
                                         {% for capitulo in form.capitulos %}
-                                            <li> 
-
-                                                <div class="row">
-                                                    <div class="col-sm-2">{{ form_widget(capitulo.numeroCapitulo) }}</div>
-                                                    <div class="col-sm-8">{{ form_widget(capitulo.nombreCapitulo) }}</div>
+                                            <li>
+                                                <div>
+                                                    {{ form_row(capitulo) }}
+                                                    <a href="#" onclick="addTagFormDeleteLink(event, this, {{ capitulo.vars.value.id }});">Borrar</a>
                                                 </div>
-                                                <br>
                                             </li>
                                         {% endfor %}
                                     {% endspaceless %}
@@ -97,34 +95,13 @@
 
                                 <a href="#" id="capitulo_link">Añadir capítulo</a>
                                 <!-- /Acaba el contenido de capitulo--> 
-                                <hr>
-
-                                <!-- /Aquí inicia si es pmbok --> 
-
-                                <div class="row top-margin">
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
-                                        {{ form_label(form.esPmbok) }}
-                                        {{ form_errors(form.esPmbok) }}
-                                        {{ form_widget(form.esPmbok, {'attr' : {'onChange':'ocultarPmbok()'} }) }}
-                                    </div>
-                                </div>
-
-                                <div class="row top-margin hidden"  id="ocultarPmbok" >
-                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 " >
-                                        <h3>Pmbok</h3><br>
-
-                                        {{ form_errors(form.pmbok) }}
-                                        {{ form_widget(form.pmbok) }}
-                                    </div>
-                                </div>
-
-                                <hr>
+                                <br><br><br>
                                 {{ form_rest(form) }}
                                 <div class="row">
                                     <div class="col-lg-8">                     
                                     </div>
                                     <div class="col-lg-4 text-right">
-                                        <button class="btn btn-action" type="submit">Registrar</button>
+                                        <button class="btn btn-action" type="submit">Guardar</button>
                                     </div>
                                 </div>
 
@@ -152,24 +129,41 @@
 
 
         function addCapitulo() {
-            var index = $('table tbody tr').length;
-            var row = $('script[type="text/html"]').text().replace(/\$\$name\$\$/g, index);
-            $('table tbody').append(row);
-            var collectionHolder = $('#tablaCapitulos');
+            var collectionHolder = $('#caps');
             var prototype = collectionHolder.attr('data-prototype');
-            var form = prototype.replace(/__name__/g, index); //importante
-            var removeFormA = $('<td href="#" onclick="addTagFormDeleteLink(event, this); "><span class="navigationSpace glyphicon glyphicon-remove" style="color: red; font-size:180%" ></span></td>');
-            var newTr = $('<tr></tr>');
-            newTr.append(form);
-            newTr.append(removeFormA);
-            collectionHolder.append(newTr);
+            var form = prototype.replace(/__name__/g, collectionHolder.children().length); //importante
+            var removeFormA = $('<a href="#" onclick="addTagFormDeleteLink(event, this, 0);">Borrar</a>');
+            var newLi = $('<li></li>');
+            newLi.append(form);
+            newLi.append(removeFormA);
+            collectionHolder.append(newLi);
             return prototype;
         }
 
-        function addTagFormDeleteLink(e, elemento) {
+        function addTagFormDeleteLink(e, elemento, idCap) {
             e.preventDefault();
-            var removeFormA = elemento.parentNode;
-            removeFormA.remove();
+            var idCap=idCap;
+                if(idCap!=0){
+                    $.ajax({
+                            url: "{{path('uci_administrador_deletecapitulo')}}",
+                            type: "POST",
+                            data: {idCap: idCap},
+                            success: function( data ) {
+                                if (data.resultado == "1") {
+                                    var removeFormA = elemento.parentNode;
+                                    removeFormA.remove();
+                                }else{
+                                   alert('Ocurrio un error'); 
+                                }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert('Ocurrio un error');
+                        }
+                    });
+                }else{
+                    var removeFormA = elemento.parentNode;
+                    removeFormA.remove();
+                }
         }
 
         $('#capitulo_link').on('click', function (e) {

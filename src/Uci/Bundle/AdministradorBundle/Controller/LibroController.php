@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uci\Bundle\BaseDatosBundle\Entity\Libro;
 use Uci\Bundle\BaseDatosBundle\Form\LibroType;
 use Uci\Bundle\BaseDatosBundle\Form\EditarLibroType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Libro controller.
@@ -76,17 +77,13 @@ class LibroController extends Controller {
         }
         $form = $this->createForm(new EditarLibroType($libro->getEsPmbok()), $libro);
         $form->handleRequest($request);
-        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
-            //return $this->aObtenerDatosLibro($pregunta->getLibro());
-        } else if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST') {
             $error = $form->getErrors();
             if ($form->isValid()) {
                 $em->getConnection()->beginTransaction();
                 try {
-
-
                     $em->persist($libro);
-                    // $this->guardarCapitulos($em, $libro);
+                    $this->guardarCapitulos($em, $libro);
                     if ($libro->getEsPmbok() == 1) {
                         $this->eliminarPmbok($em, $libro);
                         $this->guardarPmbok($em, $libro);
@@ -98,7 +95,7 @@ class LibroController extends Controller {
                     $error = $e;
                 }
             }
-            return $this->redirectToRoute('uci_administrador_indicelibro');
+            return $this->redirect($this->generateUrl("uci_administrador_editarlibro", array("id" => $id)));
         }
 
         return $this->render('UciAdministradorBundle:VistaLibro:editarLibro.html.twig', array(
@@ -231,6 +228,40 @@ class LibroController extends Controller {
                     'capitulos' => $capitulos,
                     'id' => $id
         ));
+    }
+
+    public function aBorrarCapituloAction(Request $request) {
+        if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
+            $id = $request->get('idCap');
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('UciBaseDatosBundle:Capitulo')->find($id);
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Libro entity.');
+            }
+            //se borran las preguntas relacionadas al libro
+            $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findBy(array('capitulo' => $entity->getId()));
+            $em->getConnection()->beginTransaction();
+            try {
+                foreach ($preguntas as $pregunta) {
+                    //se borran usarioCorrige pregunta de cada una
+                    $correciones = $em->getRepository('UciBaseDatosBundle:UsuarioCorrigePregunta')->findBy(array('pregunta' => $pregunta->getId()));
+                    foreach ($correciones as $correciones) {
+                        $em->remove($correciones);
+                        $em->flush();
+                    }
+                    $em->remove($pregunta);
+                    //$em->flush();
+                    $em->clear($pregunta);
+                }
+                $em->remove($entity);
+                $em->flush();
+                $em->commit();
+                return new JsonResponse(array('resultado' => 1));
+            } catch (\Exception $e) {
+                $em->getConnection()->rollback();
+                return new JsonResponse(array('resultado' => 0));
+            }
+        }
     }
 
 }

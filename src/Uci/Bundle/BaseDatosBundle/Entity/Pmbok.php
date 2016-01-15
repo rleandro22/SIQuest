@@ -27,18 +27,34 @@ class Pmbok {
      * @ORM\Column(name="edicion", type="integer", nullable=false)
      */
     private $edicion;
-
+    
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento", mappedBy="pmbok")
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\AreaConocimiento", inversedBy="pmbok")
+     * @ORM\JoinTable(name="pmbok_tiene_areas_conocimiento",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="pmbok_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="area_conocimiento_id", referencedColumnName="id")
+     *   }
+     * )
      */
     private $areaConocimiento;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\TrianguloTalento", mappedBy="pmbok")
+     * @ORM\ManyToMany(targetEntity="Uci\Bundle\BaseDatosBundle\Entity\TrianguloTalento", inversedBy="pmbok")
+     * @ORM\JoinTable(name="pmbok_tiene_triangulos_talento",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="pmbok_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="triangulo_talento_id", referencedColumnName="id")
+     *   }
+     * )
      */
     private $trianguloTalento;
 
