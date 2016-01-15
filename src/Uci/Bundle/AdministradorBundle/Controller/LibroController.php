@@ -83,7 +83,7 @@ class LibroController extends Controller {
             if ($form->isValid()) {
                 $em->getConnection()->beginTransaction();
                 try {
-                   
+
 
                     $em->persist($libro);
                     // $this->guardarCapitulos($em, $libro);
@@ -118,10 +118,11 @@ class LibroController extends Controller {
             $em->clear($capitulo);
         }
     }
-private function eliminarPmbok($em, &$libro) {
+
+    private function eliminarPmbok($em, &$libro) {
         $pmbok = $libro->getPmbok();
 
-       // $em->persist($pmbok);
+        // $em->persist($pmbok);
 
         $areas = $pmbok->getAreaConocimiento();
         $grupos = $pmbok->getGrupoProcesos();
@@ -143,6 +144,7 @@ private function eliminarPmbok($em, &$libro) {
         }
         $em->clear($triangulos);
     }
+
     private function guardarPmbok($em, &$libro) {
         $pmbok = $libro->getPmbok();
 
@@ -176,15 +178,24 @@ private function eliminarPmbok($em, &$libro) {
             throw $this->createNotFoundException('Unable to find Libro entity.');
         }
         //se borran las preguntas relacionadas al libro
-        
+
         $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findBy(array('libro' => $entity->getId()));
-        
+
         foreach ($preguntas as $pregunta) {
+
+            //se borran usarioCorrige pregunta de cada una
+            $correciones = $em->getRepository('UciBaseDatosBundle:UsuarioCorrigePregunta')->findBy(array('pregunta' => $pregunta->getId()));
+
+            foreach ($correciones as $correciones) {
+                $em->remove($correciones);
+                $em->flush();
+            }
+
             $em->remove($pregunta);
             $em->flush();
         }
-        
-        
+
+
         $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->findBy(array('libro' => $entity->getId()));
 
         foreach ($capitulos as $capitulo) {

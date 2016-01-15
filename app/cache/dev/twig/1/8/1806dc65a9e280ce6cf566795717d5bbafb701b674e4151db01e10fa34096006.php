@@ -23,34 +23,34 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_eaca25b529f18328eef73e6ec1619fcf913e7a84252304abcc85ec8699255371 = $this->env->getExtension("native_profiler");
-        $__internal_eaca25b529f18328eef73e6ec1619fcf913e7a84252304abcc85ec8699255371->enter($__internal_eaca25b529f18328eef73e6ec1619fcf913e7a84252304abcc85ec8699255371_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaLibro:editarLibro.html.twig"));
+        $__internal_0e6ee42a1c00269fbb5cc1559dc5d4678b0592657f4be05703fa1e349cc94b64 = $this->env->getExtension("native_profiler");
+        $__internal_0e6ee42a1c00269fbb5cc1559dc5d4678b0592657f4be05703fa1e349cc94b64->enter($__internal_0e6ee42a1c00269fbb5cc1559dc5d4678b0592657f4be05703fa1e349cc94b64_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UciAdministradorBundle:VistaLibro:editarLibro.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_eaca25b529f18328eef73e6ec1619fcf913e7a84252304abcc85ec8699255371->leave($__internal_eaca25b529f18328eef73e6ec1619fcf913e7a84252304abcc85ec8699255371_prof);
+        $__internal_0e6ee42a1c00269fbb5cc1559dc5d4678b0592657f4be05703fa1e349cc94b64->leave($__internal_0e6ee42a1c00269fbb5cc1559dc5d4678b0592657f4be05703fa1e349cc94b64_prof);
 
     }
 
     // line 4
     public function block_header($context, array $blocks = array())
     {
-        $__internal_261fae1d1180844223df706bfbfc148d07d7616bb29609e3fb9f33e22a3a1c85 = $this->env->getExtension("native_profiler");
-        $__internal_261fae1d1180844223df706bfbfc148d07d7616bb29609e3fb9f33e22a3a1c85->enter($__internal_261fae1d1180844223df706bfbfc148d07d7616bb29609e3fb9f33e22a3a1c85_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_4bf358ce51de355cca65acd02cd774d0c1d0920af36efe50ed68b7ce0b5562c5 = $this->env->getExtension("native_profiler");
+        $__internal_4bf358ce51de355cca65acd02cd774d0c1d0920af36efe50ed68b7ce0b5562c5->enter($__internal_4bf358ce51de355cca65acd02cd774d0c1d0920af36efe50ed68b7ce0b5562c5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
         // line 5
         echo "    <header id=\"head\" class=\"secondary\"></header>
     ";
         
-        $__internal_261fae1d1180844223df706bfbfc148d07d7616bb29609e3fb9f33e22a3a1c85->leave($__internal_261fae1d1180844223df706bfbfc148d07d7616bb29609e3fb9f33e22a3a1c85_prof);
+        $__internal_4bf358ce51de355cca65acd02cd774d0c1d0920af36efe50ed68b7ce0b5562c5->leave($__internal_4bf358ce51de355cca65acd02cd774d0c1d0920af36efe50ed68b7ce0b5562c5_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_f12f1288c84ece23bd32c1a7693b99fb73e5249c41510cfb30148183ade168aa = $this->env->getExtension("native_profiler");
-        $__internal_f12f1288c84ece23bd32c1a7693b99fb73e5249c41510cfb30148183ade168aa->enter($__internal_f12f1288c84ece23bd32c1a7693b99fb73e5249c41510cfb30148183ade168aa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_7c0925cb89b485fbe4318d77c71dd1cc8a476a3c10f1bc0df2e3f4ad55a26e70 = $this->env->getExtension("native_profiler");
+        $__internal_7c0925cb89b485fbe4318d77c71dd1cc8a476a3c10f1bc0df2e3f4ad55a26e70->enter($__internal_7c0925cb89b485fbe4318d77c71dd1cc8a476a3c10f1bc0df2e3f4ad55a26e70_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    <!-- container -->
@@ -87,7 +87,7 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
                 <div class=\"col-md-12\">
                     <div class=\"panel panel-default\">
                         <div class=\"panel-body\">
-                            <h3 class=\"thin text-center\">Editar libro</h3>
+                            <h3 class=\"thin text-center\">Registrar un nuevo libro</h3>
                             <p class=\"text-center text-muted\">Todos los campos son requeridos. </p>
                             <hr>
 
@@ -104,7 +104,7 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
         echo "
                             <form action=\"";
         // line 42
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_editarlibro", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id", array()))), "html", null, true);
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_nuevolibro");
         echo "\" method=\"POST\" ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'enctype');
         echo ">
@@ -183,72 +183,78 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
 
                                 <h3>Capítulos</h3><br>
                                 <!-- /Tabla capitulos -->
-
-                                <table class=\"table demo table-bordered\" id=\"tablaCapitulos\" data-filter=\"#filter\" data-prototype=\"capitulos\" >
-                                    <thead>
-                                        <tr>
-                                            <th data-hide=\"phone\">
-
-                                            </th>   
-                                            <th data-hide=\"phone\">
-                                                Numero 
-                                            </th>
-                                            <th data-hide=\"phone\">
-                                                Nombre
-                                            </th>
-
-
-                                            <th style=\"width: 12%;\" data-sort-ignore=\"true\" data-hide=\"phone\" data-name=\"Acciones\"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ";
-        // line 101
+   
+                                <ul id=\"respuestas\" data-prototype=\"";
+        // line 83
+        echo twig_escape_filter($this->env, $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "capitulos", array()), "vars", array()), "prototype", array()), 'widget'));
+        echo "\">
+                                    ";
+        // line 84
+        ob_start();
+        // line 85
+        echo "                                        ";
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["capitulos"]) ? $context["capitulos"] : $this->getContext($context, "capitulos")));
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "capitulos", array()));
         foreach ($context['_seq'] as $context["_key"] => $context["capitulo"]) {
-            // line 102
-            echo "                                            <tr>
-                                                <td style=\"border-right:0;\" class=\"primera-columna\">";
-            // line 103
-            echo twig_escape_filter($this->env, $this->getAttribute($context["capitulo"], "numeroCapitulo", array()), "html", null, true);
-            echo " </td>
-                                                <td style=\"border-right:0;\" class=\"primera-columna\">";
-            // line 104
-            echo twig_escape_filter($this->env, $this->getAttribute($context["capitulo"], "nombreCapitulo", array()), "html", null, true);
-            echo " </td>
-                                                <td><a href=\"";
-            // line 105
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("uci_administrador_deletelibro", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id", array()))), "html", null, true);
-            echo "\"><span class=\"navigationSpace glyphicon glyphicon-remove\"></span></a>
-                                                </td> 
-                                            </tr>
+            // line 86
+            echo "                                            <li> 
+
+                                                <div class=\"row\">
+                                                    <div class=\"col-sm-2\">";
+            // line 89
+            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($context["capitulo"], "numeroCapitulo", array()), 'widget');
+            echo "</div>
+                                                    <div class=\"col-sm-8\">";
+            // line 90
+            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($context["capitulo"], "nombreCapitulo", array()), 'widget');
+            echo "</div>
+                                                </div>
+                                                <br>
+                                            </li>
                                         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['capitulo'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 109
-        echo "                                    </tbody>
-                                </table>
+        // line 95
+        echo "                                    ";
+        echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));
+        // line 96
+        echo "                                </ul>
+
                                 <a href=\"#\" id=\"capitulo_link\">Añadir capítulo</a>
                                 <!-- /Acaba el contenido de capitulo--> 
                                 <hr>
 
                                 <!-- /Aquí inicia si es pmbok --> 
 
-                                
+                                <div class=\"row top-margin\">
+                                    <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8\">
+                                        ";
+        // line 106
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "esPmbok", array()), 'label');
+        echo "
+                                        ";
+        // line 107
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "esPmbok", array()), 'errors');
+        echo "
+                                        ";
+        // line 108
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "esPmbok", array()), 'widget', array("attr" => array("onChange" => "ocultarPmbok()")));
+        echo "
+                                    </div>
+                                </div>
 
                                 <div class=\"row top-margin hidden\"  id=\"ocultarPmbok\" >
                                     <div class=\"cols-xs-12 col-sm-10 col-md-8 col-lg-8 \" >
                                         <h3>Pmbok</h3><br>
 
                                         ";
-        // line 123
+        // line 116
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "pmbok", array()), 'errors');
         echo "
                                         ";
-        // line 124
+        // line 117
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "pmbok", array()), 'widget');
         echo "
                                     </div>
@@ -256,19 +262,16 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
 
                                 <hr>
                                 ";
-        // line 129
+        // line 122
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
                                 <div class=\"row\">
                                     <div class=\"col-lg-8\">                     
                                     </div>
                                     <div class=\"col-lg-4 text-right\">
-                                        <button class=\"btn btn-action\" type=\"submit\">Guardar</button>
+                                        <button class=\"btn btn-action\" type=\"submit\">Registrar</button>
                                     </div>
                                 </div>
-
-
-
 
                             </form>
                         </div>
@@ -285,17 +288,17 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
 
 ";
         
-        $__internal_f12f1288c84ece23bd32c1a7693b99fb73e5249c41510cfb30148183ade168aa->leave($__internal_f12f1288c84ece23bd32c1a7693b99fb73e5249c41510cfb30148183ade168aa_prof);
+        $__internal_7c0925cb89b485fbe4318d77c71dd1cc8a476a3c10f1bc0df2e3f4ad55a26e70->leave($__internal_7c0925cb89b485fbe4318d77c71dd1cc8a476a3c10f1bc0df2e3f4ad55a26e70_prof);
 
     }
 
-    // line 157
+    // line 147
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_7bf04d9e8bd6c478f4b3cbefe10444120e5891319f683e2d7e2c0ff64685a6d4 = $this->env->getExtension("native_profiler");
-        $__internal_7bf04d9e8bd6c478f4b3cbefe10444120e5891319f683e2d7e2c0ff64685a6d4->enter($__internal_7bf04d9e8bd6c478f4b3cbefe10444120e5891319f683e2d7e2c0ff64685a6d4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_99077bf1c6ce0acb6b23282cb381cf4cb25e909df7d0983350b0ad721a79a47f = $this->env->getExtension("native_profiler");
+        $__internal_99077bf1c6ce0acb6b23282cb381cf4cb25e909df7d0983350b0ad721a79a47f->enter($__internal_99077bf1c6ce0acb6b23282cb381cf4cb25e909df7d0983350b0ad721a79a47f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 158
+        // line 148
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
@@ -316,7 +319,6 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
             newTr.append(form);
             newTr.append(removeFormA);
             collectionHolder.append(newTr);
-
             return prototype;
         }
 
@@ -332,20 +334,32 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
 
         });
 
-        
-            if (";
-        // line 193
-        echo twig_escape_filter($this->env, (isset($context["esPmbok"]) ? $context["esPmbok"] : $this->getContext($context, "esPmbok")), "html", null, true);
-        echo " === 1) {
+
+        function ocultarPmbok() {
+            if (cont === 0) {
                 \$(\"#ocultarPmbok\").removeClass('hidden');
                 cont = 1;
-            } 
-       
+            } else {
+                \$(\"#ocultarPmbok\").addClass('hidden');
+                cont = 0;
+            }
+        }
+        ;
+
+        function redirigirAgregarCapitulo(id) {
+            var url = '";
+        // line 194
+        echo $this->env->getExtension('routing')->getPath("uci_administrador_agregarPreguntaCuestionario", array("idCuestionario" => "idCtnr"));
+        echo "';
+            url = url.replace(\"idCtnr\", id);
+            window.open(url, '_blank', 'top=0,scrollbars=1,toolbar=0,location=0,menubar=0');
+        }
+
 
     </script>
 ";
         
-        $__internal_7bf04d9e8bd6c478f4b3cbefe10444120e5891319f683e2d7e2c0ff64685a6d4->leave($__internal_7bf04d9e8bd6c478f4b3cbefe10444120e5891319f683e2d7e2c0ff64685a6d4_prof);
+        $__internal_99077bf1c6ce0acb6b23282cb381cf4cb25e909df7d0983350b0ad721a79a47f->leave($__internal_99077bf1c6ce0acb6b23282cb381cf4cb25e909df7d0983350b0ad721a79a47f_prof);
 
     }
 
@@ -361,6 +375,6 @@ class __TwigTemplate_1806dc65a9e280ce6cf566795717d5bbafb701b674e4151db01e10fa340
 
     public function getDebugInfo()
     {
-        return array (  338 => 193,  299 => 158,  293 => 157,  260 => 129,  252 => 124,  248 => 123,  232 => 109,  222 => 105,  218 => 104,  214 => 103,  211 => 102,  207 => 101,  176 => 73,  172 => 72,  168 => 71,  158 => 64,  154 => 63,  150 => 62,  141 => 56,  137 => 55,  133 => 54,  124 => 48,  120 => 47,  116 => 46,  107 => 42,  104 => 41,  98 => 39,  96 => 38,  77 => 21,  75 => 20,  66 => 14,  62 => 13,  56 => 9,  50 => 8,  42 => 5,  36 => 4,  11 => 1,);
+        return array (  352 => 194,  302 => 148,  296 => 147,  266 => 122,  258 => 117,  254 => 116,  243 => 108,  239 => 107,  235 => 106,  223 => 96,  220 => 95,  209 => 90,  205 => 89,  200 => 86,  195 => 85,  193 => 84,  189 => 83,  176 => 73,  172 => 72,  168 => 71,  158 => 64,  154 => 63,  150 => 62,  141 => 56,  137 => 55,  133 => 54,  124 => 48,  120 => 47,  116 => 46,  107 => 42,  104 => 41,  98 => 39,  96 => 38,  77 => 21,  75 => 20,  66 => 14,  62 => 13,  56 => 9,  50 => 8,  42 => 5,  36 => 4,  11 => 1,);
     }
 }
