@@ -6,6 +6,24 @@ uci_asistente_academica_edituser:
     pattern:  /asistente/{id}/editar_usuario
     defaults: { _controller: UciAsistenteAcademicaBundle:Usuario:aEditarUsuario }
     
+# ------------------------------OBSERVACIONES--------------------------------------------
+    
+uci_asistente_academica_indiceobservaciones:
+    pattern:  /asistente/indices_observaciones
+    defaults: { _controller: UciAsistenteAcademicaBundle:Observaciones:aAIndiceCuestionarioObservados }
+    
+uci_asistente_academica_verObservacion:
+    pattern:  /asistente/{id}/ver_observacion
+    defaults: { _controller: UciAsistenteAcademicaBundle:Observaciones:aAVerCuestionarioObservado }
+
+uci_asistente_academica_borrarObservacion:
+    pattern:  /asistente/{id}/borrar_observaciones
+    defaults: { _controller: UciAsistenteAcademicaBundle:Observaciones:aABorrarCuestionarioObservado }
+
+uci_asistente_academica_removerPreguntaObservacion:
+    pattern:  /asistente/{idPregunta}/{idCuestionario}/remover_pregunta_observacion
+    defaults: { _controller: UciAsistenteAcademicaBundle:Observaciones:aARemoverPreguntaObservacion }
+    
 # ------------------------------CUESTIONARIO--------------------------------------------
 
 uci_asistente_academica_indicecuestionario:

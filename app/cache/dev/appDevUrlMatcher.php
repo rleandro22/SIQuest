@@ -138,6 +138,26 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_edituser')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\UsuarioController::aEditarUsuarioAction',));
             }
 
+            // uci_asistente_academica_indiceobservaciones
+            if ($pathinfo === '/asistente/indices_observaciones') {
+                return array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\ObservacionesController::aAIndiceCuestionarioObservadosAction',  '_route' => 'uci_asistente_academica_indiceobservaciones',);
+            }
+
+            // uci_asistente_academica_verObservacion
+            if (preg_match('#^/asistente/(?P<id>[^/]++)/ver_observacion$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_verObservacion')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\ObservacionesController::aAVerCuestionarioObservadoAction',));
+            }
+
+            // uci_asistente_academica_borrarObservacion
+            if (preg_match('#^/asistente/(?P<id>[^/]++)/borrar_observaciones$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_borrarObservacion')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\ObservacionesController::aABorrarCuestionarioObservadoAction',));
+            }
+
+            // uci_asistente_academica_removerPreguntaObservacion
+            if (preg_match('#^/asistente/(?P<idPregunta>[^/]++)/(?P<idCuestionario>[^/]++)/remover_pregunta_observacion$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_asistente_academica_removerPreguntaObservacion')), array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\ObservacionesController::aARemoverPreguntaObservacionAction',));
+            }
+
             // uci_asistente_academica_indicecuestionario
             if ($pathinfo === '/asistente/indice_cuestionario') {
                 return array (  '_controller' => 'Uci\\Bundle\\AsistenteAcademicaBundle\\Controller\\CuestionarioController::aAIndiceCuestionarioAction',  '_route' => 'uci_asistente_academica_indicecuestionario',);
@@ -272,6 +292,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // uci_administrador_borrarObservacion
             if (preg_match('#^/admin/(?P<id>[^/]++)/borrar_observaciones$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_borrarObservacion')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\ObservacionesController::aBorrarCuestionarioObservadoAction',));
+            }
+
+            // uci_administrador_removerPreguntaObservacion
+            if (preg_match('#^/admin/(?P<idPregunta>[^/]++)/(?P<idCuestionario>[^/]++)/remover_pregunta_observacion$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_removerPreguntaObservacion')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\ObservacionesController::aRemoverPreguntaObservacionAction',));
             }
 
             // uci_administrador_indiceatrpmbok

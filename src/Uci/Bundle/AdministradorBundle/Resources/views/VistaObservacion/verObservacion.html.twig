@@ -71,7 +71,7 @@
                         <tr>
                             <td style="border-right:0;" class="primera-columna"><b>Pregunta {{ preguntaComentario.pregunta.id }}: </b>{{ preguntaComentario.pregunta.titulo }} </td>
                             <td>&nbsp;&nbsp;<a href="" ><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
-                                <a href="" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
+                                <a href="{{ path('uci_administrador_removerPreguntaObservacion', { 'idPregunta': preguntaComentario.pregunta.id, 'idCuestionario': entity.id }) }}" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
                             </td>
                         </tr>
                         <tr>

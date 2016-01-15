@@ -32,6 +32,10 @@ uci_administrador_borrarObservacion:
     pattern:  /admin/{id}/borrar_observaciones
     defaults: { _controller: UciAdministradorBundle:Observaciones:aBorrarCuestionarioObservado }
     
+uci_administrador_removerPreguntaObservacion:
+    pattern:  /admin/{idPregunta}/{idCuestionario}/remover_pregunta_observacion
+    defaults: { _controller: UciAdministradorBundle:Observaciones:aRemoverPreguntaObservacion }
+    
 # ------------------------------ATRIBUTOS PMBOK--------------------------------------------
     
 uci_administrador_indiceatrpmbok:

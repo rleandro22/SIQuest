@@ -63,16 +63,12 @@
                         <th style="border-right:0;" data-toggle="true">
                             Preguntas del cuestionario {{ entity.cuestionarioname }}
                         </th>
-                        <th data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
                     </tr>
                 </thead>
                 <tbody> 
                     {% for preguntaComentario in preguntasComentario %}
                         <tr>
                             <td style="border-right:0;" class="primera-columna"><b>Pregunta {{ preguntaComentario.pregunta.id }}: </b>{{ preguntaComentario.pregunta.titulo }} </td>
-                            <td>&nbsp;&nbsp;<a href="" ><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
-                                <a href="" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
-                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">

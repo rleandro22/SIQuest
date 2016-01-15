@@ -13,7 +13,7 @@ class ObservacionesController extends Controller {
 
     public function aIndiceCuestionarioObservadosAction(Request $request) {
         $cuestionario = new Cuestionario();
-        $cuestionarios=null;
+        $cuestionarios = null;
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(new FiltrarCuestionariosType(), $cuestionario);
         $form->handleRequest($request);
@@ -33,7 +33,13 @@ class ObservacionesController extends Controller {
             $corregidos = $em->getRepository('UciBaseDatosBundle:UsuarioCorrigePregunta')->findAll();
         }
         foreach ($corregidos as $corregido) {
-            $cuestionarios[] = $corregido->getCuestionario();
+            if ($cuestionarios) {
+                if (!in_array($corregido->getCuestionario(), $cuestionarios)) {
+                    $cuestionarios[] = $corregido->getCuestionario();
+                }
+            } else {
+                $cuestionarios[] = $corregido->getCuestionario();
+            }
         }
 
         return $this->render('UciAdministradorBundle:VistaObservacion:indiceObservacion.html.twig', array(
@@ -92,6 +98,26 @@ class ObservacionesController extends Controller {
         }
 
         return $this->redirectToRoute('uci_administrador_indiceobservaciones');
+    }
+
+    public function aRemoverPreguntaObservacionAction(Request $request, $idPregunta, $idCuestionario) {
+        $em = $this->getDoctrine()->getManager();
+        $cuestionario = $em->getRepository('UciBaseDatosBundle:Cuestionario')->find($idCuestionario);
+        $pregunta = $em->getRepository('UciBaseDatosBundle:Pregunta')->find($idPregunta);
+        if (!$cuestionario) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        $em->getConnection()->beginTransaction();
+        try {
+            $cuestionario->removePregunta($pregunta);
+            $cuestionario->setCantidadPreguntas(count($cuestionario->getPregunta()));
+            $em->persist($cuestionario);
+            $em->flush();
+            $em->commit();
+        } catch (Exception $e) {
+            $em->getConnection()->rollback();
+        }
+        return $this->redirect($this->generateUrl("uci_administrador_verObservacion", array("id" => $idCuestionario)));
     }
 
 }
