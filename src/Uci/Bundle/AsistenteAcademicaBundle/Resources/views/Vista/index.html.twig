@@ -19,7 +19,7 @@
     <!-- Intro -->
     <div class="container text-center">
         <br> <br>
-        <h2 class="thin">Bienvenido Asistente {{ app.user.nombre }} {{ app.user.apellidos }}</h2>
+        <h2 class="thin">Bienvenido {{ app.user.nombre }} {{ app.user.apellidos }}</h2>
         <p class="text-muted">
             A continuación se le presentan secciones importantes que le pueden interesar.
         </p>
@@ -32,21 +32,21 @@
 
             <div class="row">
                 <div class="col-md-4 col-sm-6 highlight">
-                    <div class="h-caption"><h4><i class="fa fa-book fa-5"></i><a href="">Mantenimiento de Libros</a></h4></div>
+                    <div class="h-caption"><h4><i class="fa fa-check fa-5"></i><a href="{{ path('uci_asistente_academica_indicesolicitudes') }}">Mantenimiento de Solicitudes</a></h4></div>
                     <div class="h-body text-center">
-                        <p>Desde aquí puede gestionar todos los datos de los libros.</p>
+                        <p>Desde aquí puede ver las solicitudes de cuestionarios.</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 highlight">
-                    <div class="h-caption"><h4><i class="fa fa-users fa-5"></i><a href="">Mantenimiento de Usuarios</a></h4></div>
+                    <div class="h-caption"><h4><i class="fa fa-book fa-5"></i><a href="{{ path('uci_asistente_academica_registrarcuestionario') }}">Registrar Cuestionario</a></h4></div>
                     <div class="h-body text-center">
-                        <p>Desde aquí puede gestionar todos los datos de los usuarios que acceden a la aplicación.</p>
+                        <p>Desde aquí puede registrar un nuevo cuestionario.</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 highlight">
-                    <div class="h-caption"><h4><i class="fa fa-question fa-5"></i><a href="">Mantenimiento de Preguntas</a></h4></div>
+                    <div class="h-caption"><h4><i class="fa fa-bookmark-o fa-5"></i><a href="{{ path('uci_asistente_academica_indicecuestionario') }}">Mantenimiento de Cuestionarios</a></h4></div>
                     <div class="h-body text-center">
-                        <p>Desde aquí puede gestionar todos los datos de las preguntas almacenadas en la base de datos.</p>
+                        <p>Desde aquí puede ver todos los cuestionarios.</p>
                     </div>
                 </div>
             </div> <!-- /row  -->

@@ -38,7 +38,11 @@
 {% block navegacionfooter %}
     <p class="simplenav">
         <a href="{{ path('uci_principal_homepage') }}">Inicio</a> | 
-        <a href="">Solicitudes</a> |
+        <a href="{{ path('uci_administrador_indiceobservaciones') }}">Observaciones</a> |
+        <a href="{{ path('uci_administrador_indicesolicitudes') }}">Solicitudes</a> |
+        <a href="{{ path('uci_administrador_indicelibro') }}">Libros</a> |
+        <a href="{{ path('uci_administrador_indicecuestionario') }}">Cuestionarios</a> |
+        <a href="{{ path('uci_administrador_indicepreguntas') }}">Preguntas</a> |
         <a href="">Ayuda</a> |
         <a href="{{ path('logout') }}">Salir</a>
     </p>
