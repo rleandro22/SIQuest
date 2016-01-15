@@ -62,8 +62,6 @@ class LibroController extends Controller {
 
     public function aEditarLibroAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
-
-
         $libro = $em->getRepository('UciBaseDatosBundle:Libro')->find($id);
         $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->createQueryBuilder('u')
                         ->innerJoin('u.libro', 'g')
@@ -71,11 +69,12 @@ class LibroController extends Controller {
                         ->setParameter('id', $id)
                         ->orderBy('u.numeroCapitulo', 'ASC')
                         ->getQuery()->getResult();
+        $libro->setCapitulos($capitulos);
         $error = '';
         if (!$libro) {
             throw $this->createNotFoundException('Unable to find Libro entity.');
         }
-        $form = $this->createForm(new EditarLibroType(), $libro);
+        $form = $this->createForm(new EditarLibroType($libro->getEsPmbok()), $libro);
         $form->handleRequest($request);
         if (strcmp(filter_input(INPUT_SERVER, 'HTTP_X_REQUESTED_WITH', FILTER_SANITIZE_STRING), 'XMLHttpRequest') == 0) {
             //return $this->aObtenerDatosLibro($pregunta->getLibro());

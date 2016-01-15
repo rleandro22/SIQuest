@@ -2,4 +2,8 @@ _assetic:
     resource: .
     type: assetic
 _app:
+<<<<<<< HEAD
     resource: 'C:\wamp\www\Richard\app/config/routing_dev.yml'
+=======
+    resource: 'C:\wamp\www\SIQuest\app/config/routing_dev.yml'
+>>>>>>> eb5376e746bf8a8fc7483d477aaacd37f5e823a8

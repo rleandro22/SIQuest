@@ -135,7 +135,17 @@ class CuestionarioController extends Controller {
                         $usuarioCorrige->setComentario($texto);
                     }
                     $em->persist($usuarioCorrige);
+                    $noBorrar[] = $usuarioCorrige->getId();
                     $em->clear($usuarioCorrige);
+                }
+                $correccionesBorrar = $em->getRepository('UciBaseDatosBundle:UsuarioCorrigePregunta')->createQueryBuilder('p')
+                        ->where('p.id NOT IN (:miarray2)')
+                        ->setParameter('miarray2', $noBorrar)
+                        ->getQuery()
+                        ->getResult();
+                foreach ($correccionesBorrar as $correccion) {
+                    $em->remove($correccion);
+                    $em->clear($correccion);
                 }
                 $em->flush();
                 $em->commit();

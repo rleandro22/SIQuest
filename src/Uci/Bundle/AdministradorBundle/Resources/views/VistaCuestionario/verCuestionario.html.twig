@@ -72,7 +72,7 @@
                     <tbody> 
                         {% for pregunta in preguntas %}
                             <tr>
-                                <td style="border-right:0;" class="primera-columna">{{ pregunta.titulo|striptags }} </td>
+                                <td style="border-right:0;" class="primera-columna"><b>Pregunta {{ pregunta.id }}:</b> {{ pregunta.titulo|striptags }} </td>
                                 <td>&nbsp;&nbsp;<a href="{{ path('uci_administrador_editarPregunta', { 'idPregunta': pregunta.id }) }}" target="_blank"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;&nbsp;
                                     <a href="{{ path('uci_administrador_removerPreguntaCuestionario', { 'idPregunta': pregunta.id, 'idCuestionario': entity.id }) }}" class="speedbump"><span class="glyphicon glyphicon-remove"></span></a>
                                 </td>

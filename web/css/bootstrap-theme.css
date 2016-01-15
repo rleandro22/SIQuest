@@ -151,3 +151,7 @@
 #tablaPreguntas tr td:nth-child(1), th:nth-child(1) {
     display: none;
 }
+
+.margen_izquierdo {
+    margin-left: 5%;
+}

@@ -33,6 +33,20 @@ Uci\Bundle\BaseDatosBundle\Entity\Cuestionario:
             unsigned: false
             comment: ''
             column: cantidad_preguntas
+        aceptado:
+            type: smallint
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+            column: aceptado
+        comentarioAceptado:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+            column: comentario_aceptado
     manyToOne:
         curso:
             targetEntity: Curso

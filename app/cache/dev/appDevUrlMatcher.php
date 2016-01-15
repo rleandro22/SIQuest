@@ -259,6 +259,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_deleteuser')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\UsuarioController::aBorrarUsuarioAction',));
             }
 
+            // uci_administrador_indiceobservaciones
+            if ($pathinfo === '/admin/indices_observaciones') {
+                return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\ObservacionesController::aIndiceCuestionarioObservadosAction',  '_route' => 'uci_administrador_indiceobservaciones',);
+            }
+
+            // uci_administrador_verObservacion
+            if (preg_match('#^/admin/(?P<id>[^/]++)/ver_observacion$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_verObservacion')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\ObservacionesController::aVerCuestionarioObservadoAction',));
+            }
+
+            // uci_administrador_borrarObservacion
+            if (preg_match('#^/admin/(?P<id>[^/]++)/borrar_observaciones$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'uci_administrador_borrarObservacion')), array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\ObservacionesController::aBorrarCuestionarioObservadoAction',));
+            }
+
             // uci_administrador_indiceatrpmbok
             if ($pathinfo === '/admin/lista_atrpmbok') {
                 return array (  '_controller' => 'Uci\\Bundle\\AdministradorBundle\\Controller\\AtributosPmbokController::aIndiceAtributosPmbokAction',  '_route' => 'uci_administrador_indiceatrpmbok',);

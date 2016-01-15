@@ -61,6 +61,20 @@ class Cuestionario {
     private $pregunta;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="aceptado", type="smallint", length=1, nullable=false)
+     */
+    private $aceptado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comentario_aceptado", type="text", nullable=false)
+     */
+    private $comentarioAceptado;
+
+    /**
      * Constructor
      */
     public function __construct() {
@@ -103,6 +117,22 @@ class Cuestionario {
      */
     public function getCantidadPreguntas() {
         return $this->cantidadPreguntas;
+    }
+
+    function getAceptado() {
+        return $this->aceptado;
+    }
+
+    function getComentarioAceptado() {
+        return $this->comentarioAceptado;
+    }
+
+    function setAceptado($aceptado) {
+        $this->aceptado = $aceptado;
+    }
+
+    function setComentarioAceptado($comentarioAceptado) {
+        $this->comentarioAceptado = $comentarioAceptado;
     }
 
     /**
@@ -159,14 +189,13 @@ class Cuestionario {
     public function setPregunta(\Doctrine\Common\Collections\Collection $pregunta) {
         $this->pregunta = $pregunta;
     }
-    
-    public function borrarPreguntas(){
+
+    public function borrarPreguntas() {
         $this->pregunta = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     public function __toString() {
         return $this->cuestionarioname;
     }
-
 
 }
