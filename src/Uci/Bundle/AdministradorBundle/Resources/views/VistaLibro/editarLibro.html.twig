@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <h3 class="thin text-center">Editar libro</h3>
+                            <h3 class="thin text-center">Registrar un nuevo libro</h3>
                             <p class="text-center text-muted">Todos los campos son requeridos. </p>
                             <hr>
 
@@ -39,7 +39,7 @@
                                 <div style="color:red">{{ error }}</div>
                             {% endif %}
 
-                            <form action="{{ path('uci_administrador_editarlibro', { 'id': entity.id }) }}" method="POST" {{form_enctype(form)}}>
+                            <form action="{{ path('uci_administrador_nuevolibro') }}" method="POST" {{form_enctype(form)}}>
 
                                 <div class="row top-margin">
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
@@ -79,42 +79,35 @@
 
                                 <h3>Capítulos</h3><br>
                                 <!-- /Tabla capitulos -->
+   
+                                <ul id="respuestas" data-prototype="{{ form_widget(form.capitulos.vars.prototype)|escape }}">
+                                    {% spaceless %}
+                                        {% for capitulo in form.capitulos %}
+                                            <li> 
 
-                                <table class="table demo table-bordered" id="tablaCapitulos" data-filter="#filter" data-prototype="capitulos" >
-                                    <thead>
-                                        <tr>
-                                            <th data-hide="phone">
-
-                                            </th>   
-                                            <th data-hide="phone">
-                                                Numero 
-                                            </th>
-                                            <th data-hide="phone">
-                                                Nombre
-                                            </th>
-
-
-                                            <th style="width: 12%;" data-sort-ignore="true" data-hide="phone" data-name="Acciones"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for capitulo in capitulos %}
-                                            <tr>
-                                                <td style="border-right:0;" class="primera-columna">{{ capitulo.numeroCapitulo }} </td>
-                                                <td style="border-right:0;" class="primera-columna">{{ capitulo.nombreCapitulo }} </td>
-                                                <td><a href="{{ path('uci_administrador_deletelibro', { 'id': entity.id }) }}"><span class="navigationSpace glyphicon glyphicon-remove"></span></a>
-                                                </td> 
-                                            </tr>
+                                                <div class="row">
+                                                    <div class="col-sm-2">{{ form_widget(capitulo.numeroCapitulo) }}</div>
+                                                    <div class="col-sm-8">{{ form_widget(capitulo.nombreCapitulo) }}</div>
+                                                </div>
+                                                <br>
+                                            </li>
                                         {% endfor %}
-                                    </tbody>
-                                </table>
+                                    {% endspaceless %}
+                                </ul>
+
                                 <a href="#" id="capitulo_link">Añadir capítulo</a>
                                 <!-- /Acaba el contenido de capitulo--> 
                                 <hr>
 
                                 <!-- /Aquí inicia si es pmbok --> 
 
-                                
+                                <div class="row top-margin">
+                                    <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                        {{ form_label(form.esPmbok) }}
+                                        {{ form_errors(form.esPmbok) }}
+                                        {{ form_widget(form.esPmbok, {'attr' : {'onChange':'ocultarPmbok()'} }) }}
+                                    </div>
+                                </div>
 
                                 <div class="row top-margin hidden"  id="ocultarPmbok" >
                                     <div class="cols-xs-12 col-sm-10 col-md-8 col-lg-8 " >
@@ -131,12 +124,9 @@
                                     <div class="col-lg-8">                     
                                     </div>
                                     <div class="col-lg-4 text-right">
-                                        <button class="btn btn-action" type="submit">Guardar</button>
+                                        <button class="btn btn-action" type="submit">Registrar</button>
                                     </div>
                                 </div>
-
-
-
 
                             </form>
                         </div>
@@ -173,7 +163,6 @@
             newTr.append(form);
             newTr.append(removeFormA);
             collectionHolder.append(newTr);
-
             return prototype;
         }
 
@@ -189,12 +178,24 @@
 
         });
 
-        
-            if ({{ esPmbok }} === 1) {
+
+        function ocultarPmbok() {
+            if (cont === 0) {
                 $("#ocultarPmbok").removeClass('hidden');
                 cont = 1;
-            } 
-       
+            } else {
+                $("#ocultarPmbok").addClass('hidden');
+                cont = 0;
+            }
+        }
+        ;
+
+        function redirigirAgregarCapitulo(id) {
+            var url = '{{ path('uci_administrador_agregarPreguntaCuestionario', { 'idCuestionario':  'idCtnr'}) }}';
+            url = url.replace("idCtnr", id);
+            window.open(url, '_blank', 'top=0,scrollbars=1,toolbar=0,location=0,menubar=0');
+        }
+
 
     </script>
 {% endblock %}

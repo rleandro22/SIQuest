@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Libro {
     
      /**
-     * @ORM\OneToMany(targetEntity="Categoria", mappedBy="libro_id")
+     * @ORM\OneToMany(targetEntity="Capitulo", mappedBy="libro_id")
      */
     private $capitulos;
  

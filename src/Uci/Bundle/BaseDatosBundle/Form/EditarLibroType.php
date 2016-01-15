@@ -7,12 +7,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\Regex;
 
-
 class EditarLibroType extends AbstractType {
 
-   
-    public function __construct() {
-     
+    private $edita;
+
+    public function __construct($edita) {
+        $this->edita = $edita;
     }
 
     /**
@@ -23,15 +23,23 @@ class EditarLibroType extends AbstractType {
         $builder
                 ->add('titulo', 'text', array("label" => "Titulo: ", "required" => true, "attr" => array('class' => 'form-control')))
                 ->add('anio', 'integer', array("label" => "Año: ", "required" => true, "attr" => array('class' => 'form-control')))
-                ->add('numeroPaginas', 'integer', array("label" => "Páginas: ", "required" => true, "attr" => array('min' => 1, 'class' => 'form-control'),'precision' => 0, 'constraints' => array(
+                ->add('numeroPaginas', 'integer', array("label" => "Páginas: ", "required" => true, "attr" => array('min' => 1, 'class' => 'form-control'), 'precision' => 0, 'constraints' => array(
                         new Regex(array(
                             'pattern' => '/^[0-9]\d*$/',
                             'message' => 'Use solo números positivos.'
                         )))))
-              //  ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ',  'multiple' => false, 'expanded' => true, 'data' => $this->edita))
+                ->add('esPmbok', 'choice', array('choices' => array(1 => 'Sí', 0 => 'No'), 'label' => '¿Es Pmbok? ', 'multiple' => false, 'expanded' => true, 'data' => $this->edita))
                 ->add('idiomas', 'entity', array('class' => 'UciBaseDatosBundle:Idiomas', 'required' => true))
-                ->add('pmbok', new PmbokType(),array('required' => false))
-              
+                ->add('pmbok', new PmbokType(), array('required' => false))
+                ->add('capitulos', 'collection', array(
+                    'type' => new CapituloType(),
+                    'by_reference' => true,
+                    'allow_delete' => true,
+                    'allow_add' => true,
+                    'prototype' => true,
+                    'label' => FALSE,
+                    'options' => array('label' => false)))
+
         ;
     }
 
