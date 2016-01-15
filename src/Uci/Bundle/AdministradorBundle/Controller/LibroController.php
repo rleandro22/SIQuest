@@ -200,14 +200,13 @@ class LibroController extends Controller {
             $em->flush();
         }
 
+        $em->remove($entity);
+        $em->clear($entity);
         if ($entity->getEsPmbok() == 1) {
             $pmbok = $entity->getPmbok();
             $em->remove($pmbok);
-            $em->flush();
+            $em->clear($pmbok);
         }
-
-
-        $em->remove($entity);
         $em->flush();
         return $this->redirectToRoute('uci_administrador_indicelibro');
     }

@@ -328,3 +328,13 @@ b07c0d,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/5/ver_observacion,
 35165c,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/216/editar_pregunta,1452893725,,200
 b7ace1,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/5/ver_observacion,1452893788,,200
 5b42c9,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/216/editar_pregunta,1452893790,,200
+90542b,::1,GET,http://localhost/SIQuest/web/app_dev.php/?XDEBUG_SESSION_START=netbeans-xdebug,1452896018,,200
+43f2f1,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/lista_libros,1452896021,,200
+905ac8,::1,GET,http://localhost/SIQuest/web/app_dev.php/,1452896121,,200
+e18c47,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/lista_libros,1452896123,,200
+3886b8,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/admin/1/borrar_libro,1452896125,,302
+42c440,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/lista_libros,1452896126,,200
+3bdcbb,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/admin/3/borrar_libro,1452896128,,302
+8b7a69,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/lista_libros,1452896129,,200
+33dd9b,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/admin/4/borrar_libro,1452896130,,302
+9627fa,::1,GET,http://localhost/SIQuest/web/app_dev.php/admin/libro/lista_libros,1452896131,,200
