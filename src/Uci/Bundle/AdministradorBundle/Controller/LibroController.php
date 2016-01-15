@@ -176,6 +176,16 @@ private function eliminarPmbok($em, &$libro) {
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Libro entity.');
         }
+        //se borran las preguntas relacionadas al libro
+        
+        $preguntas = $em->getRepository('UciBaseDatosBundle:Pregunta')->findBy(array('libro' => $entity->getId()));
+        
+        foreach ($preguntas as $pregunta) {
+            $em->remove($pregunta);
+            $em->flush();
+        }
+        
+        
         $capitulos = $em->getRepository('UciBaseDatosBundle:Capitulo')->findBy(array('libro' => $entity->getId()));
 
         foreach ($capitulos as $capitulo) {
